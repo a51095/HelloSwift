@@ -16,8 +16,4 @@ class CCHomeViewController: CCViewController {
     override func setUI() {
         view.backgroundColor = .yellow
     }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.toast("哈哈")
-    }
 }

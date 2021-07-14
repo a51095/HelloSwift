@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
-		F704A051269E73830044729E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A050269E73830044729E /* ViewController.swift */; };
 		F704A056269E73850044729E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F704A055269E73850044729E /* Assets.xcassets */; };
 		F704A06A269E76500044729E /* CCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A069269E76500044729E /* CCTabBarController.swift */; };
 		F704A072269E7B2B0044729E /* CCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A071269E7B2B0044729E /* CCViewController.swift */; };
@@ -28,6 +27,7 @@
 		F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44819269ECBD40098D2AF /* CCButton.swift */; };
 		F7B4481D269ED0D00098D2AF /* CCView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481C269ED0D00098D2AF /* CCView.swift */; };
 		F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481F269ED3840098D2AF /* CCToastView.swift */; };
+		F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44823269EDE490098D2AF /* CCDragView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		EFB316C22B9BE33774EA2B93 /* Pods-HelloSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.debug.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		F704A049269E73830044729E /* HelloSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F704A04C269E73830044729E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F704A050269E73830044729E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F704A055269E73850044729E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F704A05A269E73850044729E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F704A069269E76500044729E /* CCTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTabBarController.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		F7B44819269ECBD40098D2AF /* CCButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCButton.swift; sourceTree = "<group>"; };
 		F7B4481C269ED0D00098D2AF /* CCView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCView.swift; sourceTree = "<group>"; };
 		F7B4481F269ED3840098D2AF /* CCToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCToastView.swift; sourceTree = "<group>"; };
+		F7B44823269EDE490098D2AF /* CCDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDragView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +114,6 @@
 			isa = PBXGroup;
 			children = (
 				F704A04C269E73830044729E /* AppDelegate.swift */,
-				F704A050269E73830044729E /* ViewController.swift */,
 				F704A055269E73850044729E /* Assets.xcassets */,
 				F704A05A269E73850044729E /* Info.plist */,
 			);
@@ -150,6 +149,7 @@
 		F704A066269E75640044729E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F7B44823269EDE490098D2AF /* CCDragView.swift */,
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 			);
@@ -303,8 +303,8 @@
 			files = (
 				F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */,
 				F7B44808269EB7CB0098D2AF /* CCObject.swift in Sources */,
+				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,
-				F704A051269E73830044729E /* ViewController.swift in Sources */,
 				F7B4480B269EB9460098D2AF /* CCString.swift in Sources */,
 				F7B44805269EB2DE0098D2AF /* CCDictionary.swift in Sources */,
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,

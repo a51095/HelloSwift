@@ -9,8 +9,6 @@ import UIKit
 import Foundation
 
 func MarginTop(_ top: CGFloat) -> CGFloat {
-    let tt = (UIApplication.shared.delegate?.window??.safeAreaInsets.top)!
-    print("tt ==== \(tt)")
     return top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)!
 }
 
