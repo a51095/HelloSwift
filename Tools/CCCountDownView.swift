@@ -87,6 +87,6 @@ class CCCountDownView: UIView {
     
     // MARK: - 获取剩余总时长
     private func remainingTime() -> Int {
-        return defaultTotal - (Int(CACurrentMediaTime()) - startTime)
+        defaultTotal - (Int(CACurrentMediaTime()) - startTime)
     }
 }

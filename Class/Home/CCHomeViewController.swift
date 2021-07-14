@@ -8,7 +8,6 @@
 import UIKit
 
 class CCHomeViewController: CCViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

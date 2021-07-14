@@ -29,6 +29,7 @@
 		F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481F269ED3840098D2AF /* CCToastView.swift */; };
 		F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44823269EDE490098D2AF /* CCDragView.swift */; };
 		F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44828269EE8590098D2AF /* CCCountDownView.swift */; };
+		F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		F7B4481F269ED3840098D2AF /* CCToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCToastView.swift; sourceTree = "<group>"; };
 		F7B44823269EDE490098D2AF /* CCDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDragView.swift; sourceTree = "<group>"; };
 		F7B44828269EE8590098D2AF /* CCCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownView.swift; sourceTree = "<group>"; };
+		F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
+				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */,
 				F7B44808269EB7CB0098D2AF /* CCObject.swift in Sources */,
 				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
+				F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,
 				F7B4480B269EB9460098D2AF /* CCString.swift in Sources */,
 				F7B44805269EB2DE0098D2AF /* CCDictionary.swift in Sources */,
