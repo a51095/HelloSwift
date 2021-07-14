@@ -28,10 +28,16 @@ class CCToastView: UIView {
         return message
     }()
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - 反初始化器
     deinit {
         print("CCToastView deinit~")
     }
-    
+        
+    // MARK: - 初始化器
     init(_ title: String, type: ToastType = .nore) {
         super.init(frame: .zero)
         
@@ -58,16 +64,8 @@ class CCToastView: UIView {
         messageLabel.text = title
         self.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            //                make.top.equalTo(20)
-            //                make.left.equalTo(12)
-            //                make.right.equalTo(-12)
-            //                make.bottom.equalTo(-20)
             make.edges.equalTo(UIEdgeInsets(top: limitTop, left: 12, bottom: 20, right: 12))
         }
-    }
-        
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
