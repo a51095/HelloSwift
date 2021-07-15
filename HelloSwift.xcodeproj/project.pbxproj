@@ -30,6 +30,7 @@
 		F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44823269EDE490098D2AF /* CCDragView.swift */; };
 		F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44828269EE8590098D2AF /* CCCountDownView.swift */; };
 		F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */; };
+		F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		F7B44823269EDE490098D2AF /* CCDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDragView.swift; sourceTree = "<group>"; };
 		F7B44828269EE8590098D2AF /* CCCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownView.swift; sourceTree = "<group>"; };
 		F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManage.swift; sourceTree = "<group>"; };
+		F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				F704A04C269E73830044729E /* AppDelegate.swift */,
+				F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */,
 				F704A055269E73850044729E /* Assets.xcassets */,
 				F704A05A269E73850044729E /* Info.plist */,
 			);
@@ -327,6 +330,7 @@
 				F7B4481D269ED0D00098D2AF /* CCView.swift in Sources */,
 				F704A072269E7B2B0044729E /* CCViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
+				F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */,
 				F7B4480E269EBE020098D2AF /* CCColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
