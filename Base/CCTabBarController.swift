@@ -2,7 +2,7 @@
 //  CCTabBarController.swift
 //  HelloSwift
 //
-//  Created by a51095 on 2021/7/14.
+//  Created by a51095 on 2021/7/15.
 //
 
 import UIKit
@@ -28,16 +28,16 @@ class CCTabBarController: UITabBarController {
     // MARK: - UI初始化
     func setUI() {
         // 添加首页视图
-        addChildController(title: "首页", normalIconName: "", seletedIconName: "", vc: CCNavigationController(rootViewController: CCHomeViewController()))
+        addChildController(title: "首页", normalIconName: "vc_home", seletedIconName: "vc_home", vc: CCNavigationController(rootViewController: CCHomeViewController()))
         
         // 添加用户视图
-        addChildController(title: "用户", normalIconName: "", seletedIconName: "", vc: CCNavigationController(rootViewController: CCUserViewController()))
+        addChildController(title: "我的", normalIconName: "vc_user", seletedIconName: "vc_user", vc: CCNavigationController(rootViewController: CCUserViewController()))
     }
     
     private func addChildController(title: String, normalIconName: String, seletedIconName: String, vc: UIViewController) {
         vc.tabBarItem.title = title
-//        vc.tabBarItem.image = UIImage(named: normalIconName)
-//        vc.tabBarItem.selectedImage = UIImage(named: seletedIconName)
+        vc.tabBarItem.image = UIImage(named: normalIconName)
+        vc.tabBarItem.selectedImage = UIImage(named: seletedIconName)
         addChild(vc)
     }
 }
