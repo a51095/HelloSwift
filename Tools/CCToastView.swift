@@ -43,11 +43,11 @@ class CCToastView: UIView {
         
         layer.cornerRadius = 5
         layer.masksToBounds = true
-        backgroundColor = .hexColor("#000000", 0.6)
+        backgroundColor = .hexColor("#000000", 0.5)
         
         if type != .nore {
             if type == .success {
-                iconImageView.image = UIImage(named: "toast_suc")
+                iconImageView.image = UIImage(named: "toast_success")
             }else {
                 iconImageView.image = UIImage(named: "toast_fail")
             }
@@ -57,7 +57,7 @@ class CCToastView: UIView {
             self.addSubview(iconImageView)
             iconImageView.snp.makeConstraints { (make) in
                 make.centerX.equalTo(self)
-                make.top.equalTo(self).offset(20)
+                make.top.equalTo(self).offset(16)
             }
         }
         
