@@ -2,7 +2,7 @@
 //  CCViewController.swift
 //  HelloSwift
 //
-//  Created by a51095 on 2021/7/14.
+//  Created by a51095 on 2021/7/15.
 //
 
 import UIKit
@@ -16,6 +16,6 @@ class CCViewController: UIViewController {
     
     // MARK: - UI初始化
     func setUI() {
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
     }
 }

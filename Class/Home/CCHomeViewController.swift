@@ -2,7 +2,7 @@
 //  CCHomeViewController.swift
 //  HelloSwift
 //
-//  Created by a51095 on 2021/7/14.
+//  Created by a51095 on 2021/7/15.
 //
 
 import UIKit
@@ -10,9 +10,5 @@ import UIKit
 class CCHomeViewController: CCViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func setUI() {
-        view.backgroundColor = .yellow
     }
 }

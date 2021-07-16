@@ -2,13 +2,16 @@
 //  CCColor.swift
 //  HelloSwift
 //
-//  Created by a51095 on 2021/7/14.
+//  Created by a51095 on 2021/7/15.
 //
 
 import UIKit
 import Foundation
 
 extension UIColor {
+    
+    /// 拓展一个APP主色调
+    open class var main: UIColor { .hexColor("#FFD700") }
     
     public static func rgb(r: Int, g: Int, b: Int, a: CGFloat = 1) -> UIColor{
         return UIColor(red: r.cgf / 255.0, green: g.cgf / 255.0, blue: b.cgf / 255.0, alpha: a)
