@@ -31,6 +31,7 @@
 		F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44828269EE8590098D2AF /* CCCountDownView.swift */; };
 		F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */; };
 		F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */; };
+		F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485126A1168E0098D2AF /* CCLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		F7B44828269EE8590098D2AF /* CCCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownView.swift; sourceTree = "<group>"; };
 		F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManage.swift; sourceTree = "<group>"; };
 		F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppDelegate.swift; sourceTree = "<group>"; };
+		F7B4485126A1168E0098D2AF /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			children = (
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
+				F7B4485126A1168E0098D2AF /* CCLoadingView.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
@@ -321,6 +324,7 @@
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,
 				F704A07F269E7C8F0044729E /* CCUserViewController.swift in Sources */,
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
+				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
 				F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */,
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
