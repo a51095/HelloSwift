@@ -32,6 +32,9 @@
 		F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */; };
 		F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */; };
 		F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485126A1168E0098D2AF /* CCLoadingView.swift */; };
+		F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* CCAppKeys.swift */; };
+		F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* CCAppURL.swift */; };
+		F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +67,9 @@
 		F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManage.swift; sourceTree = "<group>"; };
 		F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppDelegate.swift; sourceTree = "<group>"; };
 		F7B4485126A1168E0098D2AF /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
+		F7B4485626A17F650098D2AF /* CCAppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppKeys.swift; sourceTree = "<group>"; };
+		F7B4485A26A181550098D2AF /* CCAppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppURL.swift; sourceTree = "<group>"; };
+		F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppNotificationName.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 				F704A070269E7AD10044729E /* Class */,
 				F704A064269E75110044729E /* Base */,
 				F704A066269E75640044729E /* Tools */,
+				F7B4485526A17E890098D2AF /* Config */,
 				F704A065269E754D0044729E /* Extension */,
 				F704A04A269E73830044729E /* Products */,
 				C78CFD14EBDB15D285B08BEA /* Pods */,
@@ -199,6 +206,16 @@
 				F704A08F269EAA0E0044729E /* CCAppHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		F7B4485526A17E890098D2AF /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F7B4485626A17F650098D2AF /* CCAppKeys.swift */,
+				F7B4485A26A181550098D2AF /* CCAppURL.swift */,
+				F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +335,9 @@
 				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
 				F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,
+				F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */,
 				F7B4480B269EB9460098D2AF /* CCString.swift in Sources */,
+				F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */,
 				F7B44805269EB2DE0098D2AF /* CCDictionary.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */,
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,
@@ -330,6 +349,7 @@
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* CCAlertController.swift in Sources */,
 				F704A07C269E7C700044729E /* CCHomeViewController.swift in Sources */,
+				F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */,
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
 				F7B4481D269ED0D00098D2AF /* CCView.swift in Sources */,
 				F704A072269E7B2B0044729E /* CCViewController.swift in Sources */,
