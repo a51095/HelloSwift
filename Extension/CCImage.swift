@@ -128,3 +128,73 @@ extension UIImage {
         return (images,totalDuration)
     }
 }
+
+// 滤镜相关
+extension UIImage {
+    
+    // MARK: - 重新绘制带滤镜效果的UIImage对象
+    private func repaint(_ filter: CIFilter) -> UIImage {
+        // 设置输入源
+        let inputImg = CIImage(cgImage: self.cgImage!)
+        filter.setValue(inputImg, forKey: kCIInputImageKey)
+        // 重绘输出源
+        guard let outputImg = filter.outputImage else { return self }
+        let context = CIContext(options: nil)
+        guard let cgImg = context.createCGImage(outputImg, from: outputImg.extent) else { return self }
+        return UIImage(cgImage: cgImg, scale: self.scale, orientation: self.imageOrientation)
+    }
+    
+    /// 增亮
+    func brightFiler() -> UIImage {
+        guard let filter =  CIFilter(name: "CIColorControls") else { return self }
+        filter.setValue(0.2, forKey: kCIInputBrightnessKey)
+        return repaint(filter)
+    }
+    
+    /// 锐化
+    func sharpenFilter() -> UIImage {
+        guard let filter =  CIFilter(name: "CISharpenLuminance") else { return self }
+        filter.setValue(18, forKey: kCIInputSharpnessKey)
+        return repaint(filter)
+    }
+    
+    /// 灰度
+    func grayFilter() -> UIImage {
+        guard let filter =  CIFilter(name: "CIColorControls") else { return self }
+        filter.setValue(0, forKey: kCIInputSaturationKey)
+        return repaint(filter)
+    }
+    
+    /// 黑色
+    func blackFilter() -> UIImage {
+        guard let filter = CIFilter(name: "CIPhotoEffectNoir") else { return self }
+        return repaint(filter)
+    }
+    
+    /// 素描
+    func sketchFilter() -> UIImage {
+        // 去色
+        guard let filter = CIFilter(name: "CIPhotoEffectMono") else { return self }
+        let ciimage = CIImage(cgImage: self.cgImage!)
+        filter.setValue(ciimage, forKey: kCIInputImageKey)
+        guard let outputImage = filter.outputImage else { return self }
+        // 反转颜色
+        var inverImage = outputImage.copy()
+        guard let invertFilter = CIFilter(name: "CIColorInvert") else { return self }
+        invertFilter.setValue(inverImage, forKey: kCIInputImageKey)
+        inverImage = invertFilter.outputImage as Any
+        // 高斯模糊
+        guard let blurFilter = CIFilter(name: "CIGaussianBlur") else { return self }
+        blurFilter.setValue(5, forKey: kCIInputRadiusKey)
+        blurFilter.setValue(inverImage, forKey: kCIInputImageKey)
+        inverImage = blurFilter.outputImage as Any
+        // 混合叠加
+        guard let blenFilter = CIFilter(name: "CIColorDodgeBlendMode") else { return self }
+        blenFilter.setValue(inverImage, forKey: kCIInputImageKey)
+        blenFilter.setValue(outputImage, forKey: kCIInputBackgroundImageKey)
+        guard let sketchImage = blenFilter.outputImage else { return self }
+        let context = CIContext(options: nil)
+        guard let cgImage = context.createCGImage(sketchImage, from: ciimage.extent) else { return self }
+        return UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
+    }
+}
