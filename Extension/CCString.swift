@@ -9,8 +9,15 @@ import UIKit
 import Foundation
 
 extension String {
+    
+    /// "string字符串" 转换成 "dictionary对象"
+    func toDict()  throws -> Any {
+        let data = self.data(using: .utf8)
+        return try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+    }
+    
     static let characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    // MARK: - 生成指定位数随机字符串(此处默认16位)
+    /// 生成指定位数随机字符串(此处默认16位)
     static func randomString(len : Int) -> String {
         var ranStr = ""
         for _ in 0..<len {
@@ -20,7 +27,7 @@ extension String {
         return ranStr
     }
     
-    // MARK: - 格式化时间字符串
+    /// 格式化时间字符串
     static func getDateFormatter() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -28,7 +35,7 @@ extension String {
         return dateStr
     }
     
-    // MARK: - 去除字符串中的空格
+    /// 去除字符串中的空格
     var removeAllSapce: String? {
         let trimmedString = self.replacingOccurrences(of: " ", with: "")
         return trimmedString
