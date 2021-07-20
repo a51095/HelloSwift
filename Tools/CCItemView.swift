@@ -54,11 +54,11 @@ fileprivate class ItemCell: UICollectionViewCell {
         willSet {
             guard newValue != isSelected else { return }
             if newValue {
-                bottomView.backgroundColor = .main
                 topLabel.textColor = .main
+                bottomView.backgroundColor = .main
             }else {
-                bottomView.backgroundColor = .clear
                 topLabel.textColor = .gray
+                bottomView.backgroundColor = .clear
             }
         }
     }
