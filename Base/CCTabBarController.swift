@@ -5,14 +5,12 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-
 class CCTabBarController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
-        initData()
+        self.setUI()
+        self.initData()
     }
     
     // MARK: - 数据初始化

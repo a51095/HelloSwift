@@ -5,12 +5,9 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 // 悬浮可拖动视图
 // eg: 使用方法,直接初始化CCDragView视图,添加到父视图上,使用frame方式布局
-class CCDragView: UIView {
+final class CCDragView: UIView {
     /// 限制间距,默认设置2个单位(预留可点击区域)
     private let limitMargin: CGFloat = 2.0
     

@@ -5,10 +5,7 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import SnapKit
-
-struct CCAlertAction {
+struct CCAction {
     var title: String
     var titleColor: UIColor
     var handler: os_block_t?
@@ -20,25 +17,26 @@ struct CCAlertAction {
     }
 }
 
-class CCAlertController: UIViewController {
-
-    let limitSpace = 20 // title与message与stackView间距
+final class CCAlertController: UIViewController {
     
-    var alertTitle: String?
-    var alertMessage: String?
-    var alertAction: [CCAlertAction]
+    /// title与message与stackView间距
+    let limitSpace = 20
+    /// 标题(可选String)
+    public var alertTitle: String?
+    /// 描述信息(可选String)
+    public var alertMessage: String?
+    /// 事件(CCAlertAction)
+    public var alertAction: [CCAction]
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - 反初始化器
-    deinit {
-        print("CCAlertController deinit~")
-    }
+    deinit { print("CCAlertController deinit~") }
     
     // MARK: - 自定义初始化方法
-    init(_ title: String?, _ message: String?, _ actions: [CCAlertAction])  {
+    init(_ title: String?, _ message: String?, _ actions: [CCAction])  {
         
         self.alertTitle = title
         self.alertMessage = message
@@ -49,7 +47,7 @@ class CCAlertController: UIViewController {
         modalTransitionStyle = .crossDissolve
         modalPresentationStyle = .overFullScreen
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
@@ -70,7 +68,7 @@ class CCAlertController: UIViewController {
             make.centerY.equalToSuperview()
             make.height.greaterThanOrEqualTo(50)
         }
-                
+        
         var buttonArray = [UIButton]()
         for (idx,item) in alertAction.enumerated() {
             let button = UIButton()
@@ -125,7 +123,7 @@ class CCAlertController: UIViewController {
                 make.right.equalTo(-10)
                 make.top.equalTo(limitSpace)
             }
-
+            
             let messageLabel = UILabel()
             messageLabel.numberOfLines = 10
             messageLabel.font = RegularFont(16)
@@ -188,14 +186,16 @@ class CCAlertController: UIViewController {
 }
 
 extension UIViewController {
-    func alert(_ title: String?, _ message: String?, _ actions: [CCAlertAction] )  {
+    /// alert弹框(vc中触发)
+    func alert(_ title: String?, _ message: String?, _ actions: [CCAction] )  {
         let vc = CCAlertController(title, message, actions)
         present(vc, animated: true, completion: nil)
     }
 }
 
 extension UIView {
-    func alert(_ title: String?, _ message: String?, _ actions: [CCAlertAction] )  {
+    /// alert弹框(view中触发)
+    func alert(_ title: String?, _ message: String?, _ actions: [CCAction] )  {
         self.getCurrentViewController()?.alert(title, message, actions)
     }
 }

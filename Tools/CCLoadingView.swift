@@ -5,11 +5,8 @@
 //  Created by a51095 on 2021/7/16.
 //
 
-import UIKit
-import Foundation
-
-class CCLoadingView: UIView {
-    // 懒加载,提示label
+final class CCLoadingView: UIView {
+    /// 懒加载,提示label
     private lazy var messageLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
@@ -23,9 +20,7 @@ class CCLoadingView: UIView {
     }
     
     // MARK: - 反初始化器
-    deinit {
-        print("CCLoadingView deinit~")
-    }
+    deinit { print("CCLoadingView deinit~") }
     
     // MARK: - 初始化器
     init(toast: String) {

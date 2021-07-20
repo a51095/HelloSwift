@@ -5,9 +5,6 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 extension FixedWidthInteger {
     /// 整型转Float
     var f: Float {

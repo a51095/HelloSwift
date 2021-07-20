@@ -5,25 +5,22 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 extension UIColor {
-    
     /// 拓展一个APP主色调
     open class var main: UIColor { .hexColor("#FFD700") }
     
-    public static func rgb(r: Int, g: Int, b: Int, a: CGFloat = 1) -> UIColor{
-        return UIColor(red: r.cgf / 255.0, green: g.cgf / 255.0, blue: b.cgf / 255.0, alpha: a)
+    public static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
+        return UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
     }
     
-    private static func hexColor(_ hex: Int, a: CGFloat = 1) -> UIColor {
+    private static func hexColor(_ hex: Int, _ alpha: CGFloat = 1) -> UIColor {
         let red = (hex >> 16) & 0xFF
         let green = (hex >> 8) & 0xFF
         let blue = hex & 0xFF
-        return rgb(r: red, g: green, b: blue, a: a)
+        return rgb(red, green, blue, alpha)
     }
     
+    /// 16进制颜色值
     public static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
         var string = ""
         let lowercaseHexString = hexString.lowercased()
@@ -41,6 +38,6 @@ extension UIColor {
             string = str
         }
         let hexValue = Int(string, radix: 16) ?? 0
-        return hexColor(hexValue, a: alpha)
+        return hexColor(hexValue, alpha)
     }
 }

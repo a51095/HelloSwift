@@ -5,9 +5,6 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 func MarginTop(_ top: CGFloat) -> CGFloat {
     return top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)!
 }

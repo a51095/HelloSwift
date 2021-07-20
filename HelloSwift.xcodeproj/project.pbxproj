@@ -36,6 +36,7 @@
 		F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* CCAppKeys.swift */; };
 		F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* CCAppURL.swift */; };
 		F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */; };
+		F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		F7B4485626A17F650098D2AF /* CCAppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppKeys.swift; sourceTree = "<group>"; };
 		F7B4485A26A181550098D2AF /* CCAppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppURL.swift; sourceTree = "<group>"; };
 		F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppNotificationName.swift; sourceTree = "<group>"; };
+		F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBaseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 		F704A064269E75110044729E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */,
 				F704A071269E7B2B0044729E /* CCViewController.swift */,
 				F704A069269E76500044729E /* CCTabBarController.swift */,
 				F704A076269E7B540044729E /* CCNavigationController.swift */,
@@ -351,6 +354,7 @@
 				F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */,
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* CCAlertController.swift in Sources */,
+				F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */,
 				F704A07C269E7C700044729E /* CCHomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */,
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
