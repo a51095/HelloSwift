@@ -37,6 +37,7 @@
 		F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* CCAppURL.swift */; };
 		F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */; };
 		F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */; };
+		F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* CCItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		F7B4485A26A181550098D2AF /* CCAppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppURL.swift; sourceTree = "<group>"; };
 		F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppNotificationName.swift; sourceTree = "<group>"; };
 		F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBaseModel.swift; sourceTree = "<group>"; };
+		F7B4FD9826A6C6850051FC5B /* CCItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
+				F7B4FD9826A6C6850051FC5B /* CCItemView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* CCAlertController.swift in Sources */,
 				F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */,
+				F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */,
 				F704A07C269E7C700044729E /* CCHomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */,
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
