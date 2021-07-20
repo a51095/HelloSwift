@@ -5,14 +5,10 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
-enum Position {
-    case top, right, bottom, left, center
-}
+enum Position { case top, right, bottom, left, center }
 
 extension UIButton {
+    /// 重置图片image与标题title位置
     func adjustImageTitlePosition(_ position: Position, spacing: CGFloat) {
         self.sizeToFit()
         

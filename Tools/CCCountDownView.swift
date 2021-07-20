@@ -5,22 +5,17 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-
 /// 倒计时总时长,默认10秒
 private let defaultTotal: Int = 10
 // eg: 使用方法,直接初始化CCCountDownView视图,添加到父视图上即可,支持后台持续计时;
-class CCCountDownView: UIView {
+final class CCCountDownView: UIView {
     
     /// 倒计时总时长
     private var countDownTotal = defaultTotal
-    
     /// 倒计时label
     private let countDownLabel = UILabel()
-    
     /// 当前系统绝对时间,进入后台后,仍持续计时
     private var startTime: Int = 0
-    
     /// 定时器对象
     private var taskTimer: DispatchSourceTimer?
     
@@ -29,9 +24,7 @@ class CCCountDownView: UIView {
     }
     
     // MARK: - 反初始化器
-    deinit {
-        print("CCCountDownView deinit~")
-    }
+    deinit { print("CCCountDownView deinit~") }
     
     // MARK: - 初始化器
     init() {

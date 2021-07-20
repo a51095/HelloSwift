@@ -5,13 +5,9 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 extension String {
-    
-    /// "string字符串" 转换成 "dictionary对象"
-    func toDict()  throws -> Any {
+    /// "JSON字符串" 转换成 "Dictionary对象"
+    func toDictionary()  throws -> Any {
         let data = self.data(using: .utf8)
         return try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
     }
@@ -42,7 +38,7 @@ extension String {
     }
 }
 
-/// 文件夹相关处理
+// 文件夹相关处理
 extension String {
     func createFoldPath() {
         if !FileManager.default.fileExists(atPath: self) {

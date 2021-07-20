@@ -8,7 +8,6 @@
 import UIKit
 
 class CCUserViewController: CCViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }

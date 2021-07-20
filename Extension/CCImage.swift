@@ -5,12 +5,8 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-import Foundation
-
 extension UIImage {
-    
-    // MARK: - 旋转图片,正值为右旋转,负值为左旋转
+    /// 旋转图片,正值为右旋转,负值为左旋转
     func rotate(direction: CGFloat) -> UIImage {
         let degrees = round(direction / 90) * 90
         let sameOrientationType = Int(degrees) % 180 == 0
@@ -35,7 +31,7 @@ extension UIImage {
         return image ?? self
     }
     
-    // MARK: - 压缩图片
+    /// 压缩图片
     func compress(toByte : Int = 600 * 1024) -> Data? {
         autoreleasepool {
             let newImage = self
@@ -94,7 +90,7 @@ extension UIImage {
         }
     }
     
-    //MARK: - 将View转换为UIImage
+    /// 将View转换为UIImage
     static func viewToImage(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()
@@ -104,7 +100,7 @@ extension UIImage {
         return image!
     }
     
-    // MARK: - 渲染GIF图片
+    /// 渲染GIF图片
     static func gif(data: Data) -> ([UIImage]?, TimeInterval) {
         // 从data中读取数据: 将data转成CGImageSource对象
         guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else { return (nil, 0) }

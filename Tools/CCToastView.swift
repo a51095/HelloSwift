@@ -5,20 +5,15 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import UIKit
-
-import Foundation
-
 enum ToastType {
     case nore, success, failure
 }
 
-class CCToastView: UIView {
-    
+final class CCToastView: UIView {
     var limitTop: CGFloat = 20
-    
+    /// 懒加载icon控件对象
     private lazy var iconImageView: UIImageView = { UIImageView() }()
-    
+    /// 懒加载message控件对象
     private lazy var messageLabel: UILabel = {
         let message = UILabel()
         message.numberOfLines = 0
@@ -33,10 +28,8 @@ class CCToastView: UIView {
     }
     
     // MARK: - 反初始化器
-    deinit {
-        print("CCToastView deinit~")
-    }
-        
+    deinit { print("CCToastView deinit~") }
+    
     // MARK: - 初始化器
     init(_ title: String, type: ToastType = .nore) {
         super.init(frame: .zero)
@@ -70,12 +63,11 @@ class CCToastView: UIView {
 }
 
 extension UIView {
+    /// 吐司效果
     func toast(_ message: String?, type: ToastType = .nore, seconds: TimeInterval = 2)  {
         guard let message = message else { return }
         
-        if let last = subviews.last as? CCToastView {
-            last.removeFromSuperview()
-        }
+        if let lastView = subviews.last as? CCToastView { lastView.removeFromSuperview() }
         
         let toastView = CCToastView(message, type: type)
         addSubview(toastView)

@@ -5,8 +5,6 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-import Foundation
-
 extension BinaryFloatingPoint{
     /// 浮点型转整型
     var i: Int {
