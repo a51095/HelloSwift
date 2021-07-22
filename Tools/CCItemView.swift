@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 fileprivate class ItemCell: UICollectionViewCell {
     private let topLabel = UILabel()
@@ -28,14 +29,15 @@ fileprivate class ItemCell: UICollectionViewCell {
         addSubview(bottomView)
         bottomView.snp.makeConstraints { make in
             make.height.equalTo(2)
-            make.left.right.bottom.equalToSuperview()
+            make.width.equalTo(40)
+            make.centerX.bottom.equalToSuperview()
         }
         
         let topView = UIView()
         addSubview(topView)
         topView.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(bottomView.snp.top)
+            make.bottom.equalTo(bottomView.snp.top).priority(999)
         }
         
         topLabel.textColor = .gray
@@ -43,9 +45,7 @@ fileprivate class ItemCell: UICollectionViewCell {
         topLabel.textAlignment = .center
         topView.addSubview(topLabel)
         topLabel.snp.makeConstraints { make in
-            make.height.equalTo(36)
-            make.width.equalToSuperview()
-            make.center.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     
@@ -68,49 +68,76 @@ fileprivate class ItemCell: UICollectionViewCell {
 }
 
 class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
-    /// 数据源
+    /// 选中项(默认为1)
+    var defaultSel: Int = 1
+    /// 菜谱类型数据源
     private var dataSource = [String]()
+    var didSeletedBlock: ((String) -> Void)?
+    
+    private var flowLayout = UICollectionViewFlowLayout()
+    private var disPlayCollectionView: UICollectionView!
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initData()
         self.setUI()
+        getMenu()
     }
-    
+
+    override func layoutSubviews() {
+        flowLayout.itemSize = CGSize(width: 100, height: frame.height)
+    }
+
+    // MARK: - 获取菜品种类
+    func getMenu() {
+        kAppdelegate().window?.showLoading()
+        let param = ["uid": CCAppKeys.freeUid,"appkey": CCAppKeys.freeAppKey]
+        AF.request(CCAppURL.typefreeURL,
+                       method: .post,
+                       parameters: param,
+                       encoding: URLEncoding.default)
+            .responseJSON { res in
+                kAppdelegate().window?.hideLoading()
+                guard res.error == nil else { return }
+                let dic = res.value as! [String: Any]
+                let datas = dic["datas"] as! [[String: Any]]
+                for (item) in datas {
+                    self.dataSource.append(contentsOf: item.keys)
+                }
+                self.didSeletedBlock?(self.dataSource[self.defaultSel])
+                self.disPlayCollectionView.reloadData()
+                self.disPlayCollectionView.selectItem(at: IndexPath(row: self.defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+        }
+    }
+        
     // MARK: - 数据初始化
     func initData() {
         dataSource = ["关注","推荐","热榜","后端","精选","前端","热门","吃喝","玩乐","iOS","Android"]
-        disPlayCollectionView.selectItem(at: IndexPath(row: 1, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
     // MARK: - UI初始化
     func setUI() {
+        backgroundColor = .white
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        flowLayout.scrollDirection = .horizontal
+        
+        disPlayCollectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        disPlayCollectionView.delegate = self
+        disPlayCollectionView.dataSource = self
+        disPlayCollectionView.backgroundColor = .clear
+        disPlayCollectionView.showsHorizontalScrollIndicator = false
+        disPlayCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.classString())
         addSubview(disPlayCollectionView)
         disPlayCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        disPlayCollectionView.selectItem(at: IndexPath(row: defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
-    
-    private lazy var disPlayCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: 80, height: 60) // height不能高于父类height
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.classString())
-        
-        return collectionView
-    }()
-    
     // MARK: - collectionView代理方法
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         dataSource.count
@@ -124,6 +151,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSeletedBlock?(dataSource[indexPath.item])
         scrollToItem(at: indexPath)
     }
     

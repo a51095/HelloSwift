@@ -9,7 +9,9 @@
 @_exported import SnapKit
 @_exported import HandyJSON
 @_exported import Alamofire
+@_exported import Kingfisher
 
 struct CCAppKeys {
-    static let demoKey: String = "demoKey"
+    static let freeUid: String = "11773"
+    static let freeAppKey: String = "933f80b6d72c9a27d09169f311771cbe"
 }
