@@ -51,3 +51,16 @@ final class CCCache {
     /// 移除所有缓存
     static func removeAll() { try? store.removeAll() }
 }
+
+import HandyJSON
+extension HandyJSON {
+    static func getCache(forKey key: String) -> Self? {
+        let jsonString = CCCache.string(key: key)
+        return Self.deserialize(from: jsonString)
+    }
+
+    func setCache(forKey key: String) {
+        let jsonString = toJSONString()
+        CCCache.setString(jsonString, forKey: key)
+    }
+}
