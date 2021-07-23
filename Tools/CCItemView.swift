@@ -84,7 +84,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUI()
-        getMenu()
+        self.initData()
     }
 
     override func layoutSubviews() {
@@ -115,7 +115,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         
     // MARK: - 数据初始化
     func initData() {
-        dataSource = ["关注","推荐","热榜","后端","精选","前端","热门","吃喝","玩乐","iOS","Android"]
+        getMenu()
     }
     
     // MARK: - UI初始化
@@ -135,7 +135,6 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
         disPlayCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        disPlayCollectionView.selectItem(at: IndexPath(row: defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
         
     // MARK: - collectionView代理方法
