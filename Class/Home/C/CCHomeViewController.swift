@@ -47,6 +47,13 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     
     // MARK: - 菜品做法
     func cookingMethod(typeName: String) {
+        // 先从单例中获取数据,有则直接读取展示,反之请求更新
+        if let data = MenuManager.shared.checkSources(nameKey: typeName) {
+            menuSource = data
+            menuTableView.reloadData()
+            return
+        }
+        
         menuSource.removeAll()
         view.showLoading()
         let param = ["uid": CCAppKeys.freeUid, "appkey": CCAppKeys.freeAppKey,"type": typeName]
@@ -60,6 +67,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
                 self.menuSource.append(model!)
             }
             self.menuTableView.reloadData()
+            MenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
         }
     }
     
