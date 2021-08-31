@@ -41,3 +41,24 @@ class MenuModel: CCBaseModel {
     /// 步骤
     var steps: [stepsModel] = []
 }
+
+class MenuManager {
+    static var shared = MenuManager()
+    
+    var menuDic = [String: [MenuModel]]()
+    
+    func checkSources(nameKey: String) -> [MenuModel]? {
+        var res: [MenuModel]?
+        for (key,value) in menuDic {
+            if nameKey == key {
+                res = value
+                break
+            }
+        }
+        return res
+    }
+    
+    func updateMenuDic(nameKey: String, value: [MenuModel]) {
+        menuDic.updateValue(value, forKey: nameKey)
+    }
+}
