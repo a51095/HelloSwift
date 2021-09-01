@@ -8,7 +8,7 @@
 /// 倒计时总时长,默认10秒
 private let defaultTotal: Int = 10
 // eg: 使用方法,直接初始化CCCountDownView视图,添加到父视图上即可,支持后台持续计时;
-final class CCCountDownView: UIView {
+final class CCCountDownView: UIControl {
     
     /// 倒计时总时长
     private var countDownTotal = defaultTotal
@@ -34,12 +34,11 @@ final class CCCountDownView: UIView {
     
     // MARK: - UI初始化
     private func setUI() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(countDownDidSeleted))
-        addGestureRecognizer(tap)
         countDownLabel.text = "获取验证码"
         countDownLabel.textColor = .white
         countDownLabel.font = RegularFont(16)
         countDownLabel.textAlignment = .center
+        addTarget(self, action: #selector(countDownDidSeleted), for: .touchUpInside)
         addSubview(countDownLabel)
         countDownLabel.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
