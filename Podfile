@@ -5,6 +5,8 @@ source "https://cdn.cocoapods.org/"
 
 def commonPods
 
+  #oc
+  pod 'MJRefresh', '3.7.2'
   #swift
   pod 'SnapKit', '5.0.1'
   pod 'Kingfisher', '5.15.8'
