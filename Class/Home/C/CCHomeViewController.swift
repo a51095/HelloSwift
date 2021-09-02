@@ -8,6 +8,8 @@
 import UIKit
 
 class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDataSource {
+    /// 当前显示菜单类型
+    private var currentIndexName = ""
     /// 菜谱制作数据源
     private var menuSource = [MenuModel]()
     /// 懒加载,菜单列表控件
@@ -28,9 +30,13 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     
     override func setUI() {
         let topView = CCItemView()
-        topView.didSeletedBlock = { (name) in
+        topView.didSeletedBlock = { [weak self] (name) in
+            guard let self = self else { return }
+            self.menuSource.removeAll()
+            self.currentIndexName = name
             self.cookingMethod(typeName: name)
         }
+        
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
             make.top.equalTo(MarginTop(0))
@@ -43,6 +49,22 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
             make.top.equalTo(topView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
+        
+        // 添加头部刷新
+        let header = MJRefreshNormalHeader { self.downRefreshing() }
+        header.setTitle("下拉刷新", for: .idle)
+        header.setTitle("松开刷新", for: .pulling)
+        header.setTitle("正在刷新", for: .refreshing)
+        menuTableView.mj_header = header
+        
+        // 添加底部刷新
+//        let footer = MJRefreshAutoNormalFooter { }
+//        menuTableView.mj_footer = footer
+    }
+    
+    // 下拉刷新数据
+    func downRefreshing() {
+        self.cookingMethod(typeName: self.currentIndexName)
     }
     
     // MARK: - 菜品做法
@@ -50,22 +72,31 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
         // 先从单例中获取数据,有则直接读取展示,反之请求更新
         if let data = MenuManager.shared.checkSources(nameKey: typeName) {
             menuSource = data
+            menuTableView.mj_header?.endRefreshing()
             menuTableView.reloadData()
             return
         }
         
-        menuSource.removeAll()
         view.showLoading()
         let param = ["uid": CCAppKeys.freeUid, "appkey": CCAppKeys.freeAppKey,"type": typeName]
         AF.request(CCAppURL.queryfreeURL, method: .post, parameters: param, encoding: URLEncoding.default).responseJSON { res in
             self.view.hideLoading()
-            guard res.error == nil else { return }
+            self.menuTableView.mj_header?.endRefreshing()
+            
+            // 容错处理
+            guard res.error == nil else {
+                self.menuTableView.mj_header?.endRefreshing()
+                return
+            }
+            
             let dic = res.value as! [String: Any]
             let datas = dic["datas"] as! [[String: Any]]
+            
             for item in datas {
                 let model = MenuModel.deserialize(from: item)
                 self.menuSource.append(model!)
             }
+            
             self.menuTableView.reloadData()
             MenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
         }
