@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
+		A6D410FA26E27C7C00FD46CE /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410F926E27C7C00FD46CE /* R.generated.swift */; };
+		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
 		F704A056269E73850044729E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F704A055269E73850044729E /* Assets.xcassets */; };
 		F704A06A269E76500044729E /* CCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A069269E76500044729E /* CCTabBarController.swift */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
+		A6D410F926E27C7C00FD46CE /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB316C22B9BE33774EA2B93 /* Pods-HelloSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.debug.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		F704A049269E73830044729E /* HelloSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +186,7 @@
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F7B4485126A1168E0098D2AF /* CCLoadingView.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
+				A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
 			);
@@ -226,6 +231,7 @@
 		F7B4485526A17E890098D2AF /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				A6D410F926E27C7C00FD46CE /* R.generated.swift */,
 				F7B4485A26A181550098D2AF /* CCAppURL.swift */,
 				F7B4485626A17F650098D2AF /* CCAppKeys.swift */,
 				F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */,
@@ -265,6 +271,7 @@
 			buildConfigurationList = F704A05D269E73850044729E /* Build configuration list for PBXNativeTarget "HelloSwift" */;
 			buildPhases = (
 				6E62ADD8ACBC11881970BFDF /* [CP] Check Pods Manifest.lock */,
+				A6D410F426E1FE7200FD46CE /* ShellScript */,
 				F704A045269E73830044729E /* Sources */,
 				F704A046269E73830044729E /* Frameworks */,
 				F704A047269E73830044729E /* Resources */,
@@ -362,6 +369,25 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A6D410F426E1FE7200FD46CE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -382,12 +408,14 @@
 				F7B44805269EB2DE0098D2AF /* CCDictionary.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */,
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,
+				A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */,
 				F704A07F269E7C8F0044729E /* CCUserViewController.swift in Sources */,
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
 				F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */,
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
+				A6D410FA26E27C7C00FD46CE /* R.generated.swift in Sources */,
 				F704A082269E832B0044729E /* CCAlertController.swift in Sources */,
 				F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */,
@@ -531,7 +559,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Root/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +580,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = Root/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
