@@ -8,6 +8,7 @@ def commonPods
   #oc
   pod 'MJRefresh', '3.7.2'
   #swift
+  pod 'R.swift', '5.4.0'
   pod 'SnapKit', '5.0.1'
   pod 'Kingfisher', '5.15.8'
   pod 'HandyJSON', '5.0.2'
