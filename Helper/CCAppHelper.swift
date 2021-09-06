@@ -5,55 +5,41 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-func MarginTop(_ top: CGFloat) -> CGFloat {
-    return top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)!
-}
+/// 全局的UIApplication代理对象
+func kAppDelegate() -> AppDelegate { UIApplication.shared.delegate as! AppDelegate }
 
-func MarginBottom(_ bottom: CGFloat) -> CGFloat {
-    return bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom)!
-}
+// MARK: - 字体相关
+/// 平方字体-常规体
+func RegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", size: size)! }
+/// 平方字体-中等体
+func MediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
+/// 平方字体-中粗体
+func SemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
 
-func kAdaptedWidth(_ width: CGFloat) -> CGFloat {
-    return ceil((width * UIScreen.main.bounds.size.width / 375.0))
-}
+// MARK: - 屏幕尺寸相关
+/// 屏幕宽
+func kScreenWidth() -> CGFloat { UIScreen.main.bounds.size.width }
+/// 屏幕高
+func kScreenHeight() -> CGFloat { UIScreen.main.bounds.size.height }
+/// 顶部安全间距
+func kMarginTop(_ top: CGFloat) -> CGFloat { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)! }
+/// 底部安全间距
+func kMarginBottom(_ bottom: CGFloat) -> CGFloat { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom)! }
+/// 等比例设计尺寸宽(以375为基准)
+func kAdaptedWidth(_ width: CGFloat) -> CGFloat { ceil((width * UIScreen.main.bounds.size.width / 375.0)) }
+/// 等比例设计尺寸高(以667为基准)
+func kAdaptedHeight(_ height: CGFloat) -> CGFloat { ceil((height * UIScreen.main.bounds.size.height / 667.0)) }
 
-func kAdaptedHeight(_ height: CGFloat) -> CGFloat {
-    return ceil((height * UIScreen.main.bounds.size.height / 667.0))
-}
-
+/// 等比例设计尺寸Size(以375,667为基准)
 func kScaleSize(_ width: CGFloat, _ height: CGFloat) -> CGSize {
     let sizeWidth = ceil((width * UIScreen.main.bounds.size.width / 375.0))
     let sizeHeight = ceil((height * UIScreen.main.bounds.size.height / 667.0))
     return CGSize(width: sizeWidth, height: sizeHeight)
 }
 
-func kScreenWidth() -> CGFloat {
-    return UIScreen.main.bounds.size.width
-}
-
-func kScreenHeight() -> CGFloat {
-    return UIScreen.main.bounds.size.height
-}
-
-func RegularFont(_ size: CGFloat) -> UIFont {
-    return UIFont(name:"PingFangSC-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
-}
-
-func MediumFont(_ size: CGFloat) -> UIFont {
-    return UIFont(name:"PingFangSC-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
-}
-
-func SemiblodFont(_ size: CGFloat) -> UIFont {
-    return UIFont(name:"PingFangSC-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
-}
-
-func kAppdelegate() -> AppDelegate {
-    return UIApplication.shared.delegate as! AppDelegate
-}
-
+/// 获取当前窗口nav对象
 func  kTopNavController() -> UINavigationController {
-    let rootVC = kAppdelegate().window!.rootViewController
-    
+    let rootVC = kAppDelegate().window!.rootViewController
     if let tab = rootVC as? UITabBarController {
         return tab.selectedViewController as! UINavigationController
     } else {
@@ -61,15 +47,10 @@ func  kTopNavController() -> UINavigationController {
     }
 }
 
-func kCurrentTopController(base: UIViewController? = kAppdelegate().window?.rootViewController) -> UIViewController? {
-    if let nav = base as? UINavigationController {
-        return kCurrentTopController(base: nav.visibleViewController)
-    }
-    if  let tab = base as? UITabBarController {
-        return kCurrentTopController(base: tab.selectedViewController)
-    }
-    if let presented = base?.presentedViewController {
-        return kCurrentTopController(base: presented)
-    }
+/// 获取当前窗口vc对象
+func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootViewController) -> UIViewController? {
+    if let nav = base as? UINavigationController { return kTopViewController(base: nav.visibleViewController) }
+    if let tab = base as? UITabBarController { return kTopViewController(base: tab.selectedViewController) }
+    if let presented = base?.presentedViewController { return kTopViewController(base: presented) }
     return base
 }
