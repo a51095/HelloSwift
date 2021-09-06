@@ -114,20 +114,20 @@ final class CCDragView: UIView {
             // x轴偏右移2个单位(预留可点击区域)
             newPoint.x = (self.frame.width / 2) + limitMargin
             // y轴偏下移10个单位(预留可点击区域)
-            if point.y <= MarginTop(20) { newPoint.y = MarginTop(40) }
+            if point.y <= kMarginTop(20) { newPoint.y = kMarginTop(40) }
             // y轴偏上移10个单位(预留可点击区域)
-            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - MarginBottom(20) {
-                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - MarginBottom(10)
+            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kMarginBottom(20) {
+                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kMarginBottom(10)
             }
             return newPoint
         }else {
             // x轴偏左移2个单位(预留可点击区域)
             newPoint.x = self.superview!.frame.width - (self.frame.width / 2) - limitMargin
             // y轴偏下移10个单位(预留可点击区域)
-            if point.y <= MarginTop(20) { newPoint.y = MarginTop(40) }
+            if point.y <= kMarginTop(20) { newPoint.y = kMarginTop(40) }
             // y轴偏上移10个单位(预留可点击区域)
-            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - MarginBottom(20) {
-                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - MarginBottom(10)
+            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kMarginBottom(20) {
+                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kMarginBottom(10)
             }
             return newPoint
         }

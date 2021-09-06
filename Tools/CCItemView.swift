@@ -93,14 +93,14 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - 获取菜品种类
     func getMenu() {
-        kAppdelegate().window?.showLoading()
+        kAppDelegate().window?.showLoading()
         let param = ["uid": CCAppKeys.freeUid,"appkey": CCAppKeys.freeAppKey]
         AF.request(CCAppURL.typefreeURL,
                        method: .post,
                        parameters: param,
                        encoding: URLEncoding.default)
             .responseJSON { res in
-                kAppdelegate().window?.hideLoading()
+                kAppDelegate().window?.hideLoading()
                 guard res.error == nil else { return }
                 let dic = res.value as! [String: Any]
                 let datas = dic["datas"] as! [[String: Any]]
