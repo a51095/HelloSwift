@@ -7,19 +7,14 @@
 
 extension FixedWidthInteger {
     /// 整型转Float
-    var f: Float {
-        return Float(self)
-    }
+    var f: Float { Float(self) }
+    
     /// 整型转CGFloat
-    var cgf: CGFloat {
-        return CGFloat(self)
-    }
+    var cgf: CGFloat { CGFloat(self) }
+    
     /// 整型转Double
-    var d: Double {
-        return Double(self)
-    }
+    var d: Double { Double(self) }
+    
     /// 整型转String
-    var str: String {
-        return String(format: "\(self)" )
-    }
+    var str: String { String(format: "\(self)" ) }
 }

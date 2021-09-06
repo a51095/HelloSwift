@@ -7,17 +7,13 @@
 
 extension Dictionary {
     /// 合并当前字典对象键值对
-    mutating func merge(dict: [Key: Value]){
-        for (k, v) in dict {
-            updateValue(v, forKey: k)
-        }
+    mutating func merge(dict: [Key: Value]) {
+        for (k, v) in dict { updateValue(v, forKey: k) }
     }
     
     /// 字典转JSON数据(参数为格式美化,默认false)
     func jsonData(prettify: Bool = false) -> Data? {
-        guard JSONSerialization.isValidJSONObject(self) else {
-            return nil
-        }
+        guard JSONSerialization.isValidJSONObject(self) else { return nil }
         let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization
             .WritingOptions()
         return try? JSONSerialization.data(withJSONObject: self, options: options)
