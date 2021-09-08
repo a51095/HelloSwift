@@ -5,6 +5,7 @@
 //  Created by a51095 on 2021/7/16.
 //
 
+@_exported import AVKit
 @_exported import Cache
 @_exported import SnapKit
 @_exported import Alamofire

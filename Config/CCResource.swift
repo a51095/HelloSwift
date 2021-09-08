@@ -88,16 +88,44 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
 
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.file` struct is generated, and contains static references to 2 files.
+  struct file {
+    /// Resource file `localAnimation.gif`.
+    static let localAnimationGif = Rswift.FileResource(bundle: R.hostingBundle, name: "localAnimation", pathExtension: "gif")
+    /// Resource file `localVideo.mp4`.
+    static let localVideoMp4 = Rswift.FileResource(bundle: R.hostingBundle, name: "localVideo", pathExtension: "mp4")
+
+    /// `bundle.url(forResource: "localAnimation", withExtension: "gif")`
+    static func localAnimationGif(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.localAnimationGif
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    /// `bundle.url(forResource: "localVideo", withExtension: "mp4")`
+    static func localVideoMp4(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.localVideoMp4
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+
+    fileprivate init() {}
+  }
+
+  /// This `R.image` struct is generated, and contains static references to 10 images.
   struct image {
     /// Image `LaunchImage`.
     static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
+    /// Image `ad_mute`.
+    static let ad_mute = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_mute")
+    /// Image `ad_resource`.
+    static let ad_resource = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_resource")
+    /// Image `ad_restore`.
+    static let ad_restore = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_restore")
+    /// Image `localAnimation.gif`.
+    static let localAnimationGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "localAnimation.gif")
     /// Image `toast_fail`.
     static let toast_fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_fail")
     /// Image `toast_success`.
     static let toast_success = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_success")
-    /// Image `vc_home_background`.
-    static let vc_home_background = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home_background")
     /// Image `vc_home`.
     static let vc_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home")
     /// Image `vc_tab`.
@@ -109,6 +137,34 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "LaunchImage", bundle: ..., traitCollection: ...)`
     static func launchImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.launchImage, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ad_mute", bundle: ..., traitCollection: ...)`
+    static func ad_mute(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ad_mute, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ad_resource", bundle: ..., traitCollection: ...)`
+    static func ad_resource(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ad_resource, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "ad_restore", bundle: ..., traitCollection: ...)`
+    static func ad_restore(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.ad_restore, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "localAnimation.gif", bundle: ..., traitCollection: ...)`
+    static func localAnimationGif(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.localAnimationGif, compatibleWith: traitCollection)
     }
     #endif
 
@@ -130,13 +186,6 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "vc_home", bundle: ..., traitCollection: ...)`
     static func vc_home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.vc_home, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_home_background", bundle: ..., traitCollection: ...)`
-    static func vc_home_background(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_home_background, compatibleWith: traitCollection)
     }
     #endif
 

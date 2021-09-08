@@ -8,7 +8,10 @@
 extension AppDelegate {
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = CCTabBarController()
+        let adConfig = CCAdConfig(type: .adImage, name: CCAppURL.adImageUrl, url: CCAppURL.adLinkUrl)
+        let adViewController = CCAdViewController(config: adConfig)
+        adViewController.dismissBlock = { self.window?.rootViewController = CCTabBarController() }
+        window?.rootViewController = adViewController
         window?.makeKeyAndVisible()
     }
 }

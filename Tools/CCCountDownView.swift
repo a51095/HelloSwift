@@ -71,7 +71,7 @@ final class CCCountDownView: UIControl {
     // MARK: - 开始倒计时
     @objc private func countDownDidSeleted() {
         resetData()
-        taskTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue(label: "count_down_queue"))
+        taskTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
         taskTimer?.schedule(deadline: .now(), repeating: .seconds(1), leeway: .seconds(0))
         taskTimer?.setEventHandler { self.updateData() }
         taskTimer?.resume()

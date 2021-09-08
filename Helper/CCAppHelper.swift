@@ -5,6 +5,12 @@
 //  Created by a51095 on 2021/7/15.
 //
 
+/// app沙盒Documents根目录(Documents)
+let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
+/// app沙盒Library二级目录(Caches,Preferences)
+let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! + "/Caches"
+/// app沙盒Tmp根目录(tmp)
+let kAppTmpPath = NSTemporaryDirectory()
 /// 全局的UIApplication代理对象
 func kAppDelegate() -> AppDelegate { UIApplication.shared.delegate as! AppDelegate }
 

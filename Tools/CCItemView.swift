@@ -95,7 +95,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     func getMenu() {
         kAppDelegate().window?.showLoading()
         let param = ["uid": CCAppKeys.freeUid,"appkey": CCAppKeys.freeAppKey]
-        AF.request(CCAppURL.typefreeURL,
+        AF.request(CCAppURL.typefreeUrl,
                        method: .post,
                        parameters: param,
                        encoding: URLEncoding.default)
