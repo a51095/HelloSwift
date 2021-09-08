@@ -39,7 +39,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
         
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
-            make.top.equalTo(kMarginTop(0))
+            make.top.equalTo(kSafeMarginTop(0))
             make.height.equalTo(60)
             make.left.right.equalToSuperview()
         }

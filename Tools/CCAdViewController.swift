@@ -145,7 +145,7 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
             view.addSubview(muteButton)
             muteButton.snp.makeConstraints { make in
                 make.left.equalTo(kAdaptedWidth(36))
-                make.top.equalTo(kMarginTop(0))
+                make.top.equalTo(kSafeMarginTop(0))
             }
         }
     }
@@ -155,7 +155,7 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
             make.right.equalTo(kAdaptedWidth(-36))
-            make.top.equalTo(kMarginTop(0))
+            make.top.equalTo(kSafeMarginTop(0))
             make.size.equalTo(CGSize(width: 70, height: 30))
         }
         

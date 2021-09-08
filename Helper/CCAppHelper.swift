@@ -28,9 +28,9 @@ func kScreenWidth() -> CGFloat { UIScreen.main.bounds.size.width }
 /// 屏幕高
 func kScreenHeight() -> CGFloat { UIScreen.main.bounds.size.height }
 /// 顶部安全间距
-func kMarginTop(_ top: CGFloat) -> CGFloat { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)! }
+func kSafeMarginTop(_ top: CGFloat) -> CGFloat { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)! }
 /// 底部安全间距
-func kMarginBottom(_ bottom: CGFloat) -> CGFloat { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom)! }
+func kSafeMarginBottom(_ bottom: CGFloat) -> CGFloat { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom)! }
 /// 等比例设计尺寸宽(以375为基准)
 func kAdaptedWidth(_ width: CGFloat) -> CGFloat { ceil((width * UIScreen.main.bounds.size.width / 375.0)) }
 /// 等比例设计尺寸高(以667为基准)
