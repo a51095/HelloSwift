@@ -383,7 +383,9 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
         dismiss()
         let url = URL(string: adConfig.linkUrl)
         guard (url != nil) else { return }
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        }
     }
     
     /// CCCountDownManageProtocol代理方法
