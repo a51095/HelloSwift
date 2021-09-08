@@ -79,7 +79,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
         
         view.showLoading()
         let param = ["uid": CCAppKeys.freeUid, "appkey": CCAppKeys.freeAppKey,"type": typeName]
-        AF.request(CCAppURL.queryfreeURL, method: .post, parameters: param, encoding: URLEncoding.default).responseJSON { res in
+        AF.request(CCAppURL.queryfreeUrl, method: .post, parameters: param, encoding: URLEncoding.default).responseJSON { res in
             self.view.hideLoading()
             self.menuTableView.mj_header?.endRefreshing()
             

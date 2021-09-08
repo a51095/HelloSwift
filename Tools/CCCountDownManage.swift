@@ -21,7 +21,7 @@ final class CCCountDownManage {
     public weak var deletage: CCCountDownManageProtocol?
     /// 定时器对象
     private lazy var taskTimer: DispatchSourceTimer? = {
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue(label: "count_down_manage_queue"))
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
         return timer
     }()
     
@@ -60,9 +60,6 @@ final class CCCountDownManage {
         return resultString.components(separatedBy: ":")
     }
     
-    /// 手动停止定时器,并释放定时器对象
-    public func cannel() {
-        taskTimer?.cancel()
-        taskTimer = nil
-    }
+    /// 主动移除定时器
+    public func cannel() { taskTimer?.cancel() }
 }

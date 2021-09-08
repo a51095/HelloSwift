@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
+		A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */; };
+		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
+		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
 		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
@@ -46,6 +49,9 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
+		A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAdViewController.swift; sourceTree = "<group>"; };
+		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
+		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A650EE5126E63C2D00E437AA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A650EE5226E63C6D00E437AA /* localAnimation.gif */,
+				A650EE5426E6427400E437AA /* localVideo.mp4 */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		C78CFD14EBDB15D285B08BEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,11 +134,12 @@
 			isa = PBXGroup;
 			children = (
 				F704A04B269E73830044729E /* Root */,
-				F704A08E269EA8A50044729E /* Helper */,
-				F704A070269E7AD10044729E /* Class */,
 				F704A064269E75110044729E /* Base */,
+				F704A070269E7AD10044729E /* Class */,
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
+				F704A08E269EA8A50044729E /* Helper */,
+				A650EE5126E63C2D00E437AA /* Resource */,
 				F704A065269E754D0044729E /* Extension */,
 				F704A04A269E73830044729E /* Products */,
 				C78CFD14EBDB15D285B08BEA /* Pods */,
@@ -185,6 +201,7 @@
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F7B4485126A1168E0098D2AF /* CCLoadingView.swift */,
+				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 				A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
@@ -323,6 +340,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */,
+				A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */,
 				F704A056269E73850044729E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +430,7 @@
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,
 				A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */,
 				F704A07F269E7C8F0044729E /* CCUserViewController.swift in Sources */,
+				A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */,
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
@@ -557,15 +577,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3B8U49HU5G;
 				INFOPLIST_FILE = Root/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.HelloSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenmen.ynsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "YNScoicalDev-new";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -578,15 +601,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3B8U49HU5G;
 				INFOPLIST_FILE = Root/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.demo.HelloSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenmen.ynsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "YNScoicalDev-new";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
