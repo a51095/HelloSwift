@@ -129,12 +129,8 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
         view.addGestureRecognizer(tap)
         
         switch adConfig.adType {
-        case .adImage, .adGif:
-            addAdImageView()
-            break
-        case .adVideo:
-            addAdPlayerController()
-            break
+        case .adImage, .adGif: addAdImageView(); break
+        case .adVideo: addAdPlayerController(); break
         }
         
         if adConfig.isSkip && adConfig.adType != .adVideo { addSkipButton() }
@@ -187,12 +183,9 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
     /// 配置广告相关参数
     func configDisPlayParameter() {
         switch adConfig.adType {
-        case .adImage:
-            loadImage(); break
-        case .adGif:
-            loadGif(); break
-        case .adVideo:
-            loadVideo(); break
+        case .adImage: loadImage(); break
+        case .adGif: loadGif(); break
+        case .adVideo: loadVideo(); break
         }
     }
     
