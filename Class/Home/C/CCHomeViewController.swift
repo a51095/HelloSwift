@@ -24,10 +24,6 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
         return v
     }()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func setUI() {
         let topView = CCItemView()
         topView.didSeletedBlock = { [weak self] (name) in
