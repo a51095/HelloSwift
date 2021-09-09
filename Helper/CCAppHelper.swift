@@ -60,3 +60,19 @@ func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootVie
     if let presented = base?.presentedViewController { return kTopViewController(base: presented) }
     return base
 }
+
+/// 网络状态协议
+protocol CCNetworkStatusProtocol {
+    func isReachable() -> Bool
+    
+}
+
+extension CCNetworkStatusProtocol {
+    /// 返回一个布尔值,用于实时监测网络状态
+    func isReachable() -> Bool {
+        var res: Bool = false
+        let netManager = NetworkReachabilityManager()
+        if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
+        return res
+    }
+}

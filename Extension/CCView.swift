@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-extension UIView {
+extension UIView: CCNetworkStatusProtocol {
     /// 获取当前view所属vc
     func getCurrentViewController() -> UIViewController? {
         for view in sequence(first: self.superview, next: { $0?.superview }) {
