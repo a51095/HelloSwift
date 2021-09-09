@@ -64,7 +64,6 @@ func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootVie
 /// 网络状态协议
 protocol CCNetworkStatusProtocol {
     func isReachable() -> Bool
-    
 }
 
 extension CCNetworkStatusProtocol {
