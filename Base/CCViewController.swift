@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CCViewController: UIViewController {
+class CCViewController: UIViewController, CCNetworkStatusProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -25,6 +25,9 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     }()
     
     override func setUI() {
+        // 网络校验,有网则执行后续操作,网络不可用,则直接返回
+        guard isReachable() else { return }
+        
         let topView = CCItemView()
         topView.didSeletedBlock = { [weak self] (name) in
             guard let self = self else { return }
