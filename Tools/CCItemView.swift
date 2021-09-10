@@ -93,16 +93,11 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - 获取菜品种类
     func getMenu() {
-        kAppDelegate().window?.showLoading()
-        let param = ["uid": CCAppKeys.freeUid,"appkey": CCAppKeys.freeAppKey]
-        AF.request(CCAppURL.typefreeUrl,
-                       method: .post,
-                       parameters: param,
-                       encoding: URLEncoding.default)
-            .responseJSON { res in
-                kAppDelegate().window?.hideLoading()
-                guard res.error == nil else { return }
-                let dic = res.value as! [String: Any]
+        NetworkRequest(url: CCAppURL.typefreeUrl) { res in
+            // 容错处理
+            guard res.resCode != nil else { return }
+            
+            if let dic = res.data {
                 let datas = dic["datas"] as! [[String: Any]]
                 for (item) in datas {
                     self.dataSource.append(contentsOf: item.keys)
@@ -110,6 +105,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
                 self.didSeletedBlock?(self.dataSource[self.defaultSel])
                 self.disPlayCollectionView.reloadData()
                 self.disPlayCollectionView.selectItem(at: IndexPath(row: self.defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
+            }
         }
     }
         

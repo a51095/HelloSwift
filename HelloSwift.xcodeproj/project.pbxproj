@@ -11,6 +11,7 @@
 		A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */; };
 		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
+		A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* CCNetwork.swift */; };
 		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAdViewController.swift; sourceTree = "<group>"; };
 		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
+		A680788F26EB51C60068DD0A /* CCNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCNetwork.swift; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,14 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		A680788E26EB518A0068DD0A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A680788F26EB51C60068DD0A /* CCNetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C78CFD14EBDB15D285B08BEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +149,7 @@
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
 				F704A08E269EA8A50044729E /* Helper */,
+				A680788E26EB518A0068DD0A /* Network */,
 				A650EE5126E63C2D00E437AA /* Resource */,
 				F704A065269E754D0044729E /* Extension */,
 				F704A04A269E73830044729E /* Products */,
@@ -443,6 +454,7 @@
 				F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */,
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
 				F7B4481D269ED0D00098D2AF /* CCView.swift in Sources */,
+				A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */,
 				F704A072269E7B2B0044729E /* CCViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
 				F78279B526A5121200A90FFF /* CCCache.swift in Sources */,
