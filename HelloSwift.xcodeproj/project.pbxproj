@@ -43,8 +43,8 @@
 		F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */; };
 		F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */; };
 		F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* CCItemView.swift */; };
-		F7EA139D26A90FE10071B2CC /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139C26A90FE10071B2CC /* MenuModel.swift */; };
-		F7EA139F26A917870071B2CC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139E26A917870071B2CC /* MenuCell.swift */; };
+		F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139C26A90FE10071B2CC /* CCMenuModel.swift */; };
+		F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139E26A917870071B2CC /* CCMenuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,8 +88,8 @@
 		F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppNotificationName.swift; sourceTree = "<group>"; };
 		F7B4FD9626A693B00051FC5B /* CCBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBaseModel.swift; sourceTree = "<group>"; };
 		F7B4FD9826A6C6850051FC5B /* CCItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCItemView.swift; sourceTree = "<group>"; };
-		F7EA139C26A90FE10071B2CC /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
-		F7EA139E26A917870071B2CC /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		F7EA139C26A90FE10071B2CC /* CCMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCMenuModel.swift; sourceTree = "<group>"; };
+		F7EA139E26A917870071B2CC /* CCMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCMenuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,7 +267,7 @@
 		F7EA139A26A90F400071B2CC /* V */ = {
 			isa = PBXGroup;
 			children = (
-				F7EA139E26A917870071B2CC /* MenuCell.swift */,
+				F7EA139E26A917870071B2CC /* CCMenuCell.swift */,
 			);
 			path = V;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 		F7EA139B26A90F660071B2CC /* M */ = {
 			isa = PBXGroup;
 			children = (
-				F7EA139C26A90FE10071B2CC /* MenuModel.swift */,
+				F7EA139C26A90FE10071B2CC /* CCMenuModel.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -416,8 +416,8 @@
 			files = (
 				F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */,
 				F7B44808269EB7CB0098D2AF /* CCObject.swift in Sources */,
-				F7EA139F26A917870071B2CC /* MenuCell.swift in Sources */,
-				F7EA139D26A90FE10071B2CC /* MenuModel.swift in Sources */,
+				F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */,
+				F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */,
 				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
 				F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,

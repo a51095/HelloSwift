@@ -11,7 +11,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     /// 当前显示菜单类型
     private var currentIndexName = ""
     /// 菜谱制作数据源
-    private var menuSource = [MenuModel]()
+    private var menuSource = [CCMenuModel]()
     /// 懒加载,菜单列表控件
     lazy var menuTableView: UITableView = {
         let v = UITableView()
@@ -20,7 +20,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
         v.dataSource = self
         v.separatorStyle = .none
         v.alwaysBounceVertical = false
-        v.register(MenuCell.self, forCellReuseIdentifier: MenuCell.classString())
+        v.register(CCMenuCell.self, forCellReuseIdentifier: CCMenuCell.classString())
         return v
     }()
     
@@ -69,7 +69,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     // MARK: - 菜品做法
     func cookingMethod(typeName: String) {
         // 先从单例中获取数据,有则直接读取展示,反之请求更新
-        if let data = MenuManager.shared.checkSources(nameKey: typeName) {
+        if let data = CCMenuManager.shared.checkSources(nameKey: typeName) {
             menuSource = data
             menuTableView.mj_header?.endRefreshing()
             menuTableView.reloadData()
@@ -92,12 +92,12 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
             let datas = dic["datas"] as! [[String: Any]]
             
             for item in datas {
-                let model = MenuModel.deserialize(from: item)
+                let model = CCMenuModel.deserialize(from: item)
                 self.menuSource.append(model!)
             }
             
             self.menuTableView.reloadData()
-            MenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
+            CCMenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
         }
     }
     
@@ -107,7 +107,7 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.classString(), for: indexPath) as! MenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CCMenuCell.classString(), for: indexPath) as! CCMenuCell
         let item = menuSource[indexPath.row]
         cell.configCell(item: item)
         return cell
