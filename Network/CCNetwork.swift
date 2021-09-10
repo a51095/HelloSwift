@@ -13,7 +13,7 @@ struct CCResponseData {
 }
 
 // MARK: - NetworkRequest
-/// - url:                                 请求api接口(String类型)
+/// - url:                                 请求接口API(String类型)
 /// - method:                        请求方法(默认post)
 /// - parameters:      请求参数(Dictionary<String, Any>类型)
 /// - showError:                    响应错误信息(可自定义默认值,String类型)
