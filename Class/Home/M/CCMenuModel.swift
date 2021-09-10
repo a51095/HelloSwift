@@ -1,5 +1,5 @@
 //
-//  MenuModel.swift
+//  CCMenuModel.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/22.
@@ -23,7 +23,7 @@ class stepsModel: CCBaseModel {
     var content: String?
 }
 
-class MenuModel: CCBaseModel {
+class CCMenuModel: CCBaseModel {
     /// 菜谱名称
     var cpName: String?
     /// 小图url
@@ -42,13 +42,13 @@ class MenuModel: CCBaseModel {
     var steps: [stepsModel] = []
 }
 
-class MenuManager {
-    static var shared = MenuManager()
+class CCMenuManager {
+    static var shared = CCMenuManager()
     
-    var menuDic = [String: [MenuModel]]()
+    var menuDic = [String: [CCMenuModel]]()
     
-    func checkSources(nameKey: String) -> [MenuModel]? {
-        var res: [MenuModel]?
+    func checkSources(nameKey: String) -> [CCMenuModel]? {
+        var res: [CCMenuModel]?
         for (key,value) in menuDic {
             if nameKey == key {
                 res = value
@@ -58,7 +58,7 @@ class MenuManager {
         return res
     }
     
-    func updateMenuDic(nameKey: String, value: [MenuModel]) {
+    func updateMenuDic(nameKey: String, value: [CCMenuModel]) {
         menuDic.updateValue(value, forKey: nameKey)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  MenuCell.swift
+//  CCMenuCell.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MenuCell: UITableViewCell {
+class CCMenuCell: UITableViewCell {
     /// 菜谱缩略图(小图)
     private var iconImageView = UIImageView()
     /// 菜谱名称
@@ -56,7 +56,7 @@ class MenuCell: UITableViewCell {
         }
     }
     
-    func configCell(item: MenuModel) {
+    func configCell(item: CCMenuModel) {
         iconImageView.kf.setImage(with: URL(string: item.smallImg!))
         nameLabel.text = item.cpName
         tipsLabel.text = item.tip
