@@ -34,7 +34,7 @@ class MenuCell: UITableViewCell {
         iconImageView.snp.makeConstraints { make in
             make.top.left.equalTo(20)
             make.bottom.equalTo(-20)
-            make.size.equalTo(CGSize(width: 120, height: 80)).priority(999)
+            make.width.equalTo(120)
         }
         
         nameLabel.font = RegularFont(16)
