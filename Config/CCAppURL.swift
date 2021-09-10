@@ -14,7 +14,7 @@ struct CCAppURL {
     static let typefreeUrl: String  = baseFreeUrl + "cbtype.u"
     
     /// 网络jpg格式图片
-    static let adImageUrl: String  = "https://palmchat.cdn.lianxinapp.com/static/resource/imgs/icon_6.jpg"
+    static let adImageUrl: String  = "https://palmchat.cdn.lianxinapp.com/static/resource/imgs/icon_16.jpg"
     /// 网络gif格式动画图片
     static let adGifUrl: String  = "http://adkx.net/w71qe"
     /// 网络mp4格式短视频
