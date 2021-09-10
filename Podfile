@@ -3,11 +3,18 @@ use_frameworks!
 inhibit_all_warnings!
 source "https://cdn.cocoapods.org/"
 
-def commonPods
+#Debug
+def debugPods
+  pod 'LookinServer', :configurations => ['Debug']
+end
 
-  #Object-C
+#Object-C
+def ocPods
   pod 'MJRefresh', '3.7.2'
-  #Swift
+end
+
+#Swift
+def swiftPods
   pod 'Cache', '6.0.0'
   pod 'R.swift', '5.4.0'
   pod 'SnapKit', '5.0.1'
@@ -15,13 +22,12 @@ def commonPods
   pod 'Alamofire', '5.4.3'
   pod 'Kingfisher', '6.3.1'
   pod 'KeychainAccess', '4.2.2'
-  
-  #辅助工具
-  pod 'LookinServer', :configurations => ['Debug']
 end
 
 target 'HelloSwift' do
-  commonPods
+  ocPods
+  swiftPods
+  debugPods
 end
 
 post_install do |installer|
