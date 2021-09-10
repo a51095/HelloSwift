@@ -76,28 +76,20 @@ class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDa
             return
         }
         
-        view.showLoading()
-        let param = ["uid": CCAppKeys.freeUid, "appkey": CCAppKeys.freeAppKey,"type": typeName]
-        AF.request(CCAppURL.queryfreeUrl, method: .post, parameters: param, encoding: URLEncoding.default).responseJSON { res in
-            self.view.hideLoading()
+        NetworkRequest(url: CCAppURL.queryfreeUrl, parameters: ["type": typeName]) { res in
             self.menuTableView.mj_header?.endRefreshing()
-            
             // 容错处理
-            guard res.error == nil else {
-                self.menuTableView.mj_header?.endRefreshing()
-                return
+            guard res.resCode != nil else { return }
+            
+            if let dic = res.data {
+                let datas = dic["datas"] as! [[String: Any]]
+                for item in datas {
+                    let model = CCMenuModel.deserialize(from: item)
+                    self.menuSource.append(model!)
+                }
+                self.menuTableView.reloadData()
+                CCMenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
             }
-            
-            let dic = res.value as! [String: Any]
-            let datas = dic["datas"] as! [[String: Any]]
-            
-            for item in datas {
-                let model = CCMenuModel.deserialize(from: item)
-                self.menuSource.append(model!)
-            }
-            
-            self.menuTableView.reloadData()
-            CCMenuManager.shared.updateMenuDic(nameKey: typeName, value: self.menuSource)
         }
     }
     

@@ -64,8 +64,9 @@ final class CCToastView: UIView {
 
 extension UIView {
     /// 吐司效果
-    func toast(_ message: String?, type: ToastType = .nore, seconds: TimeInterval = 2)  {
-        guard let message = message else { return }
+    func toast(_ message: String, type: ToastType = .nore, seconds: TimeInterval = 2)  {
+        // 容错处理,若message字段无内容,则直接返回
+        guard !message.isEmpty else { return }
         
         if let lastView = subviews.last as? CCToastView { lastView.removeFromSuperview() }
         

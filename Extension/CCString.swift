@@ -6,6 +6,9 @@
 //
 
 extension String {
+    /// 数字类型字符串转整型(谨慎使用)
+    var i: Int { Int(self)! }
+    
     /// "JSON字符串" 转换成 "Dictionary对象"
     func toDictionary()  throws -> Any {
         let data = self.data(using: .utf8)
