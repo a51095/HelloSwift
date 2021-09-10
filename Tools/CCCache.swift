@@ -7,7 +7,7 @@
 
 final class CCCache {
     /// 字符串类型缓存"String"
-    static var store: Storage = try! Storage(diskConfig: DiskConfig(name: "disk_cache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))
+    static var store: Storage = try! Storage<String, String>(diskConfig: DiskConfig(name: "disk_cache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))
     /// 数组字符串类型缓存[String]
     private static var stringArrayStore = store.transformCodable(ofType: [String].self)
     /// 字典类型缓存 [String: Sting]
