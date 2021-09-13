@@ -18,8 +18,6 @@ struct CCAdConfig {
     fileprivate var linkUrl: String
     /// 资源名称
     fileprivate var resourceName: String
-    /// 提示文字(默认'跳过')
-    fileprivate var tipsText: String
     /// 是否展示跳过按钮(默认展示)
     fileprivate var isSkip: Bool
     /// 是否展示静音按钮(默认展示,仅video类型)
@@ -27,12 +25,11 @@ struct CCAdConfig {
     /// 广告动画时长(默认10秒)
     fileprivate var adDuration: TimeInterval
     
-    init(type: CCAdType, name: String, url: String, text: String = "跳过", skip: Bool = true, mute: Bool = true, duration: TimeInterval = 10) {
+    init(type: CCAdType, name: String, url: String, skip: Bool = true, mute: Bool = true, duration: TimeInterval = 10) {
         isMute = mute
         isSkip = skip
         adType = type
         linkUrl = url
-        tipsText = text
         resourceName = name
         adDuration = duration
     }
@@ -393,6 +390,6 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
         let timeStr = result.last!
         if timeStr == "00" { dismiss(); return }
         
-        self.skipButton.setTitle("\(adConfig.tipsText)(\(timeStr)"+"s)", for: .normal)
+        self.skipButton.setTitle("跳过(\(timeStr)"+"s)", for: .normal)
     }
 }
