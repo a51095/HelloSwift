@@ -33,7 +33,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: Diction
         // 容错处理,若请求报错error,则直接返回默认数据
         guard res.error == nil else {
             if showError {
-                kAppDelegate().window?.toast("出错拉~", type: .failure)
+                kAppDelegate().window?.toast("出错啦", type: .failure)
             }
             completionHandle(CCResponseData());
             return
@@ -42,7 +42,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: Diction
         // 容错处理,若请求res.value空值,则直接返回默认数据
         guard let dic = res.value as? [String: Any] else {
             if showError {
-                kAppDelegate().window?.toast("出错拉~", type: .failure)
+                kAppDelegate().window?.toast("出错啦", type: .failure)
             }
             completionHandle(CCResponseData());
             return
@@ -51,7 +51,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: Diction
         // 容错处理,若请求code空值,则直接返回默认数据
         guard let code = dic["code"] as? String else {
             if showError {
-                kAppDelegate().window?.toast("出错拉~", type: .failure)
+                kAppDelegate().window?.toast("出错啦", type: .failure)
             }
             completionHandle(CCResponseData());
             return
