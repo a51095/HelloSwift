@@ -24,6 +24,15 @@ final class CCCache {
         return try? store.object(forKey: key)
     }
     
+    /// 存值(Array类型)
+    static func setArray(_ array: [String]?, forKey: String) {
+        guard let value = array else { removeObject(forKey: forKey); return }
+        try? stringArrayStore.setObject(value, forKey: forKey)
+    }
+    
+    /// 取值(Array类型)
+    static func array(key: String) -> [String]? { try? stringArrayStore.object(forKey: key) }
+    
     /// 存值(Dictionary类型)
     static func setDictionary(_ dic: [String: Any], forKey: String) {
         guard let jsonValue = dic.jsonString() else { removeObject(forKey: forKey); return }
@@ -36,15 +45,6 @@ final class CCCache {
         return dict
     }
     
-    /// 存值(Array类型)
-    static func setArray(_ array: [String]?, forKey: String) {
-        guard let value = array else { removeObject(forKey: forKey); return }
-        try? stringArrayStore.setObject(value, forKey: forKey)
-    }
-    
-    /// 取值(Array类型)
-    static func array(key: String) -> [String]? { try? stringArrayStore.object(forKey: key) }
-    
     /// 移除缓存,已key为键
     static func removeObject(forKey key: String) { try? store.removeObject(forKey: key) }
     
@@ -52,13 +52,12 @@ final class CCCache {
     static func removeAll() { try? store.removeAll() }
 }
 
-import HandyJSON
 extension HandyJSON {
     static func getCache(forKey key: String) -> Self? {
         let jsonString = CCCache.string(key: key)
         return Self.deserialize(from: jsonString)
     }
-
+    
     func setCache(forKey key: String) {
         let jsonString = toJSONString()
         CCCache.setString(jsonString, forKey: key)
