@@ -110,7 +110,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 10 images.
+  /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
     /// Image `LaunchImage`.
     static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
@@ -126,6 +126,14 @@ struct R: Rswift.Validatable {
     static let toast_fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_fail")
     /// Image `toast_success`.
     static let toast_success = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_success")
+    /// Image `user_guide01`.
+    static let user_guide01 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide01")
+    /// Image `user_guide02`.
+    static let user_guide02 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide02")
+    /// Image `user_guide03`.
+    static let user_guide03 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide03")
+    /// Image `user_guide04`.
+    static let user_guide04 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide04")
     /// Image `vc_home`.
     static let vc_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home")
     /// Image `vc_tab`.
@@ -179,6 +187,34 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "toast_success", bundle: ..., traitCollection: ...)`
     static func toast_success(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.toast_success, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "user_guide01", bundle: ..., traitCollection: ...)`
+    static func user_guide01(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.user_guide01, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "user_guide02", bundle: ..., traitCollection: ...)`
+    static func user_guide02(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.user_guide02, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "user_guide03", bundle: ..., traitCollection: ...)`
+    static func user_guide03(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.user_guide03, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "user_guide04", bundle: ..., traitCollection: ...)`
+    static func user_guide04(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.user_guide04, compatibleWith: traitCollection)
     }
     #endif
 

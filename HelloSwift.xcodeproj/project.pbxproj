@@ -12,6 +12,7 @@
 		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
 		A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* CCNetwork.swift */; };
+		A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* CCGuideViewController.swift */; };
 		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
@@ -54,6 +55,7 @@
 		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
 		A680788F26EB51C60068DD0A /* CCNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCNetwork.swift; sourceTree = "<group>"; };
+		A69B068726F09292007C3FE6 /* CCGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCGuideViewController.swift; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,11 +214,12 @@
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F7B4485126A1168E0098D2AF /* CCLoadingView.swift */,
-				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
 				A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
+				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
 				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
+				A69B068726F09292007C3FE6 /* CCGuideViewController.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */,
 				F704A07F269E7C8F0044729E /* CCUserViewController.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */,
+				A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */,
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
