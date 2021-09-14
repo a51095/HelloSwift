@@ -24,8 +24,8 @@ extension AppDelegate: CCNetworkStatusProtocol {
     /// 注册通知
     private func requestAuthorization(_ application: UIApplication)  {
         let notificationCenter = UNUserNotificationCenter.current()
-        // 先移除上一条的通知内容
-        notificationCenter.removeDeliveredNotifications(withIdentifiers: [AppDelegate.classString()])
+        // 每次冷启动,先移除所有通知内容,再执行后续操作
+        notificationCenter.removeAllDeliveredNotifications()
         notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
             // 若注册失败,则直接返回,不执行后续操作
             guard  requestRes else { return }
