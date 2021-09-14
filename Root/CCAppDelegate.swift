@@ -8,18 +8,30 @@
 extension AppDelegate: CCNetworkStatusProtocol {
     /// 注册APP
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+       
         window = UIWindow(frame: UIScreen.main.bounds)
-        if !isReachable() {
-            window?.rootViewController = CCTabBarController()
+        
+        if isFirst() {
+            let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
+            let guideConfig = CCGuideConfig(resource: resourceArray)
+            window?.rootViewController = CCGuideViewController(config: guideConfig)
         } else {
-            let adConfig = CCAdConfig(type: .adImage, name: CCAppURL.adImageUrl, url: CCAppURL.adLinkUrl)
-            let adViewController = CCAdViewController(config: adConfig)
-            adViewController.dismissBlock = { self.window?.rootViewController = CCTabBarController() }
-            window?.rootViewController = adViewController
+            if !isReachable() {
+                window?.rootViewController = CCTabBarController()
+            } else {
+                let adConfig = CCAdConfig(type: .adImage, name: CCAppURL.adImageUrl, url: CCAppURL.adLinkUrl)
+                let adViewController = CCAdViewController(config: adConfig)
+                adViewController.dismissBlock = { self.window?.rootViewController = CCTabBarController() }
+                window?.rootViewController = adViewController
+            }
         }
+        
         window?.makeKeyAndVisible()
         requestAuthorization(application)
     }
+    
+    /// 检查用户是否首次安装
+    private func isFirst() -> Bool { CCCache.string(key: CCAppKeys.firstKey) == nil }
     
     /// 注册通知
     private func requestAuthorization(_ application: UIApplication)  {

@@ -9,8 +9,13 @@ extension UIColor {
     /// 拓展一个APP主色调
     open class var main: UIColor { .hexColor("#FFD700") }
     
+    /// 拓展一个随机颜色
+    open class var random: UIColor {
+        rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
+    }
+    
     public static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
-        return UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
+        UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
     }
     
     private static func hexColor(_ hex: Int, _ alpha: CGFloat = 1) -> UIColor {
@@ -32,7 +37,7 @@ extension UIColor {
             string = hexString
         }
 
-        if string.count == 3 { // convert hex to 6 digit format if in short format
+        if string.count == 3 {
             var str = ""
             string.forEach { str.append(String(repeating: String($0), count: 2)) }
             string = str
