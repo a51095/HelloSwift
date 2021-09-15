@@ -24,22 +24,22 @@ func SemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold"
 
 // MARK: - 屏幕尺寸相关
 /// 屏幕宽
-func kScreenWidth() -> CGFloat { UIScreen.main.bounds.size.width }
+func kScreenWidth() -> Int { UIScreen.main.bounds.size.width.i }
 /// 屏幕高
-func kScreenHeight() -> CGFloat { UIScreen.main.bounds.size.height }
+func kScreenHeight() -> Int { UIScreen.main.bounds.size.height.i }
 /// 顶部安全间距
-func kSafeMarginTop(_ top: CGFloat) -> CGFloat { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top)! }
+func kSafeMarginTop(_ top: Int) -> Int { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top.i)! }
 /// 底部安全间距
-func kSafeMarginBottom(_ bottom: CGFloat) -> CGFloat { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom)! }
+func kSafeMarginBottom(_ bottom: Int) -> Int { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom.i)! }
 /// 等比例设计尺寸宽(以375为基准)
-func kAdaptedWidth(_ width: CGFloat) -> CGFloat { ceil((width * UIScreen.main.bounds.size.width / 375.0)) }
+func kAdaptedWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
 /// 等比例设计尺寸高(以667为基准)
-func kAdaptedHeight(_ height: CGFloat) -> CGFloat { ceil((height * UIScreen.main.bounds.size.height / 667.0)) }
+func kAdaptedHeight(_ height: Int) -> Int { (height * UIScreen.main.bounds.size.height.i / 667) }
 
 /// 等比例设计尺寸Size(以375,667为基准)
-func kScaleSize(_ width: CGFloat, _ height: CGFloat) -> CGSize {
-    let sizeWidth = ceil((width * UIScreen.main.bounds.size.width / 375.0))
-    let sizeHeight = ceil((height * UIScreen.main.bounds.size.height / 667.0))
+func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
+    let sizeWidth = (width * UIScreen.main.bounds.size.width.i / 375)
+    let sizeHeight = (height * UIScreen.main.bounds.size.height.i / 667)
     return CGSize(width: sizeWidth, height: sizeHeight)
 }
 

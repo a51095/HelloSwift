@@ -321,25 +321,22 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
     
     /// 更新广告资源(image)
     public func updateAdImage(_ imageData: Data, _ imageTempPath: String)  {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let objData = NSData(data: imageData)
-            objData.write(toFile: imageTempPath, atomically: true)
+        DispatchQueue.global().async {
+            try? imageData.write(to: URL(fileURLWithPath: imageTempPath), options: .atomic)
         }
     }
     
     /// 更新广告资源(gif)
     public func updateAdGif(_ gifData: Data, _ gifTempPath: String)  {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let objData = NSData(data: gifData)
-            objData.write(toFile: gifTempPath, atomically: true)
+        DispatchQueue.global().async {
+            try? gifData.write(to: URL(fileURLWithPath: gifTempPath), options: .atomic)
         }
     }
     
     /// 更新广告资源(video)
     public func updateAdVideo(_ videoData: Data, _ videoTempPath: String)  {
-        DispatchQueue.global(qos: .userInteractive).async {
-            let objData = NSData(data: videoData)
-            objData.write(toFile: videoTempPath, atomically: true)
+        DispatchQueue.global().async {
+            try? videoData.write(to: URL(fileURLWithPath: videoTempPath), options: .atomic)
         }
     }
     
