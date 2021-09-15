@@ -88,12 +88,37 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
 
-  /// This `R.file` struct is generated, and contains static references to 2 files.
+  #if os(iOS) || os(tvOS)
+  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  struct storyboard {
+    /// Storyboard `Launch Screen`.
+    static let launchScreen = _R.storyboard.launchScreen()
+
+    #if os(iOS) || os(tvOS)
+    /// `UIStoryboard(name: "Launch Screen", bundle: ...)`
+    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+  #endif
+
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
+    /// Resource file `LaunchImage-1200x2688.png`.
+    static let launchImage1200x2688Png = Rswift.FileResource(bundle: R.hostingBundle, name: "LaunchImage-1200x2688", pathExtension: "png")
     /// Resource file `localAnimation.gif`.
     static let localAnimationGif = Rswift.FileResource(bundle: R.hostingBundle, name: "localAnimation", pathExtension: "gif")
     /// Resource file `localVideo.mp4`.
     static let localVideoMp4 = Rswift.FileResource(bundle: R.hostingBundle, name: "localVideo", pathExtension: "mp4")
+
+    /// `bundle.url(forResource: "LaunchImage-1200x2688", withExtension: "png")`
+    static func launchImage1200x2688Png(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.launchImage1200x2688Png
+      return fileResource.bundle.url(forResource: fileResource)
+    }
 
     /// `bundle.url(forResource: "localAnimation", withExtension: "gif")`
     static func localAnimationGif(_: Void = ()) -> Foundation.URL? {
@@ -112,8 +137,8 @@ struct R: Rswift.Validatable {
 
   /// This `R.image` struct is generated, and contains static references to 14 images.
   struct image {
-    /// Image `LaunchImage`.
-    static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
+    /// Image `LaunchImage-1200x2688`.
+    static let launchImage1200x2688 = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage-1200x2688")
     /// Image `ad_mute`.
     static let ad_mute = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_mute")
     /// Image `ad_resource`.
@@ -142,9 +167,9 @@ struct R: Rswift.Validatable {
     static let vc_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_user")
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "LaunchImage", bundle: ..., traitCollection: ...)`
-    static func launchImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.launchImage, compatibleWith: traitCollection)
+    /// `UIImage(named: "LaunchImage-1200x2688", bundle: ..., traitCollection: ...)`
+    static func launchImage1200x2688(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.launchImage1200x2688, compatibleWith: traitCollection)
     }
     #endif
 
@@ -244,7 +269,7 @@ struct R: Rswift.Validatable {
 
   fileprivate struct intern: Rswift.Validatable {
     fileprivate static func validate() throws {
-      // There are no resources to validate
+      try _R.validate()
     }
 
     fileprivate init() {}
@@ -255,6 +280,41 @@ struct R: Rswift.Validatable {
   fileprivate init() {}
 }
 
-struct _R {
+struct _R: Rswift.Validatable {
+  static func validate() throws {
+    #if os(iOS) || os(tvOS)
+    try storyboard.validate()
+    #endif
+  }
+
+  #if os(iOS) || os(tvOS)
+  struct storyboard: Rswift.Validatable {
+    static func validate() throws {
+      #if os(iOS) || os(tvOS)
+      try launchScreen.validate()
+      #endif
+    }
+
+    #if os(iOS) || os(tvOS)
+    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UIViewController
+
+      let bundle = R.hostingBundle
+      let name = "Launch Screen"
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "LaunchImage-1200x2688.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LaunchImage-1200x2688.png' is used in storyboard 'Launch Screen', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+  #endif
+
   fileprivate init() {}
 }
