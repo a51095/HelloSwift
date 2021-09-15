@@ -14,37 +14,36 @@ extension UIImage {
         var tagSize = size
         tagSize.width = scale * size.width
         tagSize.height = scale * size.height
-
+        
         UIGraphicsBeginImageContext(tagSize)
         self.draw(in: CGRect(x: 0, y: 0, width: tagSize.width, height: tagSize.height))
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         return img ?? self
     }
     
     /// 旋转图片(90代表右旋转↪️,-90代表左旋转↩️)
     func rotate(direction: CGFloat) -> UIImage {
+        // 容错处理
+        guard let currentContext = UIGraphicsGetCurrentContext(), let cgImage = cgImage else { return self }
+        
         let degrees = round(direction / 90) * 90
         let sameOrientationType = degrees.i % 180 == 0
         let radians = .pi * degrees / 180.cgf
         let newSize = sameOrientationType ? size : CGSize(width: size.height, height: size.width)
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        guard let ctx = UIGraphicsGetCurrentContext(), let cgImage = cgImage else {
-            return self
-        }
-        
-        ctx.translateBy(x: newSize.width / 2, y: newSize.height / 2)
-        ctx.rotate(by: radians)
-        ctx.scaleBy(x: 1, y: -1)
+        currentContext.translateBy(x: newSize.width / 2, y: newSize.height / 2)
+        currentContext.rotate(by: radians)
+        currentContext.scaleBy(x: 1, y: -1)
         let origin = CGPoint(x: -(size.width / 2), y: -(size.height / 2))
         let rect = CGRect(origin: origin, size: size)
-        ctx.draw(cgImage, in: rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        return image ?? self
+        currentContext.draw(cgImage, in: rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return img ?? self
     }
     
     /// 压缩图片(默认压缩至0.5M)
@@ -96,8 +95,8 @@ extension UIImage {
                 UIGraphicsEndImageContext()
                 data = resultImage.jpegData(compressionQuality: 1)!
             }
-            
             print("大图片重绘压缩后 == ", data.count, "byte")
+            
             return data
         }
     }
@@ -109,6 +108,7 @@ extension UIImage {
         view.layer.render(in: context!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
         return image!
     }
     
@@ -133,6 +133,7 @@ extension UIImage {
             guard let frameDuration = gifDict[kCGImagePropertyGIFDelayTime] as? NSNumber else { continue }
             totalDuration += frameDuration.doubleValue
         }
+        
         return (images,totalDuration)
     }
 }
