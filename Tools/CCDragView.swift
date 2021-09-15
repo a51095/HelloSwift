@@ -114,20 +114,20 @@ final class CCDragView: UIView {
             // x轴偏右移2个单位(预留可点击区域)
             newPoint.x = (self.frame.width / 2) + limitMargin
             // y轴偏下移10个单位(预留可点击区域)
-            if point.y <= kSafeMarginTop(20) { newPoint.y = kSafeMarginTop(40) }
+            if point.y <= kSafeMarginTop(20).cgf { newPoint.y = kSafeMarginTop(40).cgf }
             // y轴偏上移10个单位(预留可点击区域)
-            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(20) {
-                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(10)
+            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(20).cgf {
+                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(10).cgf
             }
             return newPoint
         }else {
             // x轴偏左移2个单位(预留可点击区域)
             newPoint.x = self.superview!.frame.width - (self.frame.width / 2) - limitMargin
             // y轴偏下移10个单位(预留可点击区域)
-            if point.y <= kSafeMarginTop(20) { newPoint.y = kSafeMarginTop(40) }
+            if point.y <= kSafeMarginTop(20).cgf { newPoint.y = kSafeMarginTop(40).cgf }
             // y轴偏上移10个单位(预留可点击区域)
-            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(20) {
-                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(10)
+            if point.y >= self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(20).cgf {
+                newPoint.y = self.superview!.frame.height - (self.frame.height / 2) - kSafeMarginBottom(10).cgf
             }
             return newPoint
         }

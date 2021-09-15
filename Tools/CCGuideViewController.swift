@@ -87,7 +87,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.contentSize = CGSize(width: kScreenWidth().i * displayCount, height: 0)
+        scrollView.contentSize = CGSize(width: kScreenWidth() * displayCount, height: 0)
         scrollView.frame = CGRect(x: 0, y: 0, width: kScreenWidth(), height: kScreenHeight())
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -104,7 +104,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
         stackView.alignment = .fill
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth().i * displayCount, height: kScreenHeight().i)
+        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth() * displayCount, height: kScreenHeight())
         
         
         addPageControl()
@@ -117,13 +117,13 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
     /// 添加跳过按钮skipButton
     private func addSkipButton() {
         view.addSubview(skipButton)
-        skipButton.frame = CGRect(x: kScreenWidth().i - 100, y: kSafeMarginTop(0).i, width: 70, height: 30)
+        skipButton.frame = CGRect(x: kScreenWidth() - 100, y: kSafeMarginTop(0), width: 70, height: 30)
     }
     
     /// 添加开始按钮startButton
     private func addStartButton() {
         view.addSubview(startButton)
-        startButton.frame = CGRect(x: kScreenWidth().i / 2 - 50, y: kScreenHeight().i - kAdaptedHeight(100).i, width: 100, height: 36)
+        startButton.frame = CGRect(x: kScreenWidth() / 2 - 50, y: kScreenHeight() - kAdaptedHeight(100), width: 100, height: 36)
         dismissAnimation()
     }
     
@@ -133,7 +133,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
         pageControl.hidesForSinglePage = true
         pageControl.numberOfPages = displayCount
         pageControl.currentPageIndicatorTintColor = .random
-        pageControl.frame = CGRect(x: 0, y: kScreenHeight().i - kAdaptedHeight(100).i, width: kScreenWidth().i, height: 30)
+        pageControl.frame = CGRect(x: 0, y: kScreenHeight() - kAdaptedHeight(100), width: kScreenWidth(), height: 30)
     }
     
     @objc func skipButtonDidSeleted() {
@@ -151,7 +151,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
     
     /// scrollView代理方法
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentIndex = Int(scrollView.contentOffset.x / kScreenWidth())
+        let currentIndex = scrollView.contentOffset.x.i / kScreenWidth()
         guard currentIndex != pageControl.currentPage else { return }
         pageControl.currentPage = currentIndex
         (pageControl.currentPage == displayCount - 1) ? showAnimation() : dismissAnimation()
