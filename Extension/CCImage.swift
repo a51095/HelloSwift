@@ -6,7 +6,23 @@
 //
 
 extension UIImage {
-    /// 旋转图片,正值为右旋转,负值为左旋转
+    /// 缩略图(scale默认为1,即返回原图)
+    func thumbnail(scale: CGFloat = 1.0) -> UIImage {
+        // 容错处理,仅在缩放比例在0~1开区间,重绘缩略图
+        guard scale > 0 && scale < 1 else { return self }
+        
+        var tagSize = size
+        tagSize.width = scale * size.width
+        tagSize.height = scale * size.height
+
+        UIGraphicsBeginImageContext(tagSize)
+        self.draw(in: CGRect(x: 0, y: 0, width: tagSize.width, height: tagSize.height))
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img ?? self
+    }
+    
+    /// 旋转图片(90代表右旋转↪️,-90代表左旋转↩️)
     func rotate(direction: CGFloat) -> UIImage {
         let degrees = round(direction / 90) * 90
         let sameOrientationType = degrees.i % 180 == 0
@@ -31,8 +47,8 @@ extension UIImage {
         return image ?? self
     }
     
-    /// 压缩图片
-    func compress(toByte : Int = 600 * 1024) -> Data? {
+    /// 压缩图片(默认压缩至0.5M)
+    func compress(toByte : Int = 512 * 1024) -> Data? {
         autoreleasepool {
             var compression: CGFloat = 1
             guard var data = self.jpegData(compressionQuality: compression) else { return nil}
@@ -86,7 +102,7 @@ extension UIImage {
         }
     }
     
-    /// 将View转换为UIImage
+    /// 将View转换为UIImage(屏幕截图)
     static func viewToImage(view: UIView) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()
