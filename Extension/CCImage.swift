@@ -102,14 +102,14 @@ extension UIImage {
     }
     
     /// 将View转换为UIImage(屏幕截图)
-    static func viewToImage(view: UIView) -> UIImage {
+    static func viewToImage(view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()
         view.layer.render(in: context!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return image!
+        return img
     }
     
     /// 渲染GIF图片
