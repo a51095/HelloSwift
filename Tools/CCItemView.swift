@@ -5,9 +5,6 @@
 //  Created by a51095 on 2021/7/20.
 //
 
-import UIKit
-import Alamofire
-
 fileprivate class ItemCell: UICollectionViewCell {
     private let topLabel = UILabel()
     private let bottomView = UIView()
