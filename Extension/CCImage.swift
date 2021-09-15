@@ -9,8 +9,8 @@ extension UIImage {
     /// 旋转图片,正值为右旋转,负值为左旋转
     func rotate(direction: CGFloat) -> UIImage {
         let degrees = round(direction / 90) * 90
-        let sameOrientationType = Int(degrees) % 180 == 0
-        let radians = .pi * degrees / CGFloat(180)
+        let sameOrientationType = degrees.i % 180 == 0
+        let radians = .pi * degrees / 180.cgf
         let newSize = sameOrientationType ? size : CGSize(width: size.height, height: size.width)
         
         UIGraphicsBeginImageContextWithOptions(newSize, false, scale)
@@ -34,29 +34,24 @@ extension UIImage {
     /// 压缩图片
     func compress(toByte : Int = 600 * 1024) -> Data? {
         autoreleasepool {
-            let newImage = self
             var compression: CGFloat = 1
-            guard var data = newImage.jpegData(compressionQuality: compression) else { return nil}
+            guard var data = self.jpegData(compressionQuality: compression) else { return nil}
             
             // 若原图小于限制大小,则直接返回,不做压缩处理;
             if data.count <= toByte { return data }
             
-            print("压缩前", data.count, "byte")
+            print("压缩前 == ", data.count, "byte")
             var max: CGFloat = 1
             var min: CGFloat = 0
             
-            // 旋转 循环压缩  会糊
-            if Float(data.count) / Float(toByte) < 1.2 {
-                return data
-            }
-            // 减少 压缩比例
-            if Float(data.count) / Float(toByte) < 1.5 {
+            // 减少压缩比例
+            if data.count.cgf / toByte.cgf < 1.5 {
                 min = 0.8
             } else {
                 for _ in 0..<6 {
                     compression = (max + min) / 2
-                    data = newImage.jpegData(compressionQuality: compression)!
-                    if CGFloat(data.count) < CGFloat(toByte) * 0.9 {
+                    data = self.jpegData(compressionQuality: compression)!
+                    if data.count.cgf < toByte.cgf * 0.9 {
                         min = compression
                     }else if data.count > toByte {
                         max = compression
@@ -67,17 +62,18 @@ extension UIImage {
             }
             
             if data.count < toByte {
-                print("压缩后", data.count, "byte")
+                print("压缩后 == ", data.count, "byte")
                 return data
             }
-     
+            
+            // 大图重绘后再次压缩
             var resultImage: UIImage = UIImage(data: data)!
             var lastDataLength: Int = 0
             while data.count > toByte, data.count != lastDataLength {
                 lastDataLength = data.count
-                let ratio: CGFloat = CGFloat(toByte) / CGFloat(data.count)
-                let size: CGSize = CGSize(width: Int(resultImage.size.width * sqrt(ratio)),
-                                        height: Int(resultImage.size.height * sqrt(ratio)))
+                let ratio: CGFloat = (toByte / data.count).cgf
+                let size: CGSize = CGSize(width: resultImage.size.width.i * sqrt(ratio).i,
+                                          height: resultImage.size.height.i * sqrt(ratio).i)
                 UIGraphicsBeginImageContext(size)
                 resultImage.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
                 resultImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -85,7 +81,7 @@ extension UIImage {
                 data = resultImage.jpegData(compressionQuality: 1)!
             }
             
-            print("resize压缩后", data.count, "byte")
+            print("大图片重绘压缩后 == ", data.count, "byte")
             return data
         }
     }
