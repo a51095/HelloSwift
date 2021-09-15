@@ -154,12 +154,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
         let currentIndex = Int(scrollView.contentOffset.x / kScreenWidth())
         guard currentIndex != pageControl.currentPage else { return }
         pageControl.currentPage = currentIndex
-        
-        if pageControl.currentPage == displayCount - 1 {
-            showAnimation()
-        }else {
-            dismissAnimation()
-        }
+        (pageControl.currentPage == displayCount - 1) ? showAnimation() : dismissAnimation()
     }
 
     private func showAnimation() {
