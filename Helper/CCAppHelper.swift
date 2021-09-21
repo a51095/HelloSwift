@@ -61,6 +61,41 @@ func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootVie
     return base
 }
 
+/// 用户相册授权状态
+func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
+    if #available(iOS 14, *) {
+        let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        if status == .authorized || status == .limited {
+            handler(true)
+        } else if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { res in
+                if res == .authorized {
+                    handler(true)
+                } else {
+                    handler(false)
+                }
+            }
+        } else {
+            handler(false)
+        }
+    } else {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .authorized {
+            handler(true)
+        } else if status == .notDetermined {
+            PHPhotoLibrary.requestAuthorization { res in
+                if res == .authorized {
+                    handler(true)
+                } else {
+                    handler(false)
+                }
+            }
+        } else {
+            handler(false)
+        }
+    }
+}
+
 /// 网络状态协议
 protocol CCNetworkStatusProtocol {
     func isReachable() -> Bool

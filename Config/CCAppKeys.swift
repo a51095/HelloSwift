@@ -7,7 +7,9 @@
 
 @_exported import AVKit
 @_exported import Cache
+@_exported import Photos
 @_exported import SnapKit
+@_exported import PhotosUI
 @_exported import Alamofire
 @_exported import MJRefresh
 @_exported import HandyJSON

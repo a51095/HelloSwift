@@ -135,7 +135,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 14 images.
+  /// This `R.image` struct is generated, and contains static references to 20 images.
   struct image {
     /// Image `LaunchImage-1200x2688`.
     static let launchImage1200x2688 = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage-1200x2688")
@@ -147,6 +147,14 @@ struct R: Rswift.Validatable {
     static let ad_restore = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_restore")
     /// Image `localAnimation.gif`.
     static let localAnimationGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "localAnimation.gif")
+    /// Image `photo_arrow_down`.
+    static let photo_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_arrow_down")
+    /// Image `photo_arrow_up`.
+    static let photo_arrow_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_arrow_up")
+    /// Image `photo_guide_normal`.
+    static let photo_guide_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_guide_normal")
+    /// Image `photo_guide_seleted`.
+    static let photo_guide_seleted = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_guide_seleted")
     /// Image `toast_fail`.
     static let toast_fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_fail")
     /// Image `toast_success`.
@@ -159,6 +167,10 @@ struct R: Rswift.Validatable {
     static let user_guide03 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide03")
     /// Image `user_guide04`.
     static let user_guide04 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide04")
+    /// Image `vc_back_black`.
+    static let vc_back_black = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_back_black")
+    /// Image `vc_back_white`.
+    static let vc_back_white = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_back_white")
     /// Image `vc_home`.
     static let vc_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home")
     /// Image `vc_tab`.
@@ -202,6 +214,34 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photo_arrow_down", bundle: ..., traitCollection: ...)`
+    static func photo_arrow_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo_arrow_down, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photo_arrow_up", bundle: ..., traitCollection: ...)`
+    static func photo_arrow_up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo_arrow_up, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photo_guide_normal", bundle: ..., traitCollection: ...)`
+    static func photo_guide_normal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo_guide_normal, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "photo_guide_seleted", bundle: ..., traitCollection: ...)`
+    static func photo_guide_seleted(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.photo_guide_seleted, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
     /// `UIImage(named: "toast_fail", bundle: ..., traitCollection: ...)`
     static func toast_fail(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.toast_fail, compatibleWith: traitCollection)
@@ -240,6 +280,20 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "user_guide04", bundle: ..., traitCollection: ...)`
     static func user_guide04(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.user_guide04, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "vc_back_black", bundle: ..., traitCollection: ...)`
+    static func vc_back_black(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.vc_back_black, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "vc_back_white", bundle: ..., traitCollection: ...)`
+    static func vc_back_white(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.vc_back_white, compatibleWith: traitCollection)
     }
     #endif
 
