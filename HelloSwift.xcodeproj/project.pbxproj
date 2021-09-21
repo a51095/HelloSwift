@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
+		A607554C26F5BFF6008103DA /* CCPhotoGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */; };
+		A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554D26F5C144008103DA /* CCPhotoModel.swift */; };
+		A607555226F5F33F008103DA /* CCPhotoShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607555126F5F33F008103DA /* CCPhotoShowCell.swift */; };
 		A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */; };
 		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
@@ -16,6 +19,7 @@
 		A69B068A26F19B98007C3FE6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */; };
 		A69B068C26F19CD4007C3FE6 /* LaunchImage-1200x2688.png in Resources */ = {isa = PBXBuildFile; fileRef = A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */; };
 		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
+		A6F36C5C26F6483B008999AE /* CCPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
 		F704A056269E73850044729E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F704A055269E73850044729E /* Assets.xcassets */; };
@@ -53,6 +57,9 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
+		A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoGuideCell.swift; sourceTree = "<group>"; };
+		A607554D26F5C144008103DA /* CCPhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoModel.swift; sourceTree = "<group>"; };
+		A607555126F5F33F008103DA /* CCPhotoShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoShowCell.swift; sourceTree = "<group>"; };
 		A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAdViewController.swift; sourceTree = "<group>"; };
 		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
@@ -61,6 +68,7 @@
 		A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-1200x2688.png"; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
+		A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoDetailViewController.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB316C22B9BE33774EA2B93 /* Pods-HelloSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.debug.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +126,32 @@
 				C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A607554726F5BF18008103DA /* V */ = {
+			isa = PBXGroup;
+			children = (
+				A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */,
+				A607555126F5F33F008103DA /* CCPhotoShowCell.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
+		A607554826F5BF1F008103DA /* C */ = {
+			isa = PBXGroup;
+			children = (
+				F704A07E269E7C8F0044729E /* CCUserViewController.swift */,
+				A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		A607554A26F5BF6B008103DA /* M */ = {
+			isa = PBXGroup;
+			children = (
+				A607554D26F5C144008103DA /* CCPhotoModel.swift */,
+			);
+			path = M;
 			sourceTree = "<group>";
 		};
 		A650EE5126E63C2D00E437AA /* Resource */ = {
@@ -252,7 +286,9 @@
 		F704A07A269E7BCA0044729E /* User */ = {
 			isa = PBXGroup;
 			children = (
-				F704A07E269E7C8F0044729E /* CCUserViewController.swift */,
+				A607554A26F5BF6B008103DA /* M */,
+				A607554726F5BF18008103DA /* V */,
+				A607554826F5BF1F008103DA /* C */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -451,15 +487,18 @@
 				F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */,
 				F704A090269EAA0E0044729E /* CCAppHelper.swift in Sources */,
 				A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */,
+				A607554C26F5BFF6008103DA /* CCPhotoGuideCell.swift in Sources */,
 				F704A07F269E7C8F0044729E /* CCUserViewController.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */,
 				A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */,
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
+				A607555226F5F33F008103DA /* CCPhotoShowCell.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
 				F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */,
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* CCAlertController.swift in Sources */,
+				A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */,
 				F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */,
 				F704A07C269E7C700044729E /* CCHomeViewController.swift in Sources */,
@@ -467,6 +506,7 @@
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
 				F7B4481D269ED0D00098D2AF /* CCView.swift in Sources */,
 				A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */,
+				A6F36C5C26F6483B008999AE /* CCPhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* CCViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
 				F78279B526A5121200A90FFF /* CCCache.swift in Sources */,
@@ -602,8 +642,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3B8U49HU5G;
 				INFOPLIST_FILE = Root/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -611,9 +651,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.HelloSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenmen.ynsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "YNScoicalDev-new";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -627,8 +667,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 3B8U49HU5G;
 				INFOPLIST_FILE = Root/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -636,9 +676,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Demo.HelloSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zenmen.ynsocial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "YNScoicalDev-new";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
