@@ -10,17 +10,19 @@ class CCTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUI()
-        self.initData()
+        self.configBarStyle()
     }
     
-    // MARK: - 数据初始化
-    func initData() {
-        // 默认为"true",建议设置为"false"
+    // MARK: - 配置tabBar样式
+    func configBarStyle() {
+        // 选项卡是否半透明(默认半透明,建议设置为false)
         tabBar.isTranslucent = false
-        // 默认即为"白色"
-        tabBar.barTintColor = .white
-        // 同时设置选项卡选中时,图片颜色和标签颜色
+        // 选项卡背景色
+        tabBar.backgroundColor = .white
+        // 选项卡选中时,icon与title颜色
         tabBar.tintColor = .orange
+        // 选项卡未选中时,icon与title颜色
+        tabBar.unselectedItemTintColor = .gray
     }
     
     // MARK: - UI初始化
