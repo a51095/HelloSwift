@@ -46,6 +46,7 @@ class CCPhotoDetailViewController: CCViewController {
         case .Video: addPlayerController(asset: source)
             break
         }
+        hidesBottomBarWhenPushed = true
         addBackButton()
     }
     
