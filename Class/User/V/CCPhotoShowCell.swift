@@ -12,6 +12,9 @@ class CCPhotoShowCell: UICollectionViewCell {
     private var photoImageView = UIImageView()
     /// 选中状态提示
     private var statueButton = UIButton()
+    /// 媒体类型描述
+    private var typeLabel = UILabel()
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -42,17 +45,21 @@ class CCPhotoShowCell: UICollectionViewCell {
             make.top.equalTo(10)
             make.right.equalTo(-10)
         }
-    }
-    
-    // MARK: - 监听用户点击index,继而改变状态
-    override var isSelected: Bool {
-        willSet {
-            
+        
+        contentView.addSubview(typeLabel)
+        typeLabel.textAlignment = .right
+        typeLabel.font = BradleyHandFont(18)
+        typeLabel.textColor = .white
+        typeLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+            make.bottom.right.equalToSuperview()
         }
+        
     }
-    
+        
     /// 渲染cell内容
     public func configCell(item: PhotoModel) {
+        typeLabel.text = item.formatTypeString()
         photoImageView.image = item.image
     }
     
