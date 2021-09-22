@@ -59,9 +59,8 @@ class CCUserViewController: CCViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     self.setUI()
                     self.initData()
+                    if self.photoSource.count == 0 { self.titleButton.removeFromSuperview() }
                 }
-                
-                if self.photoSource.count == 0 { self.titleButton.removeFromSuperview() }
             }
         }
     }
