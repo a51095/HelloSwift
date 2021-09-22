@@ -20,6 +20,7 @@ class CCViewController: UIViewController, CCNetworkStatusProtocol {
     public lazy var backButton: UIButton = {
         let b = UIButton()
         b.setImage(R.image.vc_back_black(), for: .normal)
+        b.contentEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
         b.addTarget(self, action: #selector(backButtonDidSeleted), for: .touchUpInside)
         return b
     }()
@@ -58,8 +59,8 @@ class CCViewController: UIViewController, CCNetworkStatusProtocol {
         
         let autoY = kSafeMarginTop(44) / 2
         backButton.snp.makeConstraints { make in
-            make.left.equalTo(10)
             make.centerY.equalTo(autoY)
+            make.left.equalToSuperview()
         }
     }
     
