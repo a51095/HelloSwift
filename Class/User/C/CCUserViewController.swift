@@ -149,18 +149,29 @@ class CCUserViewController: CCViewController, UITableViewDelegate, UITableViewDa
     func fetchResult(_ item: AlbumModel?)  {
         // 非空校验
         guard let item = item else { return }
+        
         // 每次切换相薄清空上次数据源
         self.photoSource.removeAll()
         
-        for i in 0..<item.fetchResult.count {
-            let asset = item.fetchResult[i]
-            
-            PHImageManager.default().requestImage(for: asset, targetSize: .zero, contentMode: .aspectFill, options: .none) { resImg, info in
+        // 照片请求参数配置
+        let options = PHImageRequestOptions()
+        options.resizeMode = .fast
+        options.isSynchronous = true
+        options.deliveryMode = .fastFormat
+        options.isNetworkAccessAllowed = false
+        
+        item.fetchResult.enumerateObjects { asset, idx, info in
+            PHImageManager.default().requestImage(for: asset, targetSize: .zero, contentMode: .aspectFill, options: options) { resImg, info in
                 
                 if asset.mediaType == .image, let img = resImg {
                     
                     // 通用照片
                     if asset.mediaSubtypes.rawValue == 0 {
+                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
+                    }
+                    
+                    // HDR
+                    if asset.mediaSubtypes.rawValue == 2 {
                         self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
                     }
                     
@@ -214,11 +225,10 @@ class CCUserViewController: CCViewController, UITableViewDelegate, UITableViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: classString(), for: indexPath) as? CCPhotoShowCell
-        if cell == nil { cell = CCPhotoShowCell() }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: classString(), for: indexPath) as! CCPhotoShowCell
         let photoItem = photoSource[indexPath.item]
-        cell?.configCell(item: photoItem)
-        return cell!
+        cell.configCell(item: photoItem)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
