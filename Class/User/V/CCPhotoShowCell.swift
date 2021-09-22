@@ -14,6 +14,10 @@ class CCPhotoShowCell: UICollectionViewCell {
     private var statueButton = UIButton()
     /// 媒体类型描述
     private var typeLabel = UILabel()
+    /// 蒙层视图
+    private var mantleView = UIView()
+    /// 选中状态回调
+    public var statueBlock: ((Bool) -> Void)?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -37,6 +41,12 @@ class CCPhotoShowCell: UICollectionViewCell {
             make.edges.equalToSuperview()
         }
         
+        contentView.addSubview(mantleView)
+        mantleView.isUserInteractionEnabled = false
+        mantleView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
         contentView.addSubview(statueButton)
         statueButton.setImage(R.image.photo_guide_normal(), for: .normal)
         statueButton.setImage(R.image.photo_guide_seleted(), for: .selected)
@@ -54,7 +64,6 @@ class CCPhotoShowCell: UICollectionViewCell {
             make.height.equalTo(20)
             make.bottom.right.equalToSuperview()
         }
-        
     }
         
     /// 渲染cell内容
@@ -65,5 +74,11 @@ class CCPhotoShowCell: UICollectionViewCell {
     
     @objc func statueButtonDidSeleted() {
         statueButton.isSelected =  !statueButton.isSelected
+        
+        if statueButton.isSelected {
+            mantleView.backgroundColor = .hexColor("#ffffff", 0.2)
+        }else {
+            mantleView.backgroundColor = .clear
+        }
     }
 }
