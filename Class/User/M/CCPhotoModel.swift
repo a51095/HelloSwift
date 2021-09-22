@@ -38,4 +38,16 @@ struct  PhotoModel  {
         self.image = image
         self.asset = asset
     }
+    
+    /// 格式化类型字符串
+    func formatTypeString() -> String {
+        var resString = "Image"
+        switch type {
+        case .Image: resString = "Image"
+        case .Gif: resString = "Gif"
+        case .Live: resString = "Live"
+        case .Video: resString = "Video"
+        }
+        return resString
+    }
 }

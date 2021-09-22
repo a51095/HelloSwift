@@ -21,6 +21,8 @@ func RegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", 
 func MediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
 /// 平方字体-中粗体
 func SemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
+/// 手写字体-中粗体
+func BradleyHandFont(_ size: CGFloat) -> UIFont { UIFont(name:"BradleyHandITCTT-Bold", size: size)! }
 
 // MARK: - 屏幕尺寸相关
 /// 屏幕宽
