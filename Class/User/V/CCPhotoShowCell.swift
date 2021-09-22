@@ -47,9 +47,9 @@ class CCPhotoShowCell: UICollectionViewCell {
         }
         
         contentView.addSubview(typeLabel)
+        typeLabel.textColor = .white
         typeLabel.textAlignment = .right
         typeLabel.font = BradleyHandFont(18)
-        typeLabel.textColor = .white
         typeLabel.snp.makeConstraints { make in
             make.height.equalTo(20)
             make.bottom.right.equalToSuperview()
