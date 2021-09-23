@@ -51,7 +51,7 @@ final class CCDragView: UIView {
     
     // MARK: - 展示悬浮按钮
     public func showDragView() {
-        UIView.animate(withDuration: 0.2) { self.transform = .identity }
+        UIView.animate(withDuration: 0.25) { self.transform = .identity }
     }
     
     // MARK: - 隐藏悬浮按钮
@@ -63,7 +63,7 @@ final class CCDragView: UIView {
             offSet = -(self.frame.width + limitMargin)
         }
         // 位移动画
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.25) {
             self.transform = CGAffineTransform(translationX: offSet, y: 0)
         }
     }
@@ -83,7 +83,6 @@ final class CCDragView: UIView {
         // 移动状态
         let moveState = gesture.state
         switch moveState {
-        case .began: break
         case .changed:
             // 移动过程中,获取移动轨迹,重置center坐标点
             let point = gesture.translation(in: self.superview)
