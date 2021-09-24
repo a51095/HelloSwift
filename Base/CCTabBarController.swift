@@ -30,6 +30,9 @@ class CCTabBarController: UITabBarController {
         // 添加首页视图
         addChildController(title: "首页", normalIconName: "vc_home", seletedIconName: "vc_home", vc: CCNavigationController(rootViewController: CCHomeViewController()))
         
+        // 添加列表视图
+        addChildController(title: "列表", normalIconName: "vc_list", seletedIconName: "vc_list", vc: CCNavigationController(rootViewController: CCListViewController()))
+        
         // 添加用户视图
         addChildController(title: "我的", normalIconName: "vc_user", seletedIconName: "vc_user", vc: CCNavigationController(rootViewController: CCUserViewController()))
     }

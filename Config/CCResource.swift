@@ -173,8 +173,8 @@ struct R: Rswift.Validatable {
     static let vc_back_white = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_back_white")
     /// Image `vc_home`.
     static let vc_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home")
-    /// Image `vc_tab`.
-    static let vc_tab = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_tab")
+    /// Image `vc_list`.
+    static let vc_list = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_list")
     /// Image `vc_user`.
     static let vc_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_user")
 
@@ -305,9 +305,9 @@ struct R: Rswift.Validatable {
     #endif
 
     #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_tab", bundle: ..., traitCollection: ...)`
-    static func vc_tab(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_tab, compatibleWith: traitCollection)
+    /// `UIImage(named: "vc_list", bundle: ..., traitCollection: ...)`
+    static func vc_list(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.vc_list, compatibleWith: traitCollection)
     }
     #endif
 
