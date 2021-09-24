@@ -15,6 +15,7 @@
 		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
 		A66E2EB626FDAAD700453EB9 /* CCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EB526FDAAD700453EB9 /* CCListViewController.swift */; };
+		A66E2EBA26FDDE2000453EB9 /* CCRandomCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */; };
 		A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* CCNetwork.swift */; };
 		A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* CCGuideViewController.swift */; };
 		A69B068A26F19B98007C3FE6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */; };
@@ -65,6 +66,7 @@
 		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
 		A66E2EB526FDAAD700453EB9 /* CCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCListViewController.swift; sourceTree = "<group>"; };
+		A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCRandomCodeView.swift; sourceTree = "<group>"; };
 		A680788F26EB51C60068DD0A /* CCNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCNetwork.swift; sourceTree = "<group>"; };
 		A69B068726F09292007C3FE6 /* CCGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCGuideViewController.swift; sourceTree = "<group>"; };
 		A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
+				A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */,
 				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
 				A69B068726F09292007C3FE6 /* CCGuideViewController.swift */,
 			);
@@ -529,6 +532,7 @@
 				F7B44811269EC0430098D2AF /* CCFixedWidthInteger.swift in Sources */,
 				A607555226F5F33F008103DA /* CCPhotoShowCell.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */,
+				A66E2EBA26FDDE2000453EB9 /* CCRandomCodeView.swift in Sources */,
 				F704A06A269E76500044729E /* CCTabBarController.swift in Sources */,
 				F7B4481A269ECBD40098D2AF /* CCButton.swift in Sources */,
 				F704A077269E7B540044729E /* CCNavigationController.swift in Sources */,
