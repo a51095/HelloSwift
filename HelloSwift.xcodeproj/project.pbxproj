@@ -16,6 +16,7 @@
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
 		A66E2EB626FDAAD700453EB9 /* CCListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EB526FDAAD700453EB9 /* CCListViewController.swift */; };
 		A66E2EBA26FDDE2000453EB9 /* CCRandomCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */; };
+		A66E2EBC270021F100453EB9 /* CCZoomCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EBB270021F100453EB9 /* CCZoomCardView.swift */; };
 		A680789026EB51C70068DD0A /* CCNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* CCNetwork.swift */; };
 		A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* CCGuideViewController.swift */; };
 		A69B068A26F19B98007C3FE6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */; };
@@ -67,6 +68,7 @@
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
 		A66E2EB526FDAAD700453EB9 /* CCListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCListViewController.swift; sourceTree = "<group>"; };
 		A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCRandomCodeView.swift; sourceTree = "<group>"; };
+		A66E2EBB270021F100453EB9 /* CCZoomCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCZoomCardView.swift; sourceTree = "<group>"; };
 		A680788F26EB51C60068DD0A /* CCNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCNetwork.swift; sourceTree = "<group>"; };
 		A69B068726F09292007C3FE6 /* CCGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCGuideViewController.swift; sourceTree = "<group>"; };
 		A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
 				F7B4485126A1168E0098D2AF /* CCLoadingView.swift */,
 				F704A081269E832B0044729E /* CCAlertController.swift */,
+				A66E2EBB270021F100453EB9 /* CCZoomCardView.swift */,
 				A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */,
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
@@ -511,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */,
+				A66E2EBC270021F100453EB9 /* CCZoomCardView.swift in Sources */,
 				F7B44808269EB7CB0098D2AF /* CCObject.swift in Sources */,
 				F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */,
 				F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */,
