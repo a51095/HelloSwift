@@ -75,6 +75,9 @@ final class CCLoadingView: UIView {
 extension UIView {
     /// 展示loading框(主线程中刷新UI)
     func showLoading(_ message: String = "") {
+        // 若当前视图已加载CCLoadingView,则直接返回,不再二次添加;
+        if let lastView = subviews.last as? CCLoadingView { lastView.removeFromSuperview() }
+        
         let loadingView = CCLoadingView(toast: message)
         addSubview(loadingView)
         loadingView.snp.makeConstraints { (make) in
@@ -84,7 +87,7 @@ extension UIView {
     
     /// 隐藏loading框(主线程中刷新UI)
     func hideLoading() {
-        for item in self.subviews {
+        for item in subviews {
             if item.isKind(of: CCLoadingView.self) {
                 item.removeFromSuperview()
             }
