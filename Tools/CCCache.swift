@@ -5,6 +5,11 @@
 //  Created by a51095 on 2021/7/19.
 //
 
+/**
+ * CCCache
+ * 缓存设置类,iOS最低版本需要大于iOS 11
+ **/
+
 final class CCCache {
     /// 字符串类型缓存"String"
     static var store: Storage = try! Storage<String, String>(diskConfig: DiskConfig(name: "disk_cache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))

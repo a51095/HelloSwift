@@ -5,6 +5,11 @@
 //  Created by well on 2021/9/14.
 //
 
+/**
+ * CCGuideViewController:
+ * 启动引导视图
+ **/
+
 struct CCGuideConfig {
     /// 资源名称
     fileprivate var resourceName: [String]

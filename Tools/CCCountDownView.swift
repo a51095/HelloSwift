@@ -5,12 +5,17 @@
 //  Created by a51095 on 2021/7/15.
 //
 
+/**
+ * CCCountDownView:
+ * 短信验证码视图
+ * 使用方法,直接初始化CCCountDownView视图,添加到父视图上即可,支持后台持续计时;
+ **/
+
 /// 倒计时总时长,默认10秒
 private let defaultTotal: Int = 10
-// eg: 使用方法,直接初始化CCCountDownView视图,添加到父视图上即可,支持后台持续计时;
+
 final class CCCountDownView: UIControl {
-    
-    /// 倒计时总时长
+    /// 倒计时剩余时长(递减)
     private var countDownTotal = defaultTotal
     /// 倒计时label
     private let countDownLabel = UILabel()

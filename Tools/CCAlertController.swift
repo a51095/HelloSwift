@@ -5,6 +5,12 @@
 //  Created by a51095 on 2021/7/15.
 //
 
+/**
+ * CCAlertController
+ * 仿系统AlertController弹框
+ * 支持自适应内容区域
+ **/
+
 struct CCAction {
     var title: String
     var titleColor: UIColor

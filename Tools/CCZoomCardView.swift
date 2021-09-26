@@ -5,7 +5,11 @@
 //  Created by well on 2021/9/26.
 //
 
-import UIKit
+/**
+ * CCZoomCardView
+ * 左右滑动缩放视图
+ * 继承于UIView,使用灵活
+ **/
 
 protocol CCZoomCardViewDelegate: NSObjectProtocol {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

@@ -5,12 +5,14 @@
 //  Created by well on 2021/9/6.
 //
 
-import UIKit
+/**
+ * CCAdViewController:
+ * 启动广告引导视图
+ * 支持本地资源、网络资源
+ * 支持image,gif,video多种格式
+ **/
 
-public enum CCAdType {
-    case adImage, adGif, adVideo
-}
-
+public enum CCAdType { case adImage, adGif, adVideo }
 struct CCAdConfig {
     /// 广告类型
     fileprivate var adType: CCAdType

@@ -5,9 +5,13 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-enum ToastType {
-    case nore, success, failure
-}
+/**
+ * CCToastView
+ * 吐司弹框视图
+ * 支持消失时间长短,文字自定义
+ **/
+
+public enum ToastType { case nore, success, failure }
 
 final class CCToastView: UIView {
     var limitTop: CGFloat = 20
