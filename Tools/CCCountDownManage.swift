@@ -5,6 +5,13 @@
 //  Created by a51095 on 2021/7/15.
 //
 
+/**
+ * CCCountDownManage:
+ * 剩余天数倒计时管理类
+ * 支持后台倒计时
+ * 共享数据源,可多处使用
+ **/
+
 protocol CCCountDownManageProtocol: NSObjectProtocol {
     func refreshTime(result: [String])
 }

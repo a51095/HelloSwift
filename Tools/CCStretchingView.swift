@@ -5,7 +5,11 @@
 //  Created by well on 2021/9/2.
 //
 
-import UIKit
+/**
+ * CCStretchingView
+ * 下拉缩放视图
+ * 继承于UIView,使用灵活
+ **/
 
 class CCStretchingView: UIView, UITableViewDelegate, UITableViewDataSource {
     /// tableView返回count,默认10

@@ -5,7 +5,11 @@
 //  Created by well on 2021/9/24.
 //
 
-import UIKit
+/**
+ * CCRandomCodeView:
+ * 随机验证码视图
+ * 支持随机背景色、支持随机角度
+ **/
 
 class CCRandomCodeView: UIView {
     

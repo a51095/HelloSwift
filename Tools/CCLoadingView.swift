@@ -5,6 +5,12 @@
 //  Created by a51095 on 2021/7/16.
 //
 
+/**
+ * CCLoadingView
+ * Loading加载视图
+ * 支持文字显示
+ **/
+
 final class CCLoadingView: UIView {
     /// 懒加载,提示label
     private lazy var messageLabel: UILabel = {
