@@ -64,10 +64,10 @@ final class CCToastView: UIView {
 
 extension UIView {
     /// 吐司效果
-    func toast(_ message: String, type: ToastType = .nore, seconds: TimeInterval = 2)  {
+    func toast(_ message: String, type: ToastType = .nore, duration: TimeInterval = 2)  {
         // 容错处理,若message字段无内容,则直接返回
         guard !message.isEmpty else { return }
-        
+        // 若当前视图已加载CCToastView,则直接返回,不再二次添加;
         if let lastView = subviews.last as? CCToastView { lastView.removeFromSuperview() }
         
         let toastView = CCToastView(message, type: type)
@@ -79,7 +79,7 @@ extension UIView {
             make.height.lessThanOrEqualToSuperview().offset(-200)
         }
         
-        UIView.animate(withDuration: 0.2, delay: seconds, options: .curveEaseInOut) {
+        UIView.animate(withDuration: 0.2, delay: duration, options: .curveEaseInOut) {
             toastView.alpha = 0
         } completion: {_ in
             toastView.removeFromSuperview()
