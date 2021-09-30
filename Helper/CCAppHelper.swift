@@ -63,6 +63,16 @@ func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootVie
     return base
 }
 
+/// 用户相机授权状态
+func requestAccess(handler: @escaping (Bool) -> (Void))  {
+    let status = AVCaptureDevice.authorizationStatus(for: .video)
+    switch status {
+    case .notDetermined: AVCaptureDevice.requestAccess(for: .video) { res in handler(res) }
+    case .authorized: handler(true)
+    default: handler(false)
+    }
+}
+
 /// 用户相册授权状态
 func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
     if #available(iOS 14, *) {
