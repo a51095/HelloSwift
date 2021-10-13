@@ -7,10 +7,10 @@
 
 extension UIColor {
     /// 拓展一个APP主色调
-    open class var main: UIColor { .hexColor("#FFD700") }
+    public class var main: UIColor { .hexColor("#FFD700") }
     
     /// 拓展一个随机颜色
-    open class var random: UIColor {
+    public class var random: UIColor {
         rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
     }
     
