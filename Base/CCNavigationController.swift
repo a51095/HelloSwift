@@ -30,7 +30,7 @@ class CCNavigationController: UINavigationController, UINavigationControllerDele
     
     // MARK: - 导航代理方法
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        // guard校验,若已经push,但为执行完didShow,则返回,不再二次push
+        // guard校验,若已经push,但未执行完didShow,则返回,不再二次push
         guard !isPush else { return }
         // 设置push状态为true
         isPush = true
@@ -38,7 +38,7 @@ class CCNavigationController: UINavigationController, UINavigationControllerDele
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-        // 执行此方法后(didShow),重置isPush状态为false,以达到下次可以正常push的目的
+        // 执行此代理方法后,重置isPush状态为false,以达到下次可以正常push的目的
         isPush = false
     }
 }
