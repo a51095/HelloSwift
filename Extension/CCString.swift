@@ -10,9 +10,12 @@ extension String {
     var i: Int? { Int(self) }
     
     /// "JSON字符串" 转换成 "Dictionary对象"
-    func toDictionary()  throws -> Any {
+    func toDictionary()  throws -> Any? {
         let data = self.data(using: .utf8)
-        return try JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+        // 容错处理
+        guard data != nil else { return nil }
+        
+        return try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
     }
     
     static let characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
