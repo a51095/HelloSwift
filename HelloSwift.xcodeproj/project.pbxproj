@@ -21,6 +21,8 @@
 		A69B068826F09292007C3FE6 /* CCGuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* CCGuideViewController.swift */; };
 		A69B068A26F19B98007C3FE6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */; };
 		A69B068C26F19CD4007C3FE6 /* LaunchImage-1200x2688.png in Resources */ = {isa = PBXBuildFile; fileRef = A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */; };
+		A6AE060C27195643004F5160 /* CCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE060B27195643004F5160 /* CCLocationManager.swift */; };
+		A6AE06112719A604004F5160 /* CCPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE06102719A604004F5160 /* CCPushManager.swift */; };
 		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
 		A6F36C5C26F6483B008999AE /* CCPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
@@ -73,6 +75,8 @@
 		A69B068726F09292007C3FE6 /* CCGuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCGuideViewController.swift; sourceTree = "<group>"; };
 		A69B068926F19B98007C3FE6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-1200x2688.png"; sourceTree = "<group>"; };
+		A6AE060B27195643004F5160 /* CCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLocationManager.swift; sourceTree = "<group>"; };
+		A6AE06102719A604004F5160 /* CCPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPushManager.swift; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
 		A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoDetailViewController.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
@@ -211,6 +215,31 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		A6AE060D27199694004F5160 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE060F2719A5E6004F5160 /* Push */,
+				A6AE060E271996F4004F5160 /* Weather */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		A6AE060E271996F4004F5160 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE060B27195643004F5160 /* CCLocationManager.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		A6AE060F2719A5E6004F5160 /* Push */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE06102719A604004F5160 /* CCPushManager.swift */,
+			);
+			path = Push;
+			sourceTree = "<group>";
+		};
 		C78CFD14EBDB15D285B08BEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +258,7 @@
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
 				F704A08E269EA8A50044729E /* Helper */,
+				A6AE060D27199694004F5160 /* Module */,
 				A680788E26EB518A0068DD0A /* Network */,
 				A650EE5126E63C2D00E437AA /* Resource */,
 				F704A065269E754D0044729E /* Extension */,
@@ -521,9 +551,11 @@
 				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
 				F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,
+				A6AE060C27195643004F5160 /* CCLocationManager.swift in Sources */,
 				F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */,
 				F7B4480B269EB9460098D2AF /* CCString.swift in Sources */,
 				F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */,
+				A6AE06112719A604004F5160 /* CCPushManager.swift in Sources */,
 				A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */,
 				F7B44805269EB2DE0098D2AF /* CCDictionary.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */,
