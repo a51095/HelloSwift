@@ -14,6 +14,7 @@
 @_exported import MJRefresh
 @_exported import HandyJSON
 @_exported import Kingfisher
+@_exported import Foundation
 
 struct CCAppKeys {
     /// 用户第一次安装标识符
