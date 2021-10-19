@@ -19,8 +19,6 @@ extension AppDelegate: CCNetworkStatusProtocol {
             if !isReachable() {
                 window?.rootViewController = CCTabBarController()
             } else {
-                // 获取地理位置
-                CCLocationManager.startLocation()
                 let adConfig = CCAdConfig(type: .adImage, name: CCAppURL.adImageUrl, url: CCAppURL.adLinkUrl)
                 let adViewController = CCAdViewController(config: adConfig)
                 adViewController.dismissBlock = { self.window?.rootViewController = CCTabBarController() }
