@@ -11,6 +11,7 @@
 		A607554C26F5BFF6008103DA /* CCPhotoGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */; };
 		A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554D26F5C144008103DA /* CCPhotoModel.swift */; };
 		A607555226F5F33F008103DA /* CCPhotoShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607555126F5F33F008103DA /* CCPhotoShowCell.swift */; };
+		A620058A2720212300DB8073 /* CCTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62005892720212300DB8073 /* CCTimer.swift */; };
 		A650EE4F26E5FACE00E437AA /* CCAdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */; };
 		A650EE5326E63C6D00E437AA /* localAnimation.gif in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5226E63C6D00E437AA /* localAnimation.gif */; };
 		A650EE5526E6427400E437AA /* localVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A650EE5426E6427400E437AA /* localVideo.mp4 */; };
@@ -65,6 +66,7 @@
 		A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoGuideCell.swift; sourceTree = "<group>"; };
 		A607554D26F5C144008103DA /* CCPhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoModel.swift; sourceTree = "<group>"; };
 		A607555126F5F33F008103DA /* CCPhotoShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoShowCell.swift; sourceTree = "<group>"; };
+		A62005892720212300DB8073 /* CCTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCTimer.swift; sourceTree = "<group>"; };
 		A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAdViewController.swift; sourceTree = "<group>"; };
 		A650EE5226E63C6D00E437AA /* localAnimation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = localAnimation.gif; sourceTree = "<group>"; };
 		A650EE5426E6427400E437AA /* localVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = localVideo.mp4; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 		F704A066269E75640044729E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				A62005892720212300DB8073 /* CCTimer.swift */,
 				F78279B426A5121200A90FFF /* CCCache.swift */,
 				F7B4FD9826A6C6850051FC5B /* CCItemView.swift */,
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
@@ -576,6 +579,7 @@
 				A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */,
 				F7B4FD9726A693B00051FC5B /* CCBaseModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */,
+				A620058A2720212300DB8073 /* CCTimer.swift in Sources */,
 				F704A07C269E7C700044729E /* CCHomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */,
 				F7B44814269EC2B20098D2AF /* CCBinaryFloatingPoint.swift in Sources */,
