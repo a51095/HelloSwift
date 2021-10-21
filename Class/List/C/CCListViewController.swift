@@ -111,8 +111,8 @@ class CCListViewController: CCViewController, UITableViewDelegate, UITableViewDa
         titleButton.isSelected = true
         titleButton.setImage(R.image.photo_arrow_up(), for: .normal)
         titleButton.adjustImageTitlePosition(.right, spacing: 5)
-        self.guideTableView.alpha = 0
-        self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight().cgf)
+        guideTableView.alpha = 0
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight().cgf)
     }
     
     override func setUI() {
