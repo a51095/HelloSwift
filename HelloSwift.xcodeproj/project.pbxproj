@@ -49,7 +49,7 @@
 		F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481F269ED3840098D2AF /* CCToastView.swift */; };
 		F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44823269EDE490098D2AF /* CCDragView.swift */; };
 		F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44828269EE8590098D2AF /* CCCountDownView.swift */; };
-		F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */; };
+		F7B4482C269EFC7C0098D2AF /* CCCountDownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManager.swift */; };
 		F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */; };
 		F7B4485226A1168E0098D2AF /* CCLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485126A1168E0098D2AF /* CCLoadingView.swift */; };
 		F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* CCAppKeys.swift */; };
@@ -108,7 +108,7 @@
 		F7B4481F269ED3840098D2AF /* CCToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCToastView.swift; sourceTree = "<group>"; };
 		F7B44823269EDE490098D2AF /* CCDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDragView.swift; sourceTree = "<group>"; };
 		F7B44828269EE8590098D2AF /* CCCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownView.swift; sourceTree = "<group>"; };
-		F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManage.swift; sourceTree = "<group>"; };
+		F7B4482B269EFC7C0098D2AF /* CCCountDownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManager.swift; sourceTree = "<group>"; };
 		F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppDelegate.swift; sourceTree = "<group>"; };
 		F7B4485126A1168E0098D2AF /* CCLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLoadingView.swift; sourceTree = "<group>"; };
 		F7B4485626A17F650098D2AF /* CCAppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppKeys.swift; sourceTree = "<group>"; };
@@ -331,7 +331,7 @@
 				F7B44828269EE8590098D2AF /* CCCountDownView.swift */,
 				A650EE4E26E5FACE00E437AA /* CCAdViewController.swift */,
 				A66E2EB926FDDE2000453EB9 /* CCRandomCodeView.swift */,
-				F7B4482B269EFC7C0098D2AF /* CCCountDownManage.swift */,
+				F7B4482B269EFC7C0098D2AF /* CCCountDownManager.swift */,
 				A69B068726F09292007C3FE6 /* CCGuideViewController.swift */,
 			);
 			path = Tools;
@@ -552,7 +552,7 @@
 				F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */,
 				F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */,
 				F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */,
-				F7B4482C269EFC7C0098D2AF /* CCCountDownManage.swift in Sources */,
+				F7B4482C269EFC7C0098D2AF /* CCCountDownManager.swift in Sources */,
 				F7B44817269EC6BA0098D2AF /* CCImage.swift in Sources */,
 				A6AE060C27195643004F5160 /* CCLocationManager.swift in Sources */,
 				F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */,

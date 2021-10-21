@@ -1,5 +1,5 @@
 //
-//  CCCountDownManage.swift
+//  CCCountDownManager.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/15.
@@ -12,25 +12,22 @@
  * 共享数据源,可多处使用
  **/
 
-protocol CCCountDownManageProtocol: NSObjectProtocol {
+protocol CCCountDownManagerProtocol: NSObjectProtocol {
     func refreshTime(result: [String])
 }
 
-// eg: 添加CCCountDownManage代理对象,并实现CCCountDownManageProtocol协议,协议方法中,即可获取倒计时总时长(天,时,分,秒)
-final class CCCountDownManage {
-    static var shared = CCCountDownManage()
+// eg: 添加CCCountDownManage代理对象,并实现CCCountDownManagerProtocol协议,协议方法中,即可获取倒计时总时长(天,时,分,秒)
+final class CCCountDownManager {
+    static var shared = CCCountDownManager()
     
     /// 倒计时总时长
     private var countDownTotal: Int = 0
     /// 当前系统绝对时间,进入后台后,仍持续计时
     private var startTime: Int = 0
     /// 代理对象
-    public weak var deletage: CCCountDownManageProtocol?
+    public weak var deletage: CCCountDownManagerProtocol?
     /// 定时器对象
-    private lazy var taskTimer: DispatchSourceTimer? = {
-        let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-        return timer
-    }()
+    private var taskTimer = CCTimer()
     
     /// 开始活动倒计时
     public func run(start: Int, end: Int) {
@@ -39,11 +36,7 @@ final class CCCountDownManage {
         countDownTotal = end - start
         startTime = Int(CACurrentMediaTime())
         
-        taskTimer?.schedule(deadline: .now(), repeating: .seconds(1), leeway: .seconds(0))
-        taskTimer?.setEventHandler {
-            self.deletage?.refreshTime(result: self.updateRemainingTime())
-        }
-        taskTimer?.resume()
+        taskTimer.start { self.deletage?.refreshTime(result: self.updateRemainingTime()) }
     }
     
     // MARK: - 获取剩余总时长
@@ -62,11 +55,11 @@ final class CCCountDownManage {
             let seconds = remainingTotal % 60
             resultString = (String(format: "%02d:%02d:%02d:%02d",day, hours, minutes, seconds))
         }else {
-            taskTimer?.cancel()
+            taskTimer.stop()
         }
         return resultString.components(separatedBy: ":")
     }
     
     /// 主动移除定时器
-    public func cannel() { taskTimer?.cancel() }
+    public func cannel() { taskTimer.stop() }
 }

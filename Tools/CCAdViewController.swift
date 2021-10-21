@@ -37,7 +37,7 @@ struct CCAdConfig {
     }
 }
 
-class CCAdViewController: CCViewController, CCCountDownManageProtocol {
+class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
     
     /// 广告视图配置参数
     private var adConfig: CCAdConfig
@@ -159,8 +159,8 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
         }
         
         let startTime = Int(CACurrentMediaTime())
-        CCCountDownManage.shared.deletage = self
-        CCCountDownManage.shared.run(start: startTime, end: startTime + adConfig.adDuration.i)
+        CCCountDownManager.shared.deletage = self
+        CCCountDownManager.shared.run(start: startTime, end: startTime + adConfig.adDuration.i)
     }
     
     /// 添加广告adImageView
@@ -346,7 +346,7 @@ class CCAdViewController: CCViewController, CCCountDownManageProtocol {
     private func dismiss() {
         UIView.animate(withDuration: 0.25) {
             if self.adConfig.isSkip {
-                CCCountDownManage.shared.cannel()
+                CCCountDownManager.shared.cannel()
                 self.skipButton.removeFromSuperview()
             }
             
