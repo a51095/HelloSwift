@@ -205,9 +205,7 @@ class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
             // 无缓存,则获取网络数据后展示
             if !adImageTemp.fileExist() {
                 let imgUrl = URL(string: adConfig.resourceName)
-                let data = try? Data(contentsOf: imgUrl!)
-                
-                if let imgData = data {
+                if let imgData = try? Data(contentsOf: imgUrl!) {
                     adImageView.image = UIImage(data: imgData)
                     updateAdImage(imgData, adImageTemp)
                 }else {
@@ -217,8 +215,9 @@ class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
             }else {
                 // 有缓存,则直接从缓存读取展示
                 let imgUrl = URL(fileURLWithPath: adImageTemp)
-                let imgData = try? Data(contentsOf: imgUrl)
-                adImageView.image = UIImage(data: imgData!)
+                if let imgData = try? Data(contentsOf: imgUrl) {
+                    adImageView.image = UIImage(data: imgData)
+                }
             }
         }else {
             // 本地资源(image)
@@ -243,9 +242,7 @@ class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
             // 无缓存,则获取网络数据后展示
             if !adGifTemp.fileExist() {
                 let imgUrl = URL(string: adConfig.resourceName)
-                let data = try? Data(contentsOf: imgUrl!)
-                
-                if let gifData = data {
+                if let gifData = try? Data(contentsOf: imgUrl!) {
                     let gifArray = UIImage.gif(data: gifData)
                     adImageView.animationImages = gifArray.0
                     adImageView.animationDuration = gifArray.1
@@ -258,21 +255,23 @@ class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
             }else {
                 // 有缓存,则直接从缓存读取展示
                 let gifUrl = URL(fileURLWithPath: adGifTemp)
-                let gifData = try? Data(contentsOf: gifUrl)
-                let gifArray = UIImage.gif(data: gifData!)
-                adImageView.animationImages = gifArray.0
-                adImageView.animationDuration = gifArray.1
-                adImageView.startAnimating()
+                if let gifData = try? Data(contentsOf: gifUrl) {
+                    let gifArray = UIImage.gif(data: gifData)
+                    adImageView.animationImages = gifArray.0
+                    adImageView.animationDuration = gifArray.1
+                    adImageView.startAnimating()
+                }
             }
         }else {
             // 本地资源(gif)
             let filePath = Bundle.main.path(forResource: adConfig.resourceName, ofType: "gif")!
             let gifUrl = URL(fileURLWithPath: filePath)
-            let gifData = try? Data(contentsOf: gifUrl)
-            let gifArray = UIImage.gif(data: gifData!)
-            adImageView.animationImages = gifArray.0
-            adImageView.animationDuration = gifArray.1
-            adImageView.startAnimating()
+            if let gifData = try? Data(contentsOf: gifUrl) {
+                let gifArray = UIImage.gif(data: gifData)
+                adImageView.animationImages = gifArray.0
+                adImageView.animationDuration = gifArray.1
+                adImageView.startAnimating()
+            }
         }
     }
     
@@ -293,8 +292,7 @@ class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
             // 无缓存,则获取网络数据后展示
             if !adVideoTemp.fileExist() {
                 let videoUrl = URL(string: adConfig.resourceName)!
-                let data = try? Data(contentsOf: videoUrl)
-                if let videoData = data {
+                if let videoData = try? Data(contentsOf: videoUrl) {
                     adAVPlayerItem = AVPlayerItem(url: videoUrl)
                     let adAVPlayer = AVPlayer(playerItem: adAVPlayerItem)
                     adPlayerController.player = adAVPlayer

@@ -46,7 +46,7 @@ final class CCCache {
     
     /// 取值(Dictionary类型)
     static func dictionary(key: String) -> [String: Any]? {
-        guard let jsonString = try? store.object(forKey: key), let dict = try? jsonString.toDictionary() as? [String: Any] else { return nil }
+        guard let jsonString = try? store.object(forKey: key), let dict = try? jsonString.toObject() as? [String: Any] else { return nil }
         return dict
     }
     
