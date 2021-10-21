@@ -14,7 +14,7 @@
 /// 倒计时总时长,默认10秒
 private let defaultTotal: Int = 10
 
-final class CCCountDownView: UIControl {
+final class CCCountDownView: UIView {
     /// 倒计时剩余时长(递减)
     private var countDownTotal = defaultTotal
     /// 倒计时label
@@ -22,7 +22,7 @@ final class CCCountDownView: UIControl {
     /// 当前系统绝对时间,进入后台后,仍持续计时
     private var startTime: Int = 0
     /// 定时器对象
-    private var taskTimer: DispatchSourceTimer?
+    private var taskTimer = CCTimer()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -43,11 +43,8 @@ final class CCCountDownView: UIControl {
         countDownLabel.textColor = .white
         countDownLabel.font = RegularFont(16)
         countDownLabel.textAlignment = .center
-        addTarget(self, action: #selector(countDownDidSeleted), for: .touchUpInside)
         addSubview(countDownLabel)
-        countDownLabel.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        countDownLabel.snp.makeConstraints { (make) in make.edges.equalToSuperview() }
     }
     
     // MARK: - 重置数据
@@ -66,24 +63,21 @@ final class CCCountDownView: UIControl {
             if self.countDownTotal > 0 {
                 self.countDownLabel.text = self.countDownTotal.str
             }else {
-                self.taskTimer?.cancel()
+                self.taskTimer.stop()
                 self.countDownLabel.text = "重新获取"
                 self.isUserInteractionEnabled = true
             }
         }
     }
-    
-    // MARK: - 开始倒计时
-    @objc private func countDownDidSeleted() {
-        resetData()
-        taskTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
-        taskTimer?.schedule(deadline: .now(), repeating: .seconds(1), leeway: .seconds(0))
-        taskTimer?.setEventHandler { self.updateData() }
-        taskTimer?.resume()
-    }
-    
+        
     // MARK: - 获取剩余总时长
     private func remainingTime() -> Int {
         defaultTotal - (Int(CACurrentMediaTime()) - startTime)
+    }
+    
+    // MARK: - 开始倒计时
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        resetData()
+        taskTimer.start { self.updateData() }
     }
 }
