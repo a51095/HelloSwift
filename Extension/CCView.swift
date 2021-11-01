@@ -7,7 +7,7 @@
 
 extension UIView: CCNetworkStatusProtocol {
     /// 获取当前view所属vc
-    func getCurrentViewController() -> UIViewController? {
+    func currentViewController() -> UIViewController? {
         for view in sequence(first: self.superview, next: { $0?.superview }) {
             if let responder = view?.next {
                 if responder.isKind(of: UIViewController.self) {

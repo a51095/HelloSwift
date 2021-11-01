@@ -26,7 +26,7 @@ struct CCAction {
 final class CCAlertController: UIViewController {
     
     /// title与message与stackView间距
-    let limitSpace = 20
+    private let limitSpace = 20
     /// 标题(可选String)
     public var alertTitle: String?
     /// 描述信息(可选String)
@@ -111,13 +111,12 @@ final class CCAlertController: UIViewController {
             stackView.addSubview(verticalLineView)
             verticalLineView.snp.makeConstraints { (make) in
                 make.width.equalTo(0.5)
-                make.height.equalToSuperview()
-                make.centerX.equalToSuperview()
+                make.height.centerX.equalToSuperview()
             }
         }
         
         // 样式1,有标题,有描述
-        if (alertTitle != nil && alertTitle?.count != 0) && (alertMessage != nil && alertMessage?.count != 0 ){
+        if (alertTitle != nil && alertTitle?.count != 0) && (alertMessage != nil && alertMessage?.count != 0 ) {
             let titleLabel = UILabel()
             titleLabel.textColor = .black
             titleLabel.text = self.alertTitle
@@ -202,6 +201,6 @@ extension UIViewController {
 extension UIView {
     /// alert弹框(view中触发)
     func alert(_ title: String?, _ message: String?, _ actions: [CCAction] )  {
-        self.getCurrentViewController()?.alert(title, message, actions)
+        self.currentViewController()?.alert(title, message, actions)
     }
 }
