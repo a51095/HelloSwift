@@ -37,7 +37,7 @@ struct CCAdConfig {
     }
 }
 
-class CCAdViewController: CCViewController, CCCountDownManagerProtocol {
+class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
     
     /// 广告视图配置参数
     private var adConfig: CCAdConfig

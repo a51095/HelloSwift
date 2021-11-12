@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CCHomeViewController: CCViewController, UITableViewDelegate, UITableViewDataSource {
+class CCHomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     /// 当前显示菜单类型
     private var currentIndexName = ""
     /// 菜谱制作数据源

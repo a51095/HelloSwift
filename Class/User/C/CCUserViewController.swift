@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class CCUserViewController: CCViewController {
+class CCUserViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }

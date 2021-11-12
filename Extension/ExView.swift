@@ -1,11 +1,11 @@
 //
-//  CCView.swift
-//  HelloSwift
+//  ExView.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension UIView: CCNetworkStatusProtocol {
+public extension UIView {
     /// 获取当前view所属vc
     func currentViewController() -> UIViewController? {
         for view in sequence(first: self.superview, next: { $0?.superview }) {

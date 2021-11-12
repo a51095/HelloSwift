@@ -7,14 +7,14 @@
 
 import UIKit
 
-class FormulaModel: CCBaseModel {
+class FormulaModel: BaseModel {
     /// 原料名称
     var ylName: String?
     /// 用量
     var ylUnit: String?
 }
 
-class stepsModel: CCBaseModel {
+class stepsModel: BaseModel {
     /// 步骤索引
     var orderNum: String?
     /// 步骤图片
@@ -23,7 +23,7 @@ class stepsModel: CCBaseModel {
     var content: String?
 }
 
-class CCMenuModel: CCBaseModel {
+class CCMenuModel: BaseModel {
     /// 菜谱名称
     var cpName: String?
     /// 小图url

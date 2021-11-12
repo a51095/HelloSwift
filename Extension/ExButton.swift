@@ -1,11 +1,11 @@
 //
-//  CCButton.swift
-//  HelloSwift
+//  ExButton.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension UIButton {
+public extension UIButton {
     /// 逆时针方向🔄
     enum Position { case top, left, bottom, right }
     

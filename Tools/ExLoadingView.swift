@@ -1,17 +1,17 @@
 //
-//  CCLoadingView.swift
+//  ExLoadingView.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/16.
 //
 
 /**
- * CCLoadingView
+ * ExLoadingView
  * Loading加载视图
  * 支持文字显示
  **/
 
-final class CCLoadingView: UIView {
+final class ExLoadingView: UIView {
     /// 懒加载,提示label
     private lazy var messageLabel: UILabel = {
         let l = UILabel()
@@ -82,9 +82,9 @@ extension UIView {
     /// 展示loading框(主线程中刷新UI)
     func showLoading(_ message: String = "") {
         // 若当前视图已加载CCLoadingView,则直接返回,不再二次添加;
-        if let lastView = subviews.last as? CCLoadingView { lastView.removeFromSuperview() }
+        if let lastView = subviews.last as? ExLoadingView { lastView.removeFromSuperview() }
         
-        let loadingView = CCLoadingView(toast: message)
+        let loadingView = ExLoadingView(toast: message)
         addSubview(loadingView)
         loadingView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -94,7 +94,7 @@ extension UIView {
     /// 隐藏loading框(主线程中刷新UI)
     func hideLoading() {
         for item in subviews {
-            if item.isKind(of: CCLoadingView.self) {
+            if item.isKind(of: ExLoadingView.self) {
                 item.removeFromSuperview()
             }
         }

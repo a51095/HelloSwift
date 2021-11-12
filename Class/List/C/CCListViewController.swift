@@ -5,7 +5,7 @@
 //  Created by well on 2021/9/24.
 //
 
-class CCListViewController: CCViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+class CCListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
     
     /// 当前选中的第N个相薄源(默认选中第一个)
     private var seletedIndex = IndexPath(row: 0, section: 0)

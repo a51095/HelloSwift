@@ -1,5 +1,5 @@
 //
-//  CCViewController.swift
+//  BaseViewController.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/15.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CCViewController: UIViewController, CCNetworkStatusProtocol {
+class BaseViewController: UIViewController, NetworkStatusProtocol {
     
     /// 自定义顶部视图(默认白色背景色)
     public lazy var barView: UIView = {

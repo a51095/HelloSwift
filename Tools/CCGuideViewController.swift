@@ -22,7 +22,7 @@ struct CCGuideConfig {
     }
 }
 
-class CCGuideViewController: CCViewController, UIScrollViewDelegate {
+class CCGuideViewController: BaseViewController, UIScrollViewDelegate {
     
     /// 引导视图配置参数
     private var guideConfig: CCGuideConfig
@@ -73,7 +73,7 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
     override func setUI() {
         // 非空校验
         guard !guideConfig.resourceName.isEmpty else {
-            kAppDelegate().window?.rootViewController = CCTabBarController()
+            kAppDelegate().window!!.rootViewController = BaseTabBarController()
             return
         }
         
@@ -150,8 +150,8 @@ class CCGuideViewController: CCViewController, UIScrollViewDelegate {
     }
         
     func setRootViewController() {
-        kAppDelegate().window?.rootViewController = CCTabBarController()
-        CCCache.setString("yes", forKey: CCAppKeys.firstKey)
+        kAppDelegate().window!!.rootViewController = BaseTabBarController()
+        ExCache.setString("yes", forKey: CCAppKeys.firstKey)
     }
     
     /// scrollView代理方法

@@ -1,11 +1,11 @@
 //
-//  CCString.swift
-//  HelloSwift
+//  ExString.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension String {
+public extension String {
     /// 数字类型字符串转整型(谨慎使用)
     var i: Int? { Int(self) }
     
@@ -45,7 +45,7 @@ extension String {
 }
 
 // 文件夹相关处理
-extension String {
+public extension String {
     func createFoldPath() {
         if !FileManager.default.fileExists(atPath: self) {
             try? FileManager.default.createDirectory(atPath: self, withIntermediateDirectories: true, attributes: nil)

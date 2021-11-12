@@ -1,11 +1,11 @@
 //
-//  CCObject.swift
-//  HelloSwift
+//  ExObject.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension NSObject {
+public extension NSObject {
     /// 获取当前类的名称字符串(静态方法)
     static func classString() -> String { NSStringFromClass(self.classForCoder()) }
     
