@@ -27,7 +27,7 @@ final class CCCountDownManager {
     /// 代理对象
     public weak var deletage: CCCountDownManagerProtocol?
     /// 定时器对象
-    private var taskTimer = CCTimer()
+    private var taskTimer = ExTimer()
     
     /// 开始活动倒计时
     public func run(start: Int, end: Int) {

@@ -1,20 +1,20 @@
 //
-//  CCColor.swift
-//  HelloSwift
+//  ExColor.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension UIColor {
-    /// 拓展一个APP主色调
-    public class var main: UIColor { .hexColor("#FFD700") }
+public extension UIColor {
+    /// App主色调
+    class var main: UIColor { .hexColor("#FFD700") }
     
-    /// 拓展一个随机颜色
-    public class var random: UIColor {
+    /// 随机颜色
+    class var random: UIColor {
         rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
     }
     
-    public static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
+    static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
         UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
     }
     
@@ -26,7 +26,7 @@ extension UIColor {
     }
     
     /// 16进制颜色值
-    public static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
+    static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
         var string = ""
         let lowercaseHexString = hexString.lowercased()
         if lowercaseHexString.hasPrefix("0x") {

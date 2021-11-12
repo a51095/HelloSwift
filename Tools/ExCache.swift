@@ -1,5 +1,5 @@
 //
-//  CCCache.swift
+//  ExCache.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/19.
@@ -10,7 +10,7 @@
  * 缓存设置类,iOS最低版本需要大于iOS 11
  **/
 
-final class CCCache {
+final class ExCache {
     /// 字符串类型缓存"String"
     static var store: Storage = try! Storage<String, String>(diskConfig: DiskConfig(name: "disk_cache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))
     /// 数组字符串类型缓存[String]
@@ -59,12 +59,12 @@ final class CCCache {
 
 extension HandyJSON {
     static func getCache(forKey key: String) -> Self? {
-        let jsonString = CCCache.string(key: key)
+        let jsonString = ExCache.string(key: key)
         return Self.deserialize(from: jsonString)
     }
     
     func setCache(forKey key: String) {
         let jsonString = toJSONString()
-        CCCache.setString(jsonString, forKey: key)
+        ExCache.setString(jsonString, forKey: key)
     }
 }

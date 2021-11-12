@@ -8,7 +8,7 @@
 import UIKit
 import PhotosUI
 
-class CCPhotoDetailViewController: CCViewController {
+class CCPhotoDetailViewController: BaseViewController {
     
     /// 自适应 每个item宽度
     private let autoWidth = kScreenWidth().cgf * 0.76

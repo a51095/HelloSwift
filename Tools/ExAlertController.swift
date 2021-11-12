@@ -1,17 +1,17 @@
 //
-//  CCAlertController.swift
+//  ExAlertController.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/15.
 //
 
 /**
- * CCAlertController
+ * ExAlertController
  * 仿系统AlertController弹框
  * 支持自适应内容区域
  **/
 
-struct CCAction {
+struct ExAction {
     var title: String
     var titleColor: UIColor
     var handler: os_block_t?
@@ -23,7 +23,7 @@ struct CCAction {
     }
 }
 
-final class CCAlertController: UIViewController {
+final class ExAlertController: UIViewController {
     
     /// title与message与stackView间距
     private let limitSpace = 20
@@ -32,7 +32,7 @@ final class CCAlertController: UIViewController {
     /// 描述信息(可选String)
     public var alertMessage: String?
     /// 事件(CCAlertAction)
-    public var alertAction: [CCAction]
+    public var alertAction: [ExAction]
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,7 +42,7 @@ final class CCAlertController: UIViewController {
     deinit { print("CCAlertController deinit~") }
     
     // MARK: - 自定义初始化方法
-    init(_ title: String?, _ message: String?, _ actions: [CCAction])  {
+    init(_ title: String?, _ message: String?, _ actions: [ExAction])  {
         
         self.alertTitle = title
         self.alertMessage = message
@@ -192,15 +192,15 @@ final class CCAlertController: UIViewController {
 
 extension UIViewController {
     /// alert弹框(vc中触发)
-    func alert(_ title: String?, _ message: String?, _ actions: [CCAction] )  {
-        let vc = CCAlertController(title, message, actions)
+    func alert(_ title: String?, _ message: String?, _ actions: [ExAction] )  {
+        let vc = ExAlertController(title, message, actions)
         present(vc, animated: true, completion: nil)
     }
 }
 
 extension UIView {
     /// alert弹框(view中触发)
-    func alert(_ title: String?, _ message: String?, _ actions: [CCAction] )  {
+    func alert(_ title: String?, _ message: String?, _ actions: [ExAction] )  {
         self.currentViewController()?.alert(title, message, actions)
     }
 }

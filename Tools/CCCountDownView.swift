@@ -22,7 +22,7 @@ final class CCCountDownView: UIView {
     /// 当前系统绝对时间,进入后台后,仍持续计时
     private var startTime: Int = 0
     /// 定时器对象
-    private var taskTimer = CCTimer()
+    private var taskTimer = ExTimer()
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

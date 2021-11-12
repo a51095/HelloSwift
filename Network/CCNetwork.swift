@@ -27,13 +27,13 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
     // 合并请求参数
     if !parameters.isEmpty { commonParam.merge(dict: parameters) }
     
-    kAppDelegate().window?.showLoading()
+    kAppDelegate().window!!.showLoading()
     AF.request(url, method: method, parameters: commonParam, encoding: encoding).responseJSON { res in
-        kAppDelegate().window?.hideLoading()
+        kAppDelegate().window!!.hideLoading()
         // 容错处理,若请求报错error,则直接返回默认数据
         guard res.error == nil else {
             if showErrorMsg {
-                kAppDelegate().window?.toast("出错啦", type: .failure)
+                kAppDelegate().window!!.toast("出错啦", type: .failure)
             }
             response(CCResponseData());
             return
@@ -42,7 +42,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
         // 容错处理,若请求res.value空值,则直接返回默认数据
         guard let dic = res.value as? [String: Any] else {
             if showErrorMsg {
-                kAppDelegate().window?.toast("出错啦", type: .failure)
+                kAppDelegate().window!!.toast("出错啦", type: .failure)
             }
             response(CCResponseData());
             return
@@ -51,7 +51,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
         // 容错处理,若请求code空值,则直接返回默认数据
         guard let code = dic["code"] as? String else {
             if showErrorMsg {
-                kAppDelegate().window?.toast("出错啦", type: .failure)
+                kAppDelegate().window!!.toast("出错啦", type: .failure)
             }
             response(CCResponseData());
             return

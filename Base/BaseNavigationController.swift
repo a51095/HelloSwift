@@ -1,11 +1,11 @@
 //
-//  CCNavigationController.swift
+//  BaseNavigationController.swift
 //  HelloSwift
 //
 //  Created by a51095 on 2021/7/15.
 //
 
-class CCNavigationController: UINavigationController, UINavigationControllerDelegate {
+class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
     var isPush: Bool = false
     
     // MARK: - 反初始化器

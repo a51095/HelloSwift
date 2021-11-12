@@ -1,11 +1,11 @@
 //
-//  CCFixedWidthInteger.swift
-//  HelloSwift
+//  ExFixedWidthInteger.swift
+//  DevHelper
 //
-//  Created by a51095 on 2021/7/15.
+//  Created by a51095 on 2021/11/11.
 //
 
-extension FixedWidthInteger {
+public extension FixedWidthInteger {
     /// 整型转Float
     var f: Float { Float(self) }
     

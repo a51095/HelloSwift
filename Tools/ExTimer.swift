@@ -1,11 +1,11 @@
 //
-//  CCTimer.swift
+//  ExTimer.swift
 //  HelloSwift
 //
 //  Created by well on 2021/10/20.
 //
 
-final class CCTimer {
+final class ExTimer {
     /// 定时器对象
     private var taskTimer: DispatchSourceTimer?
     

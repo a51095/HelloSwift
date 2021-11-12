@@ -5,6 +5,17 @@
 //  Created by a51095 on 2021/7/15.
 //
 
+@_exported import AVKit
+@_exported import Cache
+@_exported import Photos
+@_exported import SnapKit
+@_exported import PhotosUI
+@_exported import Alamofire
+@_exported import MJRefresh
+@_exported import HandyJSON
+@_exported import Kingfisher
+@_exported import Foundation
+
 /// app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
 /// app沙盒Library二级目录(Caches,Preferences)
@@ -12,7 +23,7 @@ let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .use
 /// app沙盒Tmp根目录(tmp)
 let kAppTmpPath = NSTemporaryDirectory()
 /// 全局的UIApplication代理对象
-func kAppDelegate() -> AppDelegate { UIApplication.shared.delegate as! AppDelegate }
+func kAppDelegate() -> UIApplicationDelegate { UIApplication.shared.delegate! }
 
 // MARK: - 字体相关
 /// 平方字体-常规体
@@ -47,7 +58,7 @@ func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
 
 /// 获取当前窗口nav对象
 func  kTopNavController() -> UINavigationController {
-    let rootVC = kAppDelegate().window!.rootViewController
+    let rootVC = kAppDelegate().window!!.rootViewController
     if let tab = rootVC as? UITabBarController {
         return tab.selectedViewController as! UINavigationController
     } else {
@@ -56,7 +67,7 @@ func  kTopNavController() -> UINavigationController {
 }
 
 /// 获取当前窗口vc对象
-func kTopViewController(base: UIViewController? = kAppDelegate().window?.rootViewController) -> UIViewController? {
+func kTopViewController(base: UIViewController? = kAppDelegate().window!!.rootViewController) -> UIViewController? {
     if let nav = base as? UINavigationController { return kTopViewController(base: nav.visibleViewController) }
     if let tab = base as? UITabBarController { return kTopViewController(base: tab.selectedViewController) }
     if let presented = base?.presentedViewController { return kTopViewController(base: presented) }
@@ -109,11 +120,11 @@ func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
 }
 
 /// 网络状态协议
-protocol CCNetworkStatusProtocol {
+protocol NetworkStatusProtocol {
     func isReachable() -> Bool
 }
 
-extension CCNetworkStatusProtocol {
+extension NetworkStatusProtocol {
     /// 返回一个布尔值,用于实时监测网络状态
     func isReachable() -> Bool {
         var res: Bool = false

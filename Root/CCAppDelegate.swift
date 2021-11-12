@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/7/15.
 //
 
-extension AppDelegate: CCNetworkStatusProtocol {
+extension AppDelegate: NetworkStatusProtocol {
     /// 注册APP
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
        
@@ -17,11 +17,11 @@ extension AppDelegate: CCNetworkStatusProtocol {
             window?.rootViewController = CCGuideViewController(config: guideConfig)
         } else {
             if !isReachable() {
-                window?.rootViewController = CCTabBarController()
+                window?.rootViewController = BaseTabBarController()
             } else {
                 let adConfig = CCAdConfig(type: .adImage, name: CCAppURL.adImageUrl, url: CCAppURL.adLinkUrl)
                 let adViewController = CCAdViewController(config: adConfig)
-                adViewController.dismissBlock = { self.window?.rootViewController = CCTabBarController() }
+                adViewController.dismissBlock = { self.window?.rootViewController = BaseTabBarController() }
                 window?.rootViewController = adViewController
             }
         }
@@ -32,6 +32,6 @@ extension AppDelegate: CCNetworkStatusProtocol {
     }
     
     /// 检查用户是否首次安装
-    private func isFirst() -> Bool { CCCache.string(key: CCAppKeys.firstKey) == nil }
+    private func isFirst() -> Bool { ExCache.string(key: CCAppKeys.firstKey) == nil }
 
 }
