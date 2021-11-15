@@ -8,8 +8,8 @@
 // MARK: - CCResponseData
 /// 自定义响应数据结构(目的在于封装的请求方法仅一个回调即可获取成功与失败两种状态)
 struct CCResponseData {
-    var resCode: Int?
-    var data: [String: Any]?
+    var resCode: Int = -1
+    var data: [String: Any]? = nil
 }
 
 // MARK: - NetworkRequest
@@ -57,7 +57,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
             return
         }
         
-        let data = CCResponseData(resCode: code.i, data: dic)
+        let data = CCResponseData(resCode: code.i!, data: dic)
         response(data)
     }
 }

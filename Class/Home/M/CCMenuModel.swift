@@ -5,16 +5,14 @@
 //  Created by a51095 on 2021/7/22.
 //
 
-import UIKit
-
-class FormulaModel: BaseModel {
+struct FormulaModel: HandyJSON {
     /// 原料名称
     var ylName: String?
     /// 用量
     var ylUnit: String?
 }
 
-class stepsModel: BaseModel {
+struct stepsModel: HandyJSON {
     /// 步骤索引
     var orderNum: String?
     /// 步骤图片
@@ -23,7 +21,7 @@ class stepsModel: BaseModel {
     var content: String?
 }
 
-class CCMenuModel: BaseModel {
+struct CCMenuModel: HandyJSON {
     /// 菜谱名称
     var cpName: String?
     /// 小图url
