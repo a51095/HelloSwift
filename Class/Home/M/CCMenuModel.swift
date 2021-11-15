@@ -46,7 +46,7 @@ class CCMenuManager {
     var menuDic = [String: [CCMenuModel]]()
     
     func checkSources(nameKey: String) -> [CCMenuModel]? {
-        var res: [CCMenuModel]?
+        var res: [CCMenuModel]? = nil
         for (key,value) in menuDic {
             if nameKey == key {
                 res = value
