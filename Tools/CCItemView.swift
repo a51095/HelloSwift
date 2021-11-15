@@ -92,7 +92,7 @@ class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {
     func getMenu() {
         NetworkRequest(url: CCAppURL.typefreeUrl) { res in
             // 容错处理
-            guard res.resCode != nil else { return }
+            guard res.data != nil else { return }
             
             if let dic = res.data {
                 let datas = dic["datas"] as! [[String: Any]]
