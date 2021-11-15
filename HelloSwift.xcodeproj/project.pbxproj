@@ -55,7 +55,6 @@
 		F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* CCAppKeys.swift */; };
 		F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* CCAppURL.swift */; };
 		F7B4485E26A181DB0098D2AF /* CCAppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */; };
-		F7B4FD9726A693B00051FC5B /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9626A693B00051FC5B /* BaseModel.swift */; };
 		F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* CCItemView.swift */; };
 		F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139C26A90FE10071B2CC /* CCMenuModel.swift */; };
 		F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA139E26A917870071B2CC /* CCMenuCell.swift */; };
@@ -114,7 +113,6 @@
 		F7B4485626A17F650098D2AF /* CCAppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppKeys.swift; sourceTree = "<group>"; };
 		F7B4485A26A181550098D2AF /* CCAppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppURL.swift; sourceTree = "<group>"; };
 		F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppNotificationName.swift; sourceTree = "<group>"; };
-		F7B4FD9626A693B00051FC5B /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		F7B4FD9826A6C6850051FC5B /* CCItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCItemView.swift; sourceTree = "<group>"; };
 		F7EA139C26A90FE10071B2CC /* CCMenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCMenuModel.swift; sourceTree = "<group>"; };
 		F7EA139E26A917870071B2CC /* CCMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCMenuCell.swift; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 		F704A064269E75110044729E /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				F7B4FD9626A693B00051FC5B /* BaseModel.swift */,
 				F704A071269E7B2B0044729E /* BaseViewController.swift */,
 				F704A069269E76500044729E /* BaseTabBarController.swift */,
 				F704A076269E7B540044729E /* BaseNavigationController.swift */,
@@ -577,7 +574,6 @@
 				F704A077269E7B540044729E /* BaseNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* ExAlertController.swift in Sources */,
 				A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */,
-				F7B4FD9726A693B00051FC5B /* BaseModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* CCItemView.swift in Sources */,
 				A62CF271273E7DBC00670C13 /* ExImage.swift in Sources */,
 				A620058A2720212300DB8073 /* ExTimer.swift in Sources */,

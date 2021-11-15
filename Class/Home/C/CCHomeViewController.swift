@@ -79,7 +79,7 @@ class CCHomeViewController: BaseViewController, UITableViewDelegate, UITableView
         NetworkRequest(url: CCAppURL.queryfreeUrl, parameters: ["type": typeName]) { res in
             self.menuTableView.mj_header?.endRefreshing()
             // 容错处理
-            guard res.resCode != nil else { return }
+            guard res.data != nil else { return }
             
             if let dic = res.data {
                 let datas = dic["datas"] as! [[String: Any]]
