@@ -33,7 +33,7 @@
 		A69B068C26F19CD4007C3FE6 /* LaunchImage-1200x2688.png in Resources */ = {isa = PBXBuildFile; fileRef = A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */; };
 		A6AE060C27195643004F5160 /* CCLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE060B27195643004F5160 /* CCLocationManager.swift */; };
 		A6AE06112719A604004F5160 /* CCPushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE06102719A604004F5160 /* CCPushManager.swift */; };
-		A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCResource.swift */; };
+		A6D410FE26E29C0B00FD46CE /* CCImageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* CCImageConfig.swift */; };
 		A6F36C5C26F6483B008999AE /* CCPhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */; };
 		A6FA66BE26E1015D00A6A918 /* CCStretchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
@@ -46,11 +46,11 @@
 		F704A082269E832B0044729E /* ExAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A081269E832B0044729E /* ExAlertController.swift */; };
 		F704A090269EAA0E0044729E /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A08F269EAA0E0044729E /* AppHelper.swift */; };
 		F78279B526A5121200A90FFF /* ExCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78279B426A5121200A90FFF /* ExCache.swift */; };
-		F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481F269ED3840098D2AF /* CCToastView.swift */; };
+		F7B44820269ED3840098D2AF /* ExToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4481F269ED3840098D2AF /* ExToastView.swift */; };
 		F7B44824269EDE490098D2AF /* CCDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44823269EDE490098D2AF /* CCDragView.swift */; };
 		F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B44828269EE8590098D2AF /* CCCountDownView.swift */; };
 		F7B4482C269EFC7C0098D2AF /* CCCountDownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CCCountDownManager.swift */; };
-		F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */; };
+		F7B4484E26A03E970098D2AF /* ExAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */; };
 		F7B4485226A1168E0098D2AF /* ExLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485126A1168E0098D2AF /* ExLoadingView.swift */; };
 		F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* CCAppKeys.swift */; };
 		F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* CCAppURL.swift */; };
@@ -88,7 +88,7 @@
 		A69B068B26F19CD4007C3FE6 /* LaunchImage-1200x2688.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-1200x2688.png"; sourceTree = "<group>"; };
 		A6AE060B27195643004F5160 /* CCLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCLocationManager.swift; sourceTree = "<group>"; };
 		A6AE06102719A604004F5160 /* CCPushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPushManager.swift; sourceTree = "<group>"; };
-		A6D410FD26E29C0B00FD46CE /* CCResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCResource.swift; sourceTree = "<group>"; };
+		A6D410FD26E29C0B00FD46CE /* CCImageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCImageConfig.swift; sourceTree = "<group>"; };
 		A6F36C5B26F6483B008999AE /* CCPhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoDetailViewController.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* CCStretchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCStretchingView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,11 +105,11 @@
 		F704A081269E832B0044729E /* ExAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAlertController.swift; sourceTree = "<group>"; };
 		F704A08F269EAA0E0044729E /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		F78279B426A5121200A90FFF /* ExCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCache.swift; sourceTree = "<group>"; };
-		F7B4481F269ED3840098D2AF /* CCToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCToastView.swift; sourceTree = "<group>"; };
+		F7B4481F269ED3840098D2AF /* ExToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExToastView.swift; sourceTree = "<group>"; };
 		F7B44823269EDE490098D2AF /* CCDragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDragView.swift; sourceTree = "<group>"; };
 		F7B44828269EE8590098D2AF /* CCCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownView.swift; sourceTree = "<group>"; };
 		F7B4482B269EFC7C0098D2AF /* CCCountDownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCCountDownManager.swift; sourceTree = "<group>"; };
-		F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppDelegate.swift; sourceTree = "<group>"; };
+		F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAppDelegate.swift; sourceTree = "<group>"; };
 		F7B4485126A1168E0098D2AF /* ExLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExLoadingView.swift; sourceTree = "<group>"; };
 		F7B4485626A17F650098D2AF /* CCAppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppKeys.swift; sourceTree = "<group>"; };
 		F7B4485A26A181550098D2AF /* CCAppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAppURL.swift; sourceTree = "<group>"; };
@@ -298,7 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				F704A04C269E73830044729E /* AppDelegate.swift */,
-				F7B4484D26A03E960098D2AF /* CCAppDelegate.swift */,
+				F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */,
 				F704A055269E73850044729E /* Assets.xcassets */,
 				F704A05A269E73850044729E /* Info.plist */,
 			);
@@ -323,7 +323,7 @@
 				F78279B426A5121200A90FFF /* ExCache.swift */,
 				F7B4FD9826A6C6850051FC5B /* CCItemView.swift */,
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
-				F7B4481F269ED3840098D2AF /* CCToastView.swift */,
+				F7B4481F269ED3840098D2AF /* ExToastView.swift */,
 				F7B4485126A1168E0098D2AF /* ExLoadingView.swift */,
 				F704A081269E832B0044729E /* ExAlertController.swift */,
 				A66E2EBB270021F100453EB9 /* CCZoomCardView.swift */,
@@ -380,7 +380,7 @@
 			children = (
 				F7B4485A26A181550098D2AF /* CCAppURL.swift */,
 				F7B4485626A17F650098D2AF /* CCAppKeys.swift */,
-				A6D410FD26E29C0B00FD46CE /* CCResource.swift */,
+				A6D410FD26E29C0B00FD46CE /* CCImageConfig.swift */,
 				F7B4485D26A181DB0098D2AF /* CCAppNotificationName.swift */,
 			);
 			path = Config;
@@ -533,11 +533,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Config/CCResource.swift,
+				$SRCROOT/Config/CCImageConfig.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Config/CCResource.swift\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Config/CCImageConfig.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -546,7 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7B44820269ED3840098D2AF /* CCToastView.swift in Sources */,
+				F7B44820269ED3840098D2AF /* ExToastView.swift in Sources */,
 				A66E2EBC270021F100453EB9 /* CCZoomCardView.swift in Sources */,
 				F7EA139F26A917870071B2CC /* CCMenuCell.swift in Sources */,
 				F7EA139D26A90FE10071B2CC /* CCMenuModel.swift in Sources */,
@@ -560,7 +560,7 @@
 				F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
 				A6AE06112719A604004F5160 /* CCPushManager.swift in Sources */,
-				A6D410FE26E29C0B00FD46CE /* CCResource.swift in Sources */,
+				A6D410FE26E29C0B00FD46CE /* CCImageConfig.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CCCountDownView.swift in Sources */,
 				F704A090269EAA0E0044729E /* AppHelper.swift in Sources */,
 				A62CF273273E7DBC00670C13 /* ExObject.swift in Sources */,
@@ -591,7 +591,7 @@
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* CCListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* ExCache.swift in Sources */,
-				F7B4484E26A03E970098D2AF /* CCAppDelegate.swift in Sources */,
+				F7B4484E26A03E970098D2AF /* ExAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
