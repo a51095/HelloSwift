@@ -16,8 +16,6 @@ class CCPhotoShowCell: UICollectionViewCell {
     private var typeLabel = UILabel()
     /// 蒙层视图
     private var mantleView = UIView()
-    /// 选中状态回调
-    public var statueBlock: ((Bool) -> Void)?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
