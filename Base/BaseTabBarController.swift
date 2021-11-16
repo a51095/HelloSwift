@@ -41,13 +41,13 @@ class BaseTabBarController: UITabBarController {
     func configItemStyle() {
         var viewControllers = [TabItem]()
         
-        let homeVC  = TabItem(title: "首页", normalName: "vc_home", seletedName: "vc_home", viewController: CCHomeViewController())
+        let homeVC  = TabItem(title: "首页", normalName: "vc_home", seletedName: "vc_home", viewController: BaseNavigationController(rootViewController: CCHomeViewController()))
         viewControllers.append(homeVC)
         
-        let listVC  = TabItem(title: "列表", normalName: "vc_list", seletedName: "vc_list", viewController: CCListViewController())
+        let listVC  = TabItem(title: "列表", normalName: "vc_list", seletedName: "vc_list", viewController: BaseNavigationController(rootViewController: CCListViewController()))
         viewControllers.append(listVC)
         
-        let userVC  = TabItem(title: "我的", normalName: "vc_user", seletedName: "vc_user", viewController: CCUserViewController())
+        let userVC  = TabItem(title: "我的", normalName: "vc_user", seletedName: "vc_user", viewController: BaseNavigationController(rootViewController: CCUserViewController()))
         viewControllers.append(userVC)
         
         addChildController(items: viewControllers)
