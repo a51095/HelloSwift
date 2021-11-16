@@ -38,11 +38,15 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
         let autoWidth = (kScreenWidth() - 5 * limitMargin) / 4
         flowLayout.itemSize = CGSize(width: autoWidth, height: autoWidth)
         flowLayout.sectionInset = UIEdgeInsets(top: limitMargin.cgf, left: limitMargin.cgf, bottom: limitMargin.cgf, right: limitMargin.cgf)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressTouchDown))
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = false
+        collectionView.addGestureRecognizer(longPress)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(CCPhotoShowCell.self, forCellWithReuseIdentifier: classString())
         return collectionView
@@ -94,11 +98,11 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
         let  assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
         filterAssetCollections(collection: assetCollections)
         
-        #if !targetEnvironment(simulator)
+#if !targetEnvironment(simulator)
         // 获取用户自定义相册
         let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: fetchOptions)
         filterAssetCollections(collection: userCollections as! PHFetchResult<PHAssetCollection>)
-        #endif
+#endif
         
         // 按照数组长度排序
         albumSource = albumSource.sorted { a, b in a.fetchResult.count > b.fetchResult.count }
@@ -194,6 +198,19 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
         photoCollectionView.reloadData()
     }
     
+    // MARK: 长按拖动事件
+    @objc func longPressTouchDown(longPress: UILongPressGestureRecognizer) {
+        switch longPress.state {
+        case .began:
+            let indexPath = photoCollectionView.indexPathForItem(at: longPress.location(in: photoCollectionView))
+            guard indexPath != nil else { return }
+            photoCollectionView.beginInteractiveMovementForItem(at: indexPath!)
+        case .changed: photoCollectionView.updateInteractiveMovementTargetPosition(longPress.location(in: photoCollectionView))
+        case .ended: photoCollectionView.endInteractiveMovement()
+        default: photoCollectionView.cancelInteractiveMovement()
+        }
+    }
+    
     // MARK: tableView代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         albumSource.count
@@ -231,6 +248,12 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
         let item = photoSource[indexPath.item]
         let vc = CCPhotoDetailViewController(type: item.type, source: item.asset)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = photoSource[sourceIndexPath.item]
+        photoSource.remove(at: sourceIndexPath.item)
+        photoSource.insert(item, at: destinationIndexPath.item)
     }
     
     // MARK: 私有方法
