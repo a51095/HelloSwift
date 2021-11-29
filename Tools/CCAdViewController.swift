@@ -243,7 +243,7 @@ class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
             if !adGifTemp.fileExist() {
                 let imgUrl = URL(string: adConfig.resourceName)
                 if let gifData = try? Data(contentsOf: imgUrl!) {
-                    let gifArray = UIImage.gif(data: gifData)
+                    let gifArray = UIImage.gif(gifData)
                     adImageView.animationImages = gifArray.0
                     adImageView.animationDuration = gifArray.1
                     adImageView.startAnimating()
@@ -256,7 +256,7 @@ class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
                 // 有缓存,则直接从缓存读取展示
                 let gifUrl = URL(fileURLWithPath: adGifTemp)
                 if let gifData = try? Data(contentsOf: gifUrl) {
-                    let gifArray = UIImage.gif(data: gifData)
+                    let gifArray = UIImage.gif(gifData)
                     adImageView.animationImages = gifArray.0
                     adImageView.animationDuration = gifArray.1
                     adImageView.startAnimating()
@@ -267,7 +267,7 @@ class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
             let filePath = Bundle.main.path(forResource: adConfig.resourceName, ofType: "gif")!
             let gifUrl = URL(fileURLWithPath: filePath)
             if let gifData = try? Data(contentsOf: gifUrl) {
-                let gifArray = UIImage.gif(data: gifData)
+                let gifArray = UIImage.gif(gifData)
                 adImageView.animationImages = gifArray.0
                 adImageView.animationDuration = gifArray.1
                 adImageView.startAnimating()

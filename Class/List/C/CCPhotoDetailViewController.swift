@@ -64,7 +64,7 @@ class CCPhotoDetailViewController: BaseViewController {
         }else {
             PHImageManager.default().requestImageData(for: asset, options: .none) { resData, string, ori, dic in
                 if let data = resData {
-                    let resArray = UIImage.gif(data: data)
+                    let resArray = UIImage.gif(data)
                     self.imageView.animationImages = resArray.0
                     self.imageView.animationDuration = resArray.1
                     self.imageView.startAnimating()

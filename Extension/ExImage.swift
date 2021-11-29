@@ -113,7 +113,7 @@ public extension UIImage {
     }
     
     /// 渲染GIF图片
-    static func gif(data: Data) -> ([UIImage]?, TimeInterval) {
+    static func gif(_ data: Data) -> ([UIImage]?, TimeInterval) {
         // 从data中读取数据: 将data转成CGImageSource对象
         guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else { return (nil, 0) }
         let imageCount = CGImageSourceGetCount(imageSource)
