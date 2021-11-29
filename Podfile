@@ -22,6 +22,7 @@ def swiftPods
   pod 'Alamofire', '5.4.3'
   pod 'HandyJSON', '5.0.2'
   pod 'Kingfisher', '6.3.1'
+  pod 'AAInfographics','6.0.0'
   pod 'KeychainAccess', '4.2.2'
 end
 

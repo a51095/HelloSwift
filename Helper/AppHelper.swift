@@ -15,6 +15,7 @@
 @_exported import HandyJSON
 @_exported import Kingfisher
 @_exported import Foundation
+@_exported import AAInfographics
 
 /// app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
