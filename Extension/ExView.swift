@@ -17,4 +17,14 @@ public extension UIView {
         }
         return nil
     }
+    
+    /// 将View转换为UIImage(屏幕截图)
+    func toImage() -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
+        let context = UIGraphicsGetCurrentContext()
+        self.layer.render(in: context!)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img
+    }
 }
