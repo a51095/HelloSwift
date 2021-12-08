@@ -8,16 +8,7 @@
 public extension String {
     /// 数字类型字符串转整型(谨慎使用)
     var i: Int? { Int(self) }
-    
-    /// "JSON字符串" 转换成 "对象"类型
-    func toObject()  throws -> Any? {
-        let data = self.data(using: .utf8)
-        // 容错处理
-        guard data != nil else { return nil }
         
-        return try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
-    }
-    
     static let characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     /// 生成指定位数随机字符串(此处默认16位)
     static func randomString(len : Int) -> String {
@@ -30,17 +21,27 @@ public extension String {
     }
     
     /// 格式化时间字符串
-    static func getDateFormatter() -> String {
+    static func dateFormatter() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateStr = formatter.string(from: Date())
         return dateStr
     }
     
+    /// "JSON字符串" 转换成 "对象"类型
+    func toObject()  throws -> Any? {
+        let data = self.data(using: .utf8)
+        // 容错处理
+        guard data != nil else { return nil }
+        return try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
+    }
+    
     /// 去除字符串中的空格
-    var removeAllSapce: String? {
-        let trimmedString = self.replacingOccurrences(of: " ", with: "")
-        return trimmedString
+    func removeAllSapce() -> String { replacingOccurrences(of: " ", with: "") }
+    
+    /// 版本号比较
+    func isHeightVersion(by version: String) -> Bool {
+        compare(version, options: .numeric, range: nil, locale: nil) == .orderedDescending
     }
 }
 

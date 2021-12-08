@@ -47,7 +47,7 @@ public extension UIImage {
     }
     
     /// 压缩图片(默认压缩至0.5M)
-    func compress(toByte : Int = 512 * 1024) -> Data? {
+    func compress(toByte: Int = 512 * 1024) -> Data? {
         autoreleasepool {
             var compression: CGFloat = 1
             guard var data = self.jpegData(compressionQuality: compression) else { return nil}
@@ -100,18 +100,7 @@ public extension UIImage {
             return data
         }
     }
-    
-    /// 将View转换为UIImage(屏幕截图)
-    static func viewToImage(view: UIView) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()
-        view.layer.render(in: context!)
-        let img = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         
-        return img
-    }
-    
     /// 渲染GIF图片
     static func gif(_ data: Data) -> ([UIImage]?, TimeInterval) {
         // 从data中读取数据: 将data转成CGImageSource对象
