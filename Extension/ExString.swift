@@ -40,7 +40,7 @@ public extension String {
     func removeAllSapce() -> String { replacingOccurrences(of: " ", with: "") }
     
     /// 版本号比较
-    func isHeightVersion(by version: String) -> Bool {
+    func isHeightVersion(over version: String) -> Bool {
         compare(version, options: .numeric, range: nil, locale: nil) == .orderedDescending
     }
 }
