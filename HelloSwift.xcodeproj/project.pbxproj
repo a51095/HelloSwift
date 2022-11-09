@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		828DB5AD291B88F5008CD8B9 /* ExTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DB5AC291B88F5008CD8B9 /* ExTreeNode.swift */; };
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
 		A607554C26F5BFF6008103DA /* CCPhotoGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */; };
 		A607554E26F5C144008103DA /* CCPhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554D26F5C144008103DA /* CCPhotoModel.swift */; };
@@ -62,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
+		828DB5AC291B88F5008CD8B9 /* ExTreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTreeNode.swift; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* CCPhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoGuideCell.swift; sourceTree = "<group>"; };
 		A607554D26F5C144008103DA /* CCPhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoModel.swift; sourceTree = "<group>"; };
 		A607555126F5F33F008103DA /* CCPhotoShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCPhotoShowCell.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 			children = (
 				A62005892720212300DB8073 /* ExTimer.swift */,
 				F78279B426A5121200A90FFF /* ExCache.swift */,
+				828DB5AC291B88F5008CD8B9 /* ExTreeNode.swift */,
 				F7B4FD9826A6C6850051FC5B /* CCItemView.swift */,
 				F7B44823269EDE490098D2AF /* CCDragView.swift */,
 				F7B4481F269ED3840098D2AF /* ExToastView.swift */,
@@ -555,6 +558,7 @@
 				A6AE060C27195643004F5160 /* CCLocationManager.swift in Sources */,
 				F7B4485726A17F660098D2AF /* CCAppKeys.swift in Sources */,
 				F7B4485B26A181550098D2AF /* CCAppURL.swift in Sources */,
+				828DB5AD291B88F5008CD8B9 /* ExTreeNode.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
 				A6AE06112719A604004F5160 /* CCPushManager.swift in Sources */,
 				A6D410FE26E29C0B00FD46CE /* CCImageConfig.swift in Sources */,
