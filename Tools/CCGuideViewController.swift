@@ -129,7 +129,7 @@ class CCGuideViewController: BaseViewController, UIScrollViewDelegate {
     private func addStartButton() {
         view.addSubview(startButton)
         startButton.frame = CGRect(x: kScreenWidth() / 2 - 50, y: kScreenHeight() - kAdaptedHeight(100), width: 100, height: 36)
-        dismissAnimation()
+        hideAnimation()
     }
     
     /// 添加显示圆点pageControl
@@ -159,10 +159,10 @@ class CCGuideViewController: BaseViewController, UIScrollViewDelegate {
         let currentIndex = scrollView.contentOffset.x.i / kScreenWidth()
         guard currentIndex != pageControl.currentPage else { return }
         pageControl.currentPage = currentIndex
-        (pageControl.currentPage == displayCount - 1) ? showAnimation() : dismissAnimation()
+        (pageControl.currentPage == displayCount - 1) ? displayAnimation() : hideAnimation()
     }
 
-    private func showAnimation() {
+    private func displayAnimation() {
         pageControl.isHidden = true
         startButton.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.25) {
@@ -170,7 +170,7 @@ class CCGuideViewController: BaseViewController, UIScrollViewDelegate {
         }
     }
     
-    private func dismissAnimation() {
+    private func hideAnimation() {
         pageControl.isHidden = false
         UIView.animate(withDuration: 0.25) {
             self.startButton.transform = CGAffineTransform(scaleX: 0, y: 0)

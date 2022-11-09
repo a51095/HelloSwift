@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/11/11.
 //
 
-public extension Dictionary {
+extension Dictionary {
     /// 合并当前字典对象键值对
     mutating func merge(dict: [Key: Value]) {
         for (k, v) in dict { updateValue(v, forKey: k) }

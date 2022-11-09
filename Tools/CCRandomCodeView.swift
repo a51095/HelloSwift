@@ -26,7 +26,7 @@ class CCRandomCodeView: UIView {
     /// 约束布局stackView
     private var stackView: UIStackView!
     /// 结果回调
-    public var changeBlock: ((String) -> Void)?
+    var resultBlock: ((String) -> Void)?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -102,7 +102,7 @@ class CCRandomCodeView: UIView {
             ele.text = textString
             ele.transform = CGAffineTransform(rotationAngle: angleValue)
         }
-        changeBlock?(resString)
+        resultBlock?(resString)
     }
     
     private func createLabel() -> UILabel {

@@ -22,7 +22,7 @@ final class ExTimer {
      */
     
     /// 启动定时器
-    public func start(taskQueue: DispatchQueue = .main, interval: DispatchTimeInterval = .seconds(1), leeway: DispatchTimeInterval = .nanoseconds(0), eventHandler: @escaping os_block_t) {
+    func start(taskQueue: DispatchQueue = .main, interval: DispatchTimeInterval = .seconds(1), leeway: DispatchTimeInterval = .nanoseconds(0), eventHandler: @escaping os_block_t) {
         // 非空校验,若taskTimer对象已存在,则直接返回
         guard taskTimer == nil else { return }
         
@@ -33,5 +33,5 @@ final class ExTimer {
     }
     
     /// 停止并释放定时器
-    public func stop() { taskTimer?.cancel(); taskTimer = nil }
+    func stop() { taskTimer?.cancel(); taskTimer = nil }
 }

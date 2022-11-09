@@ -25,12 +25,12 @@ final class CCCountDownManager {
     /// 当前系统绝对时间,进入后台后,仍持续计时
     private var startTime: Int = 0
     /// 代理对象
-    public weak var deletage: CCCountDownManagerProtocol?
+    weak var deletage: CCCountDownManagerProtocol?
     /// 定时器对象
     private var taskTimer = ExTimer()
     
     /// 开始活动倒计时
-    public func run(start: Int, end: Int) {
+    func run(start: Int, end: Int) {
         guard end - start > 0 else { return }
         
         countDownTotal = end - start
@@ -45,7 +45,7 @@ final class CCCountDownManager {
     }
     
     /// 更新剩余总时长
-    public func updateRemainingTime() -> [String] {
+    func updateRemainingTime() -> [String] {
         var resultString = "00:00:00:00"
         let remainingTotal = remainingTime()
         if remainingTotal > 0 {
@@ -60,6 +60,6 @@ final class CCCountDownManager {
         return resultString.components(separatedBy: ":")
     }
     
-    /// 主动移除定时器
-    public func cannel() { taskTimer.stop() }
+    /// 移除定时器
+    func cannel() { taskTimer.stop() }
 }

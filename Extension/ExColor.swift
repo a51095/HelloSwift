@@ -5,12 +5,12 @@
 //  Created by a51095 on 2021/11/11.
 //
 
-public extension UIColor {
+extension UIColor {
     /// App主色调
-    class var main: UIColor { .hexColor("#FFD700") }
+    static var main: UIColor { .hexColor("#FFD700") }
     
     /// 随机颜色
-    class var random: UIColor {
+    static var random: UIColor {
         rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
     }
     

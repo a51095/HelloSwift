@@ -28,11 +28,11 @@ final class ExAlertController: UIViewController {
     /// title与message与stackView间距
     private let limitSpace = 20
     /// 标题(可选String)
-    public var alertTitle: String?
+    var alertTitle: String?
     /// 描述信息(可选String)
-    public var alertMessage: String?
+    var alertMessage: String?
     /// 事件(CCAlertAction)
-    public var alertAction: [ExAction]
+    var alertAction: [ExAction]
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

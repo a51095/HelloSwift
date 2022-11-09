@@ -12,7 +12,7 @@
  * 支持image,gif,video多种格式
  **/
 
-public enum CCAdType { case adImage, adGif, adVideo }
+enum CCAdType { case adImage, adGif, adVideo }
 struct CCAdConfig {
     /// 广告类型
     fileprivate var adType: CCAdType
@@ -44,7 +44,7 @@ class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
     /// 广告视图播放数据源
     private var adAVPlayerItem: AVPlayerItem?
     /// 广告视图消失时回调处理
-    public var dismissBlock: os_block_t?
+    var dismissBlock: os_block_t?
     
     /// 懒加载muteButton
     private lazy var muteButton: UIButton = {
@@ -320,21 +320,21 @@ class CCAdViewController: BaseViewController, CCCountDownManagerProtocol {
     }
     
     /// 更新广告资源(image)
-    public func updateAdImage(_ imageData: Data, _ imageTempPath: String)  {
+    func updateAdImage(_ imageData: Data, _ imageTempPath: String)  {
         DispatchQueue.global().async {
             try? imageData.write(to: URL(fileURLWithPath: imageTempPath), options: .atomic)
         }
     }
     
     /// 更新广告资源(gif)
-    public func updateAdGif(_ gifData: Data, _ gifTempPath: String)  {
+    func updateAdGif(_ gifData: Data, _ gifTempPath: String)  {
         DispatchQueue.global().async {
             try? gifData.write(to: URL(fileURLWithPath: gifTempPath), options: .atomic)
         }
     }
     
     /// 更新广告资源(video)
-    public func updateAdVideo(_ videoData: Data, _ videoTempPath: String)  {
+    func updateAdVideo(_ videoData: Data, _ videoTempPath: String)  {
         DispatchQueue.global().async {
             try? videoData.write(to: URL(fileURLWithPath: videoTempPath), options: .atomic)
         }

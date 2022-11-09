@@ -224,7 +224,7 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        dismissAnimate()
+        hideAnimate()
         let item = albumSource[indexPath.row]
         titleButton.setTitle(item.title, for: .normal)
         seletedIndex = indexPath
@@ -256,9 +256,8 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
         photoSource.insert(item, at: destinationIndexPath.item)
     }
     
-    // MARK: 私有方法
     /// 展示可选相薄视图
-    private func showAnimate()  {
+    private func displayAnimate()  {
         titleButton.isSelected = false
         titleButton.setImage(R.image.photo_arrow_down(), for: .normal)
         guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
@@ -270,7 +269,7 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     /// 隐藏可选相薄视图
-    private func dismissAnimate()  {
+    private func hideAnimate()  {
         titleButton.isSelected = true
         titleButton.setImage(R.image.photo_arrow_up(), for: .normal)
         titleButton.adjustImageTitlePosition(.right, spacing: 5)
@@ -282,7 +281,7 @@ class CCListViewController: BaseViewController, UITableViewDelegate, UITableView
     
     /// 切换相薄
     @objc func titleButtonDidSeleted() {
-        titleButton.isSelected ? showAnimate() : dismissAnimate()
+        titleButton.isSelected ? displayAnimate() : hideAnimate()
     }
 }
 

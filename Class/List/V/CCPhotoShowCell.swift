@@ -64,8 +64,7 @@ class CCPhotoShowCell: UICollectionViewCell {
         }
     }
         
-    /// 渲染cell内容
-    public func configCell(item: PhotoModel) {
+    func configCell(item: PhotoModel) {
         typeLabel.text = item.formatTypeString()
         photoImageView.image = item.image
     }

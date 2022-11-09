@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/11/11.
 //
 
-public extension UIView {
+extension UIView {
     /// 获取当前view所属vc
     func currentViewController() -> UIViewController? {
         for view in sequence(first: self.superview, next: { $0?.superview }) {

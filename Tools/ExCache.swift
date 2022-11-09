@@ -50,7 +50,7 @@ final class ExCache {
         return dict
     }
     
-    /// 移除缓存,已key为键
+    /// 移除缓存
     static func removeObject(forKey key: String) { try? store.removeObject(forKey: key) }
     
     /// 移除所有缓存

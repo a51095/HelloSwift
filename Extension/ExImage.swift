@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/11/11.
 //
 
-public extension UIImage {
+extension UIImage {
     /// 缩略图(scale默认为1,即返回原图)
     func thumbnail(scale: CGFloat = 1.0) -> UIImage {
         // 容错处理,仅在缩放比例在0~1开区间,重绘缩略图
@@ -128,7 +128,7 @@ public extension UIImage {
 }
 
 // 滤镜相关
-public extension UIImage {
+extension UIImage {
     
     // MARK: - 重新绘制带滤镜效果的UIImage对象
     private func repaint(_ filter: CIFilter) -> UIImage {

@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/11/11.
 //
 
-public extension UIButton {
+extension UIButton {
     /// 逆时针方向🔄
     enum Position { case top, left, bottom, right }
     

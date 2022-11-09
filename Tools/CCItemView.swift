@@ -5,7 +5,7 @@
 //  Created by a51095 on 2021/7/20.
 //
 
-fileprivate class ItemCell: UICollectionViewCell {
+class ItemCell: UICollectionViewCell {
     private let topLabel = UILabel()
     private let bottomView = UIView()
     
@@ -60,8 +60,7 @@ fileprivate class ItemCell: UICollectionViewCell {
         }
     }
     
-    /// 重置UI,渲染cell内容
-    public func configCell(title: String) { topLabel.text = title }
+    func configCell(title: String) { topLabel.text = title }
 }
 
 class CCItemView: UIView, UICollectionViewDelegate, UICollectionViewDataSource {

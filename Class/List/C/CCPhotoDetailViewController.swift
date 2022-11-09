@@ -10,7 +10,7 @@ import PhotosUI
 
 class CCPhotoDetailViewController: BaseViewController {
     
-    /// 自适应 每个item宽度
+    /// 自适应每个item宽度
     private let autoWidth = kScreenWidth().cgf * 0.76
     
     /// 懒加载UIImageView
@@ -36,6 +36,7 @@ class CCPhotoDetailViewController: BaseViewController {
     
     init(type: PhotoType, source: PHAsset) {
         super.init(nibName: nil, bundle: nil)
+        
         switch type {
         case .Image: addImageView(type: type, asset: source)
             break
@@ -46,6 +47,7 @@ class CCPhotoDetailViewController: BaseViewController {
         case .Video: addPlayerController(asset: source)
             break
         }
+        
         hidesBottomBarWhenPushed = true
         addBackButton()
     }

@@ -11,7 +11,7 @@
  * 支持消失时间长短,文字自定义
  **/
 
-public enum ToastType { case nore, success, failure }
+enum ToastType { case nore, success, failure }
 
 final class CCToastView: UIView {
     var limitTop: CGFloat = 20

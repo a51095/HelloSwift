@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CCPushManager: NSObject {
+final class CCPushManager: NSObject {
     
     /// 注册通知
     static func requestAuthorization(_ application: UIApplication)  {
