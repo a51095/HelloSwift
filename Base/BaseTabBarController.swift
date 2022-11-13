@@ -1,10 +1,3 @@
-//
-//  BaseTabBarController.swift
-//  HelloSwift
-//
-//  Created by a51095 on 2021/7/15.
-//
-
 struct TabItem {
     let title: String
     let normalName: String
@@ -26,7 +19,7 @@ class BaseTabBarController: UITabBarController {
     }
 
     // MARK: - 配置tabBar样式
-    func configBarStyle() {
+    private func configBarStyle() {
         // 选项卡是否半透明(默认半透明,建议设置为false)
         tabBar.isTranslucent = false
         // 选项卡背景色
@@ -38,16 +31,16 @@ class BaseTabBarController: UITabBarController {
     }
     
     // MARK: - 配置tabBar内容
-    func configItemStyle() {
+    private func configItemStyle() {
         var viewControllers = [TabItem]()
         
-        let homeVC  = TabItem(title: "首页", normalName: "vc_home", seletedName: "vc_home", viewController: BaseNavigationController(rootViewController: CCHomeViewController()))
+        let homeVC  = TabItem(title: "首页", normalName: "vc_home", seletedName: "vc_home", viewController: BaseNavigationController(rootViewController: HomeViewController()))
         viewControllers.append(homeVC)
         
-        let listVC  = TabItem(title: "列表", normalName: "vc_list", seletedName: "vc_list", viewController: BaseNavigationController(rootViewController: CCListViewController()))
+        let listVC  = TabItem(title: "列表", normalName: "vc_list", seletedName: "vc_list", viewController: BaseNavigationController(rootViewController: ListViewController()))
         viewControllers.append(listVC)
         
-        let userVC  = TabItem(title: "我的", normalName: "vc_user", seletedName: "vc_user", viewController: BaseNavigationController(rootViewController: CCUserViewController()))
+        let userVC  = TabItem(title: "我的", normalName: "vc_user", seletedName: "vc_user", viewController: BaseNavigationController(rootViewController: UserViewController()))
         viewControllers.append(userVC)
         
         addChildController(items: viewControllers)

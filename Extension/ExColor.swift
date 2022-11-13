@@ -1,20 +1,13 @@
-//
-//  ExColor.swift
-//  DevHelper
-//
-//  Created by a51095 on 2021/11/11.
-//
-
 extension UIColor {
-    /// App主色调
+    // MARK: App主色调
     static var main: UIColor { .hexColor("#FFD700") }
     
-    /// 随机颜色
+    // MARK: 随机颜色
     static var random: UIColor {
         rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
     }
     
-    static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
+    private static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
         UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
     }
     
@@ -25,7 +18,7 @@ extension UIColor {
         return rgb(red, green, blue, alpha)
     }
     
-    /// 16进制颜色值
+    // MARK: 16进制颜色值
     static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
         var string = ""
         let lowercaseHexString = hexString.lowercased()

@@ -1,12 +1,5 @@
-//
-//  ExImage.swift
-//  DevHelper
-//
-//  Created by a51095 on 2021/11/11.
-//
-
 extension UIImage {
-    /// 缩略图(scale默认为1,即返回原图)
+    // MARK: 缩略图(scale默认为1,即返回原图)
     func thumbnail(scale: CGFloat = 1.0) -> UIImage {
         // 容错处理,仅在缩放比例在0~1开区间,重绘缩略图
         guard scale > 0 && scale < 1 else { return self }
@@ -23,7 +16,7 @@ extension UIImage {
         return img ?? self
     }
     
-    /// 旋转图片(90代表右旋转↪️,-90代表左旋转↩️)
+    // MARK: 旋转图片(90代表右旋转↪️,-90代表左旋转↩️)
     func rotate(direction: CGFloat) -> UIImage {
         // 容错处理
         guard let currentContext = UIGraphicsGetCurrentContext(), let cgImage = cgImage else { return self }
@@ -46,7 +39,7 @@ extension UIImage {
         return img ?? self
     }
     
-    /// 压缩图片(默认压缩至0.5M)
+    // MARK: 压缩图片(默认压缩至0.5M)
     func compress(toByte: Int = 512 * 1024) -> Data? {
         autoreleasepool {
             var compression: CGFloat = 1
@@ -101,7 +94,7 @@ extension UIImage {
         }
     }
         
-    /// 渲染GIF图片
+    // MARK: 渲染GIF图片
     static func gif(_ data: Data) -> ([UIImage]?, TimeInterval) {
         // 从data中读取数据: 将data转成CGImageSource对象
         guard let imageSource = CGImageSourceCreateWithData(data as CFData, nil) else { return (nil, 0) }
@@ -142,34 +135,34 @@ extension UIImage {
         return UIImage(cgImage: cgImg, scale: self.scale, orientation: self.imageOrientation)
     }
     
-    /// 增亮
+    // MARK: 增亮
     func brightFiler() -> UIImage {
         guard let filter =  CIFilter(name: "CIColorControls") else { return self }
         filter.setValue(0.2, forKey: kCIInputBrightnessKey)
         return repaint(filter)
     }
     
-    /// 锐化
+    // MARK: 锐化
     func sharpenFilter() -> UIImage {
         guard let filter =  CIFilter(name: "CISharpenLuminance") else { return self }
         filter.setValue(18, forKey: kCIInputSharpnessKey)
         return repaint(filter)
     }
     
-    /// 灰度
+    // MARK: 灰度
     func grayFilter() -> UIImage {
         guard let filter =  CIFilter(name: "CIColorControls") else { return self }
         filter.setValue(0, forKey: kCIInputSaturationKey)
         return repaint(filter)
     }
     
-    /// 黑色
+    // MARK: 黑色
     func blackFilter() -> UIImage {
         guard let filter = CIFilter(name: "CIPhotoEffectNoir") else { return self }
         return repaint(filter)
     }
     
-    /// 素描
+    // MARK: 素描
     func sketchFilter() -> UIImage {
         // 去色
         guard let filter = CIFilter(name: "CIPhotoEffectMono") else { return self }

@@ -1,16 +1,7 @@
-//
-//  BaseViewController.swift
-//  HelloSwift
-//
-//  Created by a51095 on 2021/7/15.
-//
-
-import UIKit
-
 class BaseViewController: UIViewController, NetworkStatusProtocol {
     
     /// 自定义顶部视图(默认白色背景色)
-    lazy var barView: UIView = {
+    lazy var topView: UIView = {
         let v = UIView()
         v.backgroundColor = .white
         return v
@@ -27,11 +18,11 @@ class BaseViewController: UIViewController, NetworkStatusProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
-        self.setBackgroundColor()
+        setBackgroundColor()
+        setUI()
     }
     
-    /// UI初始化(一个空的UI初始化方法,子类可继承重写)
+    // 视图初始化(一个空的UI初始化方法,子类可继承重写)
     func setUI() { }
     
     /// 设置视图控制器背景色(默认白色)
@@ -39,20 +30,20 @@ class BaseViewController: UIViewController, NetworkStatusProtocol {
         view.backgroundColor = .white
     }
     
-    /// 添加自定义顶部视图(默认白色背景色)
-    func addBarView() {
+    // 添加自定义顶部视图(默认白色背景色)
+    func addTopView() {
         let autoH = kSafeMarginTop(44)
-        view.addSubview(barView)
-        barView.snp.makeConstraints { make in
+        view.addSubview(topView)
+        topView.snp.makeConstraints { make in
             make.height.equalTo(autoH)
             make.top.left.right.equalToSuperview()
         }
     }
     
-    /// 添加自定义返回按钮(默认黑色)
+    // 添加自定义返回按钮(默认黑色)
     func addBackButton() {
-        if barView.superview != nil {
-            barView.addSubview(backButton)
+        if topView.superview != nil {
+            topView.addSubview(backButton)
         }else {
             view.addSubview(backButton)
         }
@@ -64,7 +55,7 @@ class BaseViewController: UIViewController, NetworkStatusProtocol {
         }
     }
     
-    /// 自定义返回按钮事件
+    // 自定义返回按钮事件
     @objc func backButtonDidSeleted() {
         if self.navigationController?.visibleViewController != nil {
             self.navigationController?.popViewController(animated: true)

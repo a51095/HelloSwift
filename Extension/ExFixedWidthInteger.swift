@@ -1,10 +1,3 @@
-//
-//  ExFixedWidthInteger.swift
-//  DevHelper
-//
-//  Created by a51095 on 2021/11/11.
-//
-
 extension FixedWidthInteger {
     /// 整型转Float
     var f: Float { Float(self) }

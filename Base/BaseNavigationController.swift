@@ -1,15 +1,8 @@
-//
-//  BaseNavigationController.swift
-//  HelloSwift
-//
-//  Created by a51095 on 2021/7/15.
-//
-
 class BaseNavigationController: UINavigationController, UINavigationControllerDelegate {
-    var isPush: Bool = false
+    private var isPush: Bool = false
     
     // MARK: - 反初始化器
-    deinit { print("CCNavigationController deinit~") }
+    deinit { print("BaseNavigationController deinit") }
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -37,8 +30,12 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
         super.pushViewController(viewController, animated: animated)
     }
     
+    // MARK: - 避免多次push
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // 执行此代理方法后,重置isPush状态为false,以达到下次可以正常push的目的
         isPush = false
     }
+    
+    // MARK: - 状态栏样式所属权
+    override var childForStatusBarStyle: UIViewController? { topViewController }
 }

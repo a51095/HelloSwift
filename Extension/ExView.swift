@@ -1,12 +1,5 @@
-//
-//  ExView.swift
-//  DevHelper
-//
-//  Created by a51095 on 2021/11/11.
-//
-
 extension UIView {
-    /// 获取当前view所属vc
+    // MARK: 获取当前view所属vc
     func currentViewController() -> UIViewController? {
         for view in sequence(first: self.superview, next: { $0?.superview }) {
             if let responder = view?.next {
@@ -18,7 +11,7 @@ extension UIView {
         return nil
     }
     
-    /// 将View转换为UIImage(屏幕截图)
+    // MARK: 将View转换为UIImage(屏幕截图)
     func toImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(self.frame.size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()

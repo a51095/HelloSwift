@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  HelloSwift
-//
-//  Created by a51095 on 2021/7/15.
-//
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?

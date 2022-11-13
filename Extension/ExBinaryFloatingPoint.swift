@@ -1,10 +1,3 @@
-//
-//  ExBinaryFloatingPoint.swift
-//  DevHelper
-//
-//  Created by a51095 on 2021/11/11.
-//
-
 extension BinaryFloatingPoint {
     /// 浮点型转整型
     var i: Int { return Int(self) }
