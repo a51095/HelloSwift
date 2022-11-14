@@ -18,7 +18,6 @@
 @_exported import CoreLocation
 @_exported import AAInfographics
 
-
 /// app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
 /// app沙盒Library二级目录(Caches,Preferences)
@@ -123,14 +122,9 @@ func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
     }
 }
 
-/// 网络状态协议
-protocol NetworkStatusProtocol {
-    // MARK: 返回一个布尔值,用于实时监测网络状态
-    func isReachable() -> Bool
-}
-
-extension NetworkStatusProtocol {
-    // MARK: 返回一个布尔值,用于实时监测网络状态
+// MARK: 实时监测网络状态
+protocol NetworkStatus { }
+extension NetworkStatus {
     func isReachable() -> Bool {
         var res: Bool = false
         let netManager = NetworkReachabilityManager()
@@ -138,3 +132,15 @@ extension NetworkStatusProtocol {
         return res
     }
 }
+
+// MARK: 深拷贝
+func codableCopy<T: Codable>(_ obj: T) -> T? {
+    do{
+        let jsonData = try JSONEncoder().encode(obj)
+        return try JSONDecoder().decode(T.self, from: jsonData)
+    }
+    catch {
+        print("Decode failed. \(error)"); return nil
+    }
+}
+

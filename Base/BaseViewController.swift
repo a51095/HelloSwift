@@ -1,4 +1,4 @@
-class BaseViewController: UIViewController, NetworkStatusProtocol {
+class BaseViewController: UIViewController, NetworkStatus {
     
     /// 自定义顶部视图(默认白色背景色)
     lazy var topView: UIView = {

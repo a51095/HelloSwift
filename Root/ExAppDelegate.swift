@@ -1,4 +1,4 @@
-extension AppDelegate: NetworkStatusProtocol {
+extension AppDelegate: NetworkStatus {
     /// 启动APP
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         
