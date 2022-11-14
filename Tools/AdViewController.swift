@@ -205,12 +205,16 @@ class AdViewController: BaseViewController, CountDownProtocol {
             // 无缓存,则获取网络数据后展示
             if !adImageTemp.fileExist() {
                 let imgUrl = URL(string: adConfig.resourceName)
-                if let imgData = try? Data(contentsOf: imgUrl!) {
-                    adImageView.image = UIImage(data: imgData)
-                    updateAdImage(imgData, adImageTemp)
-                }else {
-                    // 容错处理,没值则直接移除广告视图,执行后续流程
-                    dismiss()
+                DispatchQueue.global().async {
+                    if let imgData = try? Data(contentsOf: imgUrl!) {
+                        DispatchQueue.main.async {
+                            self.adImageView.image = UIImage(data: imgData)
+                            self.updateAdImage(imgData, adImageTemp)
+                        }
+                    }else {
+                        // 容错处理,没值则直接移除广告视图,执行后续流程
+                        self.dismiss()
+                    }
                 }
             }else {
                 // 有缓存,则直接从缓存读取展示
