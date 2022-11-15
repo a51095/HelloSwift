@@ -24,7 +24,7 @@ final class PushManager: NSObject {
     }
         
     // MARK: 添加本地通知
-    private static func addNotificationRequest() {
+    static func addNotificationRequest() {
         let notificationCenter = UNUserNotificationCenter.current()
         let notificationContent = UNMutableNotificationContent()
         

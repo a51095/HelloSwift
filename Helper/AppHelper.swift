@@ -18,11 +18,11 @@
 @_exported import CoreLocation
 @_exported import AAInfographics
 
-/// app沙盒Documents根目录(Documents)
+// app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
-/// app沙盒Library二级目录(Caches,Preferences)
+// app沙盒Library二级目录(Caches,Preferences)
 let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! + "/Caches"
-/// app沙盒Tmp根目录(tmp)
+// app沙盒Tmp根目录(tmp)
 let kAppTmpPath = NSTemporaryDirectory()
 
 // MARK: 全局的UIApplication代理对象

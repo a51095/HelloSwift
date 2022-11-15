@@ -1,1 +1,5 @@
-class UserViewController: BaseViewController { }
+class UserViewController: BaseViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
