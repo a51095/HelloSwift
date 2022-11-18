@@ -9,7 +9,7 @@ extension AppDelegate: NetworkStatus {
             let guideConfig = GuideConfig(resource: resourceArray)
             window?.rootViewController = GuideViewController(config: guideConfig)
         } else {
-            if !isReachable() {
+            if !isReachable {
                 window?.rootViewController = BaseTabBarController()
             } else {
                 let adConfig = AdConfig(type: .adImage, name: AppURL.adImageUrl, url: AppURL.adLinkUrl)

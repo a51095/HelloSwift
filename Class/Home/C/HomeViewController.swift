@@ -17,7 +17,7 @@ class HomeViewController: BaseViewController {
     
     override func setUI() {
         // 网络校验,有网则执行后续操作,网络不可用,则直接返回
-        guard isReachable() else { return }
+        guard isReachable else { return }
         
         let topView = ItemView()
         topView.didSeletedBlock = { [weak self] (name) in

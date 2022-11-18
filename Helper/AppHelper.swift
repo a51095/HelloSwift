@@ -125,7 +125,7 @@ func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
 // MARK: 实时监测网络状态
 protocol NetworkStatus { }
 extension NetworkStatus {
-    func isReachable() -> Bool {
+    var isReachable: Bool {
         var res: Bool = false
         let netManager = NetworkReachabilityManager()
         if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
