@@ -8,6 +8,13 @@ class ListViewController: BaseViewController {
     private var photoSource = [PhotoModel]()
     /// 标题视图
     private let titleButton = UIButton()
+    /// item限定间距
+    private lazy var limitMargin: Int = { 4 }()
+    /// 懒加载item尺寸大小
+    private lazy var targetSize: CGSize = {
+        let autoWidth = (kScreenWidth() - 5 * limitMargin) / 4
+        return CGSize(width: autoWidth, height: autoWidth)
+    }()
     
     /// 懒加载相薄引导视图
     private lazy var guideTableView: UITableView = {
@@ -27,9 +34,7 @@ class ListViewController: BaseViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
-        let limitMargin: Int = 4
-        let autoWidth = (kScreenWidth() - 5 * limitMargin) / 4
-        flowLayout.itemSize = CGSize(width: autoWidth, height: autoWidth)
+        flowLayout.itemSize = targetSize
         flowLayout.sectionInset = UIEdgeInsets(top: limitMargin.cgf, left: limitMargin.cgf, bottom: limitMargin.cgf, right: limitMargin.cgf)
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressTouchDown))
@@ -151,14 +156,18 @@ class ListViewController: BaseViewController {
         
         // 照片请求参数配置
         let options = PHImageRequestOptions()
-        options.resizeMode = .fast
-        options.isSynchronous = true
-        options.deliveryMode = .fastFormat
+        // 指定照片是否可从iCloud下载图像
         options.isNetworkAccessAllowed = false
+        // 同步处理图像请求,仅返回一次结果
+        options.isSynchronous = true
+        // 照片会调整图像大小，使其与 targetSize 完全匹配
+        options.resizeMode = .exact
+        // 照片供最高质量的可用图像，而忽略加载所需时长
+        options.deliveryMode = .highQualityFormat
         
         item.fetchResult.enumerateObjects { asset, idx, info in
-            PHImageManager.default().requestImage(for: asset, targetSize: .zero, contentMode: .aspectFill, options: options) { resImg, info in
-                
+            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, info in
+                                
                 if asset.mediaType == .image, let img = resImg {
                     
                     // 通用照片
@@ -167,12 +176,13 @@ class ListViewController: BaseViewController {
                     }
                     
                     // HDR
-                    if asset.mediaSubtypes.rawValue == 2 {
+                    if asset.mediaSubtypes == .photoHDR {
+                        //photoHDR
                         self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
                     }
                     
                     // 截图
-                    if asset.mediaSubtypes.rawValue == 4 {
+                    if asset.mediaSubtypes == .photoScreenshot {
                         self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
                     }
                     
@@ -182,7 +192,7 @@ class ListViewController: BaseViewController {
                     }
                     
                     // live
-                    if asset.mediaSubtypes == .photoLive {
+                    if asset.mediaSubtypes.rawValue == 520 {
                         self.photoSource.append(PhotoModel(type: .Live, image: img, asset: asset))
                     }
                     
