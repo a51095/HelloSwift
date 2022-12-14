@@ -39,7 +39,7 @@ final class PushManager: NSObject {
         
         let notificationTrigger = UNCalendarNotificationTrigger(dateMatching: notificationDate, repeats: true)
         
-        let notificationRequest = UNNotificationRequest(identifier: AppDelegate.classString(), content: notificationContent, trigger: notificationTrigger)
+        let notificationRequest = UNNotificationRequest(identifier: AppDelegate.classString, content: notificationContent, trigger: notificationTrigger)
         
         notificationCenter.add(notificationRequest, withCompletionHandler: nil)
     }

@@ -6,9 +6,13 @@
 //
 
 extension NSObject {
-    // MARK: 类的名称字符串(静态方法)
-    static func classString() -> String { NSStringFromClass(classForCoder()) }
+    /// 类的名称字符串(静态属性)
+    static var classString: String {
+        get { NSStringFromClass(classForCoder()) }
+    }
     
-    // MARK: 类的名称字符串(对象方法)
-    func classString() -> String { NSStringFromClass(classForCoder) }
+    /// 类的名称字符串(实例属性)
+    var classString: String {
+        get { NSStringFromClass(classForCoder) }
+    }
 }

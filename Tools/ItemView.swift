@@ -115,7 +115,7 @@ class ItemView: UIView {
         disPlayCollectionView.dataSource = self
         disPlayCollectionView.backgroundColor = .clear
         disPlayCollectionView.showsHorizontalScrollIndicator = false
-        disPlayCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.classString())
+        disPlayCollectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.classString)
         addSubview(disPlayCollectionView)
         disPlayCollectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -135,7 +135,7 @@ extension ItemView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.classString(), for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.classString, for: indexPath) as! ItemCell
         let string = dataSource[indexPath.item]
         cell.reloadCell(title: string)
         return cell

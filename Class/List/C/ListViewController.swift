@@ -18,7 +18,7 @@ class ListViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.alwaysBounceVertical = false
         tableView.contentInsetAdjustmentBehavior = .never
-        tableView.register(PhotoGuideCell.self, forCellReuseIdentifier: classString())
+        tableView.register(PhotoGuideCell.self, forCellReuseIdentifier: PhotoGuideCell.classString)
         return tableView
     }()
     
@@ -41,7 +41,7 @@ class ListViewController: BaseViewController {
         collectionView.alwaysBounceVertical = false
         collectionView.addGestureRecognizer(longPress)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(PhotoShowCell.self, forCellWithReuseIdentifier: classString())
+        collectionView.register(PhotoShowCell.self, forCellWithReuseIdentifier: PhotoShowCell.classString)
         return collectionView
     }()
     
@@ -243,7 +243,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: classString(),for: indexPath) as! PhotoGuideCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: PhotoGuideCell.classString,for: indexPath) as! PhotoGuideCell
         let item = albumSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell
@@ -266,7 +266,7 @@ extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: classString(), for: indexPath) as! PhotoShowCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoShowCell.classString, for: indexPath) as! PhotoShowCell
         let photoItem = photoSource[indexPath.item]
         cell.reloadCell(item: photoItem)
         return cell

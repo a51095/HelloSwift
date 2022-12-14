@@ -11,7 +11,7 @@ class HomeViewController: BaseViewController {
         v.dataSource = self
         v.separatorStyle = .none
         v.alwaysBounceVertical = false
-        v.register(MenuCell.self, forCellReuseIdentifier: MenuCell.classString())
+        v.register(MenuCell.self, forCellReuseIdentifier: MenuCell.classString)
         return v
     }()
     
@@ -92,7 +92,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.classString(), for: indexPath) as! MenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.classString, for: indexPath) as! MenuCell
         let item = menuSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell

@@ -55,7 +55,7 @@ extension ScaleAspectView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: classString())
+        let cell = UITableViewCell(style: .default, reuseIdentifier: classString)
         cell.textLabel?.text = "向下拉我"
         return cell
     }
