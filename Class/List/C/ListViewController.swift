@@ -62,7 +62,7 @@ class ListViewController: BaseViewController {
             }
         }
     }
-        
+    
     // MARK: 数据初始化
     func initData() {
         // 获取系统相册
@@ -160,14 +160,14 @@ class ListViewController: BaseViewController {
         options.isNetworkAccessAllowed = false
         // 同步处理图像请求,仅返回一次结果
         options.isSynchronous = true
-        // 照片会调整图像大小，使其与 targetSize 完全匹配
+        // 自动调整图像大小，使其与 targetSize 完全匹配
         options.resizeMode = .exact
-        // 照片供最高质量的可用图像，而忽略加载所需时长
+        // 提供最高质量的可用图像，而忽略加载所需时长
         options.deliveryMode = .highQualityFormat
         
         item.fetchResult.enumerateObjects { asset, idx, info in
             PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, info in
-                                
+                
                 if asset.mediaType == .image, let img = resImg {
                     
                     // 通用照片
@@ -203,7 +203,7 @@ class ListViewController: BaseViewController {
         }
         photoCollectionView.reloadData()
     }
-        
+    
     // MARK: 展示可选相薄视图
     private func displayAnimate()  {
         titleButton.isSelected = false
