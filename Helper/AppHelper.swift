@@ -126,10 +126,12 @@ func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
 protocol NetworkStatus { }
 extension NetworkStatus {
     var isReachable: Bool {
-        var res: Bool = false
-        let netManager = NetworkReachabilityManager()
-        if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
-        return res
+        get {
+            var res: Bool = false
+            let netManager = NetworkReachabilityManager()
+            if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
+            return res
+        }
     }
 }
 

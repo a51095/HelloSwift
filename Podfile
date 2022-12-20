@@ -1,14 +1,14 @@
 use_frameworks!
 inhibit_all_warnings!
 platform :ios, '12.0'
-source "https://cdn.cocoapods.org/"
+source 'https://cdn.cocoapods.org/'
 
 #Debug
 def debugPods
   pod 'LookinServer', :configurations => ['Debug']
 end
 
-#Object-C
+#Objective-C
 def ocPods
   pod 'MJRefresh', '3.7.2'
 end

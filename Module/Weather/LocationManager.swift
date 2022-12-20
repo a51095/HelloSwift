@@ -37,7 +37,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         let lat = location?.latitude.i.str
         let lon = location?.longitude.i.str
         // 非空校验
-        guard lat != nil,lon != nil else { return }
+        guard lat != nil, lon != nil else { return }
         let location = String(format: "%@,%@", lon!,lat!)
         
         let url = "https://devapi.qweather.com/v7/weather/now"
