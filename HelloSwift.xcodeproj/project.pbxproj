@@ -53,7 +53,7 @@
 		F7B4482C269EFC7C0098D2AF /* CountDownManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4482B269EFC7C0098D2AF /* CountDownManager.swift */; };
 		F7B4484E26A03E970098D2AF /* ExAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */; };
 		F7B4485226A1168E0098D2AF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485126A1168E0098D2AF /* LoadingView.swift */; };
-		F7B4485726A17F660098D2AF /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* AppKeys.swift */; };
+		F7B4485726A17F660098D2AF /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485626A17F650098D2AF /* AppKey.swift */; };
 		F7B4485B26A181550098D2AF /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* AppURL.swift */; };
 		F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */; };
 		F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* ItemView.swift */; };
@@ -63,6 +63,7 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
+		8249CAEF29555D47001CFF17 /* HelloSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		828DB5AC291B88F5008CD8B9 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		829971CE29215357003CD52B /* LaunchImage-414x896@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-414x896@3x.png"; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGuideCell.swift; sourceTree = "<group>"; };
@@ -112,7 +113,7 @@
 		F7B4482B269EFC7C0098D2AF /* CountDownManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownManager.swift; sourceTree = "<group>"; };
 		F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExAppDelegate.swift; sourceTree = "<group>"; };
 		F7B4485126A1168E0098D2AF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		F7B4485626A17F650098D2AF /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
+		F7B4485626A17F650098D2AF /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		F7B4485A26A181550098D2AF /* AppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURL.swift; sourceTree = "<group>"; };
 		F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationName.swift; sourceTree = "<group>"; };
 		F7B4FD9826A6C6850051FC5B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
@@ -371,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				F704A08F269EAA0E0044729E /* AppHelper.swift */,
+				8249CAEF29555D47001CFF17 /* HelloSwift-Bridging-Header.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -379,7 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				F7B4485A26A181550098D2AF /* AppURL.swift */,
-				F7B4485626A17F650098D2AF /* AppKeys.swift */,
+				F7B4485626A17F650098D2AF /* AppKey.swift */,
 				A6D410FD26E29C0B00FD46CE /* ImageConfig.swift */,
 				F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */,
 			);
@@ -444,6 +446,7 @@
 				TargetAttributes = {
 					F704A048269E73830044729E = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1420;
 					};
 				};
 			};
@@ -556,7 +559,7 @@
 				A62CF26C273E7DBC00670C13 /* ExColor.swift in Sources */,
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
 				A6AE060C27195643004F5160 /* LocationManager.swift in Sources */,
-				F7B4485726A17F660098D2AF /* AppKeys.swift in Sources */,
+				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
 				828DB5AD291B88F5008CD8B9 /* TreeNode.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
@@ -720,10 +723,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EFB316C22B9BE33774EA2B93 /* Pods-HelloSwift.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -734,10 +739,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.well.HelloSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Helper/HelloSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -751,6 +758,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
@@ -773,10 +781,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.well.HelloSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Helper/HelloSwift-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

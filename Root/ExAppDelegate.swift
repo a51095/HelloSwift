@@ -3,7 +3,7 @@ extension AppDelegate: NetworkStatus {
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-
+        
         if isFirst() {
             let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
             let guideConfig = GuideConfig(resource: resourceArray)
@@ -22,8 +22,13 @@ extension AppDelegate: NetworkStatus {
         window?.makeKeyAndVisible()
         // 注册通知
         PushManager.requestAuthorization(application)
+        
+#if !targetEnvironment(simulator)
+        // Bugly初始化 (仅真机环境)
+        Bugly.start(withAppId: AppKey.buglyKey)
+#endif
     }
     
     // 检查用户是否首次安装
-    private func isFirst() -> Bool { Cache.string(key: AppKeys.firstKey) == nil }
+    private func isFirst() -> Bool { Cache.string(key: AppKey.firstKey) == nil }
 }

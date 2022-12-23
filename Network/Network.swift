@@ -27,7 +27,7 @@ struct ResponseData {
 // MARK: 通用的网络请求方法
 func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String: Any] = [:], showErrorMsg: Bool = true, encoding: URLEncoding = .default, response: @escaping ((ResponseData) -> Void)) {
     // 公共参数
-    var commonParam = ["uid": AppKeys.freeUid, "appkey": AppKeys.freeAppKey] as [String: Any]
+    var commonParam = ["uid": AppKey.freeUid, "appkey": AppKey.freeAppKey] as [String: Any]
     // 合并请求参数
     if !parameters.isEmpty { commonParam.merge(dict: parameters) }
     
