@@ -8,11 +8,6 @@ def debugPods
   pod 'LookinServer', :configurations => ['Debug']
 end
 
-#Tools
-def toolPods
-  pod 'Bugly','2.5.93'
-end
-
 #Objective-C
 def ocPods
   pod 'MJRefresh', '3.7.2'
@@ -33,7 +28,6 @@ end
 
 target 'HelloSwift' do
   ocPods
-  toolPods
   debugPods
   swiftPods
 end

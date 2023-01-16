@@ -33,7 +33,7 @@ class RandomCodeView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("RandomCodeView deinit") }
+    deinit { kPrint("RandomCodeView deinit") }
     
     // MARK: 初始化器
     override init(frame: CGRect) {

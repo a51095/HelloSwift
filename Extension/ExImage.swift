@@ -48,7 +48,7 @@ extension UIImage {
             // 若原图小于限制大小,则直接返回,不做压缩处理;
             if data.count <= toByte { return data }
             
-            print("压缩前 == ", data.count, "byte")
+            kPrint("压缩前 == \(data.count) byte")
             var max: CGFloat = 1
             var min: CGFloat = 0
             
@@ -70,7 +70,7 @@ extension UIImage {
             }
             
             if data.count < toByte {
-                print("压缩后 == ", data.count, "byte")
+                kPrint("压缩后 == \(data.count) byte")
                 return data
             }
             
@@ -88,8 +88,7 @@ extension UIImage {
                 UIGraphicsEndImageContext()
                 data = resultImage.jpegData(compressionQuality: 1)!
             }
-            print("大图片重绘压缩后 == ", data.count, "byte")
-            
+            kPrint("大图片重绘压缩后 == \(data.count) byte")
             return data
         }
     }

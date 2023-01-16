@@ -25,7 +25,7 @@ class ScaleAspectView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("StretchingView deinit") }
+    deinit { kPrint("StretchingView deinit") }
     
     // MARK: 初始化器
     init() { super.init(frame: .zero) }

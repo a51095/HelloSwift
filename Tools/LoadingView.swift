@@ -26,7 +26,7 @@ final class LoadingView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("LoadingView deinit") }
+    deinit { kPrint("LoadingView deinit") }
     
     // MARK: 初始化器
     init(toast: String) {

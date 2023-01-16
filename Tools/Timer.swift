@@ -3,7 +3,7 @@ final class Timer {
     private var taskTimer: DispatchSourceTimer?
     
     // MARK: 反初始化器
-    deinit { print("Timer deinit") }
+    deinit { kPrint("Timer deinit") }
     
     /**
      启动定时器

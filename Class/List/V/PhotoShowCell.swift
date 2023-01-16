@@ -13,7 +13,7 @@ class PhotoShowCell: UICollectionViewCell {
     }
     
     // MARK: - 反初始化器
-    deinit { print("PhotoShowCell deinit") }
+    deinit { kPrint("PhotoShowCell deinit") }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

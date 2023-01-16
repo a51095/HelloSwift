@@ -7,7 +7,7 @@ class ItemCell: UICollectionViewCell {
     }
     
     // MARK: - 反初始化器
-    deinit { print("ItemCell deinit~") }
+    deinit { kPrint("ItemCell deinit~") }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

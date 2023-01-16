@@ -2,7 +2,7 @@ class BaseNavigationController: UINavigationController, UINavigationControllerDe
     private var isPush: Bool = false
     
     // MARK: - 反初始化器
-    deinit { print("BaseNavigationController deinit") }
+    deinit { kPrint("BaseNavigationController deinit") }
     
     // MARK: - viewDidLoad
     override func viewDidLoad() {

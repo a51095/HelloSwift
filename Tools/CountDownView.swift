@@ -31,7 +31,7 @@ final class CountDownView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("CountDownView deinit") }
+    deinit { kPrint("CountDownView deinit") }
     
     // MARK: 初始化器
     init() {

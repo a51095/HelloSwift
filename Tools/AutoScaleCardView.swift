@@ -84,7 +84,7 @@ class AutoScaleCardView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("AutoScaleCardView deinit!") }
+    deinit { kPrint("AutoScaleCardView deinit!") }
     
     // MARK: 初始化器
     override init(frame: CGRect) {

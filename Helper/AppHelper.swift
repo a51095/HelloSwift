@@ -142,7 +142,13 @@ func codableCopy<T: Codable>(_ obj: T) -> T? {
         return try JSONDecoder().decode(T.self, from: jsonData)
     }
     catch {
-        print("Decode failed. \(error)"); return nil
+        kPrint("Decode failed. \(error)"); return nil
     }
 }
 
+// MARK: 打印调试信息
+func kPrint<T>(_ items: T, separator: String = " ", terminator: String = "\n") {
+    #if DEBUG
+    print(items)
+    #endif
+}

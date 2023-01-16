@@ -32,7 +32,7 @@ final class ToastView: UIView {
     }
     
     // MARK: 反初始化器
-    deinit { print("ToastView deinit") }
+    deinit { kPrint("ToastView deinit") }
     
     // MARK: 初始化器
     init(_ title: String, type: ToastType = .nore) {

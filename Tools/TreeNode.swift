@@ -138,9 +138,9 @@ class TreeNodeTest {
         
         
 //        // 深度遍历
-//        drinks.forEachDepth { item in print(item.value) }
+//        drinks.forEachDepth { item in kPrint(item.value) }
 //        // 层级遍历
-//        drinks.forEachLevel { item in print(item.value) }
+//        drinks.forEachLevel { item in kPrint(item.value) }
     }
 }
 

@@ -39,7 +39,7 @@ final class AlertController: UIViewController {
     }
     
     // MARK: 反初始化器
-    deinit { print("AlertController deinit") }
+    deinit { kPrint("AlertController deinit") }
     
     // MARK: 自定义初始化方法
     init(_ title: String?, _ message: String?, _ actions: [Action])  {

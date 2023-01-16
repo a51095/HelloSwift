@@ -22,11 +22,6 @@ extension AppDelegate: NetworkStatus {
         window?.makeKeyAndVisible()
         // 注册通知
         PushManager.requestAuthorization(application)
-        
-#if !targetEnvironment(simulator)
-        // Bugly初始化 (仅真机环境)
-        Bugly.start(withAppId: AppKey.buglyKey)
-#endif
     }
     
     // 检查用户是否首次安装

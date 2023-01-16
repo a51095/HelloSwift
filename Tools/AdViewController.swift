@@ -84,7 +84,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     // MARK: 反初始化器
-    deinit { removeAdAVPlayerItemObserver(); print("AdViewController deinit") }
+    deinit { removeAdAVPlayerItemObserver(); kPrint("AdViewController deinit") }
     
     // MARK: 初始化器
     init(config: AdConfig) {

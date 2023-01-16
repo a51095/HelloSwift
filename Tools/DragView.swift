@@ -28,7 +28,7 @@ final class DragView: UIView {
     
     // MARK: - 反初始化器
     deinit {
-        print("DragView deinit")
+        kPrint("DragView deinit")
     }
     
     // MARK: 初始化器

@@ -63,7 +63,6 @@
 
 /* Begin PBXFileReference section */
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
-		8249CAEF29555D47001CFF17 /* HelloSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		828DB5AC291B88F5008CD8B9 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		829971CE29215357003CD52B /* LaunchImage-414x896@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LaunchImage-414x896@3x.png"; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGuideCell.swift; sourceTree = "<group>"; };
@@ -372,7 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				F704A08F269EAA0E0044729E /* AppHelper.swift */,
-				8249CAEF29555D47001CFF17 /* HelloSwift-Bridging-Header.h */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -743,7 +741,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.well.HelloSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Helper/HelloSwift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -785,7 +783,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.well.HelloSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Helper/HelloSwift-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
