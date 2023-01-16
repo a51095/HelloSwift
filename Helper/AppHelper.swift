@@ -16,7 +16,6 @@
 @_exported import Kingfisher
 @_exported import Foundation
 @_exported import CoreLocation
-@_exported import AAInfographics
 
 // app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
