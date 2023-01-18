@@ -25,7 +25,7 @@ struct ResponseData {
 /// - response:                     响应回调结果(逃逸闭包)
 
 // MARK: 通用的网络请求方法
-func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String: Any] = [:], showErrorMsg: Bool = true, encoding: URLEncoding = .default, response: @escaping ((ResponseData) -> Void)) {
+func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String: Any] = [:], showErrorMsg: Bool = true, encoding: ParameterEncoding = URLEncoding.httpBody, response: @escaping ((ResponseData) -> Void)) {
     // 公共参数
     var commonParam = ["uid": AppKey.freeUid, "appkey": AppKey.freeAppKey] as [String: Any]
     // 合并请求参数
@@ -39,9 +39,13 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
         case .success(let data):
             let object = try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
             if let dic = object as? [String: Any] {
-                let code = dic["code"] as? String
-                let data = ResponseData(resCode: code!.i!, data: dic)
-                response(data)
+                if let code = dic["code"] as? String {
+                    let data = ResponseData(resCode: code.i!, data: dic)
+                    response(data)
+                } else {
+                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    response(ResponseData());
+                }
             } else {
                 if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
                 response(ResponseData());
