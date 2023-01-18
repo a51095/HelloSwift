@@ -28,7 +28,7 @@ class PhotoGuideCell: UITableViewCell {
             make.width.equalTo(88)
         }
         
-        nameLabel.font = RegularFont(16)
+        nameLabel.font = kRegularFont(16)
         nameLabel.textAlignment = .center
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in

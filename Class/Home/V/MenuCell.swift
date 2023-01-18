@@ -28,7 +28,7 @@ class MenuCell: UITableViewCell {
             make.width.equalTo(120)
         }
         
-        nameLabel.font = RegularFont(16)
+        nameLabel.font = kRegularFont(16)
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
             make.top.equalTo(10)
@@ -38,7 +38,7 @@ class MenuCell: UITableViewCell {
         
         tipsLabel.textColor = .gray
         tipsLabel.numberOfLines = 0
-        tipsLabel.font = RegularFont(14)
+        tipsLabel.font = kRegularFont(14)
         contentView.addSubview(tipsLabel)
         tipsLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(10)

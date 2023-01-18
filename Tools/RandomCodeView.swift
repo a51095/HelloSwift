@@ -108,7 +108,7 @@ class RandomCodeView: UIView {
     private func createLabel() -> UILabel {
         let l = UILabel()
         l.textColor = .black
-        l.font = RegularFont(16)
+        l.font = kRegularFont(16)
         l.textAlignment = .center
         return l
     }

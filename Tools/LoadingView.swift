@@ -16,7 +16,7 @@ final class LoadingView: UIView {
     private lazy var messageLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
-        l.font = RegularFont(16)
+        l.font = kRegularFont(16)
         l.textAlignment = .center
         return l
     }()

@@ -22,7 +22,7 @@ final class ToastView: UIView {
         let message = UILabel()
         message.numberOfLines = 0
         message.textColor = .white
-        message.font = RegularFont(16)
+        message.font = kRegularFont(16)
         message.textAlignment = .center
         return message
     }()

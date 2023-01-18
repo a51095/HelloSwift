@@ -43,7 +43,7 @@ final class CountDownView: UIView {
     private func setUI() {
         countDownLabel.text = "获取验证码"
         countDownLabel.textColor = .white
-        countDownLabel.font = RegularFont(16)
+        countDownLabel.font = kRegularFont(16)
         countDownLabel.textAlignment = .center
         addSubview(countDownLabel)
         countDownLabel.snp.makeConstraints { (make) in make.edges.equalToSuperview() }

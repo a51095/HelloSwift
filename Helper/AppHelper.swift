@@ -17,40 +17,59 @@
 @_exported import Foundation
 @_exported import CoreLocation
 
-// app沙盒Documents根目录(Documents)
+// MARK: app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
-// app沙盒Library二级目录(Caches,Preferences)
+// MARK: app沙盒Library二级目录(Caches,Preferences)
 let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! + "/Caches"
-// app沙盒Tmp根目录(tmp)
+// MARK: app沙盒Tmp根目录(tmp)
 let kAppTmpPath = NSTemporaryDirectory()
 
-// MARK: 全局的UIApplication代理对象
-func kAppDelegate() -> UIApplicationDelegate { UIApplication.shared.delegate! }
+// MARK: UIApplication代理对象
+let kAppDelegate = UIApplication.shared.delegate!
 
-// 字体相关
-// MARK: 平方字体-常规体
-func RegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", size: size)! }
-// MARK: 平方字体-中等体
-func MediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
-// MARK: 平方字体-中粗体
-func SemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
-// MARK: 手写字体-中粗体
-func BradleyHandFont(_ size: CGFloat) -> UIFont { UIFont(name:"BradleyHandITCTT-Bold", size: size)! }
+// MARK: 屏幕宽
+let kScreenWidth = UIScreen.main.bounds.size.width.i
+// MARK: 屏幕高
+let kScreenHeight = UIScreen.main.bounds.size.height.i
+
+// MARK: 获取当前窗口栈顶vc
+var kTopViewController: UIViewController {
+    get {
+        let base = kAppDelegate.window!!.rootViewController!
+        
+        if let nav = base as? UINavigationController {
+            return nav.visibleViewController!
+        } else if let tab = base as? UITabBarController {
+            return tab.selectedViewController!
+        } else if let presented = base.presentedViewController {
+            return presented
+        } else {
+            return base
+        }
+    }
+}
+
+// MARK: 获取当前窗口栈顶nav
+var kTopNavigationController: UINavigationController {
+    get {
+        let rootVC = kAppDelegate.window!!.rootViewController
+        if let tab = rootVC as? UITabBarController {
+            return tab.selectedViewController as! UINavigationController
+        } else {
+            return rootVC as! UINavigationController
+        }
+    }
+}
 
 // 屏幕尺寸相关
-// MARK: 屏幕宽
-func kScreenWidth() -> Int { UIScreen.main.bounds.size.width.i }
-// MARK: 屏幕高
-func kScreenHeight() -> Int { UIScreen.main.bounds.size.height.i }
 // MARK: 顶部安全间距
 func kSafeMarginTop(_ top: Int) -> Int { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top.i)! }
 // MARK: 底部安全间距
 func kSafeMarginBottom(_ bottom: Int) -> Int { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom.i)! }
 // MARK: 等比例设计尺寸宽(以375为基准)
-func kAdaptedWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
+func kScaleWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
 // MARK: 等比例设计尺寸高(以667为基准)
-func kAdaptedHeight(_ height: Int) -> Int { (height * UIScreen.main.bounds.size.height.i / 667) }
-
+func kScaleHeight(_ height: Int) -> Int { (height * UIScreen.main.bounds.size.height.i / 667) }
 // MARK: 等比例设计尺寸Size(以375,667为基准)
 func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
     let sizeWidth = (width * UIScreen.main.bounds.size.width.i / 375)
@@ -58,23 +77,15 @@ func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
     return CGSize(width: sizeWidth, height: sizeHeight)
 }
 
-// MARK: 获取当前窗口nav对象
-func  kTopNavController() -> UINavigationController {
-    let rootVC = kAppDelegate().window!!.rootViewController
-    if let tab = rootVC as? UITabBarController {
-        return tab.selectedViewController as! UINavigationController
-    } else {
-        return rootVC as! UINavigationController
-    }
-}
-
-// MARK: 获取当前窗口vc对象
-func kTopViewController(base: UIViewController? = kAppDelegate().window!!.rootViewController) -> UIViewController? {
-    if let nav = base as? UINavigationController { return kTopViewController(base: nav.visibleViewController) }
-    if let tab = base as? UITabBarController { return kTopViewController(base: tab.selectedViewController) }
-    if let presented = base?.presentedViewController { return kTopViewController(base: presented) }
-    return base
-}
+// 字体相关
+// MARK: 平方字体-常规体
+func kRegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", size: size)! }
+// MARK: 平方字体-中等体
+func kMediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
+// MARK: 平方字体-中粗体
+func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
+// MARK: 手写字体-中粗体
+func kBradleyHandFont(_ size: CGFloat) -> UIFont { UIFont(name:"BradleyHandITCTT-Bold", size: size)! }
 
 // MARK: 用户相机授权状态
 func requestAccess(handler: @escaping (Bool) -> (Void))  {
@@ -147,7 +158,7 @@ func codableCopy<T: Codable>(_ obj: T) -> T? {
 
 // MARK: 打印调试信息
 func kPrint<T>(_ items: T, separator: String = " ", terminator: String = "\n") {
-    #if DEBUG
+#if DEBUG
     print(items)
-    #endif
+#endif
 }

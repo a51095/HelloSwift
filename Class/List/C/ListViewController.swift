@@ -12,7 +12,7 @@ class ListViewController: BaseViewController {
     private lazy var limitMargin: Int = { 4 }()
     /// 懒加载item尺寸大小
     private lazy var targetSize: CGSize = {
-        let autoWidth = (kScreenWidth() - 5 * limitMargin) / 4
+        let autoWidth = (kScreenWidth - 5 * limitMargin) / 4
         return CGSize(width: autoWidth, height: autoWidth)
     }()
     
@@ -88,7 +88,7 @@ class ListViewController: BaseViewController {
         titleButton.setImage(R.image.photo_arrow_up(), for: .normal)
         titleButton.adjustImageTitlePosition(.right, spacing: 5)
         guideTableView.alpha = 0
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight().cgf)
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
     }
     
     // MARK: 格式化相簿内容
@@ -136,7 +136,7 @@ class ListViewController: BaseViewController {
         
         view.addSubview(titleButton)
         titleButton.layer.cornerRadius = 12
-        titleButton.titleLabel?.font = MediumFont(16)
+        titleButton.titleLabel?.font = kMediumFont(16)
         titleButton.setTitleColor(.black, for: .normal)
         titleButton.addTarget(self, action: #selector(titleButtonDidSeleted), for: .touchUpInside)
         titleButton.snp.makeConstraints { make in
@@ -209,7 +209,7 @@ class ListViewController: BaseViewController {
         titleButton.isSelected = false
         titleButton.setImage(R.image.photo_arrow_down(), for: .normal)
         guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight().cgf)
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 1
             self.guideTableView.transform = .identity
@@ -223,7 +223,7 @@ class ListViewController: BaseViewController {
         titleButton.adjustImageTitlePosition(.right, spacing: 5)
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 0
-            self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight().cgf)
+            self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
         }
     }
     

@@ -120,7 +120,7 @@ final class AlertController: UIViewController {
             titleLabel.textColor = .black
             titleLabel.text = self.alertTitle
             titleLabel.textAlignment = .center
-            titleLabel.font = SemiblodFont(18)
+            titleLabel.font = kSemiblodFont(18)
             backgroundView.addSubview(titleLabel)
             titleLabel.snp.makeConstraints { (make) in
                 make.left.equalTo(10)
@@ -130,7 +130,7 @@ final class AlertController: UIViewController {
             
             let messageLabel = UILabel()
             messageLabel.numberOfLines = 10
-            messageLabel.font = RegularFont(16)
+            messageLabel.font = kRegularFont(16)
             messageLabel.textAlignment = .center
             messageLabel.text = self.alertMessage
             messageLabel.textColor = .hexColor("#999999")
@@ -150,7 +150,7 @@ final class AlertController: UIViewController {
             titleLabel.textColor = .black
             titleLabel.text = self.alertTitle
             titleLabel.textAlignment = .center
-            titleLabel.font = SemiblodFont(18)
+            titleLabel.font = kSemiblodFont(18)
             backgroundView.addSubview(titleLabel)
             titleLabel.snp.makeConstraints { (make) in
                 make.top.equalTo(10)
@@ -165,7 +165,7 @@ final class AlertController: UIViewController {
         if (alertTitle == nil || alertTitle?.count == 0 ) && (alertMessage != nil && alertMessage?.count != 0) {
             let messageLabel = UILabel()
             messageLabel.numberOfLines = 10
-            messageLabel.font = RegularFont(16)
+            messageLabel.font = kRegularFont(16)
             messageLabel.textAlignment = .center
             messageLabel.text = self.alertMessage
             messageLabel.textColor = .hexColor("#999999")

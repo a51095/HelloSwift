@@ -1,6 +1,6 @@
 class PhotoDetailViewController: BaseViewController {
     /// 自适应每个item宽度
-    private let autoWidth = kScreenWidth().cgf * 0.76
+    private let autoWidth = kScreenWidth.cgf * 0.76
     
     /// 懒加载UIImageView
     private lazy var imageView: UIImageView = {

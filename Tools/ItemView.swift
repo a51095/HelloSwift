@@ -31,7 +31,7 @@ class ItemCell: UICollectionViewCell {
         }
         
         topLabel.textColor = .gray
-        topLabel.font = RegularFont(16)
+        topLabel.font = kRegularFont(16)
         topLabel.textAlignment = .center
         topView.addSubview(topLabel)
         topLabel.snp.makeConstraints { make in
