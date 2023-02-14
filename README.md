@@ -4,7 +4,7 @@
 - [吐司弹框](https://github.com/a51095/HelloSwift/blob/dev/Tools/ToastView.swift)
 - [alert弹框](https://github.com/a51095/HelloSwift/blob/dev/Tools/AlertController.swift)
 - [定时器封装](https://github.com/a51095/HelloSwift/blob/dev/Tools/Timer.swift)
-- [加载转圈弹](https://github.com/a51095/HelloSwift/blob/dev/Tools/LoadingView.swift)
+- [加载转圈弹框](https://github.com/a51095/HelloSwift/blob/dev/Tools/LoadingView.swift)
 - [随机数验证码](https://github.com/a51095/HelloSwift/blob/dev/Tools/RandomCodeView.swift)
 - [树状结构处理](https://github.com/a51095/HelloSwift/blob/dev/Tools/TreeNode.swift)
 - [拖拽动画演示](https://github.com/a51095/HelloSwift/blob/dev/Tools/DragView.swift)
