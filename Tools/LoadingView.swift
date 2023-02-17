@@ -12,7 +12,7 @@
  **/
 
 final class LoadingView: UIView {
-    /// 懒加载,提示label
+    /// 懒加载，提示label
     private lazy var messageLabel: UILabel = {
         let l = UILabel()
         l.textColor = .white
@@ -79,8 +79,8 @@ final class LoadingView: UIView {
 }
 
 extension UIView {
-    // MARK: 展示loading(⚠️⚠️⚠️主线程中刷新UI)
-    func showLoading(_ message: String = "") {
+    /// 展示loading(⚠️⚠️⚠️主线程中调用)
+    @MainActor func showLoading(_ message: String = "") {
         // 若当前视图已加载LoadingView,则直接返回,不再二次添加;
         if let lastView = subviews.last as? LoadingView { lastView.removeFromSuperview() }
         
@@ -91,8 +91,8 @@ extension UIView {
         }
     }
     
-    // MARK: 隐藏loading(⚠️⚠️⚠️主线程中刷新UI)
-    func hideLoading() {
+    /// 隐藏loading(⚠️⚠️⚠️主线程中调用)
+    @MainActor func hideLoading() {
         for item in subviews {
             if item.isKind(of: LoadingView.self) {
                 item.removeFromSuperview()
