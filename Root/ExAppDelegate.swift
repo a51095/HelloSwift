@@ -10,11 +10,11 @@ extension AppDelegate: NetworkStatus {
             window?.rootViewController = GuideViewController(config: guideConfig)
         } else {
             if !isReachable {
-                window?.rootViewController = BaseTabBarController()
+                window?.rootViewController = RootViewController()
             } else {
                 let adConfig = AdConfig(type: .adImage, name: AppURL.adImageUrl, url: AppURL.adLinkUrl)
                 let adViewController = AdViewController(config: adConfig)
-                adViewController.dismissBlock = { self.window?.rootViewController = BaseTabBarController() }
+                adViewController.dismissBlock = { self.window?.rootViewController = RootViewController() }
                 window?.rootViewController = adViewController
             }
         }

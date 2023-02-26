@@ -10,6 +10,7 @@
 		3F08FE2B297695F400835E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */; };
 		828DB5AD291B88F5008CD8B9 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DB5AC291B88F5008CD8B9 /* TreeNode.swift */; };
 		829971CF29215357003CD52B /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 829971CE29215357003CD52B /* LaunchImage.png */; };
+		82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E065DB29AB6A7100B8F94C /* RootViewController.swift */; };
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
 		A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */; };
 		A607554E26F5C144008103DA /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554D26F5C144008103DA /* PhotoModel.swift */; };
@@ -66,6 +67,7 @@
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
 		828DB5AC291B88F5008CD8B9 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		829971CE29215357003CD52B /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
+		82E065DB29AB6A7100B8F94C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGuideCell.swift; sourceTree = "<group>"; };
 		A607554D26F5C144008103DA /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		A607555126F5F33F008103DA /* PhotoShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoShowCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,8 @@
 		A650EE5126E63C2D00E437AA /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F704A05A269E73850044729E /* Info.plist */,
+				F704A055269E73850044729E /* Assets.xcassets */,
 				A650EE5426E6427400E437AA /* localVideo.mp4 */,
 				829971CE29215357003CD52B /* LaunchImage.png */,
 				A650EE5226E63C6D00E437AA /* localAnimation.gif */,
@@ -299,8 +303,7 @@
 			children = (
 				F704A04C269E73830044729E /* AppDelegate.swift */,
 				F7B4484D26A03E960098D2AF /* ExAppDelegate.swift */,
-				F704A055269E73850044729E /* Assets.xcassets */,
-				F704A05A269E73850044729E /* Info.plist */,
+				82E065DB29AB6A7100B8F94C /* RootViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
 				F704A07C269E7C700044729E /* HomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */,
+				82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */,
 				A680789026EB51C70068DD0A /* Network.swift in Sources */,
 				A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
@@ -730,7 +734,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				INFOPLIST_FILE = Root/Info.plist;
+				INFOPLIST_FILE = Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -772,7 +776,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers\"",
 					"${SRCROOT}/**",
 				);
-				INFOPLIST_FILE = Root/Info.plist;
+				INFOPLIST_FILE = Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
