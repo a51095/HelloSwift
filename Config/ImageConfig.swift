@@ -4,380 +4,140 @@
 //
 
 import Foundation
-import Rswift
+import RswiftResources
 import UIKit
 
-/// This `R` struct is generated and contains references to static resources.
-struct R: Rswift.Validatable {
-  fileprivate static let applicationLocale = hostingBundle.preferredLocalizations.first.flatMap { Locale(identifier: $0) } ?? Locale.current
-  fileprivate static let hostingBundle = Bundle(for: R.Class.self)
+private class BundleFinder {}
+let R = _R(bundle: Bundle(for: BundleFinder.self))
 
-  /// Find first language and bundle for which the table exists
-  fileprivate static func localeBundle(tableName: String, preferredLanguages: [String]) -> (Foundation.Locale, Foundation.Bundle)? {
-    // Filter preferredLanguages to localizations, use first locale
-    var languages = preferredLanguages
-      .map { Locale(identifier: $0) }
-      .prefix(1)
-      .flatMap { locale -> [String] in
-        if hostingBundle.localizations.contains(locale.identifier) {
-          if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
-            return [locale.identifier, language]
-          } else {
-            return [locale.identifier]
-          }
-        } else if let language = locale.languageCode, hostingBundle.localizations.contains(language) {
-          return [language]
-        } else {
-          return []
-        }
-      }
+struct _R {
+  let bundle: Foundation.Bundle
+  var image: image { .init(bundle: bundle) }
+  var file: file { .init(bundle: bundle) }
+  var storyboard: storyboard { .init(bundle: bundle) }
 
-    // If there's no languages, use development language as backstop
-    if languages.isEmpty {
-      if let developmentLocalization = hostingBundle.developmentLocalization {
-        languages = [developmentLocalization]
-      }
-    } else {
-      // Insert Base as second item (between locale identifier and languageCode)
-      languages.insert("Base", at: 1)
-
-      // Add development language as backstop
-      if let developmentLocalization = hostingBundle.developmentLocalization {
-        languages.append(developmentLocalization)
-      }
-    }
-
-    // Find first language for which table exists
-    // Note: key might not exist in chosen language (in that case, key will be shown)
-    for language in languages {
-      if let lproj = hostingBundle.url(forResource: language, withExtension: "lproj"),
-         let lbundle = Bundle(url: lproj)
-      {
-        let strings = lbundle.url(forResource: tableName, withExtension: "strings")
-        let stringsdict = lbundle.url(forResource: tableName, withExtension: "stringsdict")
-
-        if strings != nil || stringsdict != nil {
-          return (Locale(identifier: language), lbundle)
-        }
-      }
-    }
-
-    // If table is available in main bundle, don't look for localized resources
-    let strings = hostingBundle.url(forResource: tableName, withExtension: "strings", subdirectory: nil, localization: nil)
-    let stringsdict = hostingBundle.url(forResource: tableName, withExtension: "stringsdict", subdirectory: nil, localization: nil)
-
-    if strings != nil || stringsdict != nil {
-      return (applicationLocale, hostingBundle)
-    }
-
-    // If table is not found for requested languages, key will be shown
-    return nil
+  func image(bundle: Foundation.Bundle) -> image {
+    .init(bundle: bundle)
+  }
+  func file(bundle: Foundation.Bundle) -> file {
+    .init(bundle: bundle)
+  }
+  func storyboard(bundle: Foundation.Bundle) -> storyboard {
+    .init(bundle: bundle)
+  }
+  func validate() throws {
+    try self.storyboard.validate()
   }
 
-  /// Load string from Info.plist file
-  fileprivate static func infoPlistString(path: [String], key: String) -> String? {
-    var dict = hostingBundle.infoDictionary
-    for step in path {
-      guard let obj = dict?[step] as? [String: Any] else { return nil }
-      dict = obj
-    }
-    return dict?[key] as? String
+  struct project {
+    let developmentRegion = "en"
   }
 
-  static func validate() throws {
-    try intern.validate()
-  }
-
-  #if os(iOS) || os(tvOS)
-  /// This `R.storyboard` struct is generated, and contains static references to 1 storyboards.
-  struct storyboard {
-    /// Storyboard `LaunchScreen`.
-    static let launchScreen = _R.storyboard.launchScreen()
-
-    #if os(iOS) || os(tvOS)
-    /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
-    static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
-      return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-  #endif
-
-  /// This `R.file` struct is generated, and contains static references to 3 files.
-  struct file {
-    /// Resource file `LaunchImage.png`.
-    static let launchImagePng = Rswift.FileResource(bundle: R.hostingBundle, name: "LaunchImage", pathExtension: "png")
-    /// Resource file `localAnimation.gif`.
-    static let localAnimationGif = Rswift.FileResource(bundle: R.hostingBundle, name: "localAnimation", pathExtension: "gif")
-    /// Resource file `localVideo.mp4`.
-    static let localVideoMp4 = Rswift.FileResource(bundle: R.hostingBundle, name: "localVideo", pathExtension: "mp4")
-
-    /// `bundle.url(forResource: "LaunchImage", withExtension: "png")`
-    static func launchImagePng(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.launchImagePng
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "localAnimation", withExtension: "gif")`
-    static func localAnimationGif(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.localAnimationGif
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    /// `bundle.url(forResource: "localVideo", withExtension: "mp4")`
-    static func localVideoMp4(_: Void = ()) -> Foundation.URL? {
-      let fileResource = R.file.localVideoMp4
-      return fileResource.bundle.url(forResource: fileResource)
-    }
-
-    fileprivate init() {}
-  }
-
-  /// This `R.image` struct is generated, and contains static references to 21 images.
+  /// This `_R.image` struct is generated, and contains static references to 21 images.
   struct image {
+    let bundle: Foundation.Bundle
+
     /// Image `LaunchImage`.
-    static let launchImage = Rswift.ImageResource(bundle: R.hostingBundle, name: "LaunchImage")
+    var launchImage: RswiftResources.ImageResource { .init(name: "LaunchImage", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
     /// Image `ad_mute`.
-    static let ad_mute = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_mute")
+    var ad_mute: RswiftResources.ImageResource { .init(name: "ad_mute", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ad_resource`.
-    static let ad_resource = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_resource")
+    var ad_resource: RswiftResources.ImageResource { .init(name: "ad_resource", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `ad_restore`.
-    static let ad_restore = Rswift.ImageResource(bundle: R.hostingBundle, name: "ad_restore")
+    var ad_restore: RswiftResources.ImageResource { .init(name: "ad_restore", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `localAnimation.gif`.
-    static let localAnimationGif = Rswift.ImageResource(bundle: R.hostingBundle, name: "localAnimation.gif")
+    var localAnimationGif: RswiftResources.ImageResource { .init(name: "localAnimation.gif", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
     /// Image `photo_arrow_down`.
-    static let photo_arrow_down = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_arrow_down")
+    var photo_arrow_down: RswiftResources.ImageResource { .init(name: "photo_arrow_down", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `photo_arrow_up`.
-    static let photo_arrow_up = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_arrow_up")
+    var photo_arrow_up: RswiftResources.ImageResource { .init(name: "photo_arrow_up", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `photo_guide_normal`.
-    static let photo_guide_normal = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_guide_normal")
+    var photo_guide_normal: RswiftResources.ImageResource { .init(name: "photo_guide_normal", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `photo_guide_seleted`.
-    static let photo_guide_seleted = Rswift.ImageResource(bundle: R.hostingBundle, name: "photo_guide_seleted")
+    var photo_guide_seleted: RswiftResources.ImageResource { .init(name: "photo_guide_seleted", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `toast_fail`.
-    static let toast_fail = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_fail")
+    var toast_fail: RswiftResources.ImageResource { .init(name: "toast_fail", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `toast_success`.
-    static let toast_success = Rswift.ImageResource(bundle: R.hostingBundle, name: "toast_success")
+    var toast_success: RswiftResources.ImageResource { .init(name: "toast_success", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `user_guide01`.
-    static let user_guide01 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide01")
+    var user_guide01: RswiftResources.ImageResource { .init(name: "user_guide01", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `user_guide02`.
-    static let user_guide02 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide02")
+    var user_guide02: RswiftResources.ImageResource { .init(name: "user_guide02", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `user_guide03`.
-    static let user_guide03 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide03")
+    var user_guide03: RswiftResources.ImageResource { .init(name: "user_guide03", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `user_guide04`.
-    static let user_guide04 = Rswift.ImageResource(bundle: R.hostingBundle, name: "user_guide04")
+    var user_guide04: RswiftResources.ImageResource { .init(name: "user_guide04", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_back_black`.
-    static let vc_back_black = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_back_black")
+    var vc_back_black: RswiftResources.ImageResource { .init(name: "vc_back_black", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_back_white`.
-    static let vc_back_white = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_back_white")
+    var vc_back_white: RswiftResources.ImageResource { .init(name: "vc_back_white", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_home`.
-    static let vc_home = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_home")
+    var vc_home: RswiftResources.ImageResource { .init(name: "vc_home", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_list`.
-    static let vc_list = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_list")
+    var vc_list: RswiftResources.ImageResource { .init(name: "vc_list", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_task`.
-    static let vc_task = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_task")
+    var vc_task: RswiftResources.ImageResource { .init(name: "vc_task", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `vc_user`.
-    static let vc_user = Rswift.ImageResource(bundle: R.hostingBundle, name: "vc_user")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "LaunchImage", bundle: ..., traitCollection: ...)`
-    static func launchImage(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.launchImage, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ad_mute", bundle: ..., traitCollection: ...)`
-    static func ad_mute(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ad_mute, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ad_resource", bundle: ..., traitCollection: ...)`
-    static func ad_resource(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ad_resource, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "ad_restore", bundle: ..., traitCollection: ...)`
-    static func ad_restore(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.ad_restore, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "localAnimation.gif", bundle: ..., traitCollection: ...)`
-    static func localAnimationGif(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.localAnimationGif, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "photo_arrow_down", bundle: ..., traitCollection: ...)`
-    static func photo_arrow_down(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.photo_arrow_down, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "photo_arrow_up", bundle: ..., traitCollection: ...)`
-    static func photo_arrow_up(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.photo_arrow_up, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "photo_guide_normal", bundle: ..., traitCollection: ...)`
-    static func photo_guide_normal(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.photo_guide_normal, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "photo_guide_seleted", bundle: ..., traitCollection: ...)`
-    static func photo_guide_seleted(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.photo_guide_seleted, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "toast_fail", bundle: ..., traitCollection: ...)`
-    static func toast_fail(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.toast_fail, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "toast_success", bundle: ..., traitCollection: ...)`
-    static func toast_success(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.toast_success, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "user_guide01", bundle: ..., traitCollection: ...)`
-    static func user_guide01(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.user_guide01, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "user_guide02", bundle: ..., traitCollection: ...)`
-    static func user_guide02(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.user_guide02, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "user_guide03", bundle: ..., traitCollection: ...)`
-    static func user_guide03(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.user_guide03, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "user_guide04", bundle: ..., traitCollection: ...)`
-    static func user_guide04(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.user_guide04, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_back_black", bundle: ..., traitCollection: ...)`
-    static func vc_back_black(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_back_black, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_back_white", bundle: ..., traitCollection: ...)`
-    static func vc_back_white(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_back_white, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_home", bundle: ..., traitCollection: ...)`
-    static func vc_home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_home, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_list", bundle: ..., traitCollection: ...)`
-    static func vc_list(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_list, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_task", bundle: ..., traitCollection: ...)`
-    static func vc_task(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_task, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(iOS) || os(tvOS)
-    /// `UIImage(named: "vc_user", bundle: ..., traitCollection: ...)`
-    static func vc_user(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
-      return UIKit.UIImage(resource: R.image.vc_user, compatibleWith: traitCollection)
-    }
-    #endif
-
-    fileprivate init() {}
+    var vc_user: RswiftResources.ImageResource { .init(name: "vc_user", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
-  fileprivate struct intern: Rswift.Validatable {
-    fileprivate static func validate() throws {
-      try _R.validate()
-    }
+  /// This `_R.file` struct is generated, and contains static references to 3 resource files.
+  struct file {
+    let bundle: Foundation.Bundle
 
-    fileprivate init() {}
+    /// Resource file `LaunchImage.png`.
+    var launchImagePng: RswiftResources.FileResource { .init(name: "LaunchImage", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `localAnimation.gif`.
+    var localAnimationGif: RswiftResources.FileResource { .init(name: "localAnimation", pathExtension: "gif", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `localVideo.mp4`.
+    var localVideoMp4: RswiftResources.FileResource { .init(name: "localVideo", pathExtension: "mp4", bundle: bundle, locale: LocaleReference.none) }
   }
 
-  fileprivate class Class {}
+  /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.
+  struct storyboard {
+    let bundle: Foundation.Bundle
+    var launchScreen: launchScreen { .init(bundle: bundle) }
 
-  fileprivate init() {}
-}
-
-struct _R: Rswift.Validatable {
-  static func validate() throws {
-    #if os(iOS) || os(tvOS)
-    try storyboard.validate()
-    #endif
-  }
-
-  #if os(iOS) || os(tvOS)
-  struct storyboard: Rswift.Validatable {
-    static func validate() throws {
-      #if os(iOS) || os(tvOS)
-      try launchScreen.validate()
-      #endif
+    func launchScreen(bundle: Foundation.Bundle) -> launchScreen {
+      .init(bundle: bundle)
+    }
+    func validate() throws {
+      try self.launchScreen.validate()
     }
 
-    #if os(iOS) || os(tvOS)
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+
+    /// Storyboard `LaunchScreen`.
+    struct launchScreen: RswiftResources.StoryboardReference, RswiftResources.InitialControllerContainer {
       typealias InitialController = UIKit.UIViewController
 
-      let bundle = R.hostingBundle
+      let bundle: Foundation.Bundle
+
       let name = "LaunchScreen"
-
-      static func validate() throws {
-        if UIKit.UIImage(named: "LaunchImage.png", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'LaunchImage.png' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
-        if #available(iOS 11.0, tvOS 11.0, *) {
-        }
+      func validate() throws {
+        if UIKit.UIImage(named: "LaunchImage.png", in: bundle, compatibleWith: nil) == nil { throw RswiftResources.ValidationError("[R.swift] Image named 'LaunchImage.png' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
       }
-
-      fileprivate init() {}
     }
-    #endif
-
-    fileprivate init() {}
   }
-  #endif
-
-  fileprivate init() {}
 }
