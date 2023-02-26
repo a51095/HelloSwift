@@ -276,7 +276,7 @@
 			children = (
 				F704A04B269E73830044729E /* Root */,
 				F704A064269E75110044729E /* Base */,
-				F704A070269E7AD10044729E /* Class */,
+				F704A070269E7AD10044729E /* Main */,
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
 				F704A08E269EA8A50044729E /* Helper */,
@@ -340,14 +340,14 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		F704A070269E7AD10044729E /* Class */ = {
+		F704A070269E7AD10044729E /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				F704A079269E7BC10044729E /* Home */,
 				A66E2EB126FDAA1500453EB9 /* List */,
 				F704A07A269E7BCA0044729E /* User */,
 			);
-			path = Class;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		F704A079269E7BC10044729E /* Home */ = {
