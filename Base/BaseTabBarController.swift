@@ -6,7 +6,7 @@ struct TabItem {
 }
 
 class BaseTabBarController: UITabBarController {
-        
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -15,7 +15,7 @@ class BaseTabBarController: UITabBarController {
     init() {
         super.init(nibName: nil, bundle: nil)
     }
-
+    
     /// 设置整体tabBar样式
     func configBarStyle() {
         // 选项卡是否半透明(默认半透明,建议设置为false)
