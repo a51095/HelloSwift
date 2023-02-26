@@ -20,7 +20,7 @@ def swiftPods
   pod 'SnapKit', '5.6.0'
   pod 'Alamofire', '5.6.4'
   pod 'HandyJSON', '5.0.2'
-  pod 'Kingfisher', '7.5.0'
+  pod 'Kingfisher', '7.6.2'
 end
 
 target 'HelloSwift' do
