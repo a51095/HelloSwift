@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F08FE2B297695F400835E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */; };
-		828DB5AD291B88F5008CD8B9 /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DB5AC291B88F5008CD8B9 /* TreeNode.swift */; };
+		828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DB5AC291B88F5008CD8B9 /* TreeView.swift */; };
 		829971CF29215357003CD52B /* LaunchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 829971CE29215357003CD52B /* LaunchImage.png */; };
 		82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E065DB29AB6A7100B8F94C /* RootViewController.swift */; };
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
@@ -65,7 +65,7 @@
 /* Begin PBXFileReference section */
 		3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
-		828DB5AC291B88F5008CD8B9 /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
+		828DB5AC291B88F5008CD8B9 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
 		829971CE29215357003CD52B /* LaunchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchImage.png; sourceTree = "<group>"; };
 		82E065DB29AB6A7100B8F94C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGuideCell.swift; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 			children = (
 				A62005892720212300DB8073 /* Timer.swift */,
 				F78279B426A5121200A90FFF /* Cache.swift */,
-				828DB5AC291B88F5008CD8B9 /* TreeNode.swift */,
+				828DB5AC291B88F5008CD8B9 /* TreeView.swift */,
 				F7B4FD9826A6C6850051FC5B /* ItemView.swift */,
 				F7B44823269EDE490098D2AF /* DragView.swift */,
 				F7B4481F269ED3840098D2AF /* ToastView.swift */,
@@ -562,7 +562,7 @@
 				A6AE060C27195643004F5160 /* LocationManager.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
-				828DB5AD291B88F5008CD8B9 /* TreeNode.swift in Sources */,
+				828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
 				A6AE06112719A604004F5160 /* PushManager.swift in Sources */,
 				A6D410FE26E29C0B00FD46CE /* ImageConfig.swift in Sources */,

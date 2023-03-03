@@ -1,5 +1,5 @@
 //
-//  TreeNode.swift
+//  TreeView.swift
 //  HelloSwift
 //
 //  Created by macbook on 2022/11/9.
@@ -39,22 +39,22 @@ class Queue<T> {
     }
 }
 
-class TreeNode<T> {
+class TreeView<T> {
     var value: T
-    var children: [TreeNode] = []
+    var children: [TreeView] = []
     
     init(value: T) {
         self.value = value
     }
     
-    func add(_ child: TreeNode) {
+    func add(_ child: TreeView) {
         children.append(child)
     }
 }
 
-extension TreeNode {
+extension TreeView {
     // MARK: 深度遍历
-    func forEachDepth(visit: (TreeNode) -> Void) {
+    func forEachDepth(visit: (TreeView) -> Void) {
         visit(self)
         
         children.forEach { child in
@@ -63,10 +63,10 @@ extension TreeNode {
     }
     
     // MARK: 层级遍历
-    func forEachLevel(visit: (TreeNode) -> Void) {
+    func forEachLevel(visit: (TreeView) -> Void) {
         visit(self)
         
-        let queue = Queue<TreeNode>()
+        let queue = Queue<TreeView>()
         
         children.forEach { child in
             queue.enqueue(child)
@@ -81,10 +81,10 @@ extension TreeNode {
     }
 }
 
-extension TreeNode where T: Equatable {
+extension TreeView where T: Equatable {
     // MARK: 搜索查找
-    func search(_ value: T) -> TreeNode? {
-        var result: TreeNode?
+    func search(_ value: T) -> TreeView? {
+        var result: TreeView?
         
         forEachDepth { item in
             if item.value == value { result = item }
@@ -105,23 +105,23 @@ extension TreeNode where T: Equatable {
 
 
 /// 测试树状结构
-class TreeNodeTest {
+class TreeViewTest {
     
     init() {
         
-        let drinks = TreeNode(value: "Drinks")
+        let drinks = TreeView(value: "Drinks")
         
-        let hot = TreeNode(value: "Hot")
-        let cold = TreeNode(value: "Cold")
+        let hot = TreeView(value: "Hot")
+        let cold = TreeView(value: "Cold")
         
-        let tea = TreeNode(value: "Tea")
-        let coffee = TreeNode(value: "Coffee")
-        let cocoa = TreeNode(value: "Cocoa")
-        let milk = TreeNode(value: "Milk")
-        let water = TreeNode(value: "Water")
+        let tea = TreeView(value: "Tea")
+        let coffee = TreeView(value: "Coffee")
+        let cocoa = TreeView(value: "Cocoa")
+        let milk = TreeView(value: "Milk")
+        let water = TreeView(value: "Water")
         
-        let red = TreeNode(value: "Red")
-        let green = TreeNode(value: "Green")
+        let red = TreeView(value: "Red")
+        let green = TreeView(value: "Green")
         
         drinks.add(hot)
         drinks.add(cold)
