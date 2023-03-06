@@ -142,8 +142,8 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     func setRootViewController() {
-        kAppDelegate.window!!.rootViewController = BaseTabBarController()
-        Cache.setString("yes", forKey: AppKey.firstKey)
+        kAppDelegate.window!!.rootViewController = RootViewController()
+        Cache.setBoolValue(true, forKey: AppKey.hasInstall)
     }
     
     private func displayAnimation() {

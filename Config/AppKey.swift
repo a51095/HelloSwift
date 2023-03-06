@@ -1,6 +1,6 @@
 struct AppKey {
-    /// 用户第一次安装标识符
-    static let firstKey: String = "user_first_install"
+    /// finish the installation
+    static let hasInstall: String = "has_install"
     /// freeUid
     static let freeUid: String = "11773"
     /// freeAppKey

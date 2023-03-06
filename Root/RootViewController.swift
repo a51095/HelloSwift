@@ -1,10 +1,3 @@
-//
-//  RootViewController.swift
-//  HelloSwift
-//
-//  Created by macbook on 2023/2/26.
-//
-
 import Foundation
 
 class RootViewController: BaseTabBarController {

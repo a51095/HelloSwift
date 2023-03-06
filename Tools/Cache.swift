@@ -1,60 +1,74 @@
 final class Cache {
     /// 字符串类型缓存: String
     private static let manager: Storage = try! Storage<String, String>(diskConfig: DiskConfig(name: "DiskCache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))
-    /// 字符串数组类型缓存: [String]
+    /// 布尔类型缓存:  Bool
+    private static let boolStore = manager.transformCodable(ofType: Bool.self)
+    /// 字符串数组类型缓存:  [String]
     private static let stringArrayStore = manager.transformCodable(ofType: [String].self)
-    /// 字符串字典类型缓存: [String: Sting]
+    /// 字符串字典类型缓存:  [String: Sting]
     private static let stringDicStore = manager.transformCodable(ofType: [String: String].self)
     
-    // MARK: 存值(String)
-    static func setString(_ value: String?, forKey: String) {
-        guard let value = value else { removeObject(forKey: forKey); return }
-        try? manager.setObject(value, forKey: forKey)
+    /// 存值(String)
+    static func setString(_ value: String, forKey key: String) {
+        try? manager.removeObject(forKey: key)
+        try? manager.setObject(value, forKey: key)
     }
     
-    // MARK: 取值(String)
-    static func string(key: String) -> String? {
-        return try? manager.object(forKey: key)
+    /// 取值(String)
+    static func string(by key: String) -> String? {
+        try? manager.object(forKey: key)
     }
     
-    // MARK: 存值(字符串型数组)
-    static func setArray(_ array: [String]?, forKey: String) {
-        guard let value = array else { removeObject(forKey: forKey); return }
-        try? stringArrayStore.setObject(value, forKey: forKey)
+    /// 存值(Bool)
+    static func setBoolValue(_ value: Bool, forKey key: String) {
+        try? boolStore.removeObject(forKey: key)
+        try? boolStore.setObject(value, forKey: key)
     }
     
-    // MARK: 取值(字符串型数组)
-    static func array(key: String) -> [String]? { try? stringArrayStore.object(forKey: key) }
-    
-    // MARK: 存值(字符串型字典)
-    static func setDictionary(_ dic: [String: Any], forKey: String) {
-        guard let jsonValue = dic.jsonString() else { removeObject(forKey: forKey); return }
-        try? manager.setObject(jsonValue, forKey: forKey)
+    /// 取值(Bool)
+    static func boolValue(by key: String) -> Bool {
+        let res = try? boolStore.object(forKey: key)
+        return res ?? false
     }
     
-    // MARK: 取值(字符串型字典)
-    static func dictionary(key: String) -> [String: Any]? {
-        guard let jsonString = try? manager.object(forKey: key), let dict = try? jsonString.toObject() as? [String: Any] else { return nil }
-        return dict
+    /// 存值(字符串型数组)
+    static func setArray(_ array: [String], forKey key: String) {
+        try? stringArrayStore.removeObject(forKey: key)
+        try? stringArrayStore.setObject(array, forKey: key)
     }
     
-    // MARK: 移除缓存
-    static func removeObject(forKey key: String) { try? manager.removeObject(forKey: key) }
+    /// 取值(字符串型数组)
+    static func array(by key: String) -> [String]? {
+        try? stringArrayStore.object(forKey: key)
+    }
     
-    // MARK: 移除所有缓存
+    /// 存值(字符串型字典)
+    static func setDictionary(_ dic: [String: String], forKey key: String) {
+        try? stringDicStore.setObject(dic, forKey: key)
+    }
+    
+    /// 取值(字符串型字典)
+    static func dictionary(by key: String) -> [String: Any]? {
+        try? stringDicStore.object(forKey: key)
+    }
+    
+    /// 移除缓存
+    static func removeObject(by key: String) { try? manager.removeObject(forKey: key) }
+    
+    /// 移除所有缓存
     static func removeAll() { try? manager.removeAll() }
 }
 
 extension HandyJSON {
-    // MARK: 取值(模型)
+    /// 取值(模型)
     static func getCache(forKey key: String) -> Self? {
-        let jsonString = Cache.string(key: key)
+        let jsonString = Cache.string(by: key)
         return Self.deserialize(from: jsonString)
     }
     
-    // MARK: 存值(模型)
+    /// 存值(模型)
     func setCache(forKey key: String) {
-        let jsonString = toJSONString()
+        guard let jsonString = toJSONString() else { return }
         Cache.setString(jsonString, forKey: key)
     }
 }
