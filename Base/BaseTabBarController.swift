@@ -12,13 +12,11 @@ class BaseTabBarController: UITabBarController {
     }
     
     /// 初始化器
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
+    init() { super.init(nibName: nil, bundle: nil) }
     
     /// 设置整体tabBar样式
-    func configBarStyle() {
-        // 选项卡是否半透明(默认半透明,建议设置为false)
+    func defaultBarStyle() {
+        // 选项卡是否半透明(默认半透明，建议设置为false)
         tabBar.isTranslucent = false
         // 选项卡背景色
         tabBar.backgroundColor = .white

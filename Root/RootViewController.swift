@@ -7,7 +7,7 @@ class RootViewController: BaseTabBarController {
     
     override init() {
         super.init()
-        self.configBarStyle()
+        self.defaultBarStyle()
         self.configItemStyle()
     }
     
