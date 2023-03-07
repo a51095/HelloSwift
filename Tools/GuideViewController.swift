@@ -60,18 +60,23 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    // MARK: - 反初始化器
+    /// 反初始化器
     deinit { kPrint("GuideViewController deinit~") }
     
-    // MARK: 数据初始化
+    /// 数据初始化
     init(config: GuideConfig) {
         guideConfig = config
         displayCount = config.resourceName.count
         super.init(nibName: nil, bundle: nil)
     }
     
-    // MARK: 视图初始化
-    override func setUI() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setUI()
+    }
+    
+    /// 视图初始化
+    func setUI() {
         // 非空校验
         guard !guideConfig.resourceName.isEmpty else {
             kAppDelegate.window!!.rootViewController = BaseTabBarController()
@@ -119,20 +124,20 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         
     }
     
-    // MARK: 添加跳过按钮skipButton
+    /// 添加跳过按钮skipButton
     private func addSkipButton() {
         view.addSubview(skipButton)
         skipButton.frame = CGRect(x: kScreenWidth - 100, y: kSafeMarginTop(0), width: 70, height: 30)
     }
     
-    // MARK: 添加开始按钮startButton
+    /// 添加开始按钮startButton
     private func addStartButton() {
         view.addSubview(startButton)
         startButton.frame = CGRect(x: kScreenWidth / 2 - 50, y: kScreenHeight - kScaleHeight(100), width: 100, height: 36)
         hideAnimation()
     }
     
-    // MARK: 添加显示圆点pageControl
+    /// 添加显示圆点pageControl
     private func addPageControl() {
         view.addSubview(pageControl)
         pageControl.hidesForSinglePage = true
@@ -161,7 +166,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         }
     }
     
-    // MARK: scrollView代理方法
+    /// scrollView代理方法
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let currentIndex = scrollView.contentOffset.x.i / kScreenWidth
         guard currentIndex != pageControl.currentPage else { return }

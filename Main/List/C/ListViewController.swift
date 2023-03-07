@@ -51,7 +51,7 @@ class ListViewController: BaseViewController {
     }()
     
     override func viewDidLoad() {
-        setBackgroundColor()
+        super.viewDidLoad()
         albumAuthorization { res in
             if res {
                 DispatchQueue.main.async {
@@ -63,7 +63,7 @@ class ListViewController: BaseViewController {
         }
     }
     
-    // MARK: 数据初始化
+    /// 数据初始化
     func initData() {
         // 获取系统相册
         let  fetchOptions =  PHFetchOptions()
@@ -117,9 +117,9 @@ class ListViewController: BaseViewController {
             }
         }
     }
-    
-    // MARK: 视图初始化
-    override func setUI() {
+        
+    /// 视图初始化
+    func setUI() {
         view.addSubview(photoCollectionView)
         photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(kSafeMarginTop(36))

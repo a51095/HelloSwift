@@ -38,7 +38,6 @@ struct AdConfig {
 }
 
 class AdViewController: BaseViewController, CountDownProtocol {
-    
     /// 广告视图配置参数
     private var adConfig: AdConfig
     /// 广告视图播放数据源
@@ -83,26 +82,26 @@ class AdViewController: BaseViewController, CountDownProtocol {
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
-    // MARK: 反初始化器
+    /// 反初始化器
     deinit { removeAdAVPlayerItemObserver(); kPrint("AdViewController deinit") }
     
-    // MARK: 初始化器
+    /// 初始化器
     init(config: AdConfig) {
         adConfig = config
         super.init(nibName: nil, bundle: nil)
     }
     
-    // MARK: 添加adAVPlayerItem观察者
+    /// 添加adAVPlayerItem观察者
     private func addAdAVPlayerItemObserver() {
         adAVPlayerItem?.addObserver(self,forKeyPath: "status", options: .new, context: nil)
     }
     
-    // MARK: 移除adAVPlayerItem观察者
+    /// 移除adAVPlayerItem观察者
     private func removeAdAVPlayerItemObserver() {
         adAVPlayerItem?.removeObserver(self, forKeyPath: "status", context: nil)
     }
     
-    // MARK: 处理adAVPlayerItem观察者
+    /// 处理adAVPlayerItem观察者
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let object = object as? AVPlayerItem  else { return }
         guard let keyPath = keyPath else { return }
@@ -122,7 +121,12 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    override func setUI() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setUI()
+    }
+    
+    func setUI() {
         // 添加手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSeleted))
         view.addGestureRecognizer(tap)
@@ -138,7 +142,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         config()
     }
     
-    // MARK: 添加广告muteButton
+    /// 添加广告muteButton
     func addMuteButton() {
         if adConfig.isMute {
             view.addSubview(muteButton)
@@ -149,7 +153,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 添加广告skipButton
+    /// 添加广告skipButton
     func addSkipButton() {
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
@@ -163,7 +167,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         CountDownManager.shared.run(start: startTime, end: startTime + adConfig.adDuration.i)
     }
     
-    // MARK: 添加广告adImageView
+    /// 添加广告adImageView
     func addAdImageView() {
         view.addSubview(adImageView)
         adImageView.snp.makeConstraints { make in
@@ -171,7 +175,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 添加广告adPlayerController
+    /// 添加广告adPlayerController
     func addAdPlayerController() {
         view.addSubview(adPlayerController.view)
         adPlayerController.view.snp.makeConstraints { make in
@@ -179,7 +183,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 配置广告相关参数
+    /// 配置广告相关参数
     func config() {
         switch adConfig.adType {
         case .adImage: loadImage(); break
@@ -188,7 +192,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 加载广告(image)
+    /// 加载广告(image)
     private func loadImage() {
         // 非空校验
         guard !adConfig.resourceName.isEmpty else { return }
@@ -229,7 +233,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 加载广告(gif)
+    /// 加载广告(gif)
     private func loadGif() {
         // 非空校验
         guard !adConfig.resourceName.isEmpty else { return }
@@ -279,7 +283,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 加载广告(video)
+    /// 加载广告(video)
     private func loadVideo() {
         // 非空校验
         guard !adConfig.resourceName.isEmpty else { return }
@@ -323,28 +327,28 @@ class AdViewController: BaseViewController, CountDownProtocol {
         addAdAVPlayerItemObserver()
     }
     
-    // MARK: 更新广告资源(image)
+    /// 更新广告资源(image)
     func updateAdImage(_ imageData: Data, _ imageTempPath: String)  {
         DispatchQueue.global().async {
             try? imageData.write(to: URL(fileURLWithPath: imageTempPath), options: .atomic)
         }
     }
     
-    // MARK: 更新广告资源(gif)
+    /// 更新广告资源(gif)
     func updateAdGif(_ gifData: Data, _ gifTempPath: String)  {
         DispatchQueue.global().async {
             try? gifData.write(to: URL(fileURLWithPath: gifTempPath), options: .atomic)
         }
     }
     
-    // MARK: 更新广告资源(video)
+    /// 更新广告资源(video)
     func updateAdVideo(_ videoData: Data, _ videoTempPath: String)  {
         DispatchQueue.global().async {
             try? videoData.write(to: URL(fileURLWithPath: videoTempPath), options: .atomic)
         }
     }
     
-    // MARK: 移除广告视图
+    /// 移除广告视图
     private func dismiss() {
         UIView.animate(withDuration: 0.25) {
             if self.adConfig.isSkip {
@@ -367,16 +371,16 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: 跳过事件
+    /// 跳过事件
     @objc private func skipButtonDidSeleted() { dismiss() }
     
-    // MARK: 静音事件
+    /// 静音事件
     @objc private func muteButtonDidSeleted() {
         muteButton.isSelected = !muteButton.isSelected
         adPlayerController.player?.isMuted = muteButton.isSelected
     }
     
-    // MARK: 广告连接
+    /// 广告连接
     @objc private func adViewDidSeleted() {
         dismiss()
         let url = URL(string: adConfig.linkUrl)
@@ -386,11 +390,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
         }
     }
     
-    // MARK: CountDownProtocol代理方法
+    /// CountDownProtocol代理方法
     func refreshTime(result: [String]) {
         let timeStr = result.last!
         if timeStr == "00" { dismiss(); return }
-        
         self.skipButton.setTitle("跳过(\(timeStr)"+"s)", for: .normal)
     }
 }

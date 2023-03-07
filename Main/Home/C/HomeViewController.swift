@@ -15,7 +15,12 @@ class HomeViewController: BaseViewController {
         return v
     }()
     
-    override func setUI() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setUI()
+    }
+    
+    func setUI() {
         // 网络校验,有网则执行后续操作,网络不可用,则直接返回
         guard isReachable else { return }
         
