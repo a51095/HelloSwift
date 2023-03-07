@@ -4,7 +4,7 @@ extension String {
     
     static let characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     /// 生成指定位数随机字符串(此处默认16位)
-    static func randomString(len : Int) -> String {
+    static func randomString(len: Int = 16) -> String {
         var ranStr = ""
         for _ in 0..<len {
             let index = Int(arc4random_uniform(UInt32(characters.count)))
@@ -13,7 +13,7 @@ extension String {
         return ranStr
     }
     
-    // MARK: 格式化时间字符串
+    /// 格式化时间字符串
     static func dateFormatter(_ date: Date = Date()) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -21,18 +21,18 @@ extension String {
         return dateStr
     }
     
-    // MARK: JSON字符串转对象
-    func toObject()  throws -> Any? {
+    /// JSON字符串转对象
+    func toObject() throws -> Any? {
         let data = self.data(using: .utf8)
         // 容错处理
         guard data != nil else { return nil }
         return try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
     }
     
-    // MARK: 去除字符串中的空格
+    /// 去除字符串中的空格
     func removeAllSapce() -> String { replacingOccurrences(of: " ", with: "") }
     
-    // MARK: 版本号比较
+    /// 版本号比较
     func isHeightVersion(over version: String) -> Bool {
         compare(version, options: .numeric, range: nil, locale: nil) == .orderedDescending
     }

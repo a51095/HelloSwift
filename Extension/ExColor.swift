@@ -1,24 +1,13 @@
 extension UIColor {
-    // MARK: App主色调
+    /// App主色调
     static var main: UIColor { .hexColor("#FFD700") }
     
-    // MARK: 随机颜色
+    /// 随机颜色
     static var random: UIColor {
         rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
     }
-    
-    private static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
-        UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
-    }
-    
-    private static func hexColor(_ hex: Int, _ alpha: CGFloat = 1) -> UIColor {
-        let red = (hex >> 16) & 0xFF
-        let green = (hex >> 8) & 0xFF
-        let blue = hex & 0xFF
-        return rgb(red, green, blue, alpha)
-    }
-    
-    // MARK: 16进制颜色值
+        
+    /// 16进制颜色值
     static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
         var string = ""
         let lowercaseHexString = hexString.lowercased()
@@ -37,5 +26,16 @@ extension UIColor {
         }
         let hexValue = Int(string, radix: 16) ?? 0
         return hexColor(hexValue, alpha)
+    }
+    
+    private static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
+        UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
+    }
+    
+    private static func hexColor(_ hex: Int, _ alpha: CGFloat = 1) -> UIColor {
+        let red = (hex >> 16) & 0xFF
+        let green = (hex >> 8) & 0xFF
+        let blue = hex & 0xFF
+        return rgb(red, green, blue, alpha)
     }
 }

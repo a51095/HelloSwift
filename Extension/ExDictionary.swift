@@ -1,10 +1,13 @@
 extension Dictionary {
-    // MARK: 合并当前字典对象键值对
-    mutating func merge(dict: [Key: Value]) {
-        for (k, v) in dict { updateValue(v, forKey: k) }
+    /// 合并字典对象键值对
+    /// - Parameter dict: 待合并字典
+    mutating func merge(of dic: [Key: Value]) {
+        for (k, v) in dic { updateValue(v, forKey: k) }
     }
     
-    // MARK: 字典转JSON数据(参数为格式美化格式,默认false)
+    /// 字典转JSON数据
+    /// - Parameter prettify: 格式美化，默认false
+    /// - Returns: JSON数据
     func jsonData(prettify: Bool = false) -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else { return nil }
         let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization
@@ -12,7 +15,9 @@ extension Dictionary {
         return try? JSONSerialization.data(withJSONObject: self, options: options)
     }
     
-    // MARK: 字典转JSON字符串(参数为格式美化,默认false)
+    /// 字典转JSON字符串
+    /// - Parameter prettify: 格式美化，默认false
+    /// - Returns: JSON字符串
     func jsonString(prettify: Bool = false) -> String? {
         guard JSONSerialization.isValidJSONObject(self) else { return nil }
         let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization

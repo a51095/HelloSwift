@@ -36,7 +36,5 @@ extension AppDelegate: NetworkStatus {
         }
         
         window?.makeKeyAndVisible()
-        // 注册通知
-        PushManager.requestAuthorization(application)
     }
 }

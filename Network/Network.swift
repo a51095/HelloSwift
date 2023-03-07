@@ -1,10 +1,3 @@
-//
-//  Network.swift
-//  HelloSwift
-//
-//  Created by well on 2021/9/10.
-//
-import Foundation
 /// 自定义响应数据结构(目的在于封装的请求方法仅一个回调即可获取成功与失败两种状态)
 struct ResponseData {
     let resCode: Int
@@ -28,7 +21,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
     // 公共参数
     var commonParam = ["uid": AppKey.freeUid, "appkey": AppKey.freeAppKey] as [String: Any]
     // 合并请求参数
-    if !parameters.isEmpty { commonParam.merge(dict: parameters) }
+    if !parameters.isEmpty { commonParam.merge(of: parameters) }
     
     DispatchQueue.main.async { kAppDelegate.window!!.showLoading() }
     AF.request(url, method: method, parameters: commonParam, encoding: encoding).response { (res: AFDataResponse) in

@@ -33,8 +33,6 @@
 		A66E2EBC270021F100453EB9 /* AutoScaleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EBB270021F100453EB9 /* AutoScaleCardView.swift */; };
 		A680789026EB51C70068DD0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* Network.swift */; };
 		A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* GuideViewController.swift */; };
-		A6AE060C27195643004F5160 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE060B27195643004F5160 /* LocationManager.swift */; };
-		A6AE06112719A604004F5160 /* PushManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AE06102719A604004F5160 /* PushManager.swift */; };
 		A6D410FE26E29C0B00FD46CE /* ImageConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D410FD26E29C0B00FD46CE /* ImageConfig.swift */; };
 		A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* PhotoDetailViewController.swift */; };
 		A6FA66BE26E1015D00A6A918 /* ScaleAspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* ScaleAspectView.swift */; };
@@ -88,8 +86,6 @@
 		A66E2EBB270021F100453EB9 /* AutoScaleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScaleCardView.swift; sourceTree = "<group>"; };
 		A680788F26EB51C60068DD0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A69B068726F09292007C3FE6 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
-		A6AE060B27195643004F5160 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		A6AE06102719A604004F5160 /* PushManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushManager.swift; sourceTree = "<group>"; };
 		A6D410FD26E29C0B00FD46CE /* ImageConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageConfig.swift; sourceTree = "<group>"; };
 		A6F36C5B26F6483B008999AE /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* ScaleAspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAspectView.swift; sourceTree = "<group>"; };
@@ -235,31 +231,6 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		A6AE060D27199694004F5160 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				A6AE060F2719A5E6004F5160 /* Push */,
-				A6AE060E271996F4004F5160 /* Weather */,
-			);
-			path = Module;
-			sourceTree = "<group>";
-		};
-		A6AE060E271996F4004F5160 /* Weather */ = {
-			isa = PBXGroup;
-			children = (
-				A6AE060B27195643004F5160 /* LocationManager.swift */,
-			);
-			path = Weather;
-			sourceTree = "<group>";
-		};
-		A6AE060F2719A5E6004F5160 /* Push */ = {
-			isa = PBXGroup;
-			children = (
-				A6AE06102719A604004F5160 /* PushManager.swift */,
-			);
-			path = Push;
-			sourceTree = "<group>";
-		};
 		C78CFD14EBDB15D285B08BEA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,7 +249,6 @@
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
 				F704A08E269EA8A50044729E /* Helper */,
-				A6AE060D27199694004F5160 /* Module */,
 				A680788E26EB518A0068DD0A /* Network */,
 				A62CF261273E7DBC00670C13 /* Extension */,
 				A650EE5126E63C2D00E437AA /* Resource */,
@@ -556,12 +526,10 @@
 				A62CF26E273E7DBC00670C13 /* ExDictionary.swift in Sources */,
 				A62CF26C273E7DBC00670C13 /* ExColor.swift in Sources */,
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
-				A6AE060C27195643004F5160 /* LocationManager.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
 				828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
-				A6AE06112719A604004F5160 /* PushManager.swift in Sources */,
 				A6D410FE26E29C0B00FD46CE /* ImageConfig.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CountDownView.swift in Sources */,
 				F704A090269EAA0E0044729E /* AppHelper.swift in Sources */,
