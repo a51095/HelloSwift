@@ -348,8 +348,8 @@
 		F7B4485526A17E890098D2AF /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				F7B4485A26A181550098D2AF /* AppURL.swift */,
 				F7B4485626A17F650098D2AF /* AppKey.swift */,
+				F7B4485A26A181550098D2AF /* AppURL.swift */,
 				A6D410FD26E29C0B00FD46CE /* ImageConfig.swift */,
 				F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */,
 			);
