@@ -12,11 +12,11 @@ class PhotoGuideCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setUI()
+        self.initSubview()
     }
     
-    // MARK: - UI初始化
-    func setUI() {
+    /// 子视图初始化
+    func initSubview() {
         selectionStyle = .none
         iconImageView.layer.cornerRadius = 6
         iconImageView.layer.masksToBounds = true
@@ -38,7 +38,7 @@ class PhotoGuideCell: UITableViewCell {
         }
         
         statueImageView.isHidden = true
-        statueImageView.image = R.image.photo_guide_seleted()
+        statueImageView.image = UIImage(named: "photo_guide_seleted")
         statueImageView.layer.masksToBounds = true
         statueImageView.contentMode = .scaleAspectFit
         contentView.addSubview(statueImageView)

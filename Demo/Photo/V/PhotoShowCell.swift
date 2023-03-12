@@ -17,11 +17,11 @@ class PhotoShowCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUI()
+        self.initSubview()
     }
     
-    // MARK: - UI初始化
-    private func setUI() {
+    /// 子视图初始化
+    private func initSubview() {
         contentView.addSubview(photoImageView)
         photoImageView.layer.cornerRadius = 2
         photoImageView.layer.masksToBounds = true
@@ -37,8 +37,8 @@ class PhotoShowCell: UICollectionViewCell {
         }
         
         contentView.addSubview(statueButton)
-        statueButton.setImage(R.image.photo_guide_normal(), for: .normal)
-        statueButton.setImage(R.image.photo_guide_seleted(), for: .selected)
+        statueButton.setImage(UIImage(named: "photo_guide_normal"), for: .normal)
+        statueButton.setImage(UIImage(named: "photo_guide_seleted"), for: .selected)
         statueButton.addTarget(self, action: #selector(statueButtonDidSeleted), for: .touchUpInside)
         statueButton.snp.makeConstraints { make in
             make.top.equalTo(10)

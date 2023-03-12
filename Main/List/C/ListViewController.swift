@@ -1,296 +1,117 @@
+//
+//  ListViewController.swift
+//  HelloSwift
+//
+//  Created by well on 2023/3/12.
+//
+
+import Foundation
+import UIKit
+
 class ListViewController: BaseViewController {
-    
-    /// 当前选中的第N个相薄源(默认选中第一个)
-    private var seletedIndex = IndexPath(row: 0, section: 0)
-    /// 数据源(guideTableView)
-    private var albumSource = [AlbumModel]()
-    /// 数据源(photoCollectionView)
-    private var photoSource = [PhotoModel]()
-    /// 标题视图
-    private let titleButton = UIButton()
-    /// item限定间距
-    private lazy var limitMargin: Int = { 4 }()
-    /// 懒加载item尺寸大小
-    private lazy var targetSize: CGSize = {
-        let autoWidth = (kScreenWidth - 5 * limitMargin) / 4
-        return CGSize(width: autoWidth, height: autoWidth)
-    }()
-    
-    /// 懒加载相薄引导视图
-    private lazy var guideTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.rowHeight = 88
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
-        tableView.alwaysBounceVertical = false
-        tableView.contentInsetAdjustmentBehavior = .never
-        tableView.register(PhotoGuideCell.self, forCellReuseIdentifier: PhotoGuideCell.classString)
-        return tableView
-    }()
-    
-    /// 懒加载相薄内容视图
-    private lazy var photoCollectionView: UICollectionView = {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.minimumLineSpacing = 0
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.itemSize = targetSize
-        flowLayout.sectionInset = UIEdgeInsets(top: limitMargin.cgf, left: limitMargin.cgf, bottom: limitMargin.cgf, right: limitMargin.cgf)
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressTouchDown))
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .white
-        collectionView.alwaysBounceVertical = false
-        collectionView.addGestureRecognizer(longPress)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(PhotoShowCell.self, forCellWithReuseIdentifier: PhotoShowCell.classString)
-        return collectionView
+    /// 当前显示新闻类型
+    private var currentNewsType = "guonei"
+    /// 新闻数据源
+    private var listSource = [ListModel]()
+    /// 懒加载,新闻列表控件
+    private lazy var listTableView: UITableView = {
+        let v = UITableView()
+        v.rowHeight = 120
+        v.delegate = self
+        v.dataSource = self
+        v.separatorStyle = .none
+        v.alwaysBounceVertical = false
+        v.register(ListCell.self, forCellReuseIdentifier: ListCell.classString)
+        return v
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        albumAuthorization { res in
-            if res {
-                DispatchQueue.main.async {
-                    self.setUI()
-                    self.initData()
-                    if self.photoSource.count == 0 { self.titleButton.removeFromSuperview() }
-                }
-            }
-        }
+        self.initSubview()
+        self.initData()
     }
     
-    /// 数据初始化
-    func initData() {
-        // 获取系统相册
-        let  fetchOptions =  PHFetchOptions()
-        let  assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
-        filterAssetCollections(collection: assetCollections)
+    func initData() { self.getNewsData(type: self.currentNewsType) }
+    
+    func initSubview() {
+        // 网络校验,有网则执行后续操作,网络不可用,则直接返回
+        guard isReachable else { return }
         
-#if !targetEnvironment(simulator)
-        // 获取用户自定义相册
-        let userCollections = PHCollectionList.fetchTopLevelUserCollections(with: fetchOptions)
-        filterAssetCollections(collection: userCollections as! PHFetchResult<PHAssetCollection>)
-#endif
+        let topView = ItemView()
+        topView.didSeletedBlock = { type in
+            self.listSource.removeAll()
+            self.currentNewsType = type
+            self.getNewsData(type: type)
+        }
         
-        // 按照数组长度排序
-        albumSource = albumSource.sorted { a, b in a.fetchResult.count > b.fetchResult.count }
+        view.addSubview(topView)
+        topView.snp.makeConstraints { make in
+            make.top.equalTo(kSafeMarginTop(0))
+            make.height.equalTo(60)
+            make.left.right.equalToSuperview()
+        }
         
-        let item = albumSource.first
-        titleButton.setTitle(item?.title, for: .normal)
-        fetchResult(item)
+        view.addSubview(listTableView)
+        listTableView.snp.makeConstraints { make in
+            make.top.equalTo(topView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
         
-        // 默认状态
-        titleButton.isSelected = true
-        titleButton.setImage(R.image.photo_arrow_up(), for: .normal)
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
-        guideTableView.alpha = 0
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
+        // 添加头部刷新
+        let header = MJRefreshNormalHeader { self.downRefreshing() }
+        header.setTitle("下拉刷新", for: .idle)
+        header.setTitle("松开刷新", for: .pulling)
+        header.setTitle("正在刷新", for: .refreshing)
+        listTableView.mj_header = header
+        
+        //        // 添加底部刷新
+        //        let footer = MJRefreshAutoNormalFooter { }
+        //        menuTableView.mj_footer = footer
     }
     
-    // MARK: 格式化相簿内容
-    private func filterAssetCollections(collection: PHFetchResult<PHAssetCollection>){
-        for i in 0..<collection.count {
-            // 按照时间升序遍历某个相薄内的照片
-            let fetchOptions = PHFetchOptions()
-            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
-            let assetCollection = collection[i]
-            
-            // 过滤用户隐私相薄(包括'最近删除')
-            if  assetCollection.assetCollectionSubtype.rawValue == 1000000201 ||
-                    assetCollection.assetCollectionSubtype == .smartAlbumAllHidden {
-                continue
-            }
-            
-            // 过滤Cloud分享类型相薄
-            if assetCollection.assetCollectionSubtype == .albumCloudShared {
-                continue
-            }
-            
-            let assetFetchResult = PHAsset.fetchAssets(in: assetCollection, options: fetchOptions)
-            // 非空校验(过滤空相薄)
-            if assetFetchResult.count > 0 {
-                albumSource.append(AlbumModel(title: assetCollection.localizedTitle!, fetchResult: assetFetchResult))
-            }
-        }
-    }
-        
-    /// 视图初始化
-    func setUI() {
-        view.addSubview(photoCollectionView)
-        photoCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop(36))
-            make.left.bottom.right.equalToSuperview()
-        }
-        
-        view.addSubview(guideTableView)
-        guideTableView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop(36))
-            make.left.bottom.right.equalToSuperview()
-        }
-        
-        addTopView()
-        
-        view.addSubview(titleButton)
-        titleButton.layer.cornerRadius = 12
-        titleButton.titleLabel?.font = kMediumFont(16)
-        titleButton.setTitleColor(.black, for: .normal)
-        titleButton.addTarget(self, action: #selector(titleButtonDidSeleted), for: .touchUpInside)
-        titleButton.snp.makeConstraints { make in
-            make.height.equalTo(36)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(kSafeMarginTop(0))
-        }
+    // 下拉刷新数据
+    func downRefreshing() {
+        self.listSource.removeAll()
+        self.getNewsData(type: self.currentNewsType)
     }
     
-    // MARK: 结果分类,添加数据源
-    func fetchResult(_ item: AlbumModel?)  {
-        // 非空校验
-        guard let item = item else { return }
+    /// 获取新闻数据
+    func getNewsData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
         
-        // 每次切换相薄清空上次数据源
-        self.photoSource.removeAll()
+        let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": "ce7c786dd0f990eabd175663be4b51bd"]
         
-        // 照片请求参数配置
-        let options = PHImageRequestOptions()
-        // 指定照片是否可从iCloud下载图像
-        options.isNetworkAccessAllowed = false
-        // 同步处理图像请求,仅返回一次结果
-        options.isSynchronous = true
-        // 自动调整图像大小，使其与 targetSize 完全匹配
-        options.resizeMode = .exact
-        // 提供最高质量的可用图像，而忽略加载所需时长
-        options.deliveryMode = .highQualityFormat
-        
-        item.fetchResult.enumerateObjects { asset, idx, info in
-            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, info in
+        NetworkRequest(url: AppURL.toutiaoUrl, parameters: parameters) { res in
+            self.listTableView.mj_header?.endRefreshing()
+            // 容错处理
+            guard res != nil else { return }
+            
+            if let dic = res {
+                let errorCode = dic["error_code"] as! Int
+                guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
                 
-                if asset.mediaType == .image, let img = resImg {
-                    
-                    // 通用照片
-                    if asset.mediaSubtypes.rawValue == 0 {
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
+                let result = dic["result"] as! [String: Any]
+                let data = result["data"] as! [[String: Any]]
+                for item in data {
+                    let model = ListModel.deserialize(from: item)
+                    if (model?.thumbnail_pic_s!.count)! > 0 {
+                        self.listSource.append(model!)
                     }
-                    
-                    // HDR
-                    if asset.mediaSubtypes == .photoHDR {
-                        //photoHDR
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
-                    }
-                    
-                    // 截图
-                    if asset.mediaSubtypes == .photoScreenshot {
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
-                    }
-                    
-                    // GIF
-                    if asset.mediaSubtypes.rawValue == 64 {
-                        self.photoSource.append(PhotoModel(type: .Gif, image: img, asset: asset))
-                    }
-                    
-                    // live
-                    if asset.mediaSubtypes.rawValue == 520 {
-                        self.photoSource.append(PhotoModel(type: .Live, image: img, asset: asset))
-                    }
-                    
-                }else if asset.mediaType == .video, let img = resImg {
-                    self.photoSource.append(PhotoModel(type: .Video, image: img, asset: asset))
                 }
+                self.listTableView.reloadData()
             }
-        }
-        photoCollectionView.reloadData()
-    }
-    
-    // MARK: 展示可选相薄视图
-    private func displayAnimate()  {
-        titleButton.isSelected = false
-        titleButton.setImage(R.image.photo_arrow_down(), for: .normal)
-        guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
-        UIView.animate(withDuration: 0.25) {
-            self.guideTableView.alpha = 1
-            self.guideTableView.transform = .identity
-        }
-    }
-    
-    // MARK: 隐藏可选相薄视图
-    private func hideAnimate()  {
-        titleButton.isSelected = true
-        titleButton.setImage(R.image.photo_arrow_up(), for: .normal)
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
-        UIView.animate(withDuration: 0.25) {
-            self.guideTableView.alpha = 0
-            self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
-        }
-    }
-    
-    // MARK: 切换相薄
-    @objc func titleButtonDidSeleted() {
-        titleButton.isSelected ? displayAnimate() : hideAnimate()
-    }
-    
-    // MARK: 长按拖动事件
-    @objc func longPressTouchDown(longPress: UILongPressGestureRecognizer) {
-        switch longPress.state {
-        case .began:
-            let indexPath = photoCollectionView.indexPathForItem(at: longPress.location(in: photoCollectionView))
-            guard indexPath != nil else { return }
-            photoCollectionView.beginInteractiveMovementForItem(at: indexPath!)
-        case .changed: photoCollectionView.updateInteractiveMovementTargetPosition(longPress.location(in: photoCollectionView))
-        case .ended: photoCollectionView.endInteractiveMovement()
-        default: photoCollectionView.cancelInteractiveMovement()
         }
     }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
-    // MARK: tableView代理方法
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        albumSource.count
+        listSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhotoGuideCell.classString,for: indexPath) as! PhotoGuideCell
-        let item = albumSource[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.classString, for: indexPath) as! ListCell
+        let item = listSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        hideAnimate()
-        let item = albumSource[indexPath.row]
-        titleButton.setTitle(item.title, for: .normal)
-        seletedIndex = indexPath
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
-        fetchResult(item)
-    }
-}
-
-extension ListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    // MARK: collectionView代理方法
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photoSource.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoShowCell.classString, for: indexPath) as! PhotoShowCell
-        let photoItem = photoSource[indexPath.item]
-        cell.reloadCell(item: photoItem)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = photoSource[indexPath.item]
-        let vc = PhotoDetailViewController(type: item.type, source: item.asset)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = photoSource[sourceIndexPath.item]
-        photoSource.remove(at: sourceIndexPath.item)
-        photoSource.insert(item, at: destinationIndexPath.item)
     }
 }

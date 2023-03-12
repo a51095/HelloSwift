@@ -1,3 +1,8 @@
+struct ItemModel {
+    let name: String
+    let type: String
+}
+
 class ItemCell: UICollectionViewCell {
     private let topLabel = UILabel()
     private let bottomView = UIView()
@@ -11,11 +16,11 @@ class ItemCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUI()
+        self.initSubview()
     }
     
-    // MARK: - UI初始化
-    private func setUI() {
+    /// 子视图初始化
+    private func initSubview() {
         addSubview(bottomView)
         bottomView.snp.makeConstraints { make in
             make.height.equalTo(2)
@@ -39,7 +44,7 @@ class ItemCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - 监听用户点击index,继而改变状态
+    /// 监听用户点击index,继而改变状态
     override var isSelected: Bool {
         willSet {
             guard newValue != isSelected else { return }
@@ -53,14 +58,14 @@ class ItemCell: UICollectionViewCell {
         }
     }
     
-    func reloadCell(title: String) { topLabel.text = title }
+    func reloadCell(item: ItemModel) { topLabel.text = item.name }
 }
 
 class ItemView: UIView {
     /// 选中项(默认为1)
     var defaultSel: Int = 1
-    /// 菜谱类型数据源
-    private var dataSource = [String]()
+    /// 新闻类型数据源
+    private var dataSource = [ItemModel]()
     var didSeletedBlock: ((String) -> Void)?
     
     private var flowLayout = UICollectionViewFlowLayout()
@@ -72,39 +77,33 @@ class ItemView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setUI()
+        self.initSubview()
         self.initData()
     }
     
     override func layoutSubviews() {
-        flowLayout.itemSize = CGSize(width: 100, height: frame.height)
+        flowLayout.itemSize = CGSize(width: 60, height: frame.height)
     }
     
-    // MARK: - 获取菜品种类
-    private func getMenu() {
-        NetworkRequest(url: AppURL.typefreeUrl) { res in
-            // 容错处理
-            guard res.data != nil else { return }
-            
-            if let dic = res.data {
-                let datas = dic["datas"] as! [[String: Any]]
-                for (item) in datas {
-                    self.dataSource.append(contentsOf: item.keys)
-                }
-                self.didSeletedBlock?(self.dataSource[self.defaultSel])
-                self.disPlayCollectionView.reloadData()
-                self.disPlayCollectionView.selectItem(at: IndexPath(row: self.defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-            }
-        }
-    }
-    
-    // MARK: - 数据初始化
+    /// 数据初始化
     private func initData() {
-        getMenu()
+        self.dataSource.append(ItemModel(name: "推荐", type: "top"))
+        self.dataSource.append(ItemModel(name: "国内", type: "guonei"))
+        self.dataSource.append(ItemModel(name: "国际", type: "guoji"))
+        self.dataSource.append(ItemModel(name: "娱乐", type: "yule"))
+        self.dataSource.append(ItemModel(name: "体育", type: "tiyu"))
+        self.dataSource.append(ItemModel(name: "军事", type: "junshi"))
+        self.dataSource.append(ItemModel(name: "科技", type: "keji"))
+        self.dataSource.append(ItemModel(name: "财经", type: "caijing"))
+        self.dataSource.append(ItemModel(name: "游戏", type: "youxi"))
+        self.dataSource.append(ItemModel(name: "汽车", type: "qiche"))
+        self.dataSource.append(ItemModel(name: "健康", type: "jiankang"))
+        self.disPlayCollectionView.reloadData()
+        self.disPlayCollectionView.selectItem(at: IndexPath(row: self.defaultSel, section: 0), animated: true, scrollPosition: .centeredHorizontally)
     }
     
-    // MARK: - 视图初始化
-    private func setUI() {
+    /// 视图初始化
+    private func initSubview() {
         backgroundColor = .white
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
@@ -122,27 +121,26 @@ class ItemView: UIView {
         }
     }
     
-    // MARK: - 移动到点击的indexPath
+    /// 移动到点击的indexPath
     private func scrollToItem(at indexPath: IndexPath) {
         disPlayCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 }
 
 extension ItemView: UICollectionViewDelegate, UICollectionViewDataSource {
-    // MARK: - collectionView代理方法
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.classString, for: indexPath) as! ItemCell
-        let string = dataSource[indexPath.item]
-        cell.reloadCell(title: string)
+        let item = dataSource[indexPath.item]
+        cell.reloadCell(item: item)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSeletedBlock?(dataSource[indexPath.item])
+        didSeletedBlock?(dataSource[indexPath.item].type)
         scrollToItem(at: indexPath)
     }
 }

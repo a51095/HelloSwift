@@ -26,19 +26,19 @@ final class DragView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - 反初始化器
+    /// 反初始化器
     deinit {
         kPrint("DragView deinit")
     }
     
-    // MARK: 初始化器
+    /// 初始化器
     init() {
         super.init(frame: .zero)
-        setUI()
+        initSubview()
     }
     
-    // MARK: UI初始化
-    private func setUI() {
+    /// 子视图初始化
+    private func initSubview() {
         // 点击手势
         let clickGesture = UITapGestureRecognizer(target: self, action: #selector(dragViewDidClick))
         // 拖拽手势
@@ -51,17 +51,17 @@ final class DragView: UIView {
         }
     }
     
-    // MARK: 移除悬浮视图,并销毁定时器
+    /// 移除悬浮视图,并销毁定时器
     func removeDragView() {
         self.removeFromSuperview()
     }
     
-    // MARK: 展示悬浮按钮
+    /// 展示悬浮按钮
     func showDragView() {
         UIView.animate(withDuration: 0.25) { self.transform = .identity }
     }
     
-    // MARK: 隐藏悬浮按钮
+    /// 隐藏悬浮按钮
     func hiddenDragView() {
         // 右位移距离
         var offSet = self.frame.width + limitMargin
@@ -75,7 +75,7 @@ final class DragView: UIView {
         }
     }
     
-    // MARK: dragView点击手势
+    /// dragView点击手势
     @objc private func dragViewDidClick() {
         // 隐藏悬浮按钮
         hiddenDragView()
@@ -85,7 +85,7 @@ final class DragView: UIView {
         }
     }
     
-    // MARK: dragView拖拽手势
+    /// dragView拖拽手势
     @objc private func dragViewDidDrag(gesture: UIPanGestureRecognizer) {
         // 移动状态
         let moveState = gesture.state
@@ -111,7 +111,7 @@ final class DragView: UIView {
         gesture.setTranslation(.zero, in: self.superview!)
     }
     
-    // MARK: 更新中心点位置
+    /// 更新中心点位置
     private func resetPosition(point: CGPoint) -> CGPoint {
         var newPoint = point
         

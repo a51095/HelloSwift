@@ -48,8 +48,8 @@ class AdViewController: BaseViewController, CountDownProtocol {
     /// 懒加载muteButton
     private lazy var muteButton: UIButton = {
         let button = UIButton()
-        button.setImage(R.image.ad_mute(), for: .selected)
-        button.setImage(R.image.ad_restore(), for: .normal)
+        button.setImage(UIImage(named: "ad_mute"), for: .selected)
+        button.setImage(UIImage(named: "ad_restore"), for: .normal)
         button.addTarget(self, action: #selector(muteButtonDidSeleted), for: .touchUpInside)
         return button
     }()
@@ -123,10 +123,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        self.initSubview()
     }
     
-    func setUI() {
+    func initSubview() {
         // 添加手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSeleted))
         view.addGestureRecognizer(tap)

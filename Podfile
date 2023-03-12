@@ -16,7 +16,6 @@ end
 #Swift
 def swiftPods
   pod 'Cache', '6.0.0'
-  pod 'R.swift', '7.2.4'
   pod 'SnapKit', '5.6.0'
   pod 'Alamofire', '5.6.4'
   pod 'HandyJSON', '5.0.2'

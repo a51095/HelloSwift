@@ -31,13 +31,14 @@ final class ToastView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 反初始化器
+    /// 反初始化器
     deinit { kPrint("ToastView deinit") }
+    /// 自定义初始化器
+    init() { super.init(frame: .zero) }
     
-    // MARK: 初始化器
-    init(_ title: String, type: ToastType = .nore) {
-        super.init(frame: .zero)
-        
+    /// 便捷初始化器
+    convenience init(_ title: String, type: ToastType = .nore) {
+        self.init()
         layer.cornerRadius = 5
         layer.masksToBounds = true
         backgroundColor = .hexColor("#000000", 0.5)
@@ -67,7 +68,7 @@ final class ToastView: UIView {
 }
 
 extension UIView {
-    // MARK: 吐司展示
+    /// 吐司展示
     func toast(_ message: String, type: ToastType = .nore, delay: TimeInterval = 2)  {
         // 容错处理,若message字段无内容,则直接返回
         guard !message.isEmpty else { return }
@@ -85,7 +86,7 @@ extension UIView {
         
         UIView.animate(withDuration: 0.25, delay: delay, options: .curveEaseInOut) {
             toastView.alpha = 0
-        } completion: {_ in
+        } completion: { _ in
             toastView.removeFromSuperview()
         }
     }

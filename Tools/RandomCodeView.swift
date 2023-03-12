@@ -39,7 +39,7 @@ class RandomCodeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.initData()
-        self.setUI()
+        self.initSubview()
     }
     
     // MARK: 数据初始化
@@ -52,7 +52,7 @@ class RandomCodeView: UIView {
     }
     
     // MARK: 控件初始化
-    func setUI() {
+    func initSubview() {
         self.layer.masksToBounds = true
         stackView = UIStackView(arrangedSubviews: labelArray)
         stackView.alignment = .fill

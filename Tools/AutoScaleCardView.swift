@@ -89,14 +89,14 @@ class AutoScaleCardView: UIView {
     // MARK: 初始化器
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        self.setUI()
+        self.initSubview()
     }
     
     override func layoutSubviews() {
         flowLayout.itemSize = CGSize(width: self.frame.width * 0.6, height: self.frame.height * 0.6)
     }
     
-    func setUI() {
+    func initSubview() {
         self.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()

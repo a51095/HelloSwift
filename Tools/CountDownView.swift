@@ -30,17 +30,17 @@ final class CountDownView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 反初始化器
+    /// 反初始化器
     deinit { kPrint("CountDownView deinit") }
     
-    // MARK: 初始化器
+    /// 初始化器
     init() {
         super.init(frame: .zero)
-        self.setUI()
+        self.initSubview()
     }
     
-    // MARK: UI初始化
-    private func setUI() {
+    /// 子视图初始化
+    private func initSubview() {
         countDownLabel.text = "获取验证码"
         countDownLabel.textColor = .white
         countDownLabel.font = kRegularFont(16)
@@ -49,14 +49,14 @@ final class CountDownView: UIView {
         countDownLabel.snp.makeConstraints { (make) in make.edges.equalToSuperview() }
     }
     
-    // MARK: 重置数据
+    /// 重置数据
     private func resetData() {
         countDownTotal = defaultTotal
         isUserInteractionEnabled = false
         startTime = Int(CACurrentMediaTime())
     }
     
-    // MARK: 更新UI
+    /// 更新UI
     private func updateData() {
         // 获取剩余总时长
         self.countDownTotal = self.remainingTime()
@@ -72,12 +72,12 @@ final class CountDownView: UIView {
         }
     }
         
-    // MARK: 获取剩余总时长
+    /// 获取剩余总时长
     private func remainingTime() -> Int {
         defaultTotal - (Int(CACurrentMediaTime()) - startTime)
     }
     
-    // MARK: 开始倒计时
+    /// 开始倒计时
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         resetData()
         taskTimer.start { self.updateData() }

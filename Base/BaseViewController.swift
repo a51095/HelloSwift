@@ -12,7 +12,7 @@ class BaseViewController: UIViewController, NetworkStatus {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backgroundColor()
+        self.backgroundColor()
     }
     
     /// 设置视图控制器背景色
@@ -39,7 +39,7 @@ class BaseViewController: UIViewController, NetworkStatus {
     /// - Parameters:
     ///   - safeHeight: 安全高度
     ///   - image: 默认黑色
-    func addBackButton(_ safeHeight: Int = 44, _ image: UIImage? = R.image.vc_back_black()) {
+    func addBackButton(_ safeHeight: Int = 44, _ image: UIImage? = UIImage(named: "vc_back_black")) {
         if topView.superview != nil {
             topView.addSubview(backButton)
         }else {

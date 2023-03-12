@@ -56,11 +56,11 @@ final class AlertController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUI()
+        initSubview()
     }
     
-    // MARK: UI初始化
-    func setUI() {
+    /// 子视图初始化
+    func initSubview() {
         view.backgroundColor = .hexColor("#000000", 0.2)
         
         let backgroundView = UIView()
