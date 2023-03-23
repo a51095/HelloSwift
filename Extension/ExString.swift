@@ -66,14 +66,26 @@ extension String {
 
 // 字符串截取
 extension String {
-    // MARK: at之前的String
+    /// at之前的String
     func format(before at: Int) -> String { (self as NSString).substring(to: at) }
     
-    // MARK: at之后的String
+    /// at之后的String
     func format(after at: Int) -> String { (self as NSString).substring(from: at) }
     
-    // MARK: 区间范围String
+    /// 区间范围String
     func format(range location: Int, length: Int) -> String {
         (self as NSString).substring(with: NSRange(location: location, length: length))
+    }
+}
+
+extension String {
+    /// 深拷贝
+    var deepCopy: Self {
+        do {
+            let jsonData = try JSONEncoder().encode(self)
+            return try JSONDecoder().decode(Self.self, from: jsonData)
+        } catch {
+            fatalError("Decode failed. \(error)")
+        }
     }
 }

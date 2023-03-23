@@ -133,7 +133,7 @@ extension ItemView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.classString, for: indexPath) as! ItemCell
+        let cell = collectionView.dequeueReusableCell(cellType: ItemCell.self, for: indexPath)
         let item = dataSource[indexPath.item]
         cell.reloadCell(item: item)
         return cell

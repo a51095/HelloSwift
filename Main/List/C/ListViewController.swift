@@ -109,7 +109,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListCell.classString, for: indexPath) as! ListCell
+        let cell = tableView.dequeueReusableCell(cellType: ListCell.self, for: indexPath)
         let item = listSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell

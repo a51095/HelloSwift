@@ -252,7 +252,7 @@ extension PhotoAlbumViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PhotoGuideCell.classString,for: indexPath) as! PhotoGuideCell
+        let cell = tableView.dequeueReusableCell(cellType: PhotoGuideCell.self, for: indexPath)
         let item = albumSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell
@@ -274,7 +274,7 @@ extension PhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoShowCell.classString, for: indexPath) as! PhotoShowCell
+        let cell = collectionView.dequeueReusableCell(cellType: PhotoShowCell.self, for: indexPath)
         let photoItem = photoSource[indexPath.item]
         cell.reloadCell(item: photoItem)
         return cell

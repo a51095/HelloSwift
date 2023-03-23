@@ -16,7 +16,6 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
         case .success(let data):
             let object = try? JSONSerialization.jsonObject(with: data!, options: .fragmentsAllowed)
             if let dic = object as? [String: Any] {
-                kPrint(dic)
                 response(dic)
             } else {
                 if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }

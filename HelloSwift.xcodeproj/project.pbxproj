@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3F08FE2B297695F400835E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */; };
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
+		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
+		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
+		3FFFFE1F29CC5559001032D0 /* ExArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1E29CC5559001032D0 /* ExArray.swift */; };
 		8230109829BDB67C0051F731 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */; };
 		8230109A29BDB80B0051F731 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109929BDB80B0051F731 /* ListModel.swift */; };
 		8230109C29BDB8310051F731 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109B29BDB8310051F731 /* ListCell.swift */; };
@@ -62,6 +65,9 @@
 /* Begin PBXFileReference section */
 		3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FFF135529C825CC0084DE6A /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
+		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
+		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
+		3FFFFE1E29CC5559001032D0 /* ExArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExArray.swift; sourceTree = "<group>"; };
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		8230109929BDB80B0051F731 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
@@ -185,12 +191,15 @@
 			children = (
 				A62CF264273E7DBC00670C13 /* ExView.swift */,
 				A62CF263273E7DBC00670C13 /* ExColor.swift */,
+				3FFFFE1E29CC5559001032D0 /* ExArray.swift */,
 				A62CF266273E7DBC00670C13 /* ExString.swift */,
 				A62CF268273E7DBC00670C13 /* ExImage.swift */,
 				A62CF269273E7DBC00670C13 /* ExButton.swift */,
 				3FFF135529C825CC0084DE6A /* ExBundle.swift */,
 				A62CF26A273E7DBC00670C13 /* ExObject.swift */,
+				3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */,
 				A62CF265273E7DBC00670C13 /* ExDictionary.swift */,
+				3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */,
 				A62CF267273E7DBC00670C13 /* ExFixedWidthInteger.swift */,
 				A62CF262273E7DBC00670C13 /* ExBinaryFloatingPoint.swift */,
 			);
@@ -498,6 +507,7 @@
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
 				8230109A29BDB80B0051F731 /* ListModel.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
+				3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
 				8230109829BDB67C0051F731 /* PhotoAlbumViewController.swift in Sources */,
 				828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */,
@@ -511,6 +521,7 @@
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* LoadingView.swift in Sources */,
+				3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */,
 				A66E2EBA26FDDE2000453EB9 /* RandomCodeView.swift in Sources */,
 				F704A06A269E76500044729E /* BaseTabBarController.swift in Sources */,
 				A62CF26F273E7DBC00670C13 /* ExString.swift in Sources */,
@@ -531,6 +542,7 @@
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
+				3FFFFE1F29CC5559001032D0 /* ExArray.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* Cache.swift in Sources */,
 			);
