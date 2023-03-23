@@ -77,15 +77,3 @@ extension String {
         (self as NSString).substring(with: NSRange(location: location, length: length))
     }
 }
-
-extension String {
-    /// 深拷贝
-    var deepCopy: Self {
-        do {
-            let jsonData = try JSONEncoder().encode(self)
-            return try JSONDecoder().decode(Self.self, from: jsonData)
-        } catch {
-            fatalError("Decode failed. \(error)")
-        }
-    }
-}

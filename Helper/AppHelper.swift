@@ -161,9 +161,9 @@ extension NetworkStatus {
 }
 
 /// 深拷贝
-func codableCopy<T: Codable>(_ obj: T) -> T? {
+func deepCopy<T: Codable>(_ object: T) -> T? {
     do{
-        let jsonData = try JSONEncoder().encode(obj)
+        let jsonData = try JSONEncoder().encode(object)
         return try JSONDecoder().decode(T.self, from: jsonData)
     }
     catch {

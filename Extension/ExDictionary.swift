@@ -26,16 +26,3 @@ extension Dictionary {
         return String(data: jsonData, encoding: .utf8)
     }
 }
-
-extension Dictionary where Key: Codable, Value: Codable {
-    /// 深拷贝
-    var deepCopy: Self {
-        do{
-            let jsonData = try JSONEncoder().encode(self)
-            return try JSONDecoder().decode(Self.self, from: jsonData)
-        }
-        catch {
-            fatalError("Decode failed. \(error)")
-        }
-    }
-}

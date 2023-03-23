@@ -11,7 +11,6 @@
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
 		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
 		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
-		3FFFFE1F29CC5559001032D0 /* ExArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1E29CC5559001032D0 /* ExArray.swift */; };
 		8230109829BDB67C0051F731 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */; };
 		8230109A29BDB80B0051F731 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109929BDB80B0051F731 /* ListModel.swift */; };
 		8230109C29BDB8310051F731 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109B29BDB8310051F731 /* ListCell.swift */; };
@@ -67,7 +66,6 @@
 		3FFF135529C825CC0084DE6A /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
 		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
 		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
-		3FFFFE1E29CC5559001032D0 /* ExArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExArray.swift; sourceTree = "<group>"; };
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
 		8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		8230109929BDB80B0051F731 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
@@ -191,7 +189,6 @@
 			children = (
 				A62CF264273E7DBC00670C13 /* ExView.swift */,
 				A62CF263273E7DBC00670C13 /* ExColor.swift */,
-				3FFFFE1E29CC5559001032D0 /* ExArray.swift */,
 				A62CF266273E7DBC00670C13 /* ExString.swift */,
 				A62CF268273E7DBC00670C13 /* ExImage.swift */,
 				A62CF269273E7DBC00670C13 /* ExButton.swift */,
@@ -542,7 +539,6 @@
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
-				3FFFFE1F29CC5559001032D0 /* ExArray.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* Cache.swift in Sources */,
 			);
