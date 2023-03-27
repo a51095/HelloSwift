@@ -1,6 +1,7 @@
 @_exported import AVKit
 @_exported import Cache
 @_exported import Photos
+@_exported import Network
 @_exported import SnapKit
 @_exported import PhotosUI
 @_exported import Alamofire
@@ -147,9 +148,9 @@ func requestAuthorization(handler: @escaping (Bool) -> (Void))  {
     }
 }
 
-/// 实时监测网络状态
 protocol NetworkStatus { }
 extension NetworkStatus {
+    /// 基于Alamofire，实时监测网络状态
     var isReachable: Bool {
         get {
             var res: Bool = false
@@ -157,6 +158,27 @@ extension NetworkStatus {
             if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
             return res
         }
+    }
+}
+
+extension NetworkStatus {
+    /// 基于NWPathMonitor，实时监测网络状态
+    var isNetwork: Bool {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Monitor")
+        let semaphore = DispatchSemaphore(value: 0)
+
+        var res: Bool = false
+
+        monitor.pathUpdateHandler = { path in
+            res = (path.status == .satisfied)
+            semaphore.signal()
+        }
+
+        monitor.start(queue: queue)
+        semaphore.wait()
+
+        return res
     }
 }
 
