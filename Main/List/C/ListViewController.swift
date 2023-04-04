@@ -39,7 +39,6 @@ class ListViewController: BaseViewController {
         
         let topView = ItemView()
         topView.didSeletedBlock = { type in
-            self.listSource.removeAll()
             self.currentNewsType = type
             self.getNewsData(type: type)
         }
@@ -63,22 +62,17 @@ class ListViewController: BaseViewController {
         header.setTitle("松开刷新", for: .pulling)
         header.setTitle("正在刷新", for: .refreshing)
         listTableView.mj_header = header
-        
-        //        // 添加底部刷新
-        //        let footer = MJRefreshAutoNormalFooter { }
-        //        menuTableView.mj_footer = footer
     }
     
     // 下拉刷新数据
     func downRefreshing() {
-        self.listSource.removeAll()
         self.getNewsData(type: self.currentNewsType)
     }
     
     /// 获取新闻数据
     func getNewsData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
         
-        let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": "ce7c786dd0f990eabd175663be4b51bd"]
+        let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": AppKey.newsKey]
         
         NetworkRequest(url: AppURL.toutiaoUrl, parameters: parameters) { res in
             self.listTableView.mj_header?.endRefreshing()
@@ -88,6 +82,9 @@ class ListViewController: BaseViewController {
             if let dic = res {
                 let errorCode = dic["error_code"] as! Int
                 guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
+                
+                // 先移除上一个数据源，再添加新的数据源
+                self.listSource.removeAll()
                 
                 let result = dic["result"] as! [String: Any]
                 let data = result["data"] as! [[String: Any]]
