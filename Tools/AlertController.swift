@@ -24,29 +24,28 @@ struct Action {
 }
 
 final class AlertController: UIViewController {
-    
     /// title与message与stackView间距
     private let limitSpace = 20
     /// 标题(可选String)
-    var alertTitle: String?
+    private var aTitle: String?
     /// 描述信息(可选String)
-    var alertMessage: String?
-    /// 事件(AlertAction)
-    var alertAction: [Action]
+    private var aMessage: String?
+    /// 事件(AlertaAction)
+    private var aAction: [Action]
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 反初始化器
+    /// 反初始化器
     deinit { kPrint("AlertController deinit") }
     
-    // MARK: 自定义初始化方法
+    /// 自定义初始化方法
     init(_ title: String?, _ message: String?, _ actions: [Action])  {
         
-        self.alertTitle = title
-        self.alertMessage = message
-        self.alertAction = actions
+        self.aTitle = title
+        self.aMessage = message
+        self.aAction = actions
         
         super.init(nibName: nil, bundle: nil)
         
@@ -75,12 +74,12 @@ final class AlertController: UIViewController {
         }
         
         var buttonArray = [UIButton]()
-        for (idx,item) in alertAction.enumerated() {
+        for (idx, item) in aAction.enumerated() {
             let button = UIButton()
             button.tag = idx + 100
             button.setTitle(item.title, for: .normal)
             button.setTitleColor(item.titleColor, for: .normal)
-            button.addTarget(self, action: #selector(alertActionDidSeleted(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
             buttonArray.append(button)
         }
         
@@ -103,7 +102,7 @@ final class AlertController: UIViewController {
             make.top.left.right.equalToSuperview()
         }
         
-        if alertAction.count == 2 {
+        if aAction.count == 2 {
             // 垂直分割线
             let verticalLineView = UIView()
             verticalLineView.backgroundColor = .hexColor("#E3E3E3")
@@ -115,10 +114,10 @@ final class AlertController: UIViewController {
         }
         
         // 样式1,有标题,有描述
-        if (alertTitle != nil && alertTitle?.count != 0) && (alertMessage != nil && alertMessage?.count != 0 ) {
+        if (aTitle != nil && aTitle?.count != 0) && (aMessage != nil && aMessage?.count != 0 ) {
             let titleLabel = UILabel()
             titleLabel.textColor = .black
-            titleLabel.text = self.alertTitle
+            titleLabel.text = self.aTitle
             titleLabel.textAlignment = .center
             titleLabel.font = kSemiblodFont(18)
             backgroundView.addSubview(titleLabel)
@@ -132,7 +131,7 @@ final class AlertController: UIViewController {
             messageLabel.numberOfLines = 10
             messageLabel.font = kRegularFont(16)
             messageLabel.textAlignment = .center
-            messageLabel.text = self.alertMessage
+            messageLabel.text = self.aMessage
             messageLabel.textColor = .hexColor("#999999")
             backgroundView.addSubview(messageLabel)
             messageLabel.snp.makeConstraints { (make) in
@@ -145,10 +144,10 @@ final class AlertController: UIViewController {
         }
         
         // 样式2,有标题,无描述
-        if (alertTitle != nil && alertTitle?.count != 0 ) && (alertMessage == nil || alertMessage?.count == 0) {
+        if (aTitle != nil && aTitle?.count != 0 ) && (aMessage == nil || aMessage?.count == 0) {
             let titleLabel = UILabel()
             titleLabel.textColor = .black
-            titleLabel.text = self.alertTitle
+            titleLabel.text = self.aTitle
             titleLabel.textAlignment = .center
             titleLabel.font = kSemiblodFont(18)
             backgroundView.addSubview(titleLabel)
@@ -162,12 +161,12 @@ final class AlertController: UIViewController {
         }
         
         // 样式3,无标题,有描述
-        if (alertTitle == nil || alertTitle?.count == 0 ) && (alertMessage != nil && alertMessage?.count != 0) {
+        if (aTitle == nil || aTitle?.count == 0 ) && (aMessage != nil && aMessage?.count != 0) {
             let messageLabel = UILabel()
             messageLabel.numberOfLines = 10
             messageLabel.font = kRegularFont(16)
             messageLabel.textAlignment = .center
-            messageLabel.text = self.alertMessage
+            messageLabel.text = self.aMessage
             messageLabel.textColor = .hexColor("#999999")
             backgroundView.addSubview(messageLabel)
             messageLabel.snp.makeConstraints { (make) in
@@ -180,26 +179,26 @@ final class AlertController: UIViewController {
         }
     }
     
-    // MARK: action点击事件
-    @objc func alertActionDidSeleted(button: UIButton) {
+    /// aAction点击事件
+    @objc func didSeleted(button: UIButton) {
         self.dismiss(animated: true) {
-            let action = self.alertAction[button.tag - 100]
+            let action = self.aAction[button.tag - 100]
             action.handler?()
         }
     }
 }
 
 extension UIViewController {
-    // MARK: alert弹框(vc中触发)
-    func alert(_ title: String?, _ message: String?, _ actions: [Action] )  {
+    /// alert弹框(vc中触发)
+    func alert(_ title: String?, _ message: String?, _ actions: [Action] ) {
         let vc = AlertController(title, message, actions)
         present(vc, animated: true, completion: nil)
     }
 }
 
 extension UIView {
-    // MARK: alert弹框(view中触发)
-    func alert(_ title: String?, _ message: String?, _ actions: [Action] )  {
-        self.currentViewController()?.alert(title, message, actions)
+    /// alert弹框(view中触发)
+    func alert(_ title: String?, _ message: String?, _ actions: [Action] ) {
+        currentViewController()?.alert(title, message, actions)
     }
 }

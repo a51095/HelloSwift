@@ -14,6 +14,11 @@ class BaseTabBarController: UITabBarController {
     /// 初始化器
     init() { super.init(nibName: nil, bundle: nil) }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+    
     /// 设置整体tabBar样式
     func defaultBarStyle() {
         // 选项卡是否半透明(默认半透明，建议设置为false)

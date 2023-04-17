@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3F08FE2B297695F400835E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */; };
+		3F20EA0F29E9486F0025FC44 /* ExampleAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */; };
+		3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */; };
+		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
+		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
+		3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C029E3AACD00A3C533 /* Examples.swift */; };
+		3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C129E3AACD00A3C533 /* Example.swift */; };
+		3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */; };
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
 		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
 		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
@@ -63,6 +70,13 @@
 
 /* Begin PBXFileReference section */
 		3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAlertViewController.swift; sourceTree = "<group>"; };
+		3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleToastViewController.swift; sourceTree = "<group>"; };
+		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
+		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
+		3FA6F6C029E3AACD00A3C533 /* Examples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		3FA6F6C129E3AACD00A3C533 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
+		3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProtocol.swift; sourceTree = "<group>"; };
 		3FFF135529C825CC0084DE6A /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
 		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
 		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -138,6 +152,23 @@
 				C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F20EA1429E94B910025FC44 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		3FA6F6BF29E3AAA700A3C533 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3FA6F6C129E3AACD00A3C533 /* Example.swift */,
+				3FA6F6C029E3AACD00A3C533 /* Examples.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8230109229BDB2500051F731 /* Demo */ = {
@@ -219,35 +250,35 @@
 		A66E2EB126FDAA1500453EB9 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				A66E2EB426FDAA6500453EB9 /* M */,
-				A66E2EB326FDAA5F00453EB9 /* V */,
-				A66E2EB226FDAA5500453EB9 /* C */,
+				A66E2EB426FDAA6500453EB9 /* Model */,
+				A66E2EB326FDAA5F00453EB9 /* View */,
+				A66E2EB226FDAA5500453EB9 /* ViewController */,
 			);
 			path = List;
 			sourceTree = "<group>";
 		};
-		A66E2EB226FDAA5500453EB9 /* C */ = {
+		A66E2EB226FDAA5500453EB9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				A66E2EB526FDAAD700453EB9 /* ListViewController.swift */,
 			);
-			path = C;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
-		A66E2EB326FDAA5F00453EB9 /* V */ = {
+		A66E2EB326FDAA5F00453EB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8230109B29BDB8310051F731 /* ListCell.swift */,
 			);
-			path = V;
+			path = View;
 			sourceTree = "<group>";
 		};
-		A66E2EB426FDAA6500453EB9 /* M */ = {
+		A66E2EB426FDAA6500453EB9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				8230109929BDB80B0051F731 /* ListModel.swift */,
 			);
-			path = M;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A680788E26EB518A0068DD0A /* Network */ = {
@@ -347,7 +378,9 @@
 		F704A079269E7BC10044729E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				F7EA139926A90F350071B2CC /* C */,
+				3F20EA1429E94B910025FC44 /* Protocol */,
+				3FA6F6BF29E3AAA700A3C533 /* Model */,
+				F7EA139926A90F350071B2CC /* ViewController */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -370,12 +403,16 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		F7EA139926A90F350071B2CC /* C */ = {
+		F7EA139926A90F350071B2CC /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				F704A07B269E7C700044729E /* HomeViewController.swift */,
+				3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */,
+				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
+				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
+				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
 			);
-			path = C;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -515,29 +552,36 @@
 				A6FA66BE26E1015D00A6A918 /* ScaleAspectView.swift in Sources */,
 				A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
+				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* LoadingView.swift in Sources */,
 				3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */,
 				A66E2EBA26FDDE2000453EB9 /* RandomCodeView.swift in Sources */,
+				3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */,
 				F704A06A269E76500044729E /* BaseTabBarController.swift in Sources */,
 				A62CF26F273E7DBC00670C13 /* ExString.swift in Sources */,
 				F704A077269E7B540044729E /* BaseNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* AlertController.swift in Sources */,
+				3F20EA0F29E9486F0025FC44 /* ExampleAlertViewController.swift in Sources */,
 				A607554E26F5C144008103DA /* PhotoModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */,
 				A62CF271273E7DBC00670C13 /* ExImage.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
+				3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */,
 				3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */,
 				F704A07C269E7C700044729E /* HomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */,
 				8230109C29BDB8310051F731 /* ListCell.swift in Sources */,
+				3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */,
 				82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */,
+				3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */,
 				A680789026EB51C70068DD0A /* Network.swift in Sources */,
 				A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
+				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* Cache.swift in Sources */,

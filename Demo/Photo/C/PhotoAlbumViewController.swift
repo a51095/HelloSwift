@@ -63,8 +63,7 @@ class PhotoAlbumViewController: BaseViewController {
         }
     }
     
-    /// 数据初始化
-    func initData() {
+    override func initData() {
         // 获取系统相册
         let  fetchOptions =  PHFetchOptions()
         let  assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
@@ -118,8 +117,7 @@ class PhotoAlbumViewController: BaseViewController {
         }
     }
         
-    /// 视图初始化
-    func initSubview() {
+    override func initSubview() {
         view.addSubview(photoCollectionView)
         photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(kSafeMarginTop(36))

@@ -25,10 +25,10 @@ final class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: 反初始化器
+    /// 反初始化器
     deinit { kPrint("LoadingView deinit") }
     
-    // MARK: 初始化器
+    /// 初始化器
     init(toast: String) {
         super.init(frame: .zero)
         

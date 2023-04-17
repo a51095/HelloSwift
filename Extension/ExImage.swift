@@ -121,7 +121,6 @@ extension UIImage {
 
 // 滤镜相关
 extension UIImage {
-    
     /// 重新绘制带滤镜效果的UIImage对象
     private func repaint(_ filter: CIFilter) -> UIImage {
         // 设置输入源

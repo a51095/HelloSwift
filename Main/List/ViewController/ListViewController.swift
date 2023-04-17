@@ -31,9 +31,9 @@ class ListViewController: BaseViewController {
         self.initData()
     }
     
-    func initData() { self.getNewsData(type: self.currentNewsType) }
+    override func initData() { self.getNewsData(type: self.currentNewsType) }
     
-    func initSubview() {
+    override func initSubview() {
         // 网络校验,有网则执行后续操作,网络不可用,则直接返回
         guard isReachable else { return }
         

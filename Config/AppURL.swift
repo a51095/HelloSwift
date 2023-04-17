@@ -7,10 +7,8 @@ struct AppURL {
     static let adVideoUrl: String  = "https://v-cdn.zjol.com.cn/280442.mp4"
     /// 测试链接🔗
     static let adLinkUrl: String  = "https://cn.bing.com"
-    
     /// 聚和免费api
     static let juheUrl: String  = "http://v.juhe.cn/"
-
     /// 聚合头条
     static let toutiaoUrl: String  = juheUrl + "toutiao/index"
 }

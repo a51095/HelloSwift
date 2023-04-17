@@ -76,7 +76,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     }
     
     /// 视图初始化
-    func initSubview() {
+    override func initSubview() {
         // 非空校验
         guard !guideConfig.resourceName.isEmpty else {
             kAppDelegate.window!!.rootViewController = BaseTabBarController()

@@ -1,8 +1,8 @@
 class BaseViewController: UIViewController, NetworkStatus {
-    /// 自定义顶部视图(默认白色背景)
+    /// 懒加载顶部视图(默认白色背景)
     lazy var topView = UIView()
     
-    /// 自定义返回按钮(默认黑色箭头)
+    /// 懒加载返回按钮(默认黑色箭头)
     lazy var backButton: UIButton = {
         let b = UIButton()
         b.contentEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
@@ -14,9 +14,19 @@ class BaseViewController: UIViewController, NetworkStatus {
         super.viewDidLoad()
         self.backgroundColor()
     }
+
+    /// Initialize topView and backButton
+    func initSubview() {
+        self.addTopView()
+        self.addBackButton()
+    }
     
-    /// 设置视图控制器背景色
-    /// - Parameter color: 默认白色
+    /// Initialize data
+    func initData() { }
+}
+
+extension BaseViewController {
+    /// - Parameter color: 设置视图控制器背景色，默认白色
     func backgroundColor(_ color: UIColor = .white) {
         view.backgroundColor = color
     }
@@ -54,7 +64,7 @@ class BaseViewController: UIViewController, NetworkStatus {
         }
     }
     
-    // 自定义返回按钮事件
+    /// 自定义返回按钮事件
     @objc func backButtonDidSeleted() {
         if self.navigationController?.visibleViewController != nil {
             self.navigationController?.popViewController(animated: true)

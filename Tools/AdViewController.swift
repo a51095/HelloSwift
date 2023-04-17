@@ -93,7 +93,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
     
     /// 添加adAVPlayerItem观察者
     private func addAdAVPlayerItemObserver() {
-        adAVPlayerItem?.addObserver(self,forKeyPath: "status", options: .new, context: nil)
+        adAVPlayerItem?.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: .new, context: nil)
     }
     
     /// 移除adAVPlayerItem观察者
@@ -126,7 +126,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         self.initSubview()
     }
     
-    func initSubview() {
+    override func initSubview() {
         // 添加手势
         let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSeleted))
         view.addGestureRecognizer(tap)

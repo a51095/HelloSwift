@@ -14,10 +14,10 @@
 enum ToastType { case nore, success, failure }
 
 final class ToastView: UIView {
-    var limitTop: CGFloat = 20
-    /// 懒加载icon控件对象
+    private var limitTop: CGFloat = 20
+    /// 懒加载icon控件
     private lazy var iconImageView: UIImageView = { UIImageView() }()
-    /// 懒加载message控件对象
+    /// 懒加载message控件
     private lazy var messageLabel: UILabel = {
         let message = UILabel()
         message.numberOfLines = 0
@@ -33,12 +33,11 @@ final class ToastView: UIView {
     
     /// 反初始化器
     deinit { kPrint("ToastView deinit") }
-    /// 自定义初始化器
-    init() { super.init(frame: .zero) }
     
-    /// 便捷初始化器
-    convenience init(_ title: String, type: ToastType = .nore) {
-        self.init()
+    /// 初始化器
+    init(_ title: String, type: ToastType = .nore) {
+        super.init(frame: .zero)
+        
         layer.cornerRadius = 5
         layer.masksToBounds = true
         backgroundColor = .hexColor("#000000", 0.5)
