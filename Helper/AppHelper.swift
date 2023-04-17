@@ -13,7 +13,7 @@
 
 /// app沙盒Documents根目录(Documents)
 let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
-/// app沙盒Library二级目录(Caches,Preferences)
+/// app沙盒Library二级目录(Caches，Preferences)
 let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! + "/Caches"
 /// app沙盒Tmp根目录(tmp)
 let kAppTmpPath = NSTemporaryDirectory()
@@ -63,7 +63,7 @@ func kSafeMarginBottom(_ bottom: Int) -> Int { bottom + (UIApplication.shared.de
 func kScaleWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
 /// 等比例设计尺寸高(以667为基准)
 func kScaleHeight(_ height: Int) -> Int { (height * UIScreen.main.bounds.size.height.i / 667) }
-/// 等比例设计尺寸Size(以375,667为基准)
+/// 等比例设计尺寸Size(以375，667为基准)
 func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
     let sizeWidth = (width * UIScreen.main.bounds.size.width.i / 375)
     let sizeHeight = (height * UIScreen.main.bounds.size.height.i / 667)
