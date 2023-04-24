@@ -1,8 +1,4 @@
-//
-//  AppEnum.swift
-//  HelloSwift
-//
-//  Created by well on 2023/4/20.
-//
-
-import Foundation
+enum AppError: Error {
+    case success
+    case failed
+}

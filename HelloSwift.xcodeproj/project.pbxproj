@@ -12,9 +12,12 @@
 		3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */; };
 		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
 		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
+		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
 		3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C029E3AACD00A3C533 /* Examples.swift */; };
 		3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C129E3AACD00A3C533 /* Example.swift */; };
 		3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */; };
+		3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814B29F64B1900BF6902 /* LocationManager.swift */; };
+		3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */; };
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
 		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
 		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
@@ -74,9 +77,12 @@
 		3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleToastViewController.swift; sourceTree = "<group>"; };
 		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
 		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
+		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		3FA6F6C029E3AACD00A3C533 /* Examples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		3FA6F6C129E3AACD00A3C533 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
 		3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProtocol.swift; sourceTree = "<group>"; };
+		3FB5814B29F64B1900BF6902 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLocationViewController.swift; sourceTree = "<group>"; };
 		3FFF135529C825CC0084DE6A /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
 		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
 		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -357,6 +363,7 @@
 				F704A081269E832B0044729E /* AlertController.swift */,
 				F7B44828269EE8590098D2AF /* CountDownView.swift */,
 				A6FA66BD26E1015D00A6A918 /* ScaleAspectView.swift */,
+				3FB5814B29F64B1900BF6902 /* LocationManager.swift */,
 				A650EE4E26E5FACE00E437AA /* AdViewController.swift */,
 				A66E2EB926FDDE2000453EB9 /* RandomCodeView.swift */,
 				A66E2EBB270021F100453EB9 /* AutoScaleCardView.swift */,
@@ -398,6 +405,7 @@
 			children = (
 				F7B4485626A17F650098D2AF /* AppKey.swift */,
 				F7B4485A26A181550098D2AF /* AppURL.swift */,
+				3F9CBB0229F1413700D2FD68 /* AppEnum.swift */,
 				F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */,
 			);
 			path = Config;
@@ -411,6 +419,7 @@
 				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
 				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
 				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
+				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -550,10 +559,12 @@
 				F704A090269EAA0E0044729E /* AppHelper.swift in Sources */,
 				A62CF273273E7DBC00670C13 /* ExObject.swift in Sources */,
 				A6FA66BE26E1015D00A6A918 /* ScaleAspectView.swift in Sources */,
+				3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */,
 				A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
 				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
+				3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* LoadingView.swift in Sources */,
 				3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */,
@@ -578,6 +589,7 @@
 				82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */,
 				3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */,
 				A680789026EB51C70068DD0A /* Network.swift in Sources */,
+				3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */,
 				A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,

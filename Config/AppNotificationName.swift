@@ -1,3 +1,3 @@
 extension NSNotification.Name {
-    static let demoNotification = Notification.Name("DemoNotification")
+    static let AppNotification = Notification.Name("AppNotification")
 }

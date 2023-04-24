@@ -18,6 +18,7 @@ struct Examples {
     ]
     
     static let viewExamples = [
-        Example(title: "Time", description: "An time presentation", aClass: ExampleTimeViewController.self)
+        Example(title: "Time", description: "An time presentation", aClass: ExampleTimeViewController.self),
+        Example(title: "Location", description: "An location presentation", aClass: ExampleLocationViewController.self)
     ]
 }
