@@ -1,6 +1,6 @@
 extension UIColor {
     /// App主色调
-    static var main: UIColor { .hexColor("#FFD700") }
+    static var main: UIColor { .hexColor("#FF8C00") }
     
     /// 随机颜色
     static var random: UIColor {

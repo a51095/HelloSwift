@@ -350,24 +350,26 @@ class AdViewController: BaseViewController, CountDownProtocol {
     
     /// 移除广告视图
     private func dismiss() {
-        UIView.animate(withDuration: 0.25) {
-            if self.adConfig.isSkip {
-                CountDownManager.shared.stop()
-                self.skipButton.removeFromSuperview()
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.25) {
+                if self.adConfig.isSkip {
+                    CountDownManager.shared.stop()
+                    self.skipButton.removeFromSuperview()
+                }
+                
+                if self.adConfig.adType == .adVideo {
+                    self.muteButton.removeFromSuperview()
+                    self.adPlayerController.player?.isMuted = true
+                    self.adPlayerController.player?.pause()
+                    self.adPlayerController.view.alpha = 0
+                } else {
+                    self.adImageView.stopAnimating()
+                    self.adImageView.alpha = 0
+                }
+                
+            } completion: { _ in
+                self.dismissBlock?()
             }
-            
-            if self.adConfig.adType == .adVideo {
-                self.muteButton.removeFromSuperview()
-                self.adPlayerController.player?.isMuted = true
-                self.adPlayerController.player?.pause()
-                self.adPlayerController.view.alpha = 0
-            } else {
-                self.adImageView.stopAnimating()
-                self.adImageView.alpha = 0
-            }
-            
-        } completion: { _ in
-            self.dismissBlock?()
         }
     }
     
