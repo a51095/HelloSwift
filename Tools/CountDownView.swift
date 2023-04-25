@@ -13,16 +13,29 @@
  * 添加到父视图上即可,支持后台持续计时;
  **/
 
-/// 倒计时总时长,默认10秒
-private let defaultTotal: Int = 10
+struct ConfigOption {
+    /// 倒计时总时长,默认10秒
+    let total: CFTimeInterval
+    let beginText: String
+    let endText: String
+    
+    init(total: CFTimeInterval = 10.0, beginText: String = "开始倒计时", endText: String = "重新获取") {
+        self.total = total
+        self.beginText = beginText
+        self.endText = endText
+    }
+}
 
 final class CountDownView: UIView {
     /// 倒计时剩余时长(递减)
-    private var countDownTotal = defaultTotal
+    private var countDownTotal: CFTimeInterval
     /// 倒计时label
-    private let countDownLabel = UILabel()
+    private var countDownLabel = UILabel()
+    
+    private let countDownOption: ConfigOption
+    
     /// 当前系统绝对时间,进入后台后,仍持续计时
-    private var startTime: Int = 0
+    private var startTime: CFTimeInterval = 0.0
     /// 定时器对象
     private var taskTimer = Timer()
     
@@ -34,26 +47,33 @@ final class CountDownView: UIView {
     deinit { kPrint("CountDownView deinit") }
     
     /// 初始化器
-    init() {
+    init(option: ConfigOption = ConfigOption(), label: UILabel? = nil) {
+        self.countDownOption = option
+        self.countDownTotal = option.total
         super.init(frame: .zero)
-        self.initSubview()
+        self.countDownLabel = configLabel(label)
     }
     
-    /// 子视图初始化
-    private func initSubview() {
-        countDownLabel.text = "获取验证码"
-        countDownLabel.textColor = .white
-        countDownLabel.font = kRegularFont(16)
-        countDownLabel.textAlignment = .center
-        addSubview(countDownLabel)
-        countDownLabel.snp.makeConstraints { (make) in make.edges.equalToSuperview() }
+    func configLabel(_ label: UILabel?) -> UILabel {
+        if let l = label {
+            return l
+        }
+        
+        let l = UILabel()
+        l.text = countDownOption.beginText
+        l.textColor = .white
+        l.font = kRegularFont(16)
+        l.textAlignment = .center
+        addSubview(l)
+        l.snp.makeConstraints { (make) in make.edges.equalToSuperview() }
+        return l
     }
     
     /// 重置数据
     private func resetData() {
-        countDownTotal = defaultTotal
+        countDownTotal = countDownOption.total
         isUserInteractionEnabled = false
-        startTime = Int(CACurrentMediaTime())
+        startTime = CACurrentMediaTime()
     }
     
     /// 更新UI
@@ -63,18 +83,18 @@ final class CountDownView: UIView {
         // 主线程刷新UI
         DispatchQueue.main.async {
             if self.countDownTotal > 0 {
-                self.countDownLabel.text = self.countDownTotal.str
+                self.countDownLabel.text = Int((self.countDownTotal)).str
             }else {
                 self.taskTimer.stop()
-                self.countDownLabel.text = "重新获取"
+                self.countDownLabel.text = self.countDownOption.endText
                 self.isUserInteractionEnabled = true
             }
         }
     }
-        
+    
     /// 获取剩余总时长
-    private func remainingTime() -> Int {
-        defaultTotal - (Int(CACurrentMediaTime()) - startTime)
+    private func remainingTime() -> CFTimeInterval {
+        countDownOption.total - (CACurrentMediaTime() - startTime)
     }
     
     /// 开始倒计时
