@@ -9,16 +9,18 @@
  * GuideViewController:
  * 启动引导视图
  **/
+import UIKit
+import Foundation
 
 struct GuideConfig {
     /// 资源名称
-    fileprivate var resourceName: [String]
+    fileprivate var resources: [String]
     /// 是否展示跳过按钮(默认展示)
     fileprivate var isSkip: Bool
     
-    init(resource: [String], skip: Bool = true) {
-        isSkip = skip
-        resourceName = resource
+    init(resources: [String], skip: Bool = true) {
+        self.isSkip = skip
+        self.resources = resources
     }
 }
 
@@ -66,7 +68,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 数据初始化
     init(config: GuideConfig) {
         guideConfig = config
-        displayCount = config.resourceName.count
+        displayCount = config.resources.count
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -78,7 +80,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 视图初始化
     override func initSubview() {
         // 非空校验
-        guard !guideConfig.resourceName.isEmpty else {
+        guard !guideConfig.resources.isEmpty else {
             kAppDelegate.window!!.rootViewController = BaseTabBarController()
             return
         }
@@ -105,7 +107,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         }
         
         var viewArray = [UIImageView]()
-        for name in guideConfig.resourceName {
+        for name in guideConfig.resources {
             let imgView =  createImageView(imageName: name)
             viewArray.append(imgView)
         }

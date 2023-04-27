@@ -23,7 +23,7 @@ extension AppDelegate: NetworkStatus {
         
         if showGuided {
             let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
-            let guideConfig = GuideConfig(resource: resourceArray)
+            let guideConfig = GuideConfig(resources: resourceArray)
             window?.rootViewController = GuideViewController(config: guideConfig)
         } else {
             if !isReachable {
