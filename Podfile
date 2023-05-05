@@ -6,6 +6,7 @@ source 'https://cdn.cocoapods.org/'
 #Debug
 def debugPods
   pod 'LookinServer', :configurations => ['Debug']
+  pod 'WoodPeckeriOS', :configurations => ['Debug']
 end
 
 #Objective-C
