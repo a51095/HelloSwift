@@ -19,6 +19,9 @@
 		3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814B29F64B1900BF6902 /* LocationManager.swift */; };
 		3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */; };
 		3FB8BB3929F67CE200A61E7E /* ExampleCountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */; };
+		3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */; };
+		3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */; };
+		3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */; };
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
 		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
 		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
@@ -85,6 +88,9 @@
 		3FB5814B29F64B1900BF6902 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLocationViewController.swift; sourceTree = "<group>"; };
 		3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCountDownViewController.swift; sourceTree = "<group>"; };
+		3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDragViewController.swift; sourceTree = "<group>"; };
+		3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleScaleAspectViewController.swift; sourceTree = "<group>"; };
+		3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleRandomCodeViewController.swift; sourceTree = "<group>"; };
 		3FFF135529C825CC0084DE6A /* ExBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExBundle.swift; sourceTree = "<group>"; };
 		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
 		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -196,6 +202,9 @@
 				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
 				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
 				3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */,
+				3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */,
+				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
+				3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -567,6 +576,7 @@
 				A62CF26E273E7DBC00670C13 /* ExDictionary.swift in Sources */,
 				A62CF26C273E7DBC00670C13 /* ExColor.swift in Sources */,
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
+				3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */,
 				8230109A29BDB80B0051F731 /* ListModel.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */,
@@ -598,6 +608,7 @@
 				A607554E26F5C144008103DA /* PhotoModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */,
 				A62CF271273E7DBC00670C13 /* ExImage.swift in Sources */,
+				3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
 				3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */,
@@ -615,6 +626,7 @@
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
+				3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* Cache.swift in Sources */,
 			);

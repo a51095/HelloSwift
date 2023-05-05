@@ -11,7 +11,7 @@ class ExampleCountDownViewController: BaseViewController, ExampleProtocol {
     lazy var countDownView: CountDownView = {
         let c = CountDownView()
         c.layer.cornerRadius = 6
-        c.backgroundColor = .main
+        c.backgroundColor = .orange
         c.layer.masksToBounds = true
         return c
     }()

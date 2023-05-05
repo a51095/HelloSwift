@@ -16,9 +16,9 @@ class RandomCodeView: UIView {
     /// 验证码个数(默认4)
     private let defaultCount: Int = 4
     /// 结果字符串
-    private var resString: String = ""
+    private var resString: String = String()
     /// 验证码数据源
-    private var codeArray = [String]()
+    private var codeStringSet = "abcdefghijklmnopqristuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     /// 角度数据源
     private var angleArray = [Double]()
     /// 结果label
@@ -44,20 +44,20 @@ class RandomCodeView: UIView {
     
     // MARK: 数据初始化
     func initData()  {
-        angleArray = [0, 0.25, 0.5, 0.75, 1]
-        codeArray = ["0","1","2","3","4","5","6","7","8","9",
-                     "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-                     "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
-        for _ in 0..<defaultCount { labelArray.append(createLabel()) }
+        angleArray = [0.25, 0.55, 0.85,
+                      1.25, 1.55, 1.85]
+
+        for _ in 0..<defaultCount { labelArray.append(createLabel())
+        }
     }
     
     // MARK: 控件初始化
     func initSubview() {
         self.layer.masksToBounds = true
         stackView = UIStackView(arrangedSubviews: labelArray)
-        stackView.alignment = .fill
+        stackView.alignment = .center
         stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fillEqually
         self.addSubview(stackView)
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -73,7 +73,7 @@ class RandomCodeView: UIView {
             let ptX = arc4random_uniform(UInt32(self.frame.width))
             let ptY = arc4random_uniform(UInt32(self.frame.height))
             path.addLine(to: CGPoint(x: CGFloat(ptX), y: CGFloat(ptY)))
-            
+
             let layer = CAShapeLayer()
             layer.strokeColor = UIColor.hexColor("#ffffff", 0.2).cgColor
             layer.lineWidth = 1
@@ -85,21 +85,24 @@ class RandomCodeView: UIView {
         changeValue()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) { changeValue() }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        stackView.removeFromSuperview()
+        initSubview()
+        setNeedsLayout()
+    }
     
-    // MARK: - 私有方法
     private func changeValue() {
         // 先清空,再更新
         resString = ""
-        self.backgroundColor = .random
+        self.backgroundColor = randomColorWithoutBlack()
         for (_, ele) in labelArray.enumerated() {
             let aIndex = Int(arc4random_uniform(UInt32(angleArray.count)))
-            let cIndex = Int(arc4random_uniform(UInt32(codeArray.count)))
-            let textString = codeArray[cIndex]
+            let cIndex = Int(arc4random_uniform(UInt32(codeStringSet.count)))
+            let codeChar = codeStringSet[codeStringSet.index(codeStringSet.startIndex, offsetBy: cIndex)]
             let angleValue = angleArray[aIndex]
-            resString.append(textString)
+            resString.append(codeChar)
             
-            ele.text = textString
+            ele.text = String(codeChar)
             ele.transform = CGAffineTransform(rotationAngle: angleValue)
         }
         callBack?(resString)
@@ -108,8 +111,20 @@ class RandomCodeView: UIView {
     private func createLabel() -> UILabel {
         let l = UILabel()
         l.textColor = .black
-        l.font = kRegularFont(16)
+        l.font = kRegularFont(18)
         l.textAlignment = .center
         return l
+    }
+    
+    private func randomColorWithoutBlack() -> UIColor {
+        var randomColor: UIColor
+        repeat {
+            // 生成随机颜色
+            randomColor = UIColor(red: .random(in: 0...1),
+                                  green: .random(in: 0...1),
+                                  blue: .random(in: 0...1),
+                                  alpha: 1.0)
+        } while randomColor.isEqual(UIColor.black) // 过滤黑色
+        return randomColor
     }
 }
