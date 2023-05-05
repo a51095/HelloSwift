@@ -179,6 +179,27 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3FFC5B6A2A04A7080002191F /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				3FFC5B6B2A04A7240002191F /* ViewControllers */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		3FFC5B6B2A04A7240002191F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */,
+				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
+				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
+				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
+				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
+				3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		8230109229BDB2500051F731 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +401,7 @@
 			children = (
 				A66E2EB126FDAA1500453EB9 /* List */,
 				F704A079269E7BC10044729E /* Home */,
+				3FFC5B6A2A04A7080002191F /* Examples */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -417,12 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				F704A07B269E7C700044729E /* HomeViewController.swift */,
-				3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */,
-				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
-				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
-				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
-				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
-				3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
