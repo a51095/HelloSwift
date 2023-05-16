@@ -182,6 +182,16 @@ extension NetworkStatus {
     }
 }
 
+/// 在数组中查找指定元素的索引
+func findIndex<T: Equatable>(_ value: T, in array: [T]) -> Int? {
+    for (index, element) in array.enumerated() {
+        if element == value {
+            return index
+        }
+    }
+    return nil
+}
+
 /// 深拷贝
 func deepCopy<T: Codable>(_ object: T) -> T? {
     do{
