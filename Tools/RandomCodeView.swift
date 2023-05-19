@@ -26,7 +26,7 @@ class RandomCodeView: UIView {
     /// 约束布局stackView
     private var stackView: UIStackView!
     /// 结果回调
-    var callBack: ((String) -> Void)?
+    private var callBack: ((String) -> Void)?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,12 +34,13 @@ class RandomCodeView: UIView {
     
     // MARK: 反初始化器
     deinit { kPrint("RandomCodeView deinit") }
-    
-    // MARK: 初始化器
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
+        
+    init(frame: CGRect, callBack: ((String) -> Void)?) {
+        super.init(frame: frame)
+        self.callBack = callBack
         self.initData()
         self.initSubview()
+        changeValue()
     }
     
     // MARK: 数据初始化
@@ -47,8 +48,7 @@ class RandomCodeView: UIView {
         angleArray = [0.25, 0.55, 0.85,
                       1.25, 1.55, 1.85]
 
-        for _ in 0..<defaultCount { labelArray.append(createLabel())
-        }
+        for _ in 0..<defaultCount { labelArray.append(createLabel()) }
     }
     
     // MARK: 控件初始化
@@ -82,13 +82,12 @@ class RandomCodeView: UIView {
             layer.path = path.cgPath
             stackView.layer.addSublayer(layer)
         }
-        changeValue()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         stackView.removeFromSuperview()
         initSubview()
-        setNeedsLayout()
+        changeValue()
     }
     
     private func changeValue() {
