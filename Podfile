@@ -6,7 +6,6 @@ source 'https://cdn.cocoapods.org/'
 #Debug
 def debugPods
   pod 'LookinServer', :configurations => ['Debug']
-  pod 'WoodPeckeriOS', :configurations => ['Debug']
 end
 
 #Objective-C
@@ -18,9 +17,9 @@ end
 def swiftPods
   pod 'Cache', '6.0.0'
   pod 'SnapKit', '5.6.0'
-  pod 'Alamofire', '5.7.1'
+  pod 'Alamofire', '5.8.0'
   pod 'HandyJSON', '5.0.2'
-  pod 'Kingfisher', '7.6.2'
+  pod 'Kingfisher', '7.9.1'
 end
 
 target 'HelloSwift' do
