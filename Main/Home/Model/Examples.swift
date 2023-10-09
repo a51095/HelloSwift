@@ -7,6 +7,10 @@ struct Examples {
         [
             "title": "View",
             "examples": viewExamples
+        ],
+        [
+            "title": "Module",
+            "examples": moduleExamples
         ]
     ]
     
@@ -23,5 +27,9 @@ struct Examples {
         Example(title: "DragView", description: "An Drag View presentation", aClass: ExampleDragViewController.self),
         Example(title: "ScaleAspectView", description: "An ScaleAspect View presentation", aClass: ExampleScaleAspectViewController.self),
         Example(title: "RandomCodeView", description: "An RandomCode View presentation", aClass: ExampleRandomCodeViewController.self),
+    ]    
+
+    static let moduleExamples = [
+        Example(title: "Photo", description: "An photo presentation", aClass: ExamplePhotoAlbumViewController.self),
     ]
 }

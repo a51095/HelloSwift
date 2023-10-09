@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,7 +25,7 @@
 		3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFF135529C825CC0084DE6A /* ExBundle.swift */; };
 		3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */; };
 		3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */; };
-		8230109829BDB67C0051F731 /* PhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */; };
+		8230109829BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109729BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift */; };
 		8230109A29BDB80B0051F731 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109929BDB80B0051F731 /* ListModel.swift */; };
 		8230109C29BDB8310051F731 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230109B29BDB8310051F731 /* ListCell.swift */; };
 		828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828DB5AC291B88F5008CD8B9 /* TreeView.swift */; };
@@ -53,7 +53,7 @@
 		A66E2EBC270021F100453EB9 /* AutoScaleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66E2EBB270021F100453EB9 /* AutoScaleCardView.swift */; };
 		A680789026EB51C70068DD0A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680788F26EB51C60068DD0A /* Network.swift */; };
 		A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A69B068726F09292007C3FE6 /* GuideViewController.swift */; };
-		A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* PhotoDetailViewController.swift */; };
+		A6F36C5C26F6483B008999AE /* ExamplePhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F36C5B26F6483B008999AE /* ExamplePhotoDetailViewController.swift */; };
 		A6FA66BE26E1015D00A6A918 /* ScaleAspectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FA66BD26E1015D00A6A918 /* ScaleAspectView.swift */; };
 		F704A04D269E73830044729E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F704A04C269E73830044729E /* AppDelegate.swift */; };
 		F704A056269E73850044729E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F704A055269E73850044729E /* Assets.xcassets */; };
@@ -95,7 +95,7 @@
 		3FFFFE1A29CC4E34001032D0 /* ExTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExTableView.swift; sourceTree = "<group>"; };
 		3FFFFE1C29CC4F03001032D0 /* ExCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExCollectionViewCell.swift; sourceTree = "<group>"; };
 		7CAAFBAA5C46395FF4AC5384 /* Pods-HelloSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.release.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.release.xcconfig"; sourceTree = "<group>"; };
-		8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAlbumViewController.swift; sourceTree = "<group>"; };
+		8230109729BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		8230109929BDB80B0051F731 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
 		8230109B29BDB8310051F731 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		828DB5AC291B88F5008CD8B9 /* TreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeView.swift; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		A66E2EBB270021F100453EB9 /* AutoScaleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoScaleCardView.swift; sourceTree = "<group>"; };
 		A680788F26EB51C60068DD0A /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		A69B068726F09292007C3FE6 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
-		A6F36C5B26F6483B008999AE /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		A6F36C5B26F6483B008999AE /* ExamplePhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplePhotoDetailViewController.swift; sourceTree = "<group>"; };
 		A6FA66BD26E1015D00A6A918 /* ScaleAspectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScaleAspectView.swift; sourceTree = "<group>"; };
 		C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB316C22B9BE33774EA2B93 /* Pods-HelloSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloSwift.debug.xcconfig"; path = "Target Support Files/Pods-HelloSwift/Pods-HelloSwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,9 +185,28 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3FDC2C9C2AD3FAED00132A00 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A607554D26F5C144008103DA /* PhotoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3FDC2C9D2AD3FB2D00132A00 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A607555126F5F33F008103DA /* PhotoShowCell.swift */,
+				A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3FFC5B6A2A04A7080002191F /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				3FDC2C9D2AD3FB2D00132A00 /* Cell */,
+				3FDC2C9C2AD3FAED00132A00 /* Model */,
 				3FFC5B6B2A04A7240002191F /* ViewControllers */,
 			);
 			path = Examples;
@@ -205,52 +224,10 @@
 				3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */,
 				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
 				3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */,
+				8230109729BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift */,
+				A6F36C5B26F6483B008999AE /* ExamplePhotoDetailViewController.swift */,
 			);
 			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		8230109229BDB2500051F731 /* Demo */ = {
-			isa = PBXGroup;
-			children = (
-				8230109329BDB5870051F731 /* Photo */,
-			);
-			path = Demo;
-			sourceTree = "<group>";
-		};
-		8230109329BDB5870051F731 /* Photo */ = {
-			isa = PBXGroup;
-			children = (
-				8230109429BDB5CA0051F731 /* M */,
-				8230109529BDB5DF0051F731 /* V */,
-				8230109629BDB5E60051F731 /* C */,
-			);
-			path = Photo;
-			sourceTree = "<group>";
-		};
-		8230109429BDB5CA0051F731 /* M */ = {
-			isa = PBXGroup;
-			children = (
-				A607554D26F5C144008103DA /* PhotoModel.swift */,
-			);
-			path = M;
-			sourceTree = "<group>";
-		};
-		8230109529BDB5DF0051F731 /* V */ = {
-			isa = PBXGroup;
-			children = (
-				A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */,
-				A607555126F5F33F008103DA /* PhotoShowCell.swift */,
-			);
-			path = V;
-			sourceTree = "<group>";
-		};
-		8230109629BDB5E60051F731 /* C */ = {
-			isa = PBXGroup;
-			children = (
-				8230109729BDB67C0051F731 /* PhotoAlbumViewController.swift */,
-				A6F36C5B26F6483B008999AE /* PhotoDetailViewController.swift */,
-			);
-			path = C;
 			sourceTree = "<group>";
 		};
 		A62CF261273E7DBC00670C13 /* Extension */ = {
@@ -289,7 +266,7 @@
 			isa = PBXGroup;
 			children = (
 				A66E2EB426FDAA6500453EB9 /* Model */,
-				A66E2EB326FDAA5F00453EB9 /* View */,
+				A66E2EB326FDAA5F00453EB9 /* Cell */,
 				A66E2EB226FDAA5500453EB9 /* ViewController */,
 			);
 			path = List;
@@ -303,12 +280,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		A66E2EB326FDAA5F00453EB9 /* View */ = {
+		A66E2EB326FDAA5F00453EB9 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				8230109B29BDB8310051F731 /* ListCell.swift */,
 			);
-			path = View;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		A66E2EB426FDAA6500453EB9 /* Model */ = {
@@ -342,7 +319,6 @@
 				F704A04B269E73830044729E /* Root */,
 				F704A064269E75110044729E /* Base */,
 				F704A070269E7AD10044729E /* Main */,
-				8230109229BDB2500051F731 /* Demo */,
 				F704A066269E75640044729E /* Tools */,
 				F7B4485526A17E890098D2AF /* Config */,
 				F704A08E269EA8A50044729E /* Helper */,
@@ -581,7 +557,7 @@
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
-				8230109829BDB67C0051F731 /* PhotoAlbumViewController.swift in Sources */,
+				8230109829BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift in Sources */,
 				828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */,
 				A62CF270273E7DBC00670C13 /* ExFixedWidthInteger.swift in Sources */,
 				F7B44829269EE8590098D2AF /* CountDownView.swift in Sources */,
@@ -621,7 +597,7 @@
 				3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */,
 				A680789026EB51C70068DD0A /* Network.swift in Sources */,
 				3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */,
-				A6F36C5C26F6483B008999AE /* PhotoDetailViewController.swift in Sources */,
+				A6F36C5C26F6483B008999AE /* ExamplePhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,

@@ -1,4 +1,4 @@
-class PhotoDetailViewController: BaseViewController {
+class ExamplePhotoDetailViewController: BaseViewController {
     /// 自适应每个item宽度
     private let autoWidth = kScreenWidth.cgf * 0.76
     
