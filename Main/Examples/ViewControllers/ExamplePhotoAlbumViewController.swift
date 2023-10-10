@@ -124,11 +124,9 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         addTopView()
         addBackButton()
 
-        view.addSubview(titleButton)
+        topView.addSubview(titleButton)
         titleButton.snp.makeConstraints { make in
-            make.height.equalTo(36)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(kSafeMarginTop(0))
+            make.centerX.bottom.equalToSuperview()
         }
 
         view.addSubview(photoCollectionView)

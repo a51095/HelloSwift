@@ -6,40 +6,50 @@
 //
 
 extension UIButton {
-    enum Position { case top, left, bottom, right }
+    enum ImagePosition { case top, right, bottom, left }
 
-    func adjustImageTitlePosition(_ position: Position, spacing: CGFloat = 0 ) {
-        guard let imageView = self.imageView, let titleLabel = self.titleLabel else { return }
+    func adjustImageRelativeTitle(_ position: ImagePosition, spacing: CGFloat = 0.0) {
+        setTitle(currentTitle, for: .normal)
+        setImage(currentImage, for: .normal)
+        setTitle(currentTitle, for: .disabled)
+        setImage(currentImage, for: .disabled)
+        setTitle(currentTitle, for: .selected)
+        setImage(currentImage, for: .selected)
+        setTitle(currentTitle, for: .highlighted)
+        setImage(currentImage, for: .highlighted)
 
-        let imageWidth = imageView.frame.size.width
-        let imageHeight = imageView.frame.size.height
+        let imageWidth = imageView?.image?.size.width ?? 0
+        let imageHeight = imageView?.image?.size.height ?? 0
+        let labelWidth = titleLabel?.text?.size(withAttributes: [.font: titleLabel?.font ?? UIFont.systemFont(ofSize: 0)]).width ?? 0
+        let labelHeight = titleLabel?.text?.size(withAttributes: [.font: titleLabel?.font ?? UIFont.systemFont(ofSize: 0)]).height ?? 0
 
-        let labelWidth = titleLabel.frame.size.width
-        let labelHeight = titleLabel.frame.size.height
+        let imageOffsetX = (imageWidth + labelWidth) / 2 - imageWidth / 2
+        let imageOffsetY = imageHeight / 2 + spacing / 2
+        let labelOffsetX = (imageWidth + labelWidth / 2) - (imageWidth + labelWidth) / 2
+        let labelOffsetY = labelHeight / 2 + spacing / 2
 
-        let horizontalSpacing = (imageWidth + labelWidth) / 2
-        let verticalSpacing = (imageHeight + labelHeight) / 2
+        let tempWidth = max(labelWidth, imageWidth)
+        let changedWidth = labelWidth + imageWidth - tempWidth
+        let tempHeight = max(labelHeight, imageHeight)
+        let changedHeight = labelHeight + imageHeight + spacing - tempHeight
 
         switch position {
         case .top:
-            guard (imageHeight + labelHeight + spacing) < self.frame.height else { return }
-            imageEdgeInsets = UIEdgeInsets(top: -verticalSpacing - spacing / 2, left: 0, bottom: 0, right: -horizontalSpacing)
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: -horizontalSpacing, bottom: -verticalSpacing - spacing / 2, right: 0)
-
+            imageEdgeInsets = UIEdgeInsets(top: -imageOffsetY, left: imageOffsetX, bottom: imageOffsetY, right: -imageOffsetX)
+            titleEdgeInsets = UIEdgeInsets(top: labelOffsetY, left: -labelOffsetX, bottom: -labelOffsetY, right: labelOffsetX)
+            contentEdgeInsets = UIEdgeInsets(top: imageOffsetY, left: -changedWidth / 2, bottom: changedHeight-imageOffsetY, right: -changedWidth / 2)
+        case .right:
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: labelWidth + spacing / 2, bottom: 0, right: -(labelWidth + spacing / 2))
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: -(imageWidth + spacing / 2), bottom: 0, right: imageWidth + spacing / 2)
+            contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing / 2, bottom:0, right: spacing / 2)
+        case .bottom:
+            imageEdgeInsets = UIEdgeInsets(top: imageOffsetY, left: imageOffsetX, bottom: -imageOffsetY, right: -imageOffsetX)
+            titleEdgeInsets = UIEdgeInsets(top: -labelOffsetY, left: -labelOffsetX, bottom: labelOffsetY, right: labelOffsetX)
+            contentEdgeInsets = UIEdgeInsets(top: changedHeight - imageOffsetY, left: -changedWidth / 2, bottom: imageOffsetY, right: -changedWidth / 2)
         case .left:
-            guard (imageWidth + labelWidth + spacing) < self.frame.width else { return }
             imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing / 2, bottom: 0, right: spacing / 2)
             titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing / 2, bottom: 0, right: -spacing / 2)
-
-        case .bottom:
-            guard (imageHeight + labelHeight + spacing) < self.frame.height else { return }
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: -verticalSpacing - spacing / 2, right: -horizontalSpacing)
-            titleEdgeInsets = UIEdgeInsets(top: -verticalSpacing - spacing / 2, left: -horizontalSpacing, bottom: 0, right: 0)
-
-        case .right:
-            guard (imageWidth + labelWidth + spacing) < self.frame.width else { return }
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: horizontalSpacing + spacing / 2, bottom: 0, right: -horizontalSpacing - spacing / 2)
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: -horizontalSpacing - spacing / 2, bottom: 0, right: horizontalSpacing + spacing / 2)
+            contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing / 2, bottom: 0, right: spacing / 2)
         }
     }
 }
