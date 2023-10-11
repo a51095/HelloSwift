@@ -45,9 +45,7 @@ class RandomCodeView: UIView {
     
     // MARK: 数据初始化
     func initData()  {
-        angleArray = [0.25, 0.55, 0.85,
-                      1.25, 1.55, 1.85]
-
+        angleArray = [-0.25, -0.45, -0.65, -0.85, 0.35, 0.55, 0.75, 0.95]
         for _ in 0..<defaultCount { labelArray.append(createLabel()) }
     }
     
@@ -109,8 +107,8 @@ class RandomCodeView: UIView {
     
     private func createLabel() -> UILabel {
         let l = UILabel()
-        l.textColor = .black
-        l.font = kRegularFont(18)
+        l.textColor = .white
+        l.font = kSemiblodFont(22)
         l.textAlignment = .center
         return l
     }
@@ -123,7 +121,7 @@ class RandomCodeView: UIView {
                                   green: .random(in: 0...1),
                                   blue: .random(in: 0...1),
                                   alpha: 1.0)
-        } while randomColor.isEqual(UIColor.black) // 过滤黑色
+        } while randomColor.isEqual(UIColor.white) // 过滤白色
         return randomColor
     }
 }
