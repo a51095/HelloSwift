@@ -9,18 +9,18 @@ import Foundation
 
 class ExampleLocationViewController: BaseViewController, ExampleProtocol {
     lazy var locationManager: LocationManager = LocationManager()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSubview()
     }
-    
+
     override func initSubview() {
         super.initSubview()
-        
+
         let count = 2
         let limitH = 36
-        
+
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
@@ -40,7 +40,7 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
             }
             buttonArray.append(button)
         }
-        
+
         let stackView = UIStackView(arrangedSubviews: buttonArray)
         stackView.axis = .vertical
         stackView.spacing = CGFloat(limitH)
@@ -52,13 +52,19 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
             make.left.right.centerY.equalToSuperview()
         }
     }
-    
+
     @objc func didSeleted(button: UIButton) {
         switch button.tag {
         case 101:
-            locationManager.requestLocation { l in
-                kPrint(l.coordinate.latitude)
-                kPrint(l.coordinate.longitude)
+            locationManager.requestAuthorization { status in
+                if status == .authorizedWhenInUse {
+                    self.locationManager.start { l in
+                        kPrint(l.coordinate.latitude)
+                        kPrint(l.coordinate.longitude)
+                    }
+                } else {
+                    kPrint("请授权定位权限")
+                }
             }
         case 102:
             locationManager.stop()
