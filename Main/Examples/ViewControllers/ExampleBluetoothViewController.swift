@@ -1,23 +1,19 @@
 //
-//  ExampleLocationViewController.swift
+//  ExampleBluetoothViewController.swift
 //  HelloSwift
 //
-//  Created by well on 2023/4/24.
+//  Created by well on 2023/10/23.
 //
 
 import Foundation
 
-class ExampleLocationViewController: BaseViewController, ExampleProtocol {
-    lazy var locationManager: LocationManager = LocationManager()
+class ExampleBluetoothViewController: BaseViewController, ExampleProtocol {
+    lazy var bluetoothManager: BluetoothManager = BluetoothManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSubview()
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        locationManager.stop()
+        bluetoothManager.delegate = self
     }
 
     override func initSubview() {
@@ -32,10 +28,10 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
             button.tag = idx + 100
             button.backgroundColor = .orange
             if idx == 1 {
-                button.setTitle("开始地理定位", for: .normal)
+                button.setTitle("开始蓝牙扫描", for: .normal)
             }
             if idx == 2 {
-                button.setTitle("停止地理定位", for: .normal)
+                button.setTitle("停止蓝牙扫描", for: .normal)
             }
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
@@ -61,19 +57,22 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
     @objc func didSeleted(button: UIButton) {
         switch button.tag {
         case 101:
-            locationManager.requestAuthorization { status in
-                if status == .authorizedWhenInUse {
-                    self.locationManager.start { l in
-                        kPrint(l.coordinate.latitude)
-                        kPrint(l.coordinate.longitude)
-                    }
+            bluetoothManager.requestAuthorization { status in
+                if status == .poweredOn {
+                    self.bluetoothManager.startScanning()
                 } else {
-                    kPrint("请授权定位权限")
+                    kPrint("请授权打开蓝牙开关")
                 }
             }
         case 102:
-            locationManager.stop()
+            bluetoothManager.stopScan()
         default: break
         }
+    }
+}
+
+extension ExampleBluetoothViewController: BleManagerDelegate {
+    func bleManagerDidDiscoverPeripheral(result: DiscoverPeripheralResult) {
+        print("result == ", result.peripheral.name)
     }
 }

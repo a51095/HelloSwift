@@ -38,10 +38,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>授权相机权限</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>授权定位权限</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>授权相册权限</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>授权蓝牙权限</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>授权定位权限</string>
 	<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
