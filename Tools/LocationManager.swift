@@ -32,7 +32,10 @@ class LocationManager: NSObject {
     }
 
     /// stop updating locations.
-    func stop() { locationManager.stopUpdatingLocation() }
+    func stop() { 
+        locationManager.stopUpdatingLocation()
+        kPrint("已停止地理定位")
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {

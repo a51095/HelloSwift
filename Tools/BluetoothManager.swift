@@ -28,7 +28,7 @@ class BluetoothManager: NSObject {
     /// stop scan
     func stopScan() {
         centralManager.stopScan()
-        print("已停止蓝牙扫描")
+        kPrint("已停止蓝牙扫描")
     }
 
     /// connect
