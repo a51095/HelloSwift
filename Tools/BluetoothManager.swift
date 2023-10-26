@@ -67,6 +67,10 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         print("处理外设断开连接")
         central.cancelPeripheralConnection(peripheral)
     }
+
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
+        print("出错了,\(String(describing: error?.localizedDescription))")
+    }
 }
 
 extension BluetoothManager {

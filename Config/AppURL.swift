@@ -1,6 +1,6 @@
 struct AppURL {
-    /// 网络jpg格式图片
-    static let adImageUrl: String  = "https://palmchat.cdn.lianxinapp.com/static/resource/imgs/icon_16.jpg"
+    /// 必应每日随机图
+    static let adImageUrl: String  = "https://bing.img.run/m.php"
     /// 网络gif格式动画图片
     static let adGifUrl: String  = "http://adkx.net/w71qe"
     /// 网络mp4格式短视频
