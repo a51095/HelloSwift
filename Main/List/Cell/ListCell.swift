@@ -5,8 +5,9 @@
 //  Created by well on 2023/3/12.
 //
 
-import Foundation
 import UIKit
+import Kingfisher
+import Foundation
 
 class ListCell: UITableViewCell {
     /// 新闻预览图
@@ -15,16 +16,16 @@ class ListCell: UITableViewCell {
     private var titleLabel = UILabel()
     /// 新闻发布时间
     private var timeLabel = UILabel()
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.initSubview()
     }
-    
+
     /// 子视图初始化
     private func initSubview() {
         selectionStyle = .none
@@ -38,14 +39,14 @@ class ListCell: UITableViewCell {
             make.bottom.equalTo(-10)
             make.width.equalTo(120)
         }
-                
+
         timeLabel.font = kRegularFont(16)
         contentView.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { (make) in
             make.left.equalTo(10)
             make.bottom.equalToSuperview()
         }
-        
+
         titleLabel.numberOfLines = 0
         titleLabel.font = kMediumFont(16)
         contentView.addSubview(titleLabel)
@@ -55,7 +56,7 @@ class ListCell: UITableViewCell {
             make.right.equalTo(preImageView.snp.left).offset(-10)
             make.bottom.equalTo(timeLabel.snp.top).offset(-10)
         }
-        
+
         let lineView = UIView()
         contentView.addSubview(lineView)
         lineView.backgroundColor = .gray
@@ -66,9 +67,10 @@ class ListCell: UITableViewCell {
             make.bottom.equalToSuperview()
         }
     }
-    
+
     func reloadCell(item: ListModel) {
-        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s!))
+        preImageView.kf.indicatorType = .activity
+        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s!), placeholder: UIImage(named: "placeholder_list_cell_img"))
         titleLabel.text = item.title
         timeLabel.text = item.date
     }

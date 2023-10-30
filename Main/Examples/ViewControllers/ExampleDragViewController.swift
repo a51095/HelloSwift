@@ -16,10 +16,9 @@ class ExampleDragViewController: BaseViewController, ExampleProtocol {
     
     override func initSubview() {
         super.initSubview()
-        
+
         let dragWidth = 80
-        
-        let drag = ScaleAspectView()
+        let drag = DragView()
         view.addSubview(drag)
         drag.backgroundColor = .orange
         drag.frame = CGRect(x: view.frame.width.i - (20 + dragWidth), y: view.frame.height.i - (20 + dragWidth), width: dragWidth, height: dragWidth)

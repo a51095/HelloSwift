@@ -75,6 +75,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSubview()
+        self.backgroundColor(.black)
     }
     
     /// 视图初始化
@@ -144,7 +145,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         view.addSubview(pageControl)
         pageControl.hidesForSinglePage = true
         pageControl.numberOfPages = displayCount
-        pageControl.currentPageIndicatorTintColor = .random
+        pageControl.currentPageIndicatorTintColor = .orange
         pageControl.frame = CGRect(x: 0, y: kScreenHeight - kScaleHeight(100), width: kScreenWidth, height: 30)
     }
     

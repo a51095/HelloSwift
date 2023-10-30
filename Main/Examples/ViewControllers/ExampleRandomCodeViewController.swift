@@ -17,12 +17,8 @@ class ExampleRandomCodeViewController: BaseViewController, ExampleProtocol {
     
     override func initSubview() {
         super.initSubview()
-        
         let frame = CGRect(x: view.center.x - 100, y: view.center.y - 33, width: 200, height: 66)
-        
-        let random = RandomCodeView(frame: frame) { res in
-            kPrint(res)
-        }
+        let random = RandomCodeView(frame: frame) { res in kPrint(res) }
         view.addSubview(random)
     }
 }

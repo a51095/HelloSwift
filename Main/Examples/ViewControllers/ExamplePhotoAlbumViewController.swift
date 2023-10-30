@@ -1,13 +1,24 @@
-class PhotoAlbumViewController: BaseViewController {
-    
+class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
+
     /// 当前选中的第N个相薄源(默认选中第一个)
     private var seletedIndex = IndexPath(row: 0, section: 0)
     /// 数据源(guideTableView)
     private var albumSource = [AlbumModel]()
     /// 数据源(photoCollectionView)
     private var photoSource = [PhotoModel]()
-    /// 标题视图
-    private let titleButton = UIButton()
+    /// 懒加载标题视图
+    private lazy var titleButton: UIButton = {
+        let button = UIButton()
+        button.isSelected = true
+        button.layer.cornerRadius = 12
+        button.titleLabel?.font = kMediumFont(16)
+        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.black, for: .selected)
+        button.setImage(UIImage(named: "photo_arrow_up"), for: .selected)
+        button.setImage(UIImage(named: "photo_arrow_down"), for: .normal)
+        button.addTarget(self, action: #selector(titleButtonDidSeleted), for: .touchUpInside)
+        return button
+    }()
     /// item限定间距
     private lazy var limitMargin: Int = { 4 }()
     /// 懒加载item尺寸大小
@@ -57,7 +68,6 @@ class PhotoAlbumViewController: BaseViewController {
                 DispatchQueue.main.async {
                     self.initSubview()
                     self.initData()
-                    if self.photoSource.count == 0 { self.titleButton.removeFromSuperview() }
                 }
             }
         }
@@ -65,8 +75,8 @@ class PhotoAlbumViewController: BaseViewController {
     
     override func initData() {
         // 获取系统相册
-        let  fetchOptions =  PHFetchOptions()
-        let  assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
+        let fetchOptions =  PHFetchOptions()
+        let assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
         filterAssetCollections(collection: assetCollections)
         
 #if !targetEnvironment(simulator)
@@ -81,13 +91,6 @@ class PhotoAlbumViewController: BaseViewController {
         let item = albumSource.first
         titleButton.setTitle(item?.title, for: .normal)
         fetchResult(item)
-        
-        // 默认状态
-        titleButton.isSelected = true
-        titleButton.setImage(UIImage(named: "photo_arrow_up"), for: .normal)
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
-        guideTableView.alpha = 0
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
     }
     
     // MARK: 格式化相簿内容
@@ -118,6 +121,14 @@ class PhotoAlbumViewController: BaseViewController {
     }
         
     override func initSubview() {
+        addTopView()
+        addBackButton()
+
+        topView.addSubview(titleButton)
+        titleButton.snp.makeConstraints { make in
+            make.centerX.bottom.equalToSuperview()
+        }
+
         view.addSubview(photoCollectionView)
         photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(kSafeMarginTop(36))
@@ -129,19 +140,9 @@ class PhotoAlbumViewController: BaseViewController {
             make.top.equalTo(kSafeMarginTop(36))
             make.left.bottom.right.equalToSuperview()
         }
-        
-        addTopView()
-        
-        view.addSubview(titleButton)
-        titleButton.layer.cornerRadius = 12
-        titleButton.titleLabel?.font = kMediumFont(16)
-        titleButton.setTitleColor(.black, for: .normal)
-        titleButton.addTarget(self, action: #selector(titleButtonDidSeleted), for: .touchUpInside)
-        titleButton.snp.makeConstraints { make in
-            make.height.equalTo(36)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(kSafeMarginTop(0))
-        }
+
+        guideTableView.alpha = 0
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
     }
     
     /// 结果分类,添加数据源
@@ -205,7 +206,6 @@ class PhotoAlbumViewController: BaseViewController {
     /// 展示可选相薄视图
     private func displayAnimate()  {
         titleButton.isSelected = false
-        titleButton.setImage(UIImage(named: "photo_arrow_down"), for: .normal)
         guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
         guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
         UIView.animate(withDuration: 0.25) {
@@ -217,8 +217,6 @@ class PhotoAlbumViewController: BaseViewController {
     /// 隐藏可选相薄视图
     private func hideAnimate()  {
         titleButton.isSelected = true
-        titleButton.setImage(UIImage(named: "photo_arrow_up"), for: .normal)
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 0
             self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
@@ -244,7 +242,7 @@ class PhotoAlbumViewController: BaseViewController {
     }
 }
 
-extension PhotoAlbumViewController: UITableViewDelegate, UITableViewDataSource {
+extension ExamplePhotoAlbumViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         albumSource.count
     }
@@ -261,12 +259,12 @@ extension PhotoAlbumViewController: UITableViewDelegate, UITableViewDataSource {
         let item = albumSource[indexPath.row]
         titleButton.setTitle(item.title, for: .normal)
         seletedIndex = indexPath
-        titleButton.adjustImageTitlePosition(.right, spacing: 5)
+//        titleButton.adjustImageTitlePosition(.right, spacing: 5)
         fetchResult(item)
     }
 }
 
-extension PhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ExamplePhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         photoSource.count
     }
@@ -280,7 +278,7 @@ extension PhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let item = photoSource[indexPath.item]
-        let vc = PhotoDetailViewController(type: item.type, source: item.asset)
+        let vc = ExamplePhotoDetailViewController(type: item.type, source: item.asset)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -290,4 +288,3 @@ extension PhotoAlbumViewController: UICollectionViewDelegate, UICollectionViewDa
         photoSource.insert(item, at: destinationIndexPath.item)
     }
 }
-

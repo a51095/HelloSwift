@@ -13,8 +13,8 @@ struct ListModel: HandyJSON {
     var title: String?
     /// 发布日期
     var date: String?
-    /// 详情链接url
-    var url: String?
+    /// 新闻id
+    var uniquekey: String?
     /// 预览图1
     var thumbnail_pic_s: String?
     /// 预览图2
