@@ -10,7 +10,6 @@ final class Cache {
     
     /// 存值(String)
     static func setString(_ value: String, forKey key: String) {
-        try? manager.removeObject(forKey: key)
         try? manager.setObject(value, forKey: key)
     }
     
@@ -21,7 +20,6 @@ final class Cache {
     
     /// 存值(Bool)
     static func setBoolValue(_ value: Bool, forKey key: String) {
-        try? boolStore.removeObject(forKey: key)
         try? boolStore.setObject(value, forKey: key)
     }
     
@@ -33,7 +31,6 @@ final class Cache {
     
     /// 存值(字符串型数组)
     static func setArray(_ array: [String], forKey key: String) {
-        try? stringArrayStore.removeObject(forKey: key)
         try? stringArrayStore.setObject(array, forKey: key)
     }
     
