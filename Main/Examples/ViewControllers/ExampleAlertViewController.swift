@@ -50,7 +50,7 @@ class ExampleAlertViewController: BaseViewController, ExampleProtocol {
     }
     
     @objc func didSeleted(button: UIButton) {
-        let ok = Action(title: "确定", titleColor: .blue)
+        let ok = Action(title: "确定", color: .blue)
         let cancel = Action(title: " 取消")
         
         switch button.tag {
