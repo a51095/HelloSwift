@@ -201,6 +201,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
             let imgUrl = URL(string: adConfig.resourceName)
             guard imgUrl != nil else { return }
             let imageResource = KF.ImageResource(downloadURL: imgUrl!, cacheKey: Date.format())
+            adImageView.contentMode = .scaleToFill
             adImageView.kf.indicatorType = .activity
             adImageView.kf.setImage(with: imageResource, placeholder: UIImage(named: "user_guide04"))
         } else {
