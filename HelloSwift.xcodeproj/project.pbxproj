@@ -19,6 +19,7 @@
 		3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814B29F64B1900BF6902 /* LocationManager.swift */; };
 		3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */; };
 		3FB8BB3929F67CE200A61E7E /* ExampleCountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */; };
+		3FD9EB0F2AEBBE4F0089F722 /* ExDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */; };
 		3FDB464B2AE60BE900C45E9C /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */; };
 		3FDB464D2AE6165300C45E9C /* ExampleBluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */; };
 		3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */; };
@@ -90,6 +91,7 @@
 		3FB5814B29F64B1900BF6902 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLocationViewController.swift; sourceTree = "<group>"; };
 		3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCountDownViewController.swift; sourceTree = "<group>"; };
+		3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDate.swift; sourceTree = "<group>"; };
 		3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleBluetoothViewController.swift; sourceTree = "<group>"; };
 		3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDragViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		A62CF261273E7DBC00670C13 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */,
 				A62CF264273E7DBC00670C13 /* ExView.swift */,
 				A62CF263273E7DBC00670C13 /* ExColor.swift */,
 				A62CF266273E7DBC00670C13 /* ExString.swift */,
@@ -593,6 +596,7 @@
 				F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */,
 				A62CF271273E7DBC00670C13 /* ExImage.swift in Sources */,
 				3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */,
+				3FD9EB0F2AEBBE4F0089F722 /* ExDate.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
 				3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */,
