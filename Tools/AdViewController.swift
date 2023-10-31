@@ -59,8 +59,8 @@ class AdViewController: BaseViewController, CountDownProtocol {
     private lazy var skipButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 4
-        button.titleLabel?.font = kRegularFont(14)
         button.backgroundColor = .hexColor("#000000", 0.5)
+        button.titleLabel?.font = UIFont(name: "Arial", size: 16.0)
         button.addTarget(self, action: #selector(skipButtonDidSeleted), for: .touchUpInside)
         return button
     }()
@@ -158,7 +158,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         skipButton.snp.makeConstraints { make in
             make.right.equalTo(kScaleWidth(-36))
             make.top.equalTo(kSafeMarginTop(0))
-            make.size.equalTo(CGSize(width: 70, height: 30))
+            make.size.equalTo(CGSize(width: 76, height: 36))
         }
 
         let startTime = Int(CACurrentMediaTime())
