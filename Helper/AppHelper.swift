@@ -74,10 +74,8 @@ func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
 func kRegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", size: size)! }
 /// 平方字体-中等体
 func kMediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
-/// 平方字体-中粗体
+/// 平方字体-半粗体
 func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
-/// 手写字体-中粗体
-func kBradleyHandFont(_ size: CGFloat) -> UIFont { UIFont(name:"BradleyHandITCTT-Bold", size: size)! }
 
 /// 用户相机授权状态
 func requestAccess(handler: @escaping (Bool) -> (Void))  {
@@ -184,12 +182,7 @@ extension NetworkStatus {
 
 /// 在数组中查找指定元素的索引
 func findIndex<T: Equatable>(_ value: T, in array: [T]) -> Int? {
-    for (index, element) in array.enumerated() {
-        if element == value {
-            return index
-        }
-    }
-    return nil
+    array.firstIndex(of: value)
 }
 
 /// 深拷贝
@@ -204,8 +197,9 @@ func deepCopy<T: Codable>(_ object: T) -> T? {
 }
 
 /// 打印调试信息
-func kPrint<T>(_ items: T, separator: String = " ", terminator: String = "\n") {
+func kPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
 #if DEBUG
-    print(items)
+    let output = items.map { String(describing: $0) }.joined(separator: separator)
+    print(output, terminator: terminator)
 #endif
 }
