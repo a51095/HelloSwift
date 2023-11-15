@@ -1,6 +1,10 @@
 struct Examples {
     static let all = [
         [
+            "title": "Func",
+            "examples": funcExamples
+        ],
+        [
             "title": "Tool",
             "examples": toolExamples
         ],
@@ -14,6 +18,10 @@ struct Examples {
         ]
     ]
     
+    static let funcExamples = [
+        Example(title: "Async", description: "An async presentation", aClass: ExampleAsyncViewController.self),
+    ]
+
     static let toolExamples = [
         Example(title: "Alert", description: "An alert presentation", aClass: ExampleAlertViewController.self),
         Example(title: "Toast", description: "An toast presentation", aClass: ExampleToastViewController.self),

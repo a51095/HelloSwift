@@ -12,6 +12,7 @@
 		3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */; };
 		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
 		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
+		3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */; };
 		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
 		3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C029E3AACD00A3C533 /* Examples.swift */; };
 		3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C129E3AACD00A3C533 /* Example.swift */; };
@@ -84,6 +85,7 @@
 		3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleToastViewController.swift; sourceTree = "<group>"; };
 		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
 		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
+		3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAsyncViewController.swift; sourceTree = "<group>"; };
 		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		3FA6F6C029E3AACD00A3C533 /* Examples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		3FA6F6C129E3AACD00A3C533 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
@@ -222,17 +224,18 @@
 			isa = PBXGroup;
 			children = (
 				3F20EA0E29E9486F0025FC44 /* ExampleAlertViewController.swift */,
-				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
-				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
-				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
-				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
+				3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */,
 				3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */,
 				3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */,
 				3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */,
-				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
-				3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */,
+				3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */,
+				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
 				8230109729BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift */,
 				A6F36C5B26F6483B008999AE /* ExamplePhotoDetailViewController.swift */,
+				3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */,
+				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
+				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
+				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				A62CF26C273E7DBC00670C13 /* ExColor.swift in Sources */,
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
 				3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */,
+				3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */,
 				8230109A29BDB80B0051F731 /* ListModel.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */,

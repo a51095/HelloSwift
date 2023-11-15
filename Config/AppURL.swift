@@ -1,4 +1,5 @@
 struct AppURL {
+    private init() {}
     /// 必应每日随机图
     static let adImageUrl: String  = "https://bing.img.run/m.php"
     /// 网络gif格式动画图片

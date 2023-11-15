@@ -1,4 +1,4 @@
-enum AppError: Error {
-    case success
-    case failed
+enum NetworkError: Error {
+    case invalidURL
+    case noData
 }
