@@ -262,9 +262,9 @@
 			children = (
 				F704A05A269E73850044729E /* Info.plist */,
 				F704A055269E73850044729E /* Assets.xcassets */,
+				A650EE5226E63C6D00E437AA /* localGif.gif */,
 				A650EE5426E6427400E437AA /* localVideo.mp4 */,
 				829971CE29215357003CD52B /* LaunchImage.png */,
-				A650EE5226E63C6D00E437AA /* localGif.gif */,
 				3F08FE2A297695F400835E54 /* LaunchScreen.storyboard */,
 			);
 			path = Resource;
