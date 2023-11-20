@@ -91,34 +91,28 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
         }
     }
 
+    @available(iOS 13.0.0, *)
     private func fetchDataWithAsync() async throws -> Swift.Result<Data, NetworkError> {
-        if #available(iOS 15.0, *) {
-            view.showLoading()
-            let (data, _) = try await URLSession.shared.data(from: URL(string: AppURL.adImageUrl)!)
-            view.hideLoading()
-            return .success(data)
-        } else {
-            return .failure(.noData)
-        }
+        view.showLoading()
+        let (data, _) = try await URLSession.shared.data(from: URL(string: AppURL.adImageUrl)!)
+        view.hideLoading()
+        return .success(data)
     }
 
+    @available(iOS 13.0.0, *)
     private func fetchDataWithCheckedContinuation() async -> Swift.Result<Data, NetworkError> {
-        if #available(iOS 13.0, *) {
-            view.showLoading()
-            return await withCheckedContinuation { continuation in
-                DispatchQueue.global().async {
-                    if let data = try? Data(contentsOf: URL(string: AppURL.adImageUrl)!) {
-                        continuation.resume(returning: .success(data))
-                    } else {
-                        continuation.resume(returning: .failure(.noData))
-                    }
-                    DispatchQueue.main.async {
-                        self.view.hideLoading()
-                    }
+        view.showLoading()
+        return await withCheckedContinuation { continuation in
+            DispatchQueue.global().async {
+                if let data = try? Data(contentsOf: URL(string: AppURL.adImageUrl)!) {
+                    continuation.resume(returning: .success(data))
+                } else {
+                    continuation.resume(returning: .failure(.noData))
+                }
+                DispatchQueue.main.async {
+                    self.view.hideLoading()
                 }
             }
-        } else {
-            return .failure(.noData)
         }
     }
 }
