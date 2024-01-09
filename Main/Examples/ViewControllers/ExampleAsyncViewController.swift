@@ -94,9 +94,13 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
     @available(iOS 13.0.0, *)
     private func fetchDataWithAsync() async throws -> Swift.Result<Data, NetworkError> {
         view.showLoading()
-        let (data, _) = try await URLSession.shared.data(from: URL(string: AppURL.adImageUrl)!)
-        view.hideLoading()
-        return .success(data)
+		if let (data,_) = try? await URLSession.shared.data(from: URL(string: AppURL.adImageUrl)!) {
+			view.hideLoading()
+			return .success(data)
+		} else {
+			view.hideLoading()
+			return .failure(.noData)
+		}
     }
 
     @available(iOS 13.0.0, *)

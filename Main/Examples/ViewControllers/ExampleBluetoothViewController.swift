@@ -73,6 +73,6 @@ class ExampleBluetoothViewController: BaseViewController, ExampleProtocol {
 
 extension ExampleBluetoothViewController: BleManagerDelegate {
     func bleManagerDidDiscoverPeripheral(result: DiscoverPeripheralResult) {
-        print("result == ", result.peripheral.name)
+		print("result == \(String(describing: result.peripheral.name))")
     }
 }
