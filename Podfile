@@ -5,7 +5,7 @@ source 'https://cdn.cocoapods.org/'
 
 #Debug
 def debugPods
-  pod 'LookinServer', :configurations => ['Debug']
+	pod 'LookinServer', :subspecs => ['Swift'], :configurations => ['Debug']
 end
 
 #Objective-C
