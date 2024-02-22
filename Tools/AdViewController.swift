@@ -69,7 +69,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 

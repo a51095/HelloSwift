@@ -9,14 +9,14 @@ import CoreBluetooth
 
 class BluetoothManager: NSObject {
     weak var delegate: BleManagerDelegate?
-    private var centralManager = CBCentralManager()
+	private lazy var centralManager = CBCentralManager()
     private var connectedPeripheral: CBPeripheral?
     private var updateStatus: ((CBManagerState) -> Void)?
     private var didDiscoverPeripheral: ((DiscoverPeripheralResult) -> Void)?
 
     /// request authorization
     func requestAuthorization(status: @escaping (CBManagerState) -> Void) {
-        centralManager = CBCentralManager(delegate: self, queue: nil)
+		centralManager = CBCentralManager(delegate: self, queue: .global(qos: .background))
         updateStatus = status
     }
 
