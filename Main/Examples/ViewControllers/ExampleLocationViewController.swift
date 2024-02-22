@@ -25,18 +25,14 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
 
         let count = 2
         let limitH = 36
+		let buttonTitleArray = ["开始地理定位", "停止地理定位"]
 
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
             button.tag = idx + 100
             button.backgroundColor = .orange
-            if idx == 1 {
-                button.setTitle("开始地理定位", for: .normal)
-            }
-            if idx == 2 {
-                button.setTitle("停止地理定位", for: .normal)
-            }
+			button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)

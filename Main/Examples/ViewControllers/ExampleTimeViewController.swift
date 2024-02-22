@@ -20,18 +20,14 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
         
         let count = 2
         let limitH = 36
-        
+		let buttonTitleArray = ["开始定时器任务", "停止定时器任务", "样式 三"]
+		
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
             button.tag = idx + 100
             button.backgroundColor = .orange
-            if idx == 1 {
-                button.setTitle("开始定时器任务", for: .normal)
-            }
-            if idx == 2 {
-                button.setTitle("停止定时器任务", for: .normal)
-            }
+			button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)

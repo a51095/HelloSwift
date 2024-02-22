@@ -19,13 +19,14 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
 
         let count = 3
         let limitH = 36
+		let buttonTitleArray = ["方法 一", "方法 二", "方法 三"]
 
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
             button.tag = idx + 100
             button.backgroundColor = .orange
-            button.setTitle("方法 \(convertToNumber(String(idx)))", for: .normal)
+            button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)

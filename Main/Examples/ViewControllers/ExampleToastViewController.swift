@@ -18,13 +18,14 @@ class ExampleToastViewController: BaseViewController, ExampleProtocol {
             
         let count = 3
         let limitH = 36
-        
+		let buttonTitleArray = ["样式 一", "样式 二", "样式 三"]
+		
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
             button.tag = idx + 100
             button.backgroundColor = .orange
-            button.setTitle("样式 \(convertToNumber(String(idx)))", for: .normal)
+			button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)

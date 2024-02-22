@@ -156,9 +156,9 @@ class AdViewController: BaseViewController, CountDownProtocol {
     func addSkipButton() {
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
-            make.right.equalTo(kScaleWidth(-36))
-            make.top.equalTo(kSafeMarginTop(0))
-            make.size.equalTo(CGSize(width: 76, height: 36))
+            make.right.equalTo(kScaleWidth(-10))
+            make.top.equalTo(kSafeMarginTop(10))
+            make.size.equalTo(CGSize(width: 80, height: 40))
         }
 
         let startTime = Int(CACurrentMediaTime())
