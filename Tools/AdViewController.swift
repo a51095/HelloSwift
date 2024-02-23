@@ -69,7 +69,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
     private lazy var adImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -158,7 +158,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         skipButton.snp.makeConstraints { make in
             make.right.equalTo(kScaleWidth(-10))
             make.top.equalTo(kSafeMarginTop(10))
-            make.size.equalTo(CGSize(width: 80, height: 40))
+            make.size.equalTo(CGSize(width: 80, height: 36))
         }
 
         let startTime = Int(CACurrentMediaTime())
@@ -201,7 +201,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
             let imgUrl = URL(string: adConfig.resourceName)
             guard imgUrl != nil else { return }
             let imageResource = KF.ImageResource(downloadURL: imgUrl!, cacheKey: Date.format())
-            adImageView.contentMode = .scaleToFill
+            adImageView.contentMode = .scaleAspectFill
             adImageView.kf.indicatorType = .activity
             adImageView.kf.setImage(with: imageResource, placeholder: UIImage(named: "user_guide04"))
         } else {

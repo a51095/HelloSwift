@@ -21,7 +21,7 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
         let count = 2
         let limitH = 36
 		let buttonTitleArray = ["开始定时器任务", "停止定时器任务", "样式 三"]
-		
+
         var buttonArray = [UIButton]()
         for (idx) in 1...count {
             let button = UIButton()
