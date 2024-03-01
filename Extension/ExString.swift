@@ -3,8 +3,8 @@ extension String {
     var i: Int? { Int(self) }
     
     static let characters = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    /// 生成指定位数随机字符串(此处默认16位)
-    static func randomString(len: Int = 16) -> String {
+    /// 生成指定位数随机字符串
+    static func randomString(len: Int = 6) -> String {
         var ranStr = ""
         for _ in 0..<len {
             let index = Int(arc4random_uniform(UInt32(characters.count)))

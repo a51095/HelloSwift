@@ -196,6 +196,14 @@ func deepCopy<T: Codable>(_ object: T) -> T? {
     }
 }
 
+/// 延时
+@available(iOS 13.0, *)
+func delay(_ duration: UInt64)  {
+	Task {
+		try? await Task.sleep(nanoseconds: duration * NSEC_PER_MSEC)
+	}
+}
+
 /// 打印调试信息
 func kPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
 #if DEBUG

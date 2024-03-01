@@ -79,6 +79,7 @@
 		F7B4485B26A181550098D2AF /* AppURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485A26A181550098D2AF /* AppURL.swift */; };
 		F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */; };
 		F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* ItemView.swift */; };
+		FA9ADE792B91E17300DF3BDF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADE782B91E17300DF3BDF /* TaskManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +159,7 @@
 		F7B4485A26A181550098D2AF /* AppURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppURL.swift; sourceTree = "<group>"; };
 		F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationName.swift; sourceTree = "<group>"; };
 		F7B4FD9826A6C6850051FC5B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		FA9ADE782B91E17300DF3BDF /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,6 +386,7 @@
 				F7B44823269EDE490098D2AF /* DragView.swift */,
 				F7B4481F269ED3840098D2AF /* ToastView.swift */,
 				3F6CB27A2B87307E006ADBA9 /* Preferences.swift */,
+				FA9ADE782B91E17300DF3BDF /* TaskManager.swift */,
 				F7B4485126A1168E0098D2AF /* LoadingView.swift */,
 				F704A081269E832B0044729E /* AlertController.swift */,
 				F7B44828269EE8590098D2AF /* CountDownView.swift */,
@@ -627,6 +630,7 @@
 				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
 				3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */,
+				FA9ADE792B91E17300DF3BDF /* TaskManager.swift in Sources */,
 				3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
 				F78279B526A5121200A90FFF /* Cache.swift in Sources */,
