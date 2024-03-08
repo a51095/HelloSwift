@@ -43,7 +43,7 @@ class ScaleAspectView: UIView {
         headView.addSubview(imageView)
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "example_aspect")
+        imageView.image = UIImage(named: "aspect")
         imageView.frame = CGRect(x: 0, y: 0, width: Int(self.frame.width), height: defaultHeight)
     }
 }

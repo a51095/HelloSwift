@@ -20,7 +20,6 @@ class ExampleDragViewController: BaseViewController, ExampleProtocol {
         let dragWidth = 80
         let drag = DragView()
         view.addSubview(drag)
-        drag.backgroundColor = .orange
-        drag.frame = CGRect(x: view.frame.width.i - (20 + dragWidth), y: view.frame.height.i - (20 + dragWidth), width: dragWidth, height: dragWidth)
+        drag.frame = CGRect(x: view.frame.width.i - (4 + dragWidth), y: view.frame.height.i - (4 + dragWidth), width: dragWidth, height: dragWidth)
     }
 }
