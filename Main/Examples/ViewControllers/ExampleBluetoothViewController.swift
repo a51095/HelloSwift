@@ -20,7 +20,7 @@ class ExampleBluetoothViewController: BaseViewController, ExampleProtocol {
         super.initSubview()
 
         let count = 2
-        let limitH = 36
+        let limitH = 50
 		let buttonTitleArray = ["开始蓝牙扫描", "停止蓝牙扫描"]
 
         var buttonArray = [UIButton]()

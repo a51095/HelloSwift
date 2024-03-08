@@ -18,7 +18,7 @@ class ExampleAlertViewController: BaseViewController, ExampleProtocol {
         super.initSubview()
                 
         let count = 3
-        let limitH = 36
+        let limitH = 50
 		let buttonTitleArray = ["样式 一", "样式 二", "样式 三"]
 
         var buttonArray = [UIButton]()

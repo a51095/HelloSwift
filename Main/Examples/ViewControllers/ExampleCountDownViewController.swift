@@ -26,7 +26,7 @@ class ExampleCountDownViewController: BaseViewController, ExampleProtocol {
         
         view.addSubview(countDownView)
         countDownView.snp.makeConstraints { (make) in
-            make.height.equalTo(60)
+            make.height.equalTo(50)
             make.width.equalTo(280)
             make.center.equalToSuperview()
         }

@@ -21,7 +21,7 @@ class ExamplePropertyViewController: BaseViewController, ExampleProtocol {
 		super.initSubview()
 
 		let count = 3
-		let limitH = 36
+		let limitH = 50
 
 		let buttonTitleArray = ["重置默认值", "设置新值", "查看新值"]
 

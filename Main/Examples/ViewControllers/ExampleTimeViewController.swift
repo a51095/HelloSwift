@@ -19,7 +19,7 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
         super.initSubview()
         
         let count = 2
-        let limitH = 36
+        let limitH = 50
 		let buttonTitleArray = ["开始定时器任务", "停止定时器任务", "样式 三"]
 
         var buttonArray = [UIButton]()

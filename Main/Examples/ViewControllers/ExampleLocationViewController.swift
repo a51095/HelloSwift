@@ -24,7 +24,7 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
         super.initSubview()
 
         let count = 2
-        let limitH = 36
+        let limitH = 50
 		let buttonTitleArray = ["开始地理定位", "停止地理定位"]
 
         var buttonArray = [UIButton]()
