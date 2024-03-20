@@ -12,11 +12,13 @@
 @_exported import CoreLocation
 
 /// app沙盒Documents根目录(Documents)
-let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).last!
+let kAppDocumentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
 /// app沙盒Library二级目录(Caches，Preferences)
-let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! + "/Caches"
+let kAppCachesPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true).first!
 /// app沙盒Tmp根目录(tmp)
 let kAppTmpPath = NSTemporaryDirectory()
+/// app沙盒Log日志目录
+let kAppLogURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("Log")
 
 /// UIApplication代理对象
 let kAppDelegate = UIApplication.shared.delegate!

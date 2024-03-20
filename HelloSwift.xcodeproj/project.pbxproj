@@ -80,6 +80,8 @@
 		F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */; };
 		F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B4FD9826A6C6850051FC5B /* ItemView.swift */; };
 		FA9ADE792B91E17300DF3BDF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADE782B91E17300DF3BDF /* TaskManager.swift */; };
+		FA9FFB2B2BA9BADB0079EB52 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB2A2BA9BADB0079EB52 /* Log.swift */; };
+		FA9FFB2D2BA9C08B0079EB52 /* ExData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB2C2BA9C08B0079EB52 /* ExData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -160,6 +162,8 @@
 		F7B4485D26A181DB0098D2AF /* AppNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotificationName.swift; sourceTree = "<group>"; };
 		F7B4FD9826A6C6850051FC5B /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		FA9ADE782B91E17300DF3BDF /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		FA9FFB2A2BA9BADB0079EB52 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		FA9FFB2C2BA9C08B0079EB52 /* ExData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 		A62CF261273E7DBC00670C13 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				FA9FFB2C2BA9C08B0079EB52 /* ExData.swift */,
 				3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */,
 				A62CF264273E7DBC00670C13 /* ExView.swift */,
 				A62CF263273E7DBC00670C13 /* ExColor.swift */,
@@ -379,6 +384,7 @@
 		F704A066269E75640044729E /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				FA9FFB2A2BA9BADB0079EB52 /* Log.swift */,
 				A62005892720212300DB8073 /* Timer.swift */,
 				F78279B426A5121200A90FFF /* Cache.swift */,
 				828DB5AC291B88F5008CD8B9 /* TreeView.swift */,
@@ -591,6 +597,7 @@
 				3FB8BB3929F67CE200A61E7E /* ExampleCountDownViewController.swift in Sources */,
 				A6FA66BE26E1015D00A6A918 /* ScaleAspectView.swift in Sources */,
 				3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */,
+				FA9FFB2D2BA9C08B0079EB52 /* ExData.swift in Sources */,
 				A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
 				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
@@ -609,6 +616,7 @@
 				A607554E26F5C144008103DA /* PhotoModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */,
 				A62CF271273E7DBC00670C13 /* ExImage.swift in Sources */,
+				FA9FFB2B2BA9BADB0079EB52 /* Log.swift in Sources */,
 				3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */,
 				3FD9EB0F2AEBBE4F0089F722 /* ExDate.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,

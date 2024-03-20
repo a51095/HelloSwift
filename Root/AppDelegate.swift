@@ -20,7 +20,9 @@ extension AppDelegate: NetworkStatus {
     
     /// 启动App
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
-        
+
+        if #available(iOS 13.0, *) { Log.start(); Log.debugLog(message: "an debug message") }
+
         if showGuided {
             let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
             let guideConfig = GuideConfig(resources: resourceArray)

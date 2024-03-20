@@ -200,7 +200,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         if adConfig.resourceName.hasPrefix("http") {
             let imgUrl = URL(string: adConfig.resourceName)
             guard imgUrl != nil else { return }
-            let imageResource = KF.ImageResource(downloadURL: imgUrl!, cacheKey: Date.format())
+            let imageResource = KF.ImageResource(downloadURL: imgUrl!, cacheKey: Date().format())
             adImageView.contentMode = .scaleAspectFill
             adImageView.kf.indicatorType = .activity
             adImageView.kf.setImage(with: imageResource, placeholder: UIImage(named: "user_guide04"))
@@ -222,10 +222,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
             // 不带后缀名的最后一项
             let componentString = NSString(string: objString).lastPathComponent
             // 格式化储存路径
-            let adGifTemp = kAppCachesPath + "/" + Date.format() + componentString + ".gif"
+            let adGifTemp = kAppCachesPath + "/" + Date().format() + componentString + ".gif"
 
             // 无缓存,则获取网络数据后展示
-            if !adGifTemp.fileExist() {
+            if !adGifTemp.isFileExist {
                 let imgUrl = URL(string: adConfig.resourceName)
                 if let gifData = try? Data(contentsOf: imgUrl!) {
                     let gifArray = UIImage.gif(gifData)
@@ -272,10 +272,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
             // 不带后缀名的最后一项
             let componentString = NSString(string: objString).lastPathComponent
             // 格式化储存路径
-            let adVideoTemp = kAppCachesPath + "/" + Date.format() + componentString + ".mp4"
+            let adVideoTemp = kAppCachesPath + "/" + Date().format() + componentString + ".mp4"
 
             // 无缓存,则获取网络数据后展示
-            if !adVideoTemp.fileExist() {
+            if !adVideoTemp.isFileExist {
                 let videoUrl = URL(string: adConfig.resourceName)!
                 if let videoData = try? Data(contentsOf: videoUrl) {
                     adAVPlayerItem = AVPlayerItem(url: videoUrl)

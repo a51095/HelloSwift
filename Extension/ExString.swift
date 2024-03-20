@@ -40,25 +40,40 @@ extension String {
 
 // 文件夹相关处理
 extension String {
-    func createFoldPath() {
-        if !FileManager.default.fileExists(atPath: self) {
-            try? FileManager.default.createDirectory(atPath: self, withIntermediateDirectories: true, attributes: nil)
-        }
+    /// 文件大小
+    var length: Int64 {
+        guard let data = FileManager.default.contents(atPath: self) else { return 0 }
+        return Int64(data.count)
     }
-    
-    func fileExist() -> Bool {
-        return FileManager.default.fileExists(atPath: self)
+
+    /// 文件夹是否存在
+    var isFolderExist: Bool {
+        var isDirectory: ObjCBool = false
+        return FileManager.default.fileExists(atPath: self, isDirectory: &isDirectory) && isDirectory.boolValue
     }
-    
-    func moveTo(_ path:String) {
-        try? FileManager.default.moveItem(atPath: self, toPath: path)
+
+    /// 文件是否存在
+    var isFileExist: Bool {
+        FileManager.default.fileExists(atPath: self)
     }
-    
+
+    /// 创建指定目录
+    func createFolderPath() {
+        try? FileManager.default.createDirectory(atPath: self, withIntermediateDirectories: true, attributes: nil)
+    }
+
+    /// 拷贝文件夹
     func copyTo(_ path:String) {
         try? FileManager.default.removeItem(atPath: path)
         try? FileManager.default.copyItem(atPath: self, toPath: path)
     }
     
+    /// 移动文件夹
+    func moveTo(_ path:String) {
+        try? FileManager.default.moveItem(atPath: self, toPath: path)
+    }
+
+    /// 删除文件夹
     func removePath() {
         try? FileManager.default.removeItem(atPath: self)
     }
