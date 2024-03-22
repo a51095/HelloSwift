@@ -200,10 +200,8 @@ func deepCopy<T: Codable>(_ object: T) -> T? {
 
 /// 延时
 @available(iOS 13.0, *)
-func delay(_ duration: UInt64)  {
-	Task {
-		try? await Task.sleep(nanoseconds: duration * 1000 * NSEC_PER_MSEC)
-	}
+func delay(_ duration: UInt64) async {
+    try? await Task.sleep(nanoseconds: duration * 1000 * NSEC_PER_MSEC)
 }
 
 /// 打印调试信息
