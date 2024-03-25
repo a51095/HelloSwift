@@ -11,8 +11,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: NetworkStatus {
-    /// 是否展示开屏引导视图，首次安装时展示
-    var showGuided: Bool {
+    /// 是否首次安装应用程序
+    var isFrist: Bool {
         get {
             !Cache.boolValue(by: AppKey.hasInstallKey)
         }
@@ -20,10 +20,27 @@ extension AppDelegate: NetworkStatus {
     
     /// 启动App
     func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        debugLog()
+        configLocalization()
+        settingRootViewController()
+    }
 
+    private func debugLog() {
         if #available(iOS 13.0, *) { Log.start(); Log.debugLog(message: "an debug message") }
+    }
 
-        if showGuided {
+    func configLocalization() {
+        if let cacheLanguegeString = Cache.string(by: AppKey.localizationKey) {
+            let cacheLanguegeCode = LanguageCode(rawValue: cacheLanguegeString)!
+            kLocalization = LanguageCode.settingLanguage(by: cacheLanguegeCode)
+        } else {
+            let preferredLanguegeCode = LanguageCode.fetchPreferredLanguegeCode()
+            kLocalization = LanguageCode.settingLanguage(by: preferredLanguegeCode)
+        }
+    }
+
+    private func settingRootViewController() {
+        if isFrist {
             let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
             let guideConfig = GuideConfig(resources: resourceArray)
             window?.rootViewController = GuideViewController(config: guideConfig)
@@ -37,7 +54,6 @@ extension AppDelegate: NetworkStatus {
                 window?.rootViewController = adViewController
             }
         }
-        
         window?.makeKeyAndVisible()
     }
 }

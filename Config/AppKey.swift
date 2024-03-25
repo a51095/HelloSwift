@@ -1,5 +1,7 @@
 struct AppKey {
     private init() {}
+    /// the localization key
+    static let localizationKey: String = "en"
     /// finish the installation
     static let hasInstallKey: String = "has_install"
     /// the news key

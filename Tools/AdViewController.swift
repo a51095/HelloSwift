@@ -373,6 +373,6 @@ class AdViewController: BaseViewController, CountDownProtocol {
     func refreshTime(result: [String]) {
         let timeStr = result.last!
         if timeStr == "00" { dismiss(); return }
-        self.skipButton.setTitle("跳过(\(timeStr)"+"s)", for: .normal)
+        self.skipButton.setTitle("\(kLocalization.commonSkip)(\(timeStr)"+"s)", for: .normal)
     }
 }

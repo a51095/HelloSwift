@@ -28,11 +28,13 @@ let kScreenWidth = UIScreen.main.bounds.size.width.i
 /// 屏幕高
 let kScreenHeight = UIScreen.main.bounds.size.height.i
 
+var kLocalization: LocalizationProtocol = Localization()
+
 /// 获取当前窗口栈顶vc
 var kTopViewController: UIViewController {
     get {
         let base = kAppDelegate.window!!.rootViewController!
-        
+
         if let nav = base as? UINavigationController {
             return nav.visibleViewController!
         } else if let tab = base as? UITabBarController {
@@ -83,9 +85,9 @@ func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold
 func requestAccess(handler: @escaping (Bool) -> (Void))  {
     let status = AVCaptureDevice.authorizationStatus(for: .video)
     switch status {
-    case .notDetermined: AVCaptureDevice.requestAccess(for: .video) { res in handler(res) }
-    case .authorized: handler(true)
-    default: handler(false)
+        case .notDetermined: AVCaptureDevice.requestAccess(for: .video) { res in handler(res) }
+        case .authorized: handler(true)
+        default: handler(false)
     }
 }
 
@@ -132,17 +134,17 @@ func requestAuthorization(handler: @escaping (Bool) -> (Void))  {
     notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
         // 若注册失败，则直接返回，不执行后续操作
         guard requestRes else { return }
-        
+
         notificationCenter.getNotificationSettings { settings in
             switch settings.authorizationStatus {
-            case .notDetermined: // 用户尚未注册通知
-                UIApplication.shared.registerForRemoteNotifications()
-            case .authorized:
-                notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
-                    // 用户已授权
-                    if requestRes { handler(true) } else { handler(false) }
-                }
-            default: handler(false)
+                case .notDetermined: // 用户尚未注册通知
+                    UIApplication.shared.registerForRemoteNotifications()
+                case .authorized:
+                    notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
+                        // 用户已授权
+                        if requestRes { handler(true) } else { handler(false) }
+                    }
+                default: handler(false)
             }
         }
     }

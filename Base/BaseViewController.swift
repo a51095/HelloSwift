@@ -1,4 +1,4 @@
-class BaseViewController: UIViewController, NetworkStatus {
+class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
     /// 懒加载顶部视图(默认白色背景)
     lazy var topView = UIView()
     
@@ -70,5 +70,85 @@ extension BaseViewController {
             self.navigationController?.popViewController(animated: true)
         }
         self.dismiss(animated: true)
+    }
+}
+
+struct AlertDialogData {
+    var title: String?
+    let message: String
+    var positiveText: String?
+    var positiveCallback: os_block_t?
+    var neutralText: String?
+    var neutralCallback: os_block_t?
+    var negativeText: String?
+    var negativeCallback: os_block_t?
+}
+
+enum DialogType {
+    case yesNo
+    case okCancel
+
+    var leftLabel: String {
+        switch self {
+            case .okCancel: ""
+            case .yesNo: ""
+        }
+    }
+
+    var rightLabel: String {
+        switch self {
+            case .okCancel: ""
+            case .yesNo: ""
+        }
+    }
+}
+
+protocol BaseProtocol: AnyObject {
+    func showDialogA(title: String?, message: String, buttonText: String, buttonCallback: os_block_t?)
+    func showDialogB(title: String?, message: String, dialogType: DialogType, okCallback: os_block_t?, cancelCallback: os_block_t?)
+    func showAlertDialog(data: AlertDialogData)
+}
+
+extension BaseProtocol {
+    func showDialogA(title: String? = nil, message: String, buttonText: String, buttonCallback: os_block_t? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let buttonAction = UIAlertAction(title: buttonText, style: .default) { _ in
+            buttonCallback?()
+        }
+        alert.addAction(buttonAction)
+        kTopViewController.present(alert, animated: true)
+    }
+
+    func showDialogB(title: String? = nil, message: String, dialogType: DialogType, okCallback: os_block_t? = nil, cancelCallback: os_block_t? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: dialogType.leftLabel, style: .default) { _ in
+            okCallback?()
+        }
+        let cancelAction = UIAlertAction(title: dialogType.rightLabel, style: .default) { _ in
+            cancelCallback?()
+        }
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        kTopViewController.present(alert, animated: true)
+    }
+
+    func showAlertDialog(data: AlertDialogData) {
+        let alert = UIAlertController(title: data.title, message: data.message, preferredStyle: .alert)
+        if let positiveText = data.positiveText {
+            alert.addAction(UIAlertAction(title: positiveText, style: .default) { _ in
+                _ = data.positiveCallback?()
+            })
+        }
+        if let neutralText = data.neutralText {
+            alert.addAction(UIAlertAction(title: neutralText, style: .default) { _ in
+                _ = data.neutralCallback?()
+            })
+        }
+        if let negativeText = data.negativeText {
+            alert.addAction(UIAlertAction(title: negativeText, style: .default) { _ in
+                _ = data.negativeCallback?()
+            })
+        }
+        kTopViewController.present(alert, animated: true)
     }
 }

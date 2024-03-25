@@ -17,7 +17,6 @@
 		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
 		3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C029E3AACD00A3C533 /* Examples.swift */; };
 		3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C129E3AACD00A3C533 /* Example.swift */; };
-		3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */; };
 		3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814B29F64B1900BF6902 /* LocationManager.swift */; };
 		3FB5814E29F64E9F00BF6902 /* ExampleLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */; };
 		3FB8BB3929F67CE200A61E7E /* ExampleCountDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */; };
@@ -82,6 +81,13 @@
 		FA9ADE792B91E17300DF3BDF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9ADE782B91E17300DF3BDF /* TaskManager.swift */; };
 		FA9FFB2B2BA9BADB0079EB52 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB2A2BA9BADB0079EB52 /* Log.swift */; };
 		FA9FFB2D2BA9C08B0079EB52 /* ExData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB2C2BA9C08B0079EB52 /* ExData.swift */; };
+		FA9FFB452BB154820079EB52 /* LanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB442BB154810079EB52 /* LanguageCode.swift */; };
+		FA9FFB472BB1562B0079EB52 /* LocalizationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB462BB1562B0079EB52 /* LocalizationProtocol.swift */; };
+		FA9FFB492BB156A50079EB52 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB482BB156A50079EB52 /* Localization.swift */; };
+		FA9FFB4B2BB157420079EB52 /* LocalizationZH.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB4A2BB157420079EB52 /* LocalizationZH.swift */; };
+		FA9FFB4D2BB157530079EB52 /* LocalizationTW.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB4C2BB157530079EB52 /* LocalizationTW.swift */; };
+		FA9FFB502BB164360079EB52 /* ExampleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB4F2BB164360079EB52 /* ExampleProtocol.swift */; };
+		FA9FFB522BB1654A0079EB52 /* ExampleLocalizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FFB512BB1654A0079EB52 /* ExampleLocalizationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +101,6 @@
 		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		3FA6F6C029E3AACD00A3C533 /* Examples.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		3FA6F6C129E3AACD00A3C533 /* Example.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example.swift; sourceTree = "<group>"; };
-		3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProtocol.swift; sourceTree = "<group>"; };
 		3FB5814B29F64B1900BF6902 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLocationViewController.swift; sourceTree = "<group>"; };
 		3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCountDownViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +169,13 @@
 		FA9ADE782B91E17300DF3BDF /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		FA9FFB2A2BA9BADB0079EB52 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		FA9FFB2C2BA9C08B0079EB52 /* ExData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExData.swift; sourceTree = "<group>"; };
+		FA9FFB442BB154810079EB52 /* LanguageCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageCode.swift; sourceTree = "<group>"; };
+		FA9FFB462BB1562B0079EB52 /* LocalizationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationProtocol.swift; sourceTree = "<group>"; };
+		FA9FFB482BB156A50079EB52 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		FA9FFB4A2BB157420079EB52 /* LocalizationZH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationZH.swift; sourceTree = "<group>"; };
+		FA9FFB4C2BB157530079EB52 /* LocalizationTW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTW.swift; sourceTree = "<group>"; };
+		FA9FFB4F2BB164360079EB52 /* ExampleProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleProtocol.swift; sourceTree = "<group>"; };
+		FA9FFB512BB1654A0079EB52 /* ExampleLocalizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLocalizationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,14 +196,6 @@
 				C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		3F20EA1429E94B910025FC44 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				3FA6F6C229E3AACD00A3C533 /* ExampleProtocol.swift */,
-			);
-			path = Protocol;
 			sourceTree = "<group>";
 		};
 		3FA6F6BF29E3AAA700A3C533 /* Model */ = {
@@ -247,6 +251,7 @@
 				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
 				3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */,
 				3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */,
+				FA9FFB512BB1654A0079EB52 /* ExampleLocalizationViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -348,8 +353,9 @@
 				A680788E26EB518A0068DD0A /* Network */,
 				A62CF261273E7DBC00670C13 /* Extension */,
 				A650EE5126E63C2D00E437AA /* Resource */,
-				F704A04A269E73830044729E /* Products */,
+				FA9FFB432BB153DD0079EB52 /* Localization */,
 				C78CFD14EBDB15D285B08BEA /* Pods */,
+				F704A04A269E73830044729E /* Products */,
 				0CCE9AE6CDF39A0D366B1304 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -421,7 +427,7 @@
 		F704A079269E7BC10044729E /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3F20EA1429E94B910025FC44 /* Protocol */,
+				FA9FFB4E2BB164360079EB52 /* Protocol */,
 				3FA6F6BF29E3AAA700A3C533 /* Model */,
 				F7EA139926A90F350071B2CC /* ViewController */,
 			);
@@ -453,6 +459,26 @@
 				F704A07B269E7C700044729E /* HomeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FA9FFB432BB153DD0079EB52 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				FA9FFB482BB156A50079EB52 /* Localization.swift */,
+				FA9FFB4A2BB157420079EB52 /* LocalizationZH.swift */,
+				FA9FFB4C2BB157530079EB52 /* LocalizationTW.swift */,
+				FA9FFB442BB154810079EB52 /* LanguageCode.swift */,
+				FA9FFB462BB1562B0079EB52 /* LocalizationProtocol.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		FA9FFB4E2BB164360079EB52 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				FA9FFB4F2BB164360079EB52 /* ExampleProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -582,10 +608,13 @@
 				A62CF26D273E7DBC00670C13 /* ExView.swift in Sources */,
 				3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */,
 				3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */,
+				FA9FFB4D2BB157530079EB52 /* LocalizationTW.swift in Sources */,
 				8230109A29BDB80B0051F731 /* ListModel.swift in Sources */,
 				F7B4485726A17F660098D2AF /* AppKey.swift in Sources */,
 				3FFFFE1B29CC4E34001032D0 /* ExTableView.swift in Sources */,
+				FA9FFB472BB1562B0079EB52 /* LocalizationProtocol.swift in Sources */,
 				F7B4485B26A181550098D2AF /* AppURL.swift in Sources */,
+				FA9FFB492BB156A50079EB52 /* Localization.swift in Sources */,
 				3FDB464B2AE60BE900C45E9C /* BluetoothManager.swift in Sources */,
 				8230109829BDB67C0051F731 /* ExamplePhotoAlbumViewController.swift in Sources */,
 				828DB5AD291B88F5008CD8B9 /* TreeView.swift in Sources */,
@@ -610,6 +639,7 @@
 				3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */,
 				F704A06A269E76500044729E /* BaseTabBarController.swift in Sources */,
 				A62CF26F273E7DBC00670C13 /* ExString.swift in Sources */,
+				FA9FFB4B2BB157420079EB52 /* LocalizationZH.swift in Sources */,
 				F704A077269E7B540044729E /* BaseNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* AlertController.swift in Sources */,
 				3F20EA0F29E9486F0025FC44 /* ExampleAlertViewController.swift in Sources */,
@@ -619,9 +649,10 @@
 				FA9FFB2B2BA9BADB0079EB52 /* Log.swift in Sources */,
 				3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */,
 				3FD9EB0F2AEBBE4F0089F722 /* ExDate.swift in Sources */,
+				FA9FFB522BB1654A0079EB52 /* ExampleLocalizationViewController.swift in Sources */,
+				FA9FFB452BB154820079EB52 /* LanguageCode.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
-				3FA6F6C529E3AACD00A3C533 /* ExampleProtocol.swift in Sources */,
 				3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */,
 				F704A07C269E7C700044729E /* HomeViewController.swift in Sources */,
 				F7B4485E26A181DB0098D2AF /* AppNotificationName.swift in Sources */,
@@ -629,6 +660,7 @@
 				3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */,
 				82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */,
 				3FA6F6C329E3AACD00A3C533 /* Examples.swift in Sources */,
+				FA9FFB502BB164360079EB52 /* ExampleProtocol.swift in Sources */,
 				A680789026EB51C70068DD0A /* Network.swift in Sources */,
 				3FD522F22B8727EE006D2FD3 /* ExamplePropertyViewController.swift in Sources */,
 				3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */,
@@ -782,7 +814,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A957F3LD33;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = Resource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -813,7 +845,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = A957F3LD33;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

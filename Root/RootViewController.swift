@@ -15,10 +15,10 @@ class RootViewController: BaseTabBarController {
     func configItemStyle() {
         var viewControllers = [TabItem]()
         
-        let listVC = TabItem(title: "列表", normalName: "vc_list", seletedName: "vc_list", viewController: BaseNavigationController(rootViewController: ListViewController()))
+        let listVC = TabItem(title: "新闻", normalName: "vc_list", seletedName: "vc_list", viewController: BaseNavigationController(rootViewController: ListViewController()))
         viewControllers.append(listVC)
         
-        let homeVC = TabItem(title: "我的", normalName: "vc_home", seletedName: "vc_home", viewController: BaseNavigationController(rootViewController: HomeViewController()))
+        let homeVC = TabItem(title: "演示", normalName: "vc_home", seletedName: "vc_home", viewController: BaseNavigationController(rootViewController: HomeViewController()))
         viewControllers.append(homeVC)
         
         addChildController(items: viewControllers)

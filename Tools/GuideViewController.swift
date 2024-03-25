@@ -37,7 +37,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     private lazy var skipButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 4
-        button.setTitle("跳过", for: .normal)
+        button.setTitle(kLocalization.commonSkip, for: .normal)
         button.titleLabel?.font = kRegularFont(16)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .hexColor("#000000", 0.8)

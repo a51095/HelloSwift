@@ -1,4 +1,5 @@
 final class Cache {
+    private init() { }
     /// 字符串类型缓存: String
     private static let manager: Storage = try! Storage<String, String>(diskConfig: DiskConfig(name: "DiskCache"), memoryConfig: MemoryConfig(), transformer: TransformerFactory.forCodable(ofType: String.self))
     /// 布尔类型缓存:  Bool
