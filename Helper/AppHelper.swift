@@ -203,7 +203,7 @@ func deepCopy<T: Codable>(_ object: T) -> T? {
 /// 延时
 @available(iOS 13.0, *)
 func delay(_ duration: UInt64) async {
-    try? await Task.sleep(nanoseconds: duration * 1000 * NSEC_PER_MSEC)
+    try? await Task.sleep(nanoseconds: duration * NSEC_PER_SEC)
 }
 
 /// 打印调试信息
