@@ -210,6 +210,6 @@ func delay(_ duration: Double) async {
 func kPrint(_ items: Any..., separator: String = " ", terminator: String = "\n") {
 #if DEBUG
     let output = items.map { String(describing: $0) }.joined(separator: separator)
-    print(output, terminator: terminator)
+    debugPrint(output, terminator: terminator)
 #endif
 }
