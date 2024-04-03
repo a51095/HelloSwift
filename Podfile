@@ -10,14 +10,15 @@ end
 
 #Objective-C
 def ocPods
-  pod 'MJRefresh', '3.7.8'
+  pod 'MJRefresh', '3.7.9'
 end
 
 #Swift
 def swiftPods
   pod 'Cache', '6.0.0'
   pod 'SnapKit', '5.7.1'
-  pod 'Alamofire', '5.9.0'
+  pod 'Alamofire', '5.9.1'
+  pod 'ProgressHUD', '2.70'
   pod 'HandyJSON', '5.0.4-beta'
   pod 'Kingfisher', '7.11.0'
 end
