@@ -14,9 +14,9 @@
 class ScaleAspectView: UIView {
     /// tableView返回count,默认10
     private let defaultCount = 10
-    /// 图片高度,默认280
-    private let defaultHeight = 280
-    
+    /// 图片高度,默认200
+    private let defaultHeight = 200
+
     private var imageView = UIImageView()
     private var tableView = UITableView()
     
