@@ -14,17 +14,26 @@ struct Preferences {
 		UserDefaults.standard.set(value, forKey: key)
 	}
 
-	static func getInt(forKey key: String) -> Int {
+	static func getInt(forKey key: String, defaultValue: Int) -> Int {
 		UserDefaults.standard.integer(forKey: key)
+        if let storedValue = UserDefaults.standard.object(forKey: key) as? Int {
+            return storedValue
+        } else {
+            return defaultValue
+        }
 	}
 
 	static func setBool(_ value: Bool, forKey key: String) {
 		UserDefaults.standard.set(value, forKey: key)
 	}
 
-	static func getBool(forKey key: String) -> Bool {
-		UserDefaults.standard.bool(forKey: key)
-	}
+    static func getBool(forKey key: String, defaultValue: Bool) -> Bool {
+        if let storedValue = UserDefaults.standard.object(forKey: key) as? Bool {
+            return storedValue
+        } else {
+            return defaultValue
+        }
+    }
 
 	static func setString(_ value: String, forKey key: String) {
 		UserDefaults.standard.set(value, forKey: key)
@@ -59,37 +68,41 @@ struct Preferences {
 @propertyWrapper
 struct IntPreference {
 	private let key: String
+    private let defaultValue: Int
 
 	var wrappedValue: Int {
 		get {
-			Preferences.getInt(forKey: key)
+            Preferences.getInt(forKey: key, defaultValue: defaultValue)
 		}
 		set {
 			Preferences.setInt(newValue, forKey: key)
 		}
 	}
 
-	init(key: String) {
-		self.key = key
-	}
+    init(key: String, defaultValue: Int = 0) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
 }
 
 @propertyWrapper
 struct BoolPreference {
-	private let key: String
+    private let key: String
+    private let defaultValue: Bool
 
-	var wrappedValue: Bool {
-		get {
-			Preferences.getBool(forKey: key)
-		}
-		set {
-			Preferences.setBool(newValue, forKey: key)
-		}
-	}
+    var wrappedValue: Bool {
+        get {
+            Preferences.getBool(forKey: key, defaultValue: defaultValue)
+        }
+        set {
+            Preferences.setBool(newValue, forKey: key)
+        }
+    }
 
-	init(key: String) {
-		self.key = key
-	}
+    init(key: String, defaultValue: Bool = false) {
+        self.key = key
+        self.defaultValue = defaultValue
+    }
 }
 
 @propertyWrapper
