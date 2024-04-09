@@ -12,14 +12,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: NetworkStatus {
     /// 是否首次安装应用程序
-    var isFrist: Bool {
+    private var isFrist: Bool {
         get {
             !Cache.boolValue(by: AppKey.hasInstallKey)
         }
     }
     
     /// 启动App
-    func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+    private func didFinishLaunchingWithOptions(_ application: UIApplication, _ launchOptions: [UIApplication.LaunchOptionsKey: Any]?) { start() }
+
+    /// App启动配置
+    private func start() {
         debugLog()
         configLocalization()
         settingRootViewController()
@@ -29,7 +32,7 @@ extension AppDelegate: NetworkStatus {
         if #available(iOS 13.0, *) { Log.start(); Log.debugLog(message: "an debug message") }
     }
 
-    func configLocalization() {
+    private func configLocalization() {
         if let cacheLanguegeString = Cache.string(by: AppKey.localizationKey) {
             let cacheLanguegeCode = LanguageCode(rawValue: cacheLanguegeString)!
             kLocalization = LanguageCode.settingLanguage(by: cacheLanguegeCode)
