@@ -91,6 +91,7 @@ fileprivate struct LogProperties {
 fileprivate class LogManager: LogManagerProtocol {
     var isRunning = false
     private var logFile: LogFile? = nil
+    private let logPropsCacheLock = NSLock()
     private var flushTask: Task<Void, Error>? = nil
     private let maxFileSize: Int64 = 2 * 1024 * 1024 * 1024
     private var logPropsCache: [LogProperties] = [LogProperties]()
@@ -101,8 +102,8 @@ fileprivate class LogManager: LogManagerProtocol {
 
     func start() {
         flushTask = Task {
-            if Task.isCancelled { return }
             while (true) {
+                if Task.isCancelled { return }
                 flushLog()
                 try? await Task.sleep(nanoseconds: UInt64(0.1) * NSEC_PER_MSEC)
             }
@@ -115,7 +116,22 @@ fileprivate class LogManager: LogManagerProtocol {
     }
 
     func logToCache(props: LogProperties) {
+        logPropsCacheLock.lock()
+        defer { logPropsCacheLock.unlock() }
         logPropsCache.append(props)
+    }
+
+    private func flushLog() {
+        logPropsCacheLock.lock()
+        defer { logPropsCacheLock.unlock() }
+
+        guard !logPropsCache.isEmpty else { return }
+        let cache = Array(logPropsCache)
+        logPropsCache.removeAll()
+
+        guard !cache.isEmpty else { return }
+        let lines = makeLogLines(logProps: cache)
+        logFile?.writeToLogFile(text: lines)
     }
 
     fileprivate func updateLogFilePath() {
@@ -136,14 +152,6 @@ fileprivate class LogManager: LogManagerProtocol {
             }
         }
         logFile = LogFile(filePath: fullFileName.path, append: fullFileName.path.isFileExist)
-    }
-
-    private func flushLog() {
-        if (logPropsCache.isEmpty) { return }
-        let cache = Array(logPropsCache)
-        logPropsCache.removeAll()
-        let lines = makeLogLines(logProps: cache)
-        logFile?.writeToLogFile(text: lines)
     }
 
     private func makeLogLines(logProps: [LogProperties]) -> String {
