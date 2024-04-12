@@ -51,7 +51,7 @@ extension AppDelegate: NetworkStatus {
             if !isReachable {
                 window?.rootViewController = RootViewController()
             } else {
-                let adConfig = AdConfig(type: .adImage, name: AppURL.adImageUrl, url: AppURL.adLinkUrl)
+                let adConfig = AdConfig(type: .image, netUrl: AppURL.adImageUrl, linkUrl: AppURL.adLinkUrl)
                 let adViewController = AdViewController(config: adConfig)
                 adViewController.dismissBlock = { self.window?.rootViewController = RootViewController() }
                 window?.rootViewController = adViewController

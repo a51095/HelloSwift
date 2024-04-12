@@ -13,28 +13,38 @@
  **/
 import Kingfisher
 
-enum AdType { case adImage, adGif, adVideo }
+enum AdType { case image, gif, video }
 struct AdConfig {
     /// 广告类型
-    fileprivate var adType: AdType
-    /// 跳转链接
-    fileprivate var linkUrl: String
-    /// 资源名称
-    fileprivate var resourceName: String
+    fileprivate var type: AdType
+    /// 本地资源名称
+    fileprivate var localResource: String? = nil
+    /// 远端资源URL
+    fileprivate var netUrl: String? = nil
+    /// 跳转链接URL
+    fileprivate var linkUrl: String? = nil
     /// 是否展示跳过按钮(默认展示)
-    fileprivate var isSkip: Bool
+    fileprivate var isSkip: Bool = true
     /// 是否展示静音按钮(默认展示,仅video类型)
-    fileprivate var isMute: Bool
+    fileprivate var isMute: Bool = true
     /// 广告动画时长(默认10秒)
-    fileprivate var adDuration: TimeInterval
+    fileprivate var duration: TimeInterval = 10
+    /// 是否使用本地资源
+    fileprivate var isLocal: Bool {
+        localResource != nil
+    }
 
-    init(type: AdType, name: String, url: String, skip: Bool = true, mute: Bool = true, duration: TimeInterval = 10) {
-        isMute = mute
-        isSkip = skip
-        adType = type
-        linkUrl = url
-        resourceName = name
-        adDuration = duration
+    init(type: AdType, localResource: String? = nil, netUrl: String? = nil, linkUrl: String? = nil, isSkip: Bool = true, isMute: Bool = true, duration: TimeInterval = 10) {
+        guard localResource != nil || netUrl != nil else {
+            fatalError("Either 'localResource' for local resource or 'netUrl' for remote resource must be provided.")
+        }
+        self.type = type
+        self.localResource = localResource
+        self.netUrl = netUrl
+        self.linkUrl = linkUrl
+        self.isSkip = isSkip
+        self.isMute = isMute
+        self.duration = duration
     }
 }
 
@@ -132,9 +142,9 @@ class AdViewController: BaseViewController, CountDownProtocol {
         let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSeleted))
         view.addGestureRecognizer(tap)
 
-        switch adConfig.adType {
-        case .adImage, .adGif: addAdImageView(); break
-        case .adVideo: addAdPlayerController(); break
+        switch adConfig.type {
+        case .image, .gif: addAdImageView(); break
+        case .video: addAdPlayerController(); break
         }
 
         // 配置显示参数
@@ -163,7 +173,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
         let startTime = Int(CACurrentMediaTime())
         CountDownManager.shared.deletage = self
-        CountDownManager.shared.run(start: startTime, end: startTime + adConfig.adDuration.i)
+        CountDownManager.shared.run(start: startTime, end: startTime + adConfig.duration.i)
     }
 
     /// 添加广告adImageView
@@ -184,41 +194,47 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
     /// 配置广告相关参数
     func config() {
-        switch adConfig.adType {
-        case .adImage: loadImage(); break
-        case .adGif: loadGif(); break
-        case .adVideo: loadVideo(); break
+        switch adConfig.type {
+        case .image: loadImage(); break
+        case .gif: loadGif(); break
+        case .video: loadVideo(); break
         }
     }
 
     /// 加载广告(image)
     private func loadImage() {
-        // 非空校验
-        guard !adConfig.resourceName.isEmpty else { return }
-        if adConfig.isSkip && adConfig.adType != .adVideo { addSkipButton() }
-        // 网络资源(image)
-        if adConfig.resourceName.hasPrefix("http") {
-            let imgUrl = URL(string: adConfig.resourceName)
+        if adConfig.isSkip && adConfig.type != .video { addSkipButton() }
+        if adConfig.isLocal {
+            // 本地资源(image)
+            adImageView.image = UIImage(named: adConfig.localResource!)
+
+        } else {
+            // 网络资源(image)
+            let imgUrl = URL(string: adConfig.netUrl!)
             guard imgUrl != nil else { return }
             let imageResource = KF.ImageResource(downloadURL: imgUrl!, cacheKey: Date().format())
             adImageView.contentMode = .scaleAspectFill
             adImageView.kf.indicatorType = .activity
             adImageView.kf.setImage(with: imageResource, placeholder: UIImage(named: "user_guide04"))
-        } else {
-            // 本地资源(image)
-            adImageView.image = UIImage(named: adConfig.resourceName)
         }
     }
 
     /// 加载广告(gif)
     private func loadGif() {
-        // 非空校验
-        guard !adConfig.resourceName.isEmpty else { return }
-
-        // 网络资源(gif)
-        if adConfig.resourceName.hasPrefix("http") {
+        // 本地资源(gif)
+        if adConfig.isLocal {
+            let filePath = Bundle.main.path(forResource: adConfig.localResource!, ofType: "gif")!
+            let gifUrl = URL(fileURLWithPath: filePath)
+            if let gifData = try? Data(contentsOf: gifUrl) {
+                let gifArray = UIImage.gif(gifData)
+                adImageView.animationImages = gifArray.0
+                adImageView.animationDuration = gifArray.1
+                adImageView.startAnimating()
+            }
+        } else {
+            // 网络资源(gif)
             // 移除后缀名
-            let objString = NSString(string: adConfig.resourceName).deletingPathExtension
+            let objString = NSString(string: adConfig.netUrl!).deletingPathExtension
             // 不带后缀名的最后一项
             let componentString = NSString(string: objString).lastPathComponent
             // 格式化储存路径
@@ -226,7 +242,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
             // 无缓存,则获取网络数据后展示
             if !adGifTemp.isFileExist {
-                let imgUrl = URL(string: adConfig.resourceName)
+                let imgUrl = URL(string: adConfig.netUrl!)
                 if let gifData = try? Data(contentsOf: imgUrl!) {
                     let gifArray = UIImage.gif(gifData)
                     adImageView.animationImages = gifArray.0
@@ -247,28 +263,22 @@ class AdViewController: BaseViewController, CountDownProtocol {
                     adImageView.startAnimating()
                 }
             }
-        } else {
-            // 本地资源(gif)
-            let filePath = Bundle.main.path(forResource: adConfig.resourceName, ofType: "gif")!
-            let gifUrl = URL(fileURLWithPath: filePath)
-            if let gifData = try? Data(contentsOf: gifUrl) {
-                let gifArray = UIImage.gif(gifData)
-                adImageView.animationImages = gifArray.0
-                adImageView.animationDuration = gifArray.1
-                adImageView.startAnimating()
-            }
         }
     }
 
     /// 加载广告(video)
     private func loadVideo() {
-        // 非空校验
-        guard !adConfig.resourceName.isEmpty else { return }
-
-        // 网络资源(video)
-        if adConfig.resourceName.hasPrefix("http") {
+        // 本地资源(video)
+        if adConfig.isLocal {
+            let filePath = Bundle.main.path(forResource: adConfig.localResource, ofType: "mp4")
+            let videoUrl = URL(fileURLWithPath: filePath!)
+            adAVPlayerItem = AVPlayerItem(url: videoUrl)
+            let adAVPlayer = AVPlayer(playerItem: adAVPlayerItem)
+            adPlayerController.player = adAVPlayer
+        } else {
+            // 网络资源(video)
             // 移除后缀名
-            let objString = NSString(string: adConfig.resourceName).deletingPathExtension
+            let objString = NSString(string: adConfig.netUrl!).deletingPathExtension
             // 不带后缀名的最后一项
             let componentString = NSString(string: objString).lastPathComponent
             // 格式化储存路径
@@ -276,7 +286,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
             // 无缓存,则获取网络数据后展示
             if !adVideoTemp.isFileExist {
-                let videoUrl = URL(string: adConfig.resourceName)!
+                let videoUrl = URL(string: adConfig.netUrl!)!
                 if let videoData = try? Data(contentsOf: videoUrl) {
                     adAVPlayerItem = AVPlayerItem(url: videoUrl)
                     let adAVPlayer = AVPlayer(playerItem: adAVPlayerItem)
@@ -293,13 +303,6 @@ class AdViewController: BaseViewController, CountDownProtocol {
                 let adAVPlayer = AVPlayer(playerItem: adAVPlayerItem)
                 adPlayerController.player = adAVPlayer
             }
-        } else {
-            // 本地资源(video)
-            let filePath = Bundle.main.path(forResource: adConfig.resourceName, ofType: "mp4")
-            let videoUrl = URL(fileURLWithPath: filePath!)
-            adAVPlayerItem = AVPlayerItem(url: videoUrl)
-            let adAVPlayer = AVPlayer(playerItem: adAVPlayerItem)
-            adPlayerController.player = adAVPlayer
         }
         addAdAVPlayerItemObserver()
     }
@@ -334,7 +337,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
                     self.skipButton.removeFromSuperview()
                 }
 
-                if self.adConfig.adType == .adVideo {
+                if self.adConfig.type == .video {
                     self.muteButton.removeFromSuperview()
                     self.adPlayerController.player?.isMuted = true
                     self.adPlayerController.player?.pause()
@@ -361,8 +364,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
     /// 广告连接
     @objc private func adViewDidSeleted() {
+        // 容错处理
+        guard adConfig.linkUrl != nil else { return }
         dismiss()
-        let url = URL(string: adConfig.linkUrl)
+        let url = URL(string: adConfig.linkUrl!)
         guard (url != nil) else { return }
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
