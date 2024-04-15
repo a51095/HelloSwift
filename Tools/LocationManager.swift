@@ -12,6 +12,9 @@ class LocationManager: NSObject {
     private let locationManager = CLLocationManager()
     private var updateLocation: ((CLLocation) -> Void)?
     private var updateStatus: ((CLAuthorizationStatus) -> Void)?
+    var authStatus: CLAuthorizationStatus {
+        CLLocationManager.authorizationStatus()
+    }
 
     init(desiredAccuracy: CLLocationAccuracy = kCLLocationAccuracyBest) {
         super.init()
@@ -34,7 +37,6 @@ class LocationManager: NSObject {
     /// stop updating locations.
     func stop() { 
         locationManager.stopUpdatingLocation()
-        kPrint("已停止地理定位")
     }
 }
 
@@ -50,6 +52,6 @@ extension LocationManager: CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         locationManager.stopUpdatingLocation()
-        print("Location manager failed with error: \(error.localizedDescription)")
+        kPrint("Location manager failed with error: \(error.localizedDescription)")
     }
 }

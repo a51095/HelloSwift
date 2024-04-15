@@ -57,18 +57,30 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
     @objc func didSeleted(button: UIButton) {
         switch button.tag {
         case 101:
-            locationManager.requestAuthorization { status in
-                if status == .authorizedWhenInUse {
-                    self.locationManager.start { l in
-                        kPrint(l.coordinate.latitude)
-                        kPrint(l.coordinate.longitude)
-                    }
-                } else {
-                    kPrint("请授权定位权限")
+                switch locationManager.authStatus {
+                    case .denied, .restricted:
+                        if let url = URL(string:UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                        }
+                    case .notDetermined:
+                        locationManager.requestAuthorization { status in
+                            if status == .authorizedAlways || status == .authorizedWhenInUse {
+                                self.locationManager.start { l in
+                                    kPrint(l.coordinate.latitude)
+                                    kPrint(l.coordinate.longitude)
+                                }
+                            }
+                        }
+                    case .authorized, .authorizedWhenInUse, .authorizedAlways:
+                        locationManager.start { l in
+                            kPrint(l.coordinate.latitude)
+                            kPrint(l.coordinate.longitude)
+                        }
+                    default: break
                 }
-            }
         case 102:
             locationManager.stop()
+            kPrint("已停止地理定位")
         default: break
         }
     }
