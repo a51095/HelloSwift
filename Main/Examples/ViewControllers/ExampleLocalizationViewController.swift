@@ -52,17 +52,17 @@ class ExampleLocalizationViewController: BaseViewController, ExampleProtocol {
     @objc func didSeleted(button: UIButton) {
         switch button.tag {
             case 101:
-                showDialogA(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
+                alert(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
                     Cache.setString(LanguageCode.en.rawValue, forKey: AppKey.localizationKey)
                     exit(0)
                 }
             case 102:
-                showDialogA(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
+                alert(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
                     Cache.setString(LanguageCode.zh.rawValue, forKey: AppKey.localizationKey)
                     exit(0)
                 }
             case 103:
-                showDialogA(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
+                alert(message: kLocalization.localizationMessage, buttonText: kLocalization.commonYES) {
                     Cache.setString(LanguageCode.tw.rawValue, forKey: AppKey.localizationKey)
                     exit(0)
                 }
