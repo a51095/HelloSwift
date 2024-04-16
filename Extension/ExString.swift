@@ -28,13 +28,20 @@ extension String {
         guard data != nil else { return nil }
         return try? JSONSerialization.jsonObject(with: data!, options: .mutableLeaves)
     }
-    
-    /// 去除字符串中的空格
-    func removeAllSapce() -> String { replacingOccurrences(of: " ", with: "") }
-    
+
     /// 版本号比较
     func isHeightVersion(over version: String) -> Bool {
         compare(version, options: .numeric, range: nil, locale: nil) == .orderedDescending
+    }
+
+    /// 判断字符串中是否为空,或只包含空字符(空格/换行)
+    var isBlank: Bool {
+        return trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    /// 去除字符串中的空格
+    var removeAllSapce: String {
+        replacingOccurrences(of: " ", with: "")
     }
 }
 
