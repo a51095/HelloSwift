@@ -1,7 +1,7 @@
 class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
     /// 懒加载顶部视图(默认白色背景)
     lazy var topView = UIView()
-    
+
     /// 懒加载返回按钮(默认黑色箭头)
     lazy var backButton: UIButton = {
         let b = UIButton()
@@ -9,7 +9,7 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
         b.addTarget(self, action: #selector(backButtonDidSeleted), for: .touchUpInside)
         return b
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.backgroundColor()
@@ -20,7 +20,7 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
         self.addTopView()
         self.addBackButton()
     }
-    
+
     /// Initialize data
     func initData() { }
 }
@@ -30,7 +30,7 @@ extension BaseViewController {
     func backgroundColor(_ color: UIColor = .white) {
         view.backgroundColor = color
     }
-    
+
     /// 添加自定义顶部视图
     /// - Parameters:
     ///   - safeHeight: 安全高度
@@ -44,7 +44,7 @@ extension BaseViewController {
             make.top.left.right.equalToSuperview()
         }
     }
-    
+
     /// 添加自定义返回按钮
     /// - Parameters:
     ///   - safeHeight: 安全高度
@@ -55,7 +55,7 @@ extension BaseViewController {
         }else {
             view.addSubview(backButton)
         }
-        
+
         backButton.setImage(image, for: .normal)
         let autoY = kSafeMarginTop(safeHeight) / 2
         backButton.snp.makeConstraints { make in
@@ -63,7 +63,7 @@ extension BaseViewController {
             make.left.equalToSuperview()
         }
     }
-    
+
     /// 自定义返回按钮事件
     @objc func backButtonDidSeleted() {
         if self.navigationController?.visibleViewController != nil {
@@ -104,13 +104,13 @@ enum DialogType {
 }
 
 protocol BaseProtocol: AnyObject {
-    func showDialogA(title: String?, message: String, buttonText: String, buttonCallback: os_block_t?)
-    func showDialogB(title: String?, message: String, dialogType: DialogType, okCallback: os_block_t?, cancelCallback: os_block_t?)
-    func showAlertDialog(data: AlertDialogData)
+    func alert(title: String?, message: String, buttonText: String, buttonCallback: os_block_t?)
+    func alert(title: String?, message: String, dialogType: DialogType, okCallback: os_block_t?, cancelCallback: os_block_t?)
+    func alert(data: AlertDialogData)
 }
 
 extension BaseProtocol {
-    func showDialogA(title: String? = nil, message: String, buttonText: String, buttonCallback: os_block_t? = nil) {
+    func alert(title: String? = nil, message: String, buttonText: String, buttonCallback: os_block_t? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let buttonAction = UIAlertAction(title: buttonText, style: .default) { _ in
             buttonCallback?()
@@ -119,7 +119,7 @@ extension BaseProtocol {
         kTopViewController.present(alert, animated: true)
     }
 
-    func showDialogB(title: String? = nil, message: String, dialogType: DialogType, okCallback: os_block_t? = nil, cancelCallback: os_block_t? = nil) {
+    func alert(title: String? = nil, message: String, dialogType: DialogType, okCallback: os_block_t? = nil, cancelCallback: os_block_t? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: dialogType.leftLabel, style: .default) { _ in
             okCallback?()
@@ -132,7 +132,7 @@ extension BaseProtocol {
         kTopViewController.present(alert, animated: true)
     }
 
-    func showAlertDialog(data: AlertDialogData) {
+    func alert(data: AlertDialogData) {
         let alert = UIAlertController(title: data.title, message: data.message, preferredStyle: .alert)
         if let positiveText = data.positiveText {
             alert.addAction(UIAlertAction(title: positiveText, style: .default) { _ in
