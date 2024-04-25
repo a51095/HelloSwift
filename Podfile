@@ -24,8 +24,8 @@ end
 
 target 'HelloSwift' do
   ocPods
-  debugPods
   swiftPods
+  debugPods
 end
 
 post_install do |installer|
