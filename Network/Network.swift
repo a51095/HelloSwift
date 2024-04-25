@@ -19,11 +19,11 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
                 response(dic)
             } else {
                 if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
-                response(nil);
+                response(nil)
             }
         case .failure(let error):
             if showErrorMsg { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure); return }
-            response(nil);
+            response(nil)
         }
     }
 }
