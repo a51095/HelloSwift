@@ -7,6 +7,7 @@
 
 import UIKit
 import Foundation
+import ProgressHUD
 
 class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
     override func viewDidLoad() {
@@ -95,30 +96,32 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
     @available(iOS 13.0.0, *)
     private func fetchDataWithAsync() async throws -> Swift.Result<Data, NetworkError> {
         view.showLoading()
-		if let (data,_) = try? await URLSession.shared.data(from: URL(string: AppURL.adImageUrl)!) {
-			view.hideLoading()
-			return .success(data)
-		} else {
-			view.hideLoading()
-			return .failure(.noData)
-		}
+        do {
+            let url = URL(string: AppURL.adImageUrl)!
+            let (data, _) = try await URLSession.shared.data(from: url)
+            view.hideLoading()
+            return .success(data)
+        } catch {
+            view.hideLoading()
+            return .failure(.noData)
+        }
     }
 
     @available(iOS 13.0.0, *)
     private func fetchDataWithCheckedContinuation() async -> Swift.Result<Data, NetworkError> {
         view.showLoading()
         return await withCheckedContinuation { continuation in
-            DispatchQueue.global().async {
-                if let data = try? Data(contentsOf: URL(string: AppURL.adImageUrl)!) {
-                    continuation.resume(returning: .success(data))
-                } else {
+            Task(priority: .background) {
+                do {
+                    let url = URL(string: AppURL.adImageUrl)!
+                    let (data, _) = try await URLSession.shared.data(from: url)
+                    view.hideLoading()
+                    return continuation.resume(returning: .success(data))
+                } catch {
+                    view.hideLoading()
                     continuation.resume(returning: .failure(.noData))
-                }
-                DispatchQueue.main.async {
-                    self.view.hideLoading()
                 }
             }
         }
     }
 }
-
