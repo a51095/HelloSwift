@@ -491,8 +491,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F704A05D269E73850044729E /* Build configuration list for PBXNativeTarget "HelloSwift" */;
 			buildPhases = (
-				6E62ADD8ACBC11881970BFDF /* [CP] Check Pods Manifest.lock */,
 				FA6410012BDDE85000CDDD64 /* Run Swiftlint Config */,
+				6E62ADD8ACBC11881970BFDF /* [CP] Check Pods Manifest.lock */,
 				F704A045269E73830044729E /* Sources */,
 				F704A046269E73830044729E /* Frameworks */,
 				F704A047269E73830044729E /* Resources */,
@@ -598,7 +598,6 @@
 		};
 		FA6410012BDDE85000CDDD64 /* Run Swiftlint Config */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
