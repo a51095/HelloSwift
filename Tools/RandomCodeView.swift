@@ -44,7 +44,7 @@ class RandomCodeView: UIView {
     }
     
     // MARK: 数据初始化
-    func initData()  {
+    func initData() {
         angleArray = [-0.25, -0.45, -0.65, -0.85, 0.35, 0.55, 0.75, 0.95]
         for _ in 0..<defaultCount { labelArray.append(createLabel()) }
     }
@@ -65,11 +65,11 @@ class RandomCodeView: UIView {
     override func layoutSubviews() {
         for _ in 0...9 {
             let path = UIBezierPath()
-            let pX = arc4random_uniform(UInt32(self.frame.width))
-            let pY = arc4random_uniform(UInt32(self.frame.height))
+            let pX = CGFloat.random(in: 0..<frame.width)
+            let pY = CGFloat.random(in: 0..<frame.height)
             path.move(to: CGPoint(x: CGFloat(pX), y: CGFloat(pY)))
-            let ptX = arc4random_uniform(UInt32(self.frame.width))
-            let ptY = arc4random_uniform(UInt32(self.frame.height))
+            let ptX = CGFloat.random(in: 0..<frame.width)
+            let ptY = CGFloat.random(in: 0..<frame.height)
             path.addLine(to: CGPoint(x: CGFloat(ptX), y: CGFloat(ptY)))
 
             let layer = CAShapeLayer()
@@ -92,13 +92,12 @@ class RandomCodeView: UIView {
         // 先清空,再更新
         resString = ""
         self.backgroundColor = randomColorWithoutBlack()
-        for (_, ele) in labelArray.enumerated() {
-            let aIndex = Int(arc4random_uniform(UInt32(angleArray.count)))
-            let cIndex = Int(arc4random_uniform(UInt32(codeStringSet.count)))
+        for ele in labelArray {
+            let aIndex = Int.random(in: 0..<angleArray.count)
+            let cIndex = Int.random(in: 0..<codeStringSet.count)
             let codeChar = codeStringSet[codeStringSet.index(codeStringSet.startIndex, offsetBy: cIndex)]
             let angleValue = angleArray[aIndex]
             resString.append(codeChar)
-            
             ele.text = String(codeChar)
             ele.transform = CGAffineTransform(rotationAngle: angleValue)
         }

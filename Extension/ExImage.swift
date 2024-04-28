@@ -61,9 +61,9 @@ extension UIImage {
                     data = self.jpegData(compressionQuality: compression)!
                     if data.count.cgf < toByte.cgf * 0.9 {
                         min = compression
-                    }else if data.count > toByte {
+                    } else if data.count > toByte {
                         max = compression
-                    }else {
+                    } else {
                         break
                     }
                 }
@@ -115,7 +115,7 @@ extension UIImage {
             totalDuration += frameDuration.doubleValue
         }
         
-        return (images,totalDuration)
+        return (images, totalDuration)
     }
 }
 

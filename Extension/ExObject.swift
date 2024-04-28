@@ -8,11 +8,11 @@
 extension NSObject {
     /// 类的名称字符串(静态属性)
     static var classString: String {
-        get { NSStringFromClass(classForCoder()) }
+        NSStringFromClass(classForCoder())
     }
     
     /// 类的名称字符串(实例属性)
     var classString: String {
-        get { NSStringFromClass(classForCoder) }
+        NSStringFromClass(classForCoder)
     }
 }

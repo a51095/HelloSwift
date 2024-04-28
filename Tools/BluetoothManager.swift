@@ -51,7 +51,7 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         updateStatus?(central.state)
     }
 
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         // 发现外围设备，连接到它
         guard peripheral.name != nil else { return }
         let result = DiscoverPeripheralResult(peripheral: peripheral)

@@ -13,9 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: NetworkStatus {
     /// 是否首次安装应用程序
     private var isFrist: Bool {
-        get {
-            !Cache.boolValue(by: AppKey.hasInstallKey)
-        }
+        !Cache.boolValue(by: AppKey.hasInstallKey)
     }
     
     /// 启动App

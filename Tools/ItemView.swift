@@ -51,7 +51,7 @@ class ItemCell: UICollectionViewCell {
             if newValue {
                 topLabel.textColor = .main
                 bottomView.backgroundColor = .main
-            }else {
+            } else {
                 topLabel.textColor = .gray
                 bottomView.backgroundColor = .clear
             }

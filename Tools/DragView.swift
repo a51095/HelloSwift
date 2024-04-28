@@ -57,7 +57,7 @@ final class DragView: UIView {
 		// 点击手势
 		let clickGesture = UITapGestureRecognizer(target: self, action: #selector(dragViewDidClick))
 		// 拖拽手势
-		let dragGesture = UIPanGestureRecognizer(target: self, action:#selector(dragViewDidDrag(gesture:)))
+		let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(dragViewDidDrag(gesture:)))
 		contentView.addGestureRecognizer(clickGesture)
 		contentView.addGestureRecognizer(dragGesture)
 	}
@@ -105,7 +105,6 @@ final class DragView: UIView {
 				// 移动过程中,获取移动轨迹,重置center坐标点
 				let point = gesture.translation(in: self.superview)
 				self.center = CGPoint(x: self.center.x + point.x, y: self.center.y + point.y)
-				break
 			case .ended:
 				// 移动结束后,相关逻辑处理,重置center坐标点
 				let point = gesture.translation(in: self.superview)
@@ -115,7 +114,6 @@ final class DragView: UIView {
 				UIView.animate(withDuration: 0.1) {
 					self.center = self.resetPosition(point: newPoint)
 				}
-				break
 			default: break
 		}
 		// 重置 panGesture

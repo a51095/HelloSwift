@@ -4,7 +4,7 @@ extension UIColor {
     
     /// 随机颜色
     static var random: UIColor {
-        rgb(Int(arc4random_uniform(256)), Int(arc4random_uniform(256)), Int(arc4random_uniform(256)))
+        rgb(Int.random(in: 0...255), Int.random(in: 0...255), Int.random(in: 0...255))
     }
         
     /// 16进制颜色值
@@ -28,7 +28,7 @@ extension UIColor {
         return hexColor(hexValue, alpha)
     }
     
-    private static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor{
+    private static func rgb(_ red: Int, _ green: Int, _ blue: Int, _ alpha: CGFloat = 1) -> UIColor {
         UIColor(red: red.cgf / 255.0, green: green.cgf / 255.0, blue: blue.cgf / 255.0, alpha: alpha)
     }
     

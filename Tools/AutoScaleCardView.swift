@@ -47,7 +47,7 @@ class AutoScaleFlowLayout: UICollectionViewFlowLayout {
         var minDistance = CGFloat(MAXFLOAT)
         for item  in arr!.enumerated() {
             let distance = item.element.center.x - centerX
-            if (abs(distance) < abs(minDistance)) {
+            if abs(distance) < abs(minDistance) {
                 minDistance = distance
             }
         }

@@ -27,4 +27,3 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
         }
     }
 }
-

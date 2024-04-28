@@ -32,30 +32,26 @@ var kLocalization: LocalizationProtocol = Localization()
 
 /// 获取当前窗口栈顶vc
 var kTopViewController: UIViewController {
-    get {
-        let base = kAppDelegate.window!!.rootViewController!
+    let base = kAppDelegate.window!!.rootViewController!
 
-        if let nav = base as? UINavigationController {
-            return nav.visibleViewController!
-        } else if let tab = base as? UITabBarController {
-            return tab.selectedViewController!
-        } else if let presented = base.presentedViewController {
-            return presented
-        } else {
-            return base
-        }
+    if let nav = base as? UINavigationController {
+        return nav.visibleViewController!
+    } else if let tab = base as? UITabBarController {
+        return tab.selectedViewController!
+    } else if let presented = base.presentedViewController {
+        return presented
+    } else {
+        return base
     }
 }
 
 /// 获取当前窗口栈顶nav
 var kTopNavigationController: UINavigationController {
-    get {
-        let rootVC = kAppDelegate.window!!.rootViewController
-        if let tab = rootVC as? UITabBarController {
-            return tab.selectedViewController as! UINavigationController
-        } else {
-            return rootVC as! UINavigationController
-        }
+    let rootVC = kAppDelegate.window!!.rootViewController
+    if let tab = rootVC as? UITabBarController {
+        return tab.selectedViewController as! UINavigationController
+    } else {
+        return rootVC as! UINavigationController
     }
 }
 
@@ -75,14 +71,14 @@ func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
 }
 
 /// 平方字体-常规体
-func kRegularFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Regular", size: size)! }
+func kRegularFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Regular", size: size)! }
 /// 平方字体-中等体
-func kMediumFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Medium", size: size)! }
+func kMediumFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Medium", size: size)! }
 /// 平方字体-半粗体
-func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name:"PingFangSC-Semibold", size: size)! }
+func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Semibold", size: size)! }
 
 /// 用户相机授权状态
-func requestAccess(handler: @escaping (Bool) -> (Void))  {
+func requestAccess(handler: @escaping (Bool) -> Void) {
     let status = AVCaptureDevice.authorizationStatus(for: .video)
     switch status {
         case .notDetermined: AVCaptureDevice.requestAccess(for: .video) { res in handler(res) }
@@ -92,7 +88,7 @@ func requestAccess(handler: @escaping (Bool) -> (Void))  {
 }
 
 /// 用户相册授权状态
-func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
+func albumAuthorization(handler: @escaping (Bool) -> Void) {
     if #available(iOS 14, *) {
         let status = PHPhotoLibrary.authorizationStatus(for: .readWrite)
         if status == .authorized || status == .limited {
@@ -127,11 +123,11 @@ func albumAuthorization(handler: @escaping (Bool) -> (Void))  {
 }
 
 /// 用户通知授权状态
-func requestAuthorization(handler: @escaping (Bool) -> (Void))  {
+func requestAuthorization(handler: @escaping (Bool) -> Void) {
     let notificationCenter = UNUserNotificationCenter.current()
     // 每次冷启动，先移除所有通知内容，再执行后续操作
     notificationCenter.removeAllDeliveredNotifications()
-    notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
+    notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, _ in
         // 若注册失败，则直接返回，不执行后续操作
         guard requestRes else { return }
 
@@ -140,7 +136,7 @@ func requestAuthorization(handler: @escaping (Bool) -> (Void))  {
                 case .notDetermined: // 用户尚未注册通知
                     UIApplication.shared.registerForRemoteNotifications()
                 case .authorized:
-                    notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, requestErr in
+                    notificationCenter.requestAuthorization(options: [.sound, .alert, .badge]) { requestRes, _ in
                         // 用户已授权
                         if requestRes { handler(true) } else { handler(false) }
                     }
@@ -154,12 +150,10 @@ protocol NetworkStatus { }
 extension NetworkStatus {
     /// 基于Alamofire，实时监测网络状态
     var isReachable: Bool {
-        get {
-            var res: Bool = false
-            let netManager = NetworkReachabilityManager()
-            if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
-            return res
-        }
+        var res: Bool = false
+        let netManager = NetworkReachabilityManager()
+        if netManager?.status == .reachable(.ethernetOrWiFi) || netManager?.status == .reachable(.cellular) { res = true }
+        return res
     }
 }
 
@@ -191,11 +185,10 @@ func findIndex<T: Equatable>(_ value: T, in array: [T]) -> Int? {
 
 /// 深拷贝
 func deepCopy<T: Codable>(_ object: T) -> T? {
-    do{
+    do {
         let jsonData = try JSONEncoder().encode(object)
         return try JSONDecoder().decode(T.self, from: jsonData)
-    }
-    catch {
+    } catch {
         kPrint("Decode failed. \(error)"); return nil
     }
 }

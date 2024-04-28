@@ -41,8 +41,8 @@ final class AlertController: UIViewController {
     deinit { kPrint("AlertController deinit") }
     
     /// 自定义初始化方法
-    init(_ title: String?, _ message: String?, _ actions: [Action])  {
-        
+    init(_ title: String?, _ message: String?, _ actions: [Action]) {
+
         self.alertTitle = title
         self.alertMessage = message
         self.alertAction = actions

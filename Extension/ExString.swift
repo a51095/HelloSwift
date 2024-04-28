@@ -7,7 +7,7 @@ extension String {
     static func randomString(len: Int = 6) -> String {
         var ranStr = ""
         for _ in 0..<len {
-            let index = Int(arc4random_uniform(UInt32(characters.count)))
+            let index = Int.random(in: 0..<characters.count)
             ranStr.append(characters[characters.index(characters.startIndex, offsetBy: index)])
         }
         return ranStr
@@ -70,13 +70,13 @@ extension String {
     }
 
     /// 拷贝文件夹
-    func copyTo(_ path:String) {
+    func copyTo(_ path: String) {
         try? FileManager.default.removeItem(atPath: path)
         try? FileManager.default.copyItem(atPath: self, toPath: path)
     }
     
     /// 移动文件夹
-    func moveTo(_ path:String) {
+    func moveTo(_ path: String) {
         try? FileManager.default.moveItem(atPath: self, toPath: path)
     }
 

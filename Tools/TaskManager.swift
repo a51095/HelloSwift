@@ -9,7 +9,7 @@ import Foundation
 
 @available(iOS 13.0, *)
 class TaskManager {
-	private var task: Task<Void, Error>? = nil
+	private var task: Task<Void, Error>?
 
 	func startTask(_ block: @escaping () async -> Void) {
 		task = Task {

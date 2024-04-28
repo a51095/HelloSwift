@@ -62,7 +62,7 @@ final class LoadingView: UIView {
                 make.bottom.equalTo(contentView.snp.bottom)
                 make.size.equalTo(CGSize(width: 120, height: 36))
             }
-        }else {
+        } else {
             // 中间内容视图
             contentView.snp.makeConstraints { (make) in
                 make.center.equalToSuperview()

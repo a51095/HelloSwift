@@ -8,7 +8,7 @@
 import Foundation
 
 extension Data {
-    var bytes: Array<UInt8> {
+    var bytes: [UInt8] {
         Array(self)
     }
 }

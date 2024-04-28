@@ -60,7 +60,7 @@ class PhotoGuideCell: UITableViewCell {
         }
         
         if let first = item.fetchResult.firstObject {
-            PHCachingImageManager.default().requestImage(for: first, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: .none) { img, info in
+            PHCachingImageManager.default().requestImage(for: first, targetSize: CGSize(width: 100, height: 100), contentMode: .aspectFit, options: .none) { img, _ in
                 self.iconImageView.image = img
             }
         }

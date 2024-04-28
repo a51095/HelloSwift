@@ -13,13 +13,13 @@ struct Log {
     private static var logManager = LogManager()
 
     static func start() {
-        if (logManager.isRunning) { return }
+        if logManager.isRunning { return }
         logManager.isRunning = true
         logManager.start()
     }
 
     static func stop() {
-        if (!logManager.isRunning) { return }
+        if !logManager.isRunning { return }
         logManager.isRunning = false
         logManager.stop()
     }
@@ -50,13 +50,11 @@ struct Log {
     }
 }
 
-fileprivate enum LogType: String {
-    case debug
-    case exception
-    case application
+private enum LogType: String {
+    case debug, exception, application
 }
 
-fileprivate protocol LogManagerProtocol: AnyObject {
+private protocol LogManagerProtocol: AnyObject {
     func start()
     func stop()
     func updateLogFilePath()
@@ -64,12 +62,12 @@ fileprivate protocol LogManagerProtocol: AnyObject {
     func logToCache(props: LogProperties)
 }
 
-fileprivate protocol CommonFileOutputStreamProtocol: AnyObject {
+private protocol CommonFileOutputStreamProtocol: AnyObject {
     func writeToLogFile(text: String)
     func close()
 }
 
-fileprivate struct LogProperties {
+private struct LogProperties {
     /// 日志类型
     let type: LogType
     /// 日志信息
@@ -88,11 +86,11 @@ fileprivate struct LogProperties {
 }
 
 @available(iOS 13.0, *)
-fileprivate class LogManager: LogManagerProtocol {
+private class LogManager: LogManagerProtocol {
     var isRunning = false
-    private var logFile: LogFile? = nil
+    private var logFile: LogFile?
     private let logPropsCacheLock = NSLock()
-    private var flushTask: Task<Void, Error>? = nil
+    private var flushTask: Task<Void, Error>?
     private let maxFileSize: Int64 = 2 * 1024 * 1024 * 1024
     private var logPropsCache: [LogProperties] = [LogProperties]()
 
@@ -102,7 +100,7 @@ fileprivate class LogManager: LogManagerProtocol {
 
     func start() {
         flushTask = Task {
-            while (true) {
+            while true {
                 if Task.isCancelled { return }
                 flushLog()
                 try? await Task.sleep(nanoseconds: UInt64(0.1) * NSEC_PER_MSEC)
@@ -141,14 +139,18 @@ fileprivate class LogManager: LogManagerProtocol {
         if !kAppLogURL.path.isFolderExist {
             kAppLogURL.path.createFolderPath()
         } else {
-            let filePaths = try! FileManager.default.contentsOfDirectory(at: kAppLogURL, includingPropertiesForKeys: nil)
-            var incrementSize: Int64 = 0
-            for path in filePaths {
-                incrementSize = incrementSize + path.path.length
-            }
-            if incrementSize > maxFileSize {
-                kAppLogURL.path.removePath()
-                kAppLogURL.path.createFolderPath()
+            do {
+                let filePaths = try FileManager.default.contentsOfDirectory(at: kAppLogURL, includingPropertiesForKeys: nil)
+                var incrementSize: Int64 = 0
+                for path in filePaths {
+                    incrementSize += path.path.length
+                }
+                if incrementSize > maxFileSize {
+                    kAppLogURL.path.removePath()
+                    kAppLogURL.path.createFolderPath()
+                }
+            } catch {
+                assertionFailure("FileManager error")
             }
         }
         logFile = LogFile(filePath: fullFileName.path, append: fullFileName.path.isFileExist)
@@ -164,7 +166,7 @@ fileprivate class LogManager: LogManagerProtocol {
     }
 }
 
-fileprivate class LogFile: CommonFileOutputStreamProtocol {
+private class LogFile: CommonFileOutputStreamProtocol {
     private let outputStream: OutputStream
     init(filePath: String, append: Bool = false) {
         let fileURL = URL(fileURLWithPath: filePath)

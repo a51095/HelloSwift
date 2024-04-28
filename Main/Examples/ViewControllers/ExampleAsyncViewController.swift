@@ -54,13 +54,13 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
         switch button.tag {
         case 101:
             fetchDataWithCallback { result in
-                kPrint("方法 一, 异步结果: ",result)
+                kPrint("方法 一, 异步结果: ", result)
             }
         case 102:
             if #available(iOS 13.0, *) {
                 Task {
                     let result = try await fetchDataWithAsync()
-                    kPrint("方法 二, 异步结果: ",result)
+                    kPrint("方法 二, 异步结果: ", result)
                 }
             } else {
                 kPrint(UIDevice.current.systemVersion)
@@ -69,7 +69,7 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
             if #available(iOS 13.0, *) {
                 Task {
                     let result = await fetchDataWithCheckedContinuation()
-                    kPrint("方法 三, 异步结果: ",result)
+                    kPrint("方法 三, 异步结果: ", result)
                 }
             } else {
                 kPrint(UIDevice.current.systemVersion)

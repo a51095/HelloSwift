@@ -84,7 +84,7 @@ final class CountDownView: UIView {
         DispatchQueue.main.async {
             if self.countDownTotal > 0 {
                 self.countDownLabel.text = Int((self.countDownTotal)).str
-            }else {
+            } else {
                 self.taskTimer.stop()
                 self.countDownLabel.text = self.countDownOption.endText
                 self.isUserInteractionEnabled = true

@@ -94,7 +94,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     // MARK: 格式化相簿内容
-    private func filterAssetCollections(collection: PHFetchResult<PHAssetCollection>){
+    private func filterAssetCollections(collection: PHFetchResult<PHAssetCollection>) {
         for i in 0..<collection.count {
             // 按照时间升序遍历某个相薄内的照片
             let fetchOptions = PHFetchOptions()
@@ -146,7 +146,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 结果分类,添加数据源
-    func fetchResult(_ item: AlbumModel?)  {
+    func fetchResult(_ item: AlbumModel?) {
         // 非空校验
         guard let item = item else { return }
         
@@ -164,9 +164,9 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         // 提供最高质量的可用图像，而忽略加载所需时长
         options.deliveryMode = .highQualityFormat
         
-        item.fetchResult.enumerateObjects { asset, idx, info in
-            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, info in
-                
+        item.fetchResult.enumerateObjects { asset, _, _ in
+            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, _ in
+
                 if asset.mediaType == .image, let img = resImg {
                     
                     // 通用照片
@@ -176,7 +176,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
                     
                     // HDR
                     if asset.mediaSubtypes == .photoHDR {
-                        //photoHDR
+                        // photoHDR
                         self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
                     }
                     
@@ -195,7 +195,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
                         self.photoSource.append(PhotoModel(type: .Live, image: img, asset: asset))
                     }
                     
-                }else if asset.mediaType == .video, let img = resImg {
+                } else if asset.mediaType == .video, let img = resImg {
                     self.photoSource.append(PhotoModel(type: .Video, image: img, asset: asset))
                 }
             }
@@ -204,7 +204,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 展示可选相薄视图
-    private func displayAnimate()  {
+    private func displayAnimate() {
         titleButton.isSelected = false
         guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
         guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
@@ -215,7 +215,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 隐藏可选相薄视图
-    private func hideAnimate()  {
+    private func hideAnimate() {
         titleButton.isSelected = true
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 0

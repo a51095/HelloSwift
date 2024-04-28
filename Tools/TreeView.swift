@@ -14,15 +14,14 @@
 
 //   4  5          6    8
 
-
 // 层次遍历
-//level0                       P
+// level0                       P
 
-//level1             A                   X
+// level1             A                   X
 
-//level2          T    Z             M       K
+// level2          T    Z             M       K
 
-//level3          Y                  L     F   C
+// level3          Y                  L     F   C
 
 class Queue<T> {
     var array: [T] = []
@@ -68,7 +67,7 @@ extension TreeView {
         children.forEach { child in
             queue.enqueue(child)
         }
-        while let node = queue.dequeue()  {
+        while let node = queue.dequeue() {
             visit(node)
             node.children.forEach { child in
                 queue.enqueue(child)
@@ -88,7 +87,6 @@ extension TreeView where T: Equatable {
     }
 }
 
-
 //                     Drinks
 //                  /            \
 //                Hot            Cold
@@ -96,7 +94,6 @@ extension TreeView where T: Equatable {
 //        Tea   Coffee Cocoa    Milk   Water
 //       /  |
 //    Red  Green
-
 
 /// 测试树状结构
 class TreeViewTest {
@@ -129,7 +126,6 @@ class TreeViewTest {
 
         tea.add(red)
         tea.add(green)
-
 
         //        // 深度遍历
         //        drinks.forEachDepth { item in kPrint(item.value) }

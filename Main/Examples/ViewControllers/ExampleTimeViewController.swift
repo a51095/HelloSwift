@@ -32,7 +32,7 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
             button.snp.makeConstraints { (make) in
-                make.size.equalTo(CGSize(width:  280, height: limitH))
+                make.size.equalTo(CGSize(width: 280, height: limitH))
             }
             buttonArray.append(button)
         }

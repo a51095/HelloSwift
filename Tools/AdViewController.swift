@@ -18,11 +18,11 @@ struct AdConfig {
     /// 广告类型
     fileprivate var type: AdType
     /// 本地资源名称
-    fileprivate var localResource: String? = nil
+    fileprivate var localResource: String?
     /// 远端资源URL
-    fileprivate var netUrl: String? = nil
+    fileprivate var netUrl: String?
     /// 跳转链接URL
-    fileprivate var linkUrl: String? = nil
+    fileprivate var linkUrl: String?
     /// 是否展示跳过按钮(默认展示)
     fileprivate var isSkip: Bool = true
     /// 是否展示静音按钮(默认展示,仅video类型)
@@ -113,7 +113,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
     }
 
     /// 处理adAVPlayerItem观察者
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard let object = object as? AVPlayerItem  else { return }
         guard let keyPath = keyPath else { return }
 
@@ -143,8 +143,10 @@ class AdViewController: BaseViewController, CountDownProtocol {
         view.addGestureRecognizer(tap)
 
         switch adConfig.type {
-        case .image, .gif: addAdImageView(); break
-        case .video: addAdPlayerController(); break
+            case .image, .gif:
+                addAdImageView()
+            case .video:
+                addAdPlayerController()
         }
 
         // 配置显示参数
@@ -195,9 +197,9 @@ class AdViewController: BaseViewController, CountDownProtocol {
     /// 配置广告相关参数
     func config() {
         switch adConfig.type {
-        case .image: loadImage(); break
-        case .gif: loadGif(); break
-        case .video: loadVideo(); break
+            case .image: loadImage()
+            case .gif: loadGif()
+            case .video: loadVideo()
         }
     }
 
@@ -308,21 +310,21 @@ class AdViewController: BaseViewController, CountDownProtocol {
     }
 
     /// 更新广告资源(image)
-    func updateAdImage(_ imageData: Data, _ imageTempPath: String)  {
+    func updateAdImage(_ imageData: Data, _ imageTempPath: String) {
         DispatchQueue.global().async {
             try? imageData.write(to: URL(fileURLWithPath: imageTempPath), options: .atomic)
         }
     }
 
     /// 更新广告资源(gif)
-    func updateAdGif(_ gifData: Data, _ gifTempPath: String)  {
+    func updateAdGif(_ gifData: Data, _ gifTempPath: String) {
         DispatchQueue.global().async {
             try? gifData.write(to: URL(fileURLWithPath: gifTempPath), options: .atomic)
         }
     }
 
     /// 更新广告资源(video)
-    func updateAdVideo(_ videoData: Data, _ videoTempPath: String)  {
+    func updateAdVideo(_ videoData: Data, _ videoTempPath: String) {
         DispatchQueue.global().async {
             try? videoData.write(to: URL(fileURLWithPath: videoTempPath), options: .atomic)
         }
@@ -368,7 +370,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         guard adConfig.linkUrl != nil else { return }
         dismiss()
         let url = URL(string: adConfig.linkUrl!)
-        guard (url != nil) else { return }
+        guard url != nil else { return }
         if UIApplication.shared.canOpenURL(url!) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         }

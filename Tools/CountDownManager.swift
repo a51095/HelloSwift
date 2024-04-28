@@ -59,8 +59,8 @@ final class CountDownManager {
             let hours = remainingTotal / (60 * 60) - day * 24
             let minutes = remainingTotal / 60 - (day * 24 * 60) - (hours * 60)
             let seconds = remainingTotal % 60
-            resultString = (String(format: "%02d:%02d:%02d:%02d",day, hours, minutes, seconds))
-        }else {
+            resultString = (String(format: "%02d:%02d:%02d:%02d", day, hours, minutes, seconds))
+        } else {
             taskTimer.stop()
         }
         return resultString.components(separatedBy: ":")

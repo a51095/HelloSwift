@@ -65,7 +65,7 @@ class PhotoShowCell: UICollectionViewCell {
         
         if statueButton.isSelected {
             mantleView.backgroundColor = .hexColor("#ffffff", 0.2)
-        }else {
+        } else {
             mantleView.backgroundColor = .clear
         }
     }

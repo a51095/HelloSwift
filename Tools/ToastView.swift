@@ -45,7 +45,7 @@ final class ToastView: UIView {
         if type != .nore {
             if type == .success {
                 iconImageView.image = UIImage(named: "toast_success")
-            }else {
+            } else {
                 iconImageView.image = UIImage(named: "toast_fail")
             }
             
@@ -68,7 +68,7 @@ final class ToastView: UIView {
 
 extension UIView {
     /// 吐司展示
-    func toast(_ message: String, type: ToastType = .nore, delay: TimeInterval = 2)  {
+    func toast(_ message: String, type: ToastType = .nore, delay: TimeInterval = 2) {
         // 容错处理,若message字段无内容,则直接返回
         guard !message.isEmpty else { return }
         // 若当前视图已加载ToastView,则移除后再添加

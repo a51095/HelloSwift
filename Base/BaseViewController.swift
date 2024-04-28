@@ -52,7 +52,7 @@ extension BaseViewController {
     func addBackButton(_ safeHeight: Int = 44, _ image: UIImage? = UIImage(named: "vc_back_black")) {
         if topView.superview != nil {
             topView.addSubview(backButton)
-        }else {
+        } else {
             view.addSubview(backButton)
         }
 
@@ -90,15 +90,15 @@ enum DialogType {
 
     var leftLabel: String {
         switch self {
-            case .okCancel: ""
-            case .yesNo: ""
+        case .okCancel: ""
+        case .yesNo: ""
         }
     }
 
     var rightLabel: String {
         switch self {
-            case .okCancel: ""
-            case .yesNo: ""
+        case .okCancel: ""
+        case .yesNo: ""
         }
     }
 }

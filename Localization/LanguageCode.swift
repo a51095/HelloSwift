@@ -13,7 +13,7 @@ extension LanguageCode {
               let code = preferredLanguage.components(separatedBy: "-").first,
               var language = languages.first(where: { $0.rawValue == code }) else { return .en }
         if language == .zh {
-            if (preferredLanguage.components(separatedBy: "-")[1] == traditionalChinese) {
+            if preferredLanguage.components(separatedBy: "-")[1] == traditionalChinese {
                 language = .tw
             }
         }

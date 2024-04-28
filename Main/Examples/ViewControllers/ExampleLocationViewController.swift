@@ -37,7 +37,7 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
             button.layer.masksToBounds = true
             button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
             button.snp.makeConstraints { (make) in
-                make.size.equalTo(CGSize(width:  280, height: limitH))
+                make.size.equalTo(CGSize(width: 280, height: limitH))
             }
             buttonArray.append(button)
         }
@@ -59,7 +59,7 @@ class ExampleLocationViewController: BaseViewController, ExampleProtocol {
         case 101:
                 switch locationManager.authStatus {
                     case .denied, .restricted:
-                        if let url = URL(string:UIApplication.openSettingsURLString) {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
                             UIApplication.shared.open(url, options: [:], completionHandler: nil)
                         }
                     case .notDetermined:

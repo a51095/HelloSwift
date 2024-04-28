@@ -5,6 +5,7 @@ source 'https://cdn.cocoapods.org/'
 
 #Debug
 def debugPods
+  pod 'SwiftLint', '0.54.0'
 	pod 'LookinServer', :subspecs => ['Swift'], :configurations => ['Debug']
 end
 

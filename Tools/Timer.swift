@@ -32,11 +32,11 @@ extension Timer {
     static let shared: Timer = {
         let instance = Timer()
         return instance
-    } ()
+    }()
 
     /// 启动定时器
     static func start(taskQueue: DispatchQueue = .main, interval: DispatchTimeInterval = .seconds(1), leeway: DispatchTimeInterval = .nanoseconds(0), eventHandler: @escaping os_block_t) {
-        shared.start(taskQueue: taskQueue, interval: interval, leeway: leeway,eventHandler: eventHandler)
+        shared.start(taskQueue: taskQueue, interval: interval, leeway: leeway, eventHandler: eventHandler)
     }
     /// 停止定时器
     static func stop() { shared.stop() }

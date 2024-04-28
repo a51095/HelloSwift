@@ -22,20 +22,15 @@ class ExamplePhotoDetailViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+
     init(type: PhotoType, source: PHAsset) {
         super.init(nibName: nil, bundle: nil)
         
         switch type {
         case .Image: addImageView(type: type, asset: source)
-            break
         case .Gif: addImageView(type: type, asset: source)
-            break
         case .Live: addLivePhotoView(asset: source)
-            break
         case .Video: addPlayerController(asset: source)
-            break
         }
         
         hidesBottomBarWhenPushed = true
@@ -50,17 +45,17 @@ class ExamplePhotoDetailViewController: BaseViewController {
         }
         
         if type == .Image {
-            PHImageManager.default().requestImage(for: asset, targetSize: .zero, contentMode: .aspectFill, options: .none) { img, dic in
+            PHImageManager.default().requestImage(for: asset, targetSize: .zero, contentMode: .aspectFill, options: .none) { img, _ in
                 self.imageView.image = img
             }
-        }else {
-            PHImageManager.default().requestImageData(for: asset, options: .none) { resData, string, ori, dic in
+        } else {
+            PHImageManager.default().requestImageData(for: asset, options: .none) { resData, _, _, _ in
                 if let data = resData {
                     let resArray = UIImage.gif(data)
                     self.imageView.animationImages = resArray.0
                     self.imageView.animationDuration = resArray.1
                     self.imageView.startAnimating()
-                }else {
+                } else {
                     self.view.toast("资源有误!")
                 }
             }
@@ -74,7 +69,7 @@ class ExamplePhotoDetailViewController: BaseViewController {
             make.size.equalTo(CGSize(width: autoWidth, height: autoWidth))
         }
         
-        PHImageManager.default().requestLivePhoto(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .default, options: .none) { livePhoto, dic in
+        PHImageManager.default().requestLivePhoto(for: asset, targetSize: CGSize(width: asset.pixelWidth, height: asset.pixelHeight), contentMode: .default, options: .none) { livePhoto, _ in
             self.livePhotoView.livePhoto = livePhoto
         }
     }
@@ -86,7 +81,7 @@ class ExamplePhotoDetailViewController: BaseViewController {
             make.size.equalTo(CGSize(width: autoWidth, height: autoWidth))
         }
         
-        PHImageManager.default().requestPlayerItem(forVideo: asset, options: .none) { item, dic in
+        PHImageManager.default().requestPlayerItem(forVideo: asset, options: .none) { item, _ in
             let aPlayer = AVPlayer(playerItem: item)
             self.playerController.player = aPlayer
             self.playerController.player?.play()
