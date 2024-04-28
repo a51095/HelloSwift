@@ -10,8 +10,6 @@ disabled_rules:
     - switch_case_alignment
     - function_parameter_count
     - void_function_in_ternary
-force_try: warning
-force_cast: warning
 cyclomatic_complexity: 20
 line_length:
     warning: 280
@@ -27,4 +25,3 @@ function_body_length:
 type_body_length:
     warning: 800
     error: 1200
-switch_case_alignment: false
