@@ -7,7 +7,6 @@
 
 import UIKit
 import Foundation
-import ProgressHUD
 
 class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
     override func viewDidLoad() {
