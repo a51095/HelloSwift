@@ -1,27 +1,25 @@
+# [Github] (https://github.com/realm/SwiftLint)
+# [规则目录] (https://realm.github.io/SwiftLint/rule-directory.html)
+# [参考文献] (https://qiita.com/yamakentoc/items/1f1553cda309c21b09d6)
+
+# 忽略的文件夹
 excluded:
-    - Pods
+- Pods
+# 禁用规则
 disabled_rules:
-    - force_try
-    - for_where
-    - force_cast
-    - block_based_kvo
-    - identifier_name
-    - trailing_whitespace
-    - switch_case_alignment
-    - function_parameter_count
-    - void_function_in_ternary
-cyclomatic_complexity: 20
-line_length:
-    warning: 280
-    error: 360
-    ignores_function_declarations: true
-    ignores_comments: true
-file_length:
-    warning: 1000
-    error: 1500
-function_body_length:
-    warning: 120
-    error: 150
-type_body_length:
-    warning: 800
-    error: 1200
+- todo # 有TODO或FIXME，应处理
+- for_where # 首选 for-where
+- force_try # 应避免强制尝试(try!)
+- force_cast # 应避免强制解包(变量!)
+- line_length # 应限制单个行行数
+- file_length # 应限制文件行数
+- type_body_length # 应限制正文行数，例如类/结构体
+- function_body_length # 应限制函数体行数
+- block_based_kvo # 使用 Swift 3.2 或更高版本时，应使用新基于块的 KVO API
+- identifier_name # 形参名称包含字母数字字符，并以小写字符开头，或仅包含大写字母当变量名称被声明为静态时，它们可能以大写字母开头变量名称不应太长或太短
+- control_statement # if/for/guard/switch/while/catch 语句，不应将其条件或参数包含在括号中
+- trailing_whitespace # 行不应有尾随空格
+- cyclomatic_complexity # 应限制函数体的复杂性
+- switch_case_alignment # switch语句中，case条件应与switch关键字对齐
+- function_parameter_count # 函数参数的数量应尽量少
+- void_function_in_ternary # 应避免三元运算符，调用Void函数
