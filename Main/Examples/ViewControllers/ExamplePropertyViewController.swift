@@ -23,7 +23,7 @@ class ExamplePropertyViewController: BaseViewController, ExampleProtocol {
 		let count = 3
 		let limitH = 50
 
-		let buttonTitleArray = ["重置默认值", "设置新值", "查看新值"]
+		let buttonTitleArray = ["重置默认值", "设置新值", "查看当前值"]
 
 		var buttonArray = [UIButton]()
 		for (idx) in 1...count {
