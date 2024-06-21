@@ -2,29 +2,35 @@ extension UIColor {
     /// App主色调
     static var main: UIColor { .hexColor("#FF8C00") }
     
+    @available(iOS 13.0, *)
+    /// 自适应颜色
+    static var adaptiveColor: UIColor {
+        UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black
+    }
+    
     /// 随机颜色
     static var random: UIColor {
         rgb(Int.random(in: 0...255), Int.random(in: 0...255), Int.random(in: 0...255))
     }
         
-    /// 16进制颜色值
+    /// 16进制颜色
     static func hexColor(_ hexString: String, _ alpha: CGFloat = 1) -> UIColor {
-        var string = ""
-        let lowercaseHexString = hexString.lowercased()
-        if lowercaseHexString.hasPrefix("0x") {
-            string = lowercaseHexString.replacingOccurrences(of: "0x", with: "")
-        } else if hexString.hasPrefix("#") {
-            string = hexString.replacingOccurrences(of: "#", with: "")
-        } else {
-            string = hexString
+        var cleanedString = hexString.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        
+        if cleanedString.hasPrefix("0x") {
+            cleanedString.removeFirst(2)
+        } else if cleanedString.hasPrefix("#") {
+            cleanedString.removeFirst()
         }
-
-        if string.count == 3 {
-            var str = ""
-            string.forEach { str.append(String(repeating: String($0), count: 2)) }
-            string = str
+        
+        if cleanedString.count == 3 {
+            cleanedString = cleanedString.map { "\($0)\($0)" }.joined()
         }
-        let hexValue = Int(string, radix: 16) ?? 0
+        
+        guard cleanedString.count == 6, let hexValue = Int(cleanedString, radix: 16) else {
+            return UIColor.clear
+        }
+        
         return hexColor(hexValue, alpha)
     }
     
