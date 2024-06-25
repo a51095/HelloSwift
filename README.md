@@ -15,5 +15,5 @@
 - [缩放回弹视图](https://github.com/a51095/HelloSwift/blob/dev/Tools/ScaleAspectView.swift)
 - [开屏广告视图](https://github.com/a51095/HelloSwift/blob/dev/Tools/AdViewController.swift)
 - [启动引导视图](https://github.com/a51095/HelloSwift/blob/dev/Tools/GuideViewController.swift)
-- [活动倒计时封装](https://github.com/a51095/HelloSwift/blob/dev/Tools/CountDownManager.swift)
 - [短信倒计时视图](https://github.com/a51095/HelloSwift/blob/dev/Tools/CountDownView.swift)
+- [活动倒计时封装](https://github.com/a51095/HelloSwift/blob/dev/Tools/CountDownManager.swift)
