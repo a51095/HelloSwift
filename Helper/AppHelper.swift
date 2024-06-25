@@ -23,6 +23,12 @@ let kAppLogURL = FileManager.default.urls(for: .documentDirectory, in: .userDoma
 /// UIApplication代理对象
 let kAppDelegate = UIApplication.shared.delegate!
 
+/// 是否是深色模式
+@available(iOS 13.0, *)
+var isDarkTheme: Bool {
+    UITraitCollection.current.userInterfaceStyle == .dark
+}
+
 /// 屏幕宽
 let kScreenWidth = UIScreen.main.bounds.size.width.i
 /// 屏幕高
