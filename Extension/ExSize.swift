@@ -1,5 +1,4 @@
 extension CGSize {
-    var ceiling: CGSize {
-        return CGSize(width: ceil(width), height: ceil(height))
-    }
+    /// 向上取整
+    var ceiling: CGSize { CGSize(width: ceil(width), height: ceil(height)) }
 }
