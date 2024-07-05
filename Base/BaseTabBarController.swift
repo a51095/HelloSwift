@@ -1,7 +1,7 @@
 struct TabItem {
     let title: String
     let normalName: String
-    let seletedName: String
+    let selectedName: String
     let viewController: UIViewController
 }
 
@@ -37,7 +37,7 @@ class BaseTabBarController: UITabBarController {
         for ele in items {
             ele.viewController.tabBarItem.title = ele.title
             ele.viewController.tabBarItem.image = UIImage(named: ele.normalName)
-            ele.viewController.tabBarItem.selectedImage = UIImage(named: ele.seletedName)
+            ele.viewController.tabBarItem.selectedImage = UIImage(named: ele.selectedName)
             addChild(ele.viewController)
         }
     }
