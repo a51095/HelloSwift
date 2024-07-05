@@ -12,7 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: NetworkStatus {
     /// 是否首次安装应用程序
-    private var isFrist: Bool {
+    private var isFirst: Bool {
         !Cache.boolValue(by: AppKey.hasInstallKey)
     }
     
@@ -41,7 +41,7 @@ extension AppDelegate: NetworkStatus {
     }
 
     private func settingRootViewController() {
-        if isFrist {
+        if isFirst {
             let resourceArray = ["user_guide01", "user_guide02", "user_guide03", "user_guide04"]
             let guideConfig = GuideConfig(resources: resourceArray)
             window?.rootViewController = GuideViewController(config: guideConfig)
