@@ -79,7 +79,7 @@ class ListViewController: BaseViewController {
             // 容错处理
             guard res != nil else { return }
             
-            if let dic = res {
+            if let dic = res as? [String: Any] {
                 let errorCode = dic["error_code"] as! Int
                 guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
                 
