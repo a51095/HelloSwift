@@ -12,8 +12,8 @@ struct AppURL {
     private static let juheUrl: String  = "http://v.juhe.cn/"
     /// 聚合头条
     static let toutiaoUrl: String  = juheUrl + "toutiao/index"
-    /// unsplash免费api
-    private static let unsplashUrl: String  = "https://api.unsplash.com/"
-    /// 随机图片数组
-    static let photosUrl: String  = unsplashUrl + "photos/?client_id=" + AppKey.unsplashKey
+    /// pexels免费api
+    private static let pexelsUrl: String  = "https://api.pexels.com/"
+    /// 图片数组
+    static let photosUrl: String  = pexelsUrl + "v1/curated"
 }
