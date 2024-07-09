@@ -38,7 +38,8 @@ struct Examples {
         Example(title: "CountDown", description: "An SMS countdown presentation", aClass: ExampleCountDownViewController.self),
         Example(title: "DragView", description: "An Drag View presentation", aClass: ExampleDragViewController.self),
         Example(title: "ScaleAspectView", description: "An ScaleAspect View presentation", aClass: ExampleScaleAspectViewController.self),
-        Example(title: "RandomCodeView", description: "An RandomCode View presentation", aClass: ExampleRandomCodeViewController.self)
+        Example(title: "RandomCodeView", description: "An RandomCode View presentation", aClass: ExampleRandomCodeViewController.self),
+        Example(title: "WaterfallLayoutView", description: "An WaterfallLayout View presentation", aClass: ExampleWaterfallLayoutViewController.self)
     ]
 
     static let moduleExamples = [
