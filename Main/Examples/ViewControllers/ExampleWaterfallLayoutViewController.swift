@@ -98,8 +98,9 @@ class WaterfallLayout: UICollectionViewLayout {
 class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol {
     
     private var currentPage = 1
+    private var isTopViewHidden = false
     private var dataSource = [LargeModel]()
-
+    
     private lazy var collectionView: UICollectionView = {
         let layout = WaterfallLayout()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
@@ -168,5 +169,33 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UIColl
         let currentOffsetY = scrollView.contentOffset.y
         let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
         if currentOffsetY > maximumOffset - scrollView.contentInset.bottom { fetchPhotos() }
+        
+        if currentOffsetY > topView.frame.size.height {
+            if !isTopViewHidden {
+                isTopViewHidden = true
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.topView.alpha = 0.5
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.25) {
+                        self.topView.alpha = 0
+                        self.backButton.isHidden = true
+                        self.topView.transform = CGAffineTransform(translationX: 0, y: -80)
+                    }
+                })
+            }
+        } else {
+            if isTopViewHidden {
+                isTopViewHidden = false
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.topView.alpha = 0.5
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.25) {
+                        self.topView.alpha = 1
+                        self.backButton.isHidden = false
+                        self.topView.transform = .identity
+                    }
+                })
+            }
+        }
     }
 }
