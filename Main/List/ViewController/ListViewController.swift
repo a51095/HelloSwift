@@ -38,14 +38,14 @@ class ListViewController: BaseViewController {
         guard isReachable else { return }
         
         let topView = ItemView()
-        topView.didSeletedBlock = { type in
+        topView.didSelectBlock = { type in
             self.currentNewsType = type
             self.getNewsData(type: type)
         }
         
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop(0))
+            make.top.equalTo(kSafeMarginTop())
             make.height.equalTo(60)
             make.left.right.equalToSuperview()
         }

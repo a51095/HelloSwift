@@ -97,12 +97,13 @@ class WaterfallLayout: UICollectionViewLayout {
 
 class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol {
     
-    var dataSource = [LargeModel]()
-    var currentPage = 1
-    
-    lazy var collectionView: UICollectionView = {
+    private var currentPage = 1
+    private var dataSource = [LargeModel]()
+
+    private lazy var collectionView: UICollectionView = {
         let layout = WaterfallLayout()
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         collectionView.register(WaterfallLayoutCell.self, forCellWithReuseIdentifier: WaterfallLayoutCell.classString)
@@ -111,7 +112,6 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addBackButton()
         self.initSubview()
         self.fetchPhotos()
     }
@@ -120,7 +120,7 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         super.initSubview()
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(kSafeMarginTop(44))
+            make.top.equalTo(backButton.snp_bottomMargin)
             make.left.bottom.right.equalToSuperview()
         }
     }
@@ -137,7 +137,6 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         NetworkRequest(url: AppURL.photosUrl, headers: headers, parameters: parameters) { res in
             if let dictionary = res as? [String: Any] {
                 if let model = PhotosModel.deserialize(from: dictionary) {
-                    
                     if let photos = model.photos {
                         for photo in photos {
                             if let largeUrl = photo.src?["large"] as? String {
@@ -153,7 +152,7 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     }
 }
 
-extension ExampleWaterfallLayoutViewController: UICollectionViewDataSource {
+extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         dataSource.count
     }
@@ -163,5 +162,11 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDataSource {
         let model = dataSource[indexPath.item]
         cell.reloadCell(item: model)
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffsetY = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if currentOffsetY > maximumOffset - scrollView.contentInset.bottom { fetchPhotos() }
     }
 }

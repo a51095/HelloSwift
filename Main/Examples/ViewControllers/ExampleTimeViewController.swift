@@ -30,7 +30,7 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
 			button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
-            button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(didSelect(button:)), for: .touchUpInside)
             button.snp.makeConstraints { (make) in
                 make.size.equalTo(CGSize(width: 280, height: limitH))
             }
@@ -49,7 +49,7 @@ class ExampleTimeViewController: BaseViewController, ExampleProtocol {
         }
     }
     
-    @objc func didSeleted(button: UIButton) {
+    @objc func didSelect(button: UIButton) {
         switch button.tag {
         case 101:
             timer.start { kPrint("开始循环定时器任务") }

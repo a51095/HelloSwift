@@ -1,13 +1,19 @@
 class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
     /// 懒加载顶部视图(默认白色背景)
-    lazy var topView = UIView()
+    lazy var topView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.isUserInteractionEnabled = true
+        return view
+    }()
 
     /// 懒加载返回按钮(默认黑色箭头)
     lazy var backButton: UIButton = {
-        let b = UIButton()
-        b.contentEdgeInsets = UIEdgeInsets(top: 20, left: 10, bottom: 0, right: 10)
-        b.addTarget(self, action: #selector(backButtonDidSeleted), for: .touchUpInside)
-        return b
+        let button = UIButton()
+        button.setImage(UIImage(named: "vc_back_black"), for: .normal)
+        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        button.addTarget(self, action: #selector(backButtonDidSelect), for: .touchUpInside)
+        return button
     }()
 
     override func viewDidLoad() {
@@ -31,41 +37,26 @@ extension BaseViewController {
         view.backgroundColor = color
     }
 
-    /// 添加自定义顶部视图
-    /// - Parameters:
-    ///   - safeHeight: 安全高度
-    ///   - color: 背景色，默认白色
-    func addTopView(_ safeHeight: Int = 44, _ color: UIColor = .white) {
-        let autoY = kSafeMarginTop(safeHeight)
+    /// 自定义顶部视图
+    func addTopView() {
         view.addSubview(topView)
-        topView.backgroundColor = color
-        topView.snp.makeConstraints { make in
-            make.height.equalTo(autoY)
-            make.top.left.right.equalToSuperview()
-        }
+        topView.translatesAutoresizingMaskIntoConstraints = false
+        topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        topView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        topView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
 
-    /// 添加自定义返回按钮
-    /// - Parameters:
-    ///   - safeHeight: 安全高度
-    ///   - image: 默认黑色
-    func addBackButton(_ safeHeight: Int = 44, _ image: UIImage? = UIImage(named: "vc_back_black")) {
-        if topView.superview != nil {
-            topView.addSubview(backButton)
-        } else {
-            view.addSubview(backButton)
-        }
-
-        backButton.setImage(image, for: .normal)
-        let autoY = kSafeMarginTop(safeHeight) / 2
-        backButton.snp.makeConstraints { make in
-            make.centerY.equalTo(autoY)
-            make.left.equalToSuperview()
-        }
+    /// 自定义返回按钮
+    func addBackButton() {
+        view.addSubview(backButton)
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.leftAnchor.constraint(equalTo: topView.leftAnchor).isActive = true
+        backButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
     }
 
     /// 自定义返回按钮事件
-    @objc func backButtonDidSeleted() {
+    @objc func backButtonDidSelect() {
         if self.navigationController?.visibleViewController != nil {
             self.navigationController?.popViewController(animated: true)
         }
@@ -90,15 +81,15 @@ enum DialogType {
 
     var leftLabel: String {
         switch self {
-        case .okCancel: ""
-        case .yesNo: ""
+        case .okCancel: "Ok"
+        case .yesNo: "Yes"
         }
     }
 
     var rightLabel: String {
         switch self {
-        case .okCancel: ""
-        case .yesNo: ""
+        case .okCancel: "Cancel"
+        case .yesNo: "No"
         }
     }
 }

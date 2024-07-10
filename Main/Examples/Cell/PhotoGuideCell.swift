@@ -38,7 +38,7 @@ class PhotoGuideCell: UITableViewCell {
         }
         
         statueImageView.isHidden = true
-        statueImageView.image = UIImage(named: "photo_guide_seleted")
+        statueImageView.image = UIImage(named: "photo_guide_select")
         statueImageView.layer.masksToBounds = true
         statueImageView.contentMode = .scaleAspectFit
         contentView.addSubview(statueImageView)

@@ -41,7 +41,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         button.titleLabel?.font = kRegularFont(16)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .hexColor("#000000", 0.8)
-        button.addTarget(self, action: #selector(skipButtonDidSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(skipButtonDidSelect), for: .touchUpInside)
         return button
     }()
     
@@ -53,7 +53,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         button.titleLabel?.font = kRegularFont(16)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .hexColor("#000000", 0.8)
-        button.addTarget(self, action: #selector(startButtonDidSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(startButtonDidSelect), for: .touchUpInside)
         return button
     }()
     
@@ -130,7 +130,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 添加跳过按钮skipButton
     private func addSkipButton() {
         view.addSubview(skipButton)
-        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kSafeMarginTop(0), width: 70, height: 30)
+        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kSafeMarginTop(), width: 70, height: 30)
     }
     
     /// 添加开始按钮startButton
@@ -177,11 +177,11 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         (pageControl.currentPage == displayCount - 1) ? displayAnimation() : hideAnimation()
     }
     
-    @objc func skipButtonDidSeleted() {
+    @objc func skipButtonDidSelect() {
         setRootViewController()
     }
     
-    @objc func startButtonDidSeleted() {
+    @objc func startButtonDidSelect() {
         setRootViewController()
     }
 }

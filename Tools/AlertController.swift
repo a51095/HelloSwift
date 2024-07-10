@@ -79,7 +79,7 @@ final class AlertController: UIViewController {
             button.tag = idx + 100
             button.setTitle(item.title, for: .normal)
             button.setTitleColor(item.color, for: .normal)
-            button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(didSelect(button:)), for: .touchUpInside)
             buttonArray.append(button)
         }
         
@@ -180,7 +180,7 @@ final class AlertController: UIViewController {
     }
     
     /// aAction点击事件
-    @objc func didSeleted(button: UIButton) {
+    @objc func didSelect(button: UIButton) {
         self.dismiss(animated: true) {
             let action = self.alertAction[button.tag - 100]
             action.handler?()

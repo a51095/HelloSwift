@@ -36,7 +36,7 @@ class ExampleSymbolViewController: BaseViewController, ExampleProtocol {
         button.setTitle("随机图片", for: .normal)
         button.layer.cornerRadius = 8
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(didSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(didSelect), for: .touchUpInside)
         view.addSubview(button)
         button.snp.makeConstraints { (make) in
             make.height.equalTo(50)
@@ -54,7 +54,7 @@ class ExampleSymbolViewController: BaseViewController, ExampleProtocol {
         }
     }
 
-    @objc func didSeleted(button: UIButton) {
+    @objc func didSelect(button: UIButton) {
         randomIcon()
     }
 

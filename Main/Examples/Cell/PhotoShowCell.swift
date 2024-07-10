@@ -38,8 +38,8 @@ class PhotoShowCell: UICollectionViewCell {
         
         contentView.addSubview(statueButton)
         statueButton.setImage(UIImage(named: "photo_guide_normal"), for: .normal)
-        statueButton.setImage(UIImage(named: "photo_guide_seleted"), for: .selected)
-        statueButton.addTarget(self, action: #selector(statueButtonDidSeleted), for: .touchUpInside)
+        statueButton.setImage(UIImage(named: "photo_guide_select"), for: .selected)
+        statueButton.addTarget(self, action: #selector(statueButtonDidSelect), for: .touchUpInside)
         statueButton.snp.makeConstraints { make in
             make.top.equalTo(10)
             make.right.equalTo(-10)
@@ -60,7 +60,7 @@ class PhotoShowCell: UICollectionViewCell {
         photoImageView.image = item.image
     }
     
-    @objc func statueButtonDidSeleted() {
+    @objc func statueButtonDidSelect() {
         statueButton.isSelected =  !statueButton.isSelected
         
         if statueButton.isSelected {

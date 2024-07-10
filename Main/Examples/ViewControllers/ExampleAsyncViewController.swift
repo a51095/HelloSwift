@@ -29,7 +29,7 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
             button.setTitle(buttonTitleArray[idx - 1], for: .normal)
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
-            button.addTarget(self, action: #selector(didSeleted(button:)), for: .touchUpInside)
+            button.addTarget(self, action: #selector(didSelect(button:)), for: .touchUpInside)
             button.snp.makeConstraints { (make) in
                 make.size.equalTo(CGSize(width: 200, height: limitH))
             }
@@ -50,7 +50,7 @@ class ExampleAsyncViewController: BaseViewController, ExampleProtocol {
         }
     }
 
-    @objc func didSeleted(button: UIButton) {
+    @objc func didSelect(button: UIButton) {
         switch button.tag {
         case 101:
             fetchDataWithCallback { result in

@@ -61,7 +61,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         let button = UIButton()
         button.setImage(UIImage(named: "ad_mute"), for: .selected)
         button.setImage(UIImage(named: "ad_restore"), for: .normal)
-        button.addTarget(self, action: #selector(muteButtonDidSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(muteButtonDidSelect), for: .touchUpInside)
         return button
     }()
 
@@ -71,7 +71,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
         button.layer.cornerRadius = 4
         button.backgroundColor = .hexColor("#000000", 0.5)
         button.titleLabel?.font = UIFont(name: "Arial", size: 16.0)
-        button.addTarget(self, action: #selector(skipButtonDidSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(skipButtonDidSelect), for: .touchUpInside)
         return button
     }()
 
@@ -139,7 +139,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
 
     override func initSubview() {
         // 添加手势
-        let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSeleted))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(adViewDidSelect))
         view.addGestureRecognizer(tap)
 
         switch adConfig.type {
@@ -159,7 +159,7 @@ class AdViewController: BaseViewController, CountDownProtocol {
             view.addSubview(muteButton)
             muteButton.snp.makeConstraints { make in
                 make.left.equalTo(kScaleWidth(36))
-                make.top.equalTo(kSafeMarginTop(0))
+                make.top.equalTo(kSafeMarginTop())
             }
         }
     }
@@ -356,16 +356,16 @@ class AdViewController: BaseViewController, CountDownProtocol {
     }
 
     /// 跳过事件
-    @objc private func skipButtonDidSeleted() { dismiss() }
+    @objc private func skipButtonDidSelect() { dismiss() }
 
     /// 静音事件
-    @objc private func muteButtonDidSeleted() {
+    @objc private func muteButtonDidSelect() {
         muteButton.isSelected = !muteButton.isSelected
         adPlayerController.player?.isMuted = muteButton.isSelected
     }
 
     /// 广告连接
-    @objc private func adViewDidSeleted() {
+    @objc private func adViewDidSelect() {
         // 容错处理
         guard adConfig.linkUrl != nil else { return }
         dismiss()

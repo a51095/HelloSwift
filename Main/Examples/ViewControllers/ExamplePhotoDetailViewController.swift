@@ -32,9 +32,12 @@ class ExamplePhotoDetailViewController: BaseViewController {
         case .Live: addLivePhotoView(asset: source)
         case .Video: addPlayerController(asset: source)
         }
-        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.initSubview()
         hidesBottomBarWhenPushed = true
-        addBackButton()
     }
     
     private func addImageView(type: PhotoType, asset: PHAsset) {

@@ -25,7 +25,7 @@ final class DragView: UIView {
 		return i
 	}()
 
-	public var didSeletedBlock: os_block_t?
+	public var didSelectBlock: os_block_t?
 
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -90,7 +90,7 @@ final class DragView: UIView {
 	@objc private func dragViewDidClick() {
 		// 隐藏悬浮按钮
 		hiddenDragView()
-		didSeletedBlock?()
+		didSelectBlock?()
 		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 			self.showDragView()
 		}

@@ -66,7 +66,7 @@ class ItemView: UIView {
     var defaultSel: Int = 1
     /// 新闻类型数据源
     private var dataSource = [ItemModel]()
-    var didSeletedBlock: ((String) -> Void)?
+    var didSelectBlock: ((String) -> Void)?
     
     private var flowLayout = UICollectionViewFlowLayout()
     private var disPlayCollectionView: UICollectionView!
@@ -140,7 +140,7 @@ extension ItemView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        didSeletedBlock?(dataSource[indexPath.item].type)
+        didSelectBlock?(dataSource[indexPath.item].type)
         scrollToItem(at: indexPath)
     }
 }

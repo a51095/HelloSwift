@@ -1,7 +1,7 @@
 class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
 
     /// 当前选中的第N个相薄源(默认选中第一个)
-    private var seletedIndex = IndexPath(row: 0, section: 0)
+    private var selectIndex = IndexPath(row: 0, section: 0)
     /// 数据源(guideTableView)
     private var albumSource = [AlbumModel]()
     /// 数据源(photoCollectionView)
@@ -16,7 +16,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         button.setTitleColor(.black, for: .selected)
         button.setImage(UIImage(named: "photo_arrow_up"), for: .selected)
         button.setImage(UIImage(named: "photo_arrow_down"), for: .normal)
-        button.addTarget(self, action: #selector(titleButtonDidSeleted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(titleButtonDidSelect), for: .touchUpInside)
         return button
     }()
     /// item限定间距
@@ -131,13 +131,13 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
 
         view.addSubview(photoCollectionView)
         photoCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop(36))
+            make.top.equalTo(topView.snp_bottomMargin)
             make.left.bottom.right.equalToSuperview()
         }
         
         view.addSubview(guideTableView)
         guideTableView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop(36))
+            make.top.equalTo(topView.snp_bottomMargin)
             make.left.bottom.right.equalToSuperview()
         }
 
@@ -206,7 +206,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     /// 展示可选相薄视图
     private func displayAnimate() {
         titleButton.isSelected = false
-        guideTableView.selectRow(at: seletedIndex, animated: true, scrollPosition: .none)
+        guideTableView.selectRow(at: selectIndex, animated: true, scrollPosition: .none)
         guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 1
@@ -224,7 +224,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 切换相薄
-    @objc func titleButtonDidSeleted() {
+    @objc func titleButtonDidSelect() {
         titleButton.isSelected ? displayAnimate() : hideAnimate()
     }
     
@@ -258,8 +258,7 @@ extension ExamplePhotoAlbumViewController: UITableViewDelegate, UITableViewDataS
         hideAnimate()
         let item = albumSource[indexPath.row]
         titleButton.setTitle(item.title, for: .normal)
-        seletedIndex = indexPath
-//        titleButton.adjustImageTitlePosition(.right, spacing: 5)
+        selectIndex = indexPath
         fetchResult(item)
     }
 }

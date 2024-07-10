@@ -62,9 +62,9 @@ var kTopNavigationController: UINavigationController {
 }
 
 /// 顶部安全间距
-func kSafeMarginTop(_ top: Int) -> Int { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top.i)! }
+func kSafeMarginTop(_ top: Int = 0) -> Int { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top.i)! }
 /// 底部安全间距
-func kSafeMarginBottom(_ bottom: Int) -> Int { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom.i)! }
+func kSafeMarginBottom(_ bottom: Int = 0) -> Int { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom.i)! }
 /// 等比例设计尺寸宽(以375为基准)
 func kScaleWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
 /// 等比例设计尺寸高(以667为基准)
