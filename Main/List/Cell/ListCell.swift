@@ -15,7 +15,7 @@ class ListCell: UITableViewCell {
     /// 新闻标题
     private var titleLabel = UILabel()
     /// 新闻发布时间
-    private var timeLabel = UILabel()
+    private var dateLabel = UILabel()
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -40,9 +40,9 @@ class ListCell: UITableViewCell {
             make.width.equalTo(120)
         }
 
-        timeLabel.font = kRegularFont(16)
-        contentView.addSubview(timeLabel)
-        timeLabel.snp.makeConstraints { (make) in
+        dateLabel.font = kRegularFont(16)
+        contentView.addSubview(dateLabel)
+        dateLabel.snp.makeConstraints { (make) in
             make.left.equalTo(10)
             make.bottom.equalToSuperview()
         }
@@ -54,7 +54,7 @@ class ListCell: UITableViewCell {
             make.left.equalTo(10)
             make.top.equalTo(10)
             make.right.equalTo(preImageView.snp.left).offset(-10)
-            make.bottom.equalTo(timeLabel.snp.top).offset(-10)
+            make.bottom.equalTo(dateLabel.snp.top).offset(-10)
         }
 
         let lineView = UIView()
@@ -70,8 +70,8 @@ class ListCell: UITableViewCell {
 
     func reloadCell(item: ListModel) {
         preImageView.kf.indicatorType = .activity
-        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s!), placeholder: UIImage(named: "placeholder_list_cell_img"))
+        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s), placeholder: UIImage(named: "placeholder_list_cell_img"))
         titleLabel.text = item.title
-        timeLabel.text = item.date
+        dateLabel.text = item.date
     }
 }

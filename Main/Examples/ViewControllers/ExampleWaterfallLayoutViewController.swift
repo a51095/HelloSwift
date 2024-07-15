@@ -1,17 +1,9 @@
 import UIKit
-import HandyJSON
 import Foundation
+import SwiftyJSON
 
-struct PhotosModel: HandyJSON {
-    var photos: [SrcModel]?
-}
-
-struct SrcModel: HandyJSON {
-    var src: [String: Any]?
-}
-
-struct LargeModel: HandyJSON {
-    var large: String?
+struct LargeModel {
+    var large: String
 }
 
 class WaterfallLayoutCell: UICollectionViewCell {
@@ -33,7 +25,7 @@ class WaterfallLayoutCell: UICollectionViewCell {
     
     func reloadCell(item: LargeModel) {
         photoImageView.kf.indicatorType = .activity
-        photoImageView.kf.setImage(with: URL(string: item.large!), placeholder: UIImage(named: "placeholder_list_cell_img"))
+        photoImageView.kf.setImage(with: URL(string: item.large), placeholder: UIImage(named: "placeholder_list_cell_img"))
     }
 }
 
@@ -128,17 +120,12 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         let parameters: [String: Any] = ["page": currentPage, "per_page": 20]
         NetworkRequest(url: AppURL.photosUrl, headers: headers, parameters: parameters) { res in
             if let dictionary = res as? [String: Any] {
-                if let model = PhotosModel.deserialize(from: dictionary) {
-                    if let photos = model.photos {
-                        for photo in photos {
-                            if let largeUrl = photo.src?["large"] as? String {
-                                let largeModel = LargeModel(large: largeUrl)
-                                self.dataSource.append(largeModel)
-                                self.reloadDataIfNeed()
-                            }
-                        }
-                    }
+                let json = JSON(dictionary)
+                let arrayUrls =  json["photos"].arrayValue.map { $0["src"]["large"].stringValue }
+                for url in arrayUrls {
+                    self.dataSource.append(LargeModel(large: url))
                 }
+                self.reloadDataIfNeed()
             }
         }
     }

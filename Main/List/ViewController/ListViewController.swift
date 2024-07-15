@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Foundation
 
 class ListViewController: BaseViewController {
@@ -79,21 +80,22 @@ class ListViewController: BaseViewController {
             // 容错处理
             guard res != nil else { return }
             
-            if let dic = res as? [String: Any] {
-                let errorCode = dic["error_code"] as! Int
+            if let dictionary = res as? [String: Any] {
+                let errorCode = dictionary["error_code"] as! Int
                 guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
                 
                 // 先移除上一个数据源，再添加新的数据源
                 self.listSource.removeAll()
                 
-                let result = dic["result"] as! [String: Any]
-                let data = result["data"] as! [[String: Any]]
-                for item in data {
-                    let model = ListModel.deserialize(from: item)
-                    if (model?.thumbnail_pic_s!.count)! > 0 {
-                        self.listSource.append(model!)
+                let json = JSON(dictionary)
+                let dataArray = json["result"]["data"].arrayValue
+                for item in dataArray {
+                    let model = ListModel(title: item["title"].stringValue, date: item["date"].stringValue.before(16), thumbnail_pic_s: item["thumbnail_pic_s"].stringValue)
+                    if (model.thumbnail_pic_s.count) > 0 {
+                        self.listSource.append(model)
                     }
                 }
+                
                 self.listTableView.reloadData()
             }
         }

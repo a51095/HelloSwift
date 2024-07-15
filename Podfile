@@ -19,7 +19,7 @@ def swiftPods
   pod 'Cache', '6.0.0'
   pod 'SnapKit', '5.7.1'
   pod 'Alamofire', '5.9.1'
-  pod 'HandyJSON', '5.0.0'
+  pod 'SwiftyJSON', '5.0.2'
   pod 'Kingfisher', '7.11.0'
 end
 

@@ -89,13 +89,13 @@ extension String {
 // 字符串截取
 extension String {
     /// at之前的String
-    func format(before at: Int) -> String { (self as NSString).substring(to: at) }
+    func before(_ at: Int) -> String { (self as NSString).substring(to: at) }
     
     /// at之后的String
-    func format(after at: Int) -> String { (self as NSString).substring(from: at) }
+    func after(_ at: Int) -> String { (self as NSString).substring(from: at) }
     
     /// 区间范围String
-    func format(range location: Int, length: Int) -> String {
+    func range(_ location: Int, length: Int) -> String {
         (self as NSString).substring(with: NSRange(location: location, length: length))
     }
 }
