@@ -121,10 +121,8 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         NetworkRequest(url: AppURL.photosUrl, headers: headers, parameters: parameters) { res in
             if let dictionary = res as? [String: Any] {
                 let json = JSON(dictionary)
-                let arrayUrls =  json["photos"].arrayValue.map { $0["src"]["large"].stringValue }
-                for url in arrayUrls {
-                    self.dataSource.append(LargeModel(large: url))
-                }
+                let arrayUrls =  json["photos"].arrayValue.map { LargeModel(large: $0["src"]["large"].stringValue) }
+                self.dataSource.append(contentsOf: arrayUrls)
                 self.reloadDataIfNeed()
             }
         }

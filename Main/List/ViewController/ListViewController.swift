@@ -46,8 +46,8 @@ class ListViewController: BaseViewController {
         
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
-            make.top.equalTo(kSafeMarginTop())
             make.height.equalTo(60)
+            make.top.equalTo(kSafeMarginTop())
             make.left.right.equalToSuperview()
         }
         
@@ -70,6 +70,11 @@ class ListViewController: BaseViewController {
         self.getNewsData(type: self.currentNewsType)
     }
     
+    private func reloadDataIfNeed() {
+        guard !listSource.isEmpty else { return }
+        self.listTableView.reloadData()
+    }
+    
     /// 获取新闻数据
     func getNewsData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
         
@@ -88,15 +93,13 @@ class ListViewController: BaseViewController {
                 self.listSource.removeAll()
                 
                 let json = JSON(dictionary)
-                let dataArray = json["result"]["data"].arrayValue
-                for item in dataArray {
-                    let model = ListModel(title: item["title"].stringValue, date: item["date"].stringValue.before(16), thumbnail_pic_s: item["thumbnail_pic_s"].stringValue)
-                    if (model.thumbnail_pic_s.count) > 0 {
-                        self.listSource.append(model)
-                    }
+                let models = DataModel(jsonData: json).data.map {
+                    ListModel(jsonData: $0)
+                }.filter {
+                    $0.thumbnail_pic_s.count > 0
                 }
-                
-                self.listTableView.reloadData()
+                self.listSource.append(contentsOf: models)
+                self.reloadDataIfNeed()
             }
         }
     }

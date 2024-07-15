@@ -6,7 +6,6 @@
 @_exported import PhotosUI
 @_exported import Alamofire
 @_exported import MJRefresh
-@_exported import HandyJSON
 @_exported import Kingfisher
 @_exported import Foundation
 @_exported import CoreLocation

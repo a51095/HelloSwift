@@ -1,5 +1,5 @@
 class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
-
+    
     /// 当前选中的第N个相薄源(默认选中第一个)
     private var selectIndex = IndexPath(row: 0, section: 0)
     /// 数据源(guideTableView)
@@ -119,16 +119,16 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
             }
         }
     }
-        
+    
     override func initSubview() {
         addTopView()
         addBackButton()
-
+        
         topView.addSubview(titleButton)
         titleButton.snp.makeConstraints { make in
             make.centerX.bottom.equalToSuperview()
         }
-
+        
         view.addSubview(photoCollectionView)
         photoCollectionView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp_bottomMargin)
@@ -140,7 +140,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
             make.top.equalTo(topView.snp_bottomMargin)
             make.left.bottom.right.equalToSuperview()
         }
-
+        
         guideTableView.alpha = 0
         guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
     }
@@ -165,42 +165,39 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         options.deliveryMode = .highQualityFormat
         
         item.fetchResult.enumerateObjects { asset, _, _ in
-            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImg, _ in
-
-                if asset.mediaType == .image, let img = resImg {
-                    
-                    // 通用照片
-                    if asset.mediaSubtypes.rawValue == 0 {
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
+            PHImageManager.default().requestImage(for: asset, targetSize: self.targetSize, contentMode: .aspectFill, options: options) { resImage, _ in
+                
+                guard let image = resImage else { return }
+                
+                var photoType: PhotoType = .Image
+                
+                if asset.mediaType == .image {
+                    switch asset.mediaSubtypes {
+                    case []:
+                        // 通用照片
+                        photoType = .Image
+                    case .photoHDR:
+                        // HDR
+                        photoType = .Image
+                    case .photoScreenshot:
+                        // 截图
+                        photoType = .Image
+                    default:
+                        if asset.mediaSubtypes.rawValue == 64 {
+                            // GIF
+                            photoType = .Gif
+                        } else if asset.mediaSubtypes.rawValue == 520 {
+                            // Live Photo
+                            photoType = .Live
+                        }
                     }
-                    
-                    // HDR
-                    if asset.mediaSubtypes == .photoHDR {
-                        // photoHDR
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
-                    }
-                    
-                    // 截图
-                    if asset.mediaSubtypes == .photoScreenshot {
-                        self.photoSource.append(PhotoModel(type: .Image, image: img, asset: asset))
-                    }
-                    
-                    // GIF
-                    if asset.mediaSubtypes.rawValue == 64 {
-                        self.photoSource.append(PhotoModel(type: .Gif, image: img, asset: asset))
-                    }
-                    
-                    // live
-                    if asset.mediaSubtypes.rawValue == 520 {
-                        self.photoSource.append(PhotoModel(type: .Live, image: img, asset: asset))
-                    }
-                    
-                } else if asset.mediaType == .video, let img = resImg {
-                    self.photoSource.append(PhotoModel(type: .Video, image: img, asset: asset))
+                } else if asset.mediaType == .video {
+                    photoType = .Video
                 }
+                self.photoSource.append(PhotoModel(type: photoType, image: image, asset: asset))
+                self.photoCollectionView.reloadData()
             }
         }
-        photoCollectionView.reloadData()
     }
     
     /// 展示可选相薄视图

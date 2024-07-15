@@ -56,17 +56,3 @@ final class Cache {
     /// 移除所有缓存
     static func removeAll() { try? manager.removeAll() }
 }
-
-extension HandyJSON {
-    /// 取值(模型)
-    static func getCache(forKey key: String) -> Self? {
-        let jsonString = Cache.string(by: key)
-        return Self.deserialize(from: jsonString)
-    }
-    
-    /// 存值(模型)
-    func setCache(forKey key: String) {
-        guard let jsonString = toJSONString() else { return }
-        Cache.setString(jsonString, forKey: key)
-    }
-}
