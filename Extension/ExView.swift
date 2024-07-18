@@ -1,18 +1,9 @@
 extension UIView {
     /// 获取当前view所属vc
-    func currentViewController() -> UIViewController? {
-        var nextResponder: UIResponder? = self
-    
-        while let responder = nextResponder {
-            if let viewController = responder as? UIViewController {
-                return viewController
-            }
-            nextResponder = responder.next
-        }
-    
-        return nil
+    var currentViewController: UIViewController? {
+        nextResponder(ofType: UIViewController.self)
     }
-
+    
     /// 将View转换为UIImage(屏幕截图)
     func toImage() -> UIImage? {
         // 检查视图大小是否有效

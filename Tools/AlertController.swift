@@ -199,6 +199,6 @@ extension UIViewController {
 extension UIView {
     /// alert弹框(view中触发)
     func alert(_ title: String?, _ message: String?, _ actions: [Action] ) {
-        currentViewController()?.alert(title, message, actions)
+        currentViewController?.alert(title, message, actions)
     }
 }
