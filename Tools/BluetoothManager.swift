@@ -97,8 +97,8 @@ extension BluetoothManager {
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let data = characteristic.value {
-            let stringValue = String(data: data, encoding: .utf8)
-            print("Received data: \(stringValue ?? "N/A")")
+            let stringValue = String(decoding: data, as: UTF8.self)
+            print("Received data: \(stringValue)")
         }
     }
 }
