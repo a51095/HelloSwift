@@ -31,12 +31,12 @@ extension AppDelegate: NetworkStatus {
     }
 
     private func configLocalization() {
-        if let cacheLanguegeString = Cache.string(by: AppKey.localizationKey) {
-            let cacheLanguegeCode = LanguageCode(rawValue: cacheLanguegeString)!
-            kLocalization = LanguageCode.settingLanguage(by: cacheLanguegeCode)
+        if let cacheLanguageString = Cache.string(by: AppKey.localizationKey),
+           let cacheLanguageCode = LanguageCode(rawValue: cacheLanguageString) {
+            kLocalization = LanguageCode.settingLanguage(by: cacheLanguageCode)
         } else {
-            let preferredLanguegeCode = LanguageCode.fetchPreferredLanguageCode()
-            kLocalization = LanguageCode.settingLanguage(by: preferredLanguegeCode)
+            let preferredLanguageCode = LanguageCode.fetchPreferredLanguageCode()
+            kLocalization = LanguageCode.settingLanguage(by: preferredLanguageCode)
         }
     }
 
