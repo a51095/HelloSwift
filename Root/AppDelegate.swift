@@ -35,7 +35,7 @@ extension AppDelegate: NetworkStatus {
             let cacheLanguegeCode = LanguageCode(rawValue: cacheLanguegeString)!
             kLocalization = LanguageCode.settingLanguage(by: cacheLanguegeCode)
         } else {
-            let preferredLanguegeCode = LanguageCode.fetchPreferredLanguegeCode()
+            let preferredLanguegeCode = LanguageCode.fetchPreferredLanguageCode()
             kLocalization = LanguageCode.settingLanguage(by: preferredLanguegeCode)
         }
     }

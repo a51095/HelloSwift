@@ -7,7 +7,7 @@ enum LanguageCode: String, CaseIterable {
 extension LanguageCode {
     private static let traditionalChinese = "Hant"
 
-    static func fetchPreferredLanguegeCode() -> LanguageCode {
+    static func fetchPreferredLanguageCode() -> LanguageCode {
         let languages = LanguageCode.AllCases()
         guard let preferredLanguage = Locale.preferredLanguages.first,
               let code = preferredLanguage.components(separatedBy: "-").first,
