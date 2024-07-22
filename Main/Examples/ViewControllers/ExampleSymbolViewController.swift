@@ -25,6 +25,7 @@ class ExampleSymbolViewController: BaseViewController, ExampleProtocol {
             let modified = randomImage?.applyingSymbolConfiguration(config)
             let coloredImage = modified?.withTintColor(UIColor.lightGray, renderingMode: .alwaysOriginal)
             iconImageView.image = coloredImage
+            iconImageView.contentMode = .scaleAspectFit
         }
     }
 
