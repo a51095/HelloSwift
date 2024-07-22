@@ -98,14 +98,14 @@ enum DialogType {
     case yesNo
     case okCancel
 
-    var leftLabel: String {
+    var leftText: String {
         switch self {
         case .okCancel: "Ok"
         case .yesNo: "Yes"
         }
     }
 
-    var rightLabel: String {
+    var rightText: String {
         switch self {
         case .okCancel: "Cancel"
         case .yesNo: "No"
@@ -131,10 +131,10 @@ extension BaseProtocol {
 
     func alert(title: String? = nil, message: String, dialogType: DialogType, okCallback: os_block_t? = nil, cancelCallback: os_block_t? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: dialogType.leftLabel, style: .default) { _ in
+        let okAction = UIAlertAction(title: dialogType.leftText, style: .default) { _ in
             okCallback?()
         }
-        let cancelAction = UIAlertAction(title: dialogType.rightLabel, style: .default) { _ in
+        let cancelAction = UIAlertAction(title: dialogType.rightText, style: .default) { _ in
             cancelCallback?()
         }
         alert.addAction(okAction)
