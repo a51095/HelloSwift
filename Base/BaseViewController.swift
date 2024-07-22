@@ -29,6 +29,11 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
 
     /// Initialize data
     func initData() { }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
 }
 
 extension BaseViewController {
@@ -62,6 +67,20 @@ extension BaseViewController {
         }
         self.dismiss(animated: true)
     }
+}
+
+extension BaseViewController {
+    /// 添加前后台监听
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didBecomeActiveNotification), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didEnterBackgroundNotification), name: UIApplication.didEnterBackgroundNotification, object: nil)
+    }
+    
+    /// BecomeActive
+    @objc func didBecomeActiveNotification() { }
+    
+    /// EnterBackground
+    @objc func didEnterBackgroundNotification() { }
 }
 
 struct AlertDialogData {

@@ -58,3 +58,10 @@ extension AppDelegate: NetworkStatus {
         window?.makeKeyAndVisible()
     }
 }
+
+extension AppDelegate {
+    /// BecomeActive
+    func applicationDidBecomeActive(_ application: UIApplication) { }
+    /// EnterBackground
+    func applicationDidEnterBackground(_ application: UIApplication) { }
+}
