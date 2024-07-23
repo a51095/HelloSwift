@@ -2,8 +2,8 @@ import UIKit
 import Foundation
 import SwiftyJSON
 
-struct LargeModel {
-    var large: String
+struct RegularModel {
+    var regular: String
 }
 
 class WaterfallLayoutCell: UICollectionViewCell {
@@ -23,9 +23,9 @@ class WaterfallLayoutCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reloadCell(item: LargeModel) {
+    func reloadCell(item: RegularModel) {
         photoImageView.kf.indicatorType = .activity
-        photoImageView.kf.setImage(with: URL(string: item.large), placeholder: UIImage(named: "placeholder_list_cell_img"))
+        photoImageView.kf.setImage(with: URL(string: item.regular), placeholder: UIImage(named: "placeholder_list_cell_img"))
     }
 }
 
@@ -82,7 +82,7 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     
     private var currentPage = 1
     private var isTopViewHidden = false
-    private var dataSource = [LargeModel]()
+    private var dataSource = [RegularModel]()
     
     private lazy var collectionView: UICollectionView = {
         let layout = WaterfallLayout()
@@ -116,12 +116,11 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     }
     
     private func fetchPhotos() {
-        let headers: HTTPHeaders = ["Authorization": AppKey.pexelsKey]
-        let parameters: [String: Any] = ["page": currentPage, "per_page": 20]
-        NetworkRequest(url: AppURL.photosUrl, headers: headers, parameters: parameters) { res in
-            if let dictionary = res as? [String: Any] {
-                let json = JSON(dictionary)
-                let arrayUrls =  json["photos"].arrayValue.map { LargeModel(large: $0["src"]["large"].stringValue) }
+        let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 20]
+        NetworkRequest(url: AppURL.photosUrl, method: .get, parameters: parameters, showErrorMsg: true, encoding: URLEncoding.default, responseType: .array) { res in
+            if let array = res as? [[String: Any]] {
+                let json = JSON(array)
+                let arrayUrls = json.arrayValue.map { RegularModel(regular: $0["urls"]["regular"].stringValue) }
                 self.dataSource.append(contentsOf: arrayUrls)
                 self.reloadDataIfNeed()
             }

@@ -6,6 +6,6 @@ struct AppKey {
     static let hasInstallKey: String = "has_install"
     /// the news key
     static let newsKey: String = "ce7c786dd0f990eabd175663be4b51bd"
-    /// the pexels key
-    static let pexelsKey: String = "Yy5QatjE6u39Rj5SuWwKxW5XlJZ76UlYOEYdEfIMcLrcyRo0nkREdiJm"
+    /// the unsplash key
+    static let unsplashKey: String = "GmDzgvI3nWnKKxyDWX04qF51tlIv9cX6eIBzmsdJhT4"
 }
