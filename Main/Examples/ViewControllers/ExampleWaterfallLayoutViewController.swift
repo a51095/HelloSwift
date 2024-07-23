@@ -111,12 +111,12 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     
     private func reloadDataIfNeed() {
         guard !dataSource.isEmpty else { return }
-        self.collectionView.reloadData()
+        collectionView.reloadData()
         currentPage += 1
     }
     
     private func fetchPhotos() {
-        let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 20]
+        let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 10]
         NetworkRequest(url: AppURL.photosUrl, method: .get, parameters: parameters, showErrorMsg: true, encoding: URLEncoding.default, responseType: .array) { res in
             if let array = res as? [[String: Any]] {
                 let json = JSON(array)
@@ -139,12 +139,9 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UIColl
         cell.reloadCell(item: model)
         return cell
     }
-    
+        
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffsetY = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        if currentOffsetY > maximumOffset - scrollView.contentInset.bottom { fetchPhotos() }
-        
         if currentOffsetY > topView.frame.size.height {
             if !isTopViewHidden {
                 isTopViewHidden = true
@@ -172,5 +169,11 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UIColl
                 })
             }
         }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentOffsetY = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if currentOffsetY > (maximumOffset - scrollView.contentInset.bottom) { fetchPhotos() }
     }
 }
