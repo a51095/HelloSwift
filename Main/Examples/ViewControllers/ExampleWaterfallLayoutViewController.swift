@@ -116,7 +116,7 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     }
     
     private func fetchPhotos() {
-        let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 10]
+        let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 20]
         NetworkRequest(url: AppURL.photosUrl, method: .get, parameters: parameters, showErrorMsg: true, encoding: URLEncoding.default, responseType: .array) { res in
             if let array = res as? [[String: Any]] {
                 let json = JSON(array)
