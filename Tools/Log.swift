@@ -10,19 +10,11 @@ import Foundation
 @available(iOS 13.0, *)
 struct Log {
     private init() { }
-    private static var logManager = LogManager()
-
-    static func start() {
-        if logManager.isRunning { return }
-        logManager.isRunning = true
+    private static var logManager: LogManager = {
+        let logManager = LogManager()
         logManager.start()
-    }
-
-    static func stop() {
-        if !logManager.isRunning { return }
-        logManager.isRunning = false
-        logManager.stop()
-    }
+        return logManager
+    }()
 
     /// 应用程序日志
     static func applicationLog(message: String,
@@ -58,7 +50,6 @@ private protocol LogManagerProtocol: AnyObject {
     func start()
     func stop()
     func updateLogFilePath()
-    var isRunning: Bool { get set }
     func logToCache(props: LogProperties)
 }
 
@@ -87,7 +78,6 @@ private struct LogProperties {
 
 @available(iOS 13.0, *)
 private class LogManager: LogManagerProtocol {
-    var isRunning = false
     private var logFile: LogFile?
     private let logPropsCacheLock = NSLock()
     private var flushTask: Task<Void, Error>?

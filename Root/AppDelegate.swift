@@ -27,7 +27,7 @@ extension AppDelegate: NetworkStatus {
     }
 
     private func debugLog() {
-        if #available(iOS 13.0, *) { Log.start(); Log.debugLog(message: "an debug message") }
+        if #available(iOS 13.0, *) { Log.debugLog(message: "a debug message") }
     }
 
     private func configLocalization() {
