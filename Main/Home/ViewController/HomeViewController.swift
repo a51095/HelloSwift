@@ -17,7 +17,10 @@ class HomeViewController: BaseViewController {
     override func initSubview() {
         view.addSubview(listTableView)
         listTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(self.view.snp.topMargin)
+            make.left.equalTo(self.view.snp.left)
+            make.bottom.equalTo(self.view.snp.bottomMargin)
+            make.right.equalTo(self.view.snp.right)
         }
     }
 }
