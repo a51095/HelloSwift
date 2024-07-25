@@ -55,14 +55,14 @@ final class ToastView: UIView {
         default: return
         }
         
-        limitTop += iconImageView.image!.size.height
+        limitTop = limitTop + iconImageView.image!.size.height + 8
         
         self.addSubview(iconImageView)
         
         iconImageView.sizeToFit()
         iconImageView.translatesAutoresizingMaskIntoConstraints = false
         iconImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
     }
     
     private func configureMessageLabel(_ title: String) {
@@ -79,7 +79,7 @@ final class ToastView: UIView {
 
 extension UIView {
     /// 吐司展示
-    func toast(_ message: String, type: ToastType = .none, delay: TimeInterval = 2) {
+    @MainActor func toast(_ message: String, type: ToastType = .none, delay: TimeInterval = 2) {
         // 容错处理,若message字段无内容,则直接返回
         guard !message.isEmpty else { return }
         // 若当前视图已加载ToastView,则移除后再添加

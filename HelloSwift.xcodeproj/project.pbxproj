@@ -37,6 +37,7 @@
 		82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E065DB29AB6A7100B8F94C /* RootViewController.swift */; };
 		888E69602C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E695F2C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift */; };
 		888E696D2C48BB1500A80A40 /* ExResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E696C2C48BB1500A80A40 /* ExResponder.swift */; };
+		888E69712C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E69702C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift */; };
 		9AB82BA0EB47477D284C9942 /* Pods_HelloSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52573194B085EF0E4E9B8A7 /* Pods_HelloSwift.framework */; };
 		A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */; };
 		A607554E26F5C144008103DA /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A607554D26F5C144008103DA /* PhotoModel.swift */; };
@@ -126,6 +127,7 @@
 		82E065DB29AB6A7100B8F94C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		888E695F2C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleWaterfallLayoutViewController.swift; sourceTree = "<group>"; };
 		888E696C2C48BB1500A80A40 /* ExResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExResponder.swift; sourceTree = "<group>"; };
+		888E69702C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUnsplashDetailViewController.swift; sourceTree = "<group>"; };
 		A607554B26F5BFF6008103DA /* PhotoGuideCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGuideCell.swift; sourceTree = "<group>"; };
 		A607554D26F5C144008103DA /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		A607555126F5F33F008103DA /* PhotoShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoShowCell.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */,
 				3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */,
 				888E695F2C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift */,
+				888E69702C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
 				3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
+				888E69712C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift in Sources */,
 				F7B4485226A1168E0098D2AF /* LoadingView.swift in Sources */,
 				3FFFFE1D29CC4F03001032D0 /* ExCollectionViewCell.swift in Sources */,
 				A66E2EBA26FDDE2000453EB9 /* RandomCodeView.swift in Sources */,

@@ -25,7 +25,10 @@ func NetworkRequest(url: String, method: HTTPMethod = .get, showErrorMsg: Bool =
                 if let array = object as? [[String: Any]] {
                     response(array)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             case .dictionary:
@@ -33,12 +36,18 @@ func NetworkRequest(url: String, method: HTTPMethod = .get, showErrorMsg: Bool =
                 if let dictionary = object as? [String: Any] {
                     response(dictionary)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             }
         case .failure(let error):
-            if showErrorMsg { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure); return }
+            if showErrorMsg {
+                DispatchQueue.main.async { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure) }
+                return
+            }
             response(nil)
         }
     }
@@ -59,7 +68,10 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
                 if let array = object as? [[String: Any]] {
                     response(array)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             case .dictionary:
@@ -67,12 +79,18 @@ func NetworkRequest(url: String, method: HTTPMethod = .post, parameters: [String
                 if let dictionary = object as? [String: Any] {
                     response(dictionary)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             }
         case .failure(let error):
-            if showErrorMsg { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure); return }
+            if showErrorMsg {
+                DispatchQueue.main.async { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure) }
+                return
+            }
             response(nil)
         }
     }
@@ -93,7 +111,10 @@ func NetworkRequest(url: String, headers: HTTPHeaders? = nil, parameters: [Strin
                 if let array = object as? [[String: Any]] {
                     response(array)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             case .dictionary:
@@ -101,12 +122,18 @@ func NetworkRequest(url: String, headers: HTTPHeaders? = nil, parameters: [Strin
                 if let dictionary = object as? [String: Any] {
                     response(dictionary)
                 } else {
-                    if showErrorMsg { kAppDelegate.window!!.toast("出错啦", type: .failure); return }
+                    if showErrorMsg {
+                        DispatchQueue.main.async { kAppDelegate.window!!.toast("出错啦", type: .failure) }
+                        return
+                    }
                     response(nil)
                 }
             }
         case .failure(let error):
-            if showErrorMsg { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure); return }
+            if showErrorMsg {
+                DispatchQueue.main.async { kAppDelegate.window!!.toast(error.localizedDescription, type: .failure) }
+                return
+            }
             response(nil)
         }
     }

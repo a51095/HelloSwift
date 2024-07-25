@@ -201,7 +201,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 展示可选相薄视图
-    private func displayAnimate() {
+    private func showAnimation() {
         titleButton.isSelected = false
         guideTableView.selectRow(at: selectIndex, animated: true, scrollPosition: .none)
         guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
@@ -212,7 +212,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     }
     
     /// 隐藏可选相薄视图
-    private func hideAnimate() {
+    private func hideAnimation() {
         titleButton.isSelected = true
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 0
@@ -222,7 +222,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     
     /// 切换相薄
     @objc func titleButtonDidSelect() {
-        titleButton.isSelected ? displayAnimate() : hideAnimate()
+        titleButton.isSelected ? showAnimation() : hideAnimation()
     }
     
     /// 长按拖动事件
@@ -252,7 +252,7 @@ extension ExamplePhotoAlbumViewController: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        hideAnimate()
+        hideAnimation()
         let item = albumSource[indexPath.row]
         titleButton.setTitle(item.title, for: .normal)
         selectIndex = indexPath

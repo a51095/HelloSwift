@@ -2,7 +2,9 @@ import UIKit
 import Foundation
 import SwiftyJSON
 
-struct RegularModel {
+struct UnsplashModel {
+    var full: String
+    var thumb: String
     var regular: String
 }
 
@@ -23,7 +25,7 @@ class WaterfallLayoutCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func reloadCell(item: RegularModel) {
+    func reloadCell(item: UnsplashModel) {
         photoImageView.kf.indicatorType = .activity
         photoImageView.kf.setImage(with: URL(string: item.regular), placeholder: UIImage(named: "placeholder_list_cell_img"))
     }
@@ -82,7 +84,7 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
     
     private var currentPage = 1
     private var isTopViewHidden = false
-    private var dataSource = [RegularModel]()
+    private var dataSource = [UnsplashModel]()
     
     private lazy var collectionView: UICollectionView = {
         let layout = WaterfallLayout()
@@ -120,7 +122,9 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         NetworkRequest(url: AppURL.photosUrl, method: .get, parameters: parameters, showErrorMsg: true, encoding: URLEncoding.default, responseType: .array) { res in
             if let array = res as? [[String: Any]] {
                 let json = JSON(array)
-                let arrayUrls = json.arrayValue.map { RegularModel(regular: $0["urls"]["regular"].stringValue) }
+                let arrayUrls = json.arrayValue.map {
+                    UnsplashModel(full: $0["urls"]["full"].stringValue, thumb: $0["urls"]["thumb"].stringValue, regular: $0["urls"]["regular"].stringValue)
+                }
                 self.dataSource.append(contentsOf: arrayUrls)
                 self.reloadDataIfNeed()
             }
@@ -139,36 +143,16 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UIColl
         cell.reloadCell(item: model)
         return cell
     }
-        
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let model = dataSource[indexPath.item]
+        let vc = ExampleUnsplashDetailViewController(model: model)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffsetY = scrollView.contentOffset.y
-        if currentOffsetY > topView.frame.size.height {
-            if !isTopViewHidden {
-                isTopViewHidden = true
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.topView.alpha = 0.5
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.25) {
-                        self.topView.alpha = 0
-                        self.backButton.isHidden = true
-                        self.topView.transform = CGAffineTransform(translationX: 0, y: -80)
-                    }
-                })
-            }
-        } else {
-            if isTopViewHidden {
-                isTopViewHidden = false
-                UIView.animate(withDuration: 0.25, animations: {
-                    self.topView.alpha = 0.5
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.25) {
-                        self.topView.alpha = 1
-                        self.backButton.isHidden = false
-                        self.topView.transform = .identity
-                    }
-                })
-            }
-        }
+        (currentOffsetY > topView.frame.size.height) ? showTopViewAnimation() : hideTopViewAnimation()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
