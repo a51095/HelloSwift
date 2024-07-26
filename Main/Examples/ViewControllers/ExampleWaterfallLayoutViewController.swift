@@ -27,7 +27,7 @@ class WaterfallLayoutCell: UICollectionViewCell {
     
     func reloadCell(item: UnsplashModel) {
         photoImageView.kf.indicatorType = .activity
-        photoImageView.kf.setImage(with: URL(string: item.regular), placeholder: UIImage(named: "placeholder_list_cell_img"))
+        photoImageView.kf.setImage(with: URL(string: item.regular), placeholder: UIImage(named: "placeholder"))
     }
 }
 
@@ -91,7 +91,6 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .white
         collectionView.register(WaterfallLayoutCell.self, forCellWithReuseIdentifier: WaterfallLayoutCell.classString)
         return collectionView
     }()
@@ -152,7 +151,7 @@ extension ExampleWaterfallLayoutViewController: UICollectionViewDelegate, UIColl
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffsetY = scrollView.contentOffset.y
-        (currentOffsetY > topView.frame.size.height) ? showTopViewAnimation() : hideTopViewAnimation()
+        (currentOffsetY > topView.frame.size.height) ? hideTopViewAnimation() : showTopViewAnimation()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

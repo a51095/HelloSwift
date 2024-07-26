@@ -35,9 +35,9 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
             self.topView.alpha = 0.5
         }, completion: { _ in
             UIView.animate(withDuration: 0.25) {
-                self.topView.alpha = 0
-                self.backButton.isHidden = true
-                self.topView.transform = CGAffineTransform(translationX: 0, y: -80)
+                self.topView.alpha = 1
+                self.backButton.isHidden = false
+                self.topView.transform = .identity
             }
         })
     }
@@ -47,9 +47,9 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
             self.topView.alpha = 0.5
         }, completion: { _ in
             UIView.animate(withDuration: 0.25) {
-                self.topView.alpha = 1
-                self.backButton.isHidden = false
-                self.topView.transform = .identity
+                self.topView.alpha = 0
+                self.backButton.isHidden = true
+                self.topView.transform = CGAffineTransform(translationX: 0, y: -80)
             }
         })
     }

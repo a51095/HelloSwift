@@ -70,7 +70,7 @@ class ListCell: UITableViewCell {
 
     func reloadCell(item: ListModel) {
         preImageView.kf.indicatorType = .activity
-        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s), placeholder: UIImage(named: "placeholder_list_cell_img"))
+        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s), placeholder: UIImage(named: "placeholder"))
         titleLabel.text = item.title
         dateLabel.text = item.date
     }

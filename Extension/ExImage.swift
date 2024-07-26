@@ -123,13 +123,19 @@ extension UIImage {
 extension UIImage {
     /// 重新绘制带滤镜效果的UIImage对象
     private func repaint(_ filter: CIFilter) -> UIImage {
+        guard let cgImage = self.cgImage else { return self }
         // 设置输入源
-        let inputImage = CIImage(cgImage: self.cgImage!)
+        let inputImage = CIImage(cgImage: cgImage)
         filter.setValue(inputImage, forKey: kCIInputImageKey)
         // 重绘输出源
         guard let outputImage = filter.outputImage else { return self }
+        // 获取原始图像的尺寸
+        let originalSize = inputImage.extent.size
+        // 对输出图像进行裁剪
+        let croppedOutputImage = outputImage.cropped(to: CGRect(origin: .zero, size: originalSize))
+        // 使用裁剪后的图像
         let context = CIContext(options: nil)
-        guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return self }
+        guard let cgImage = context.createCGImage(croppedOutputImage, from: croppedOutputImage.extent) else { return self }
         return UIImage(cgImage: cgImage, scale: self.scale, orientation: self.imageOrientation)
     }
     
@@ -186,4 +192,8 @@ extension UIImage {
         guard let cgImage = context.createCGImage(sketchImage, from: ciImage.extent) else { return self }
         return UIImage(cgImage: cgImage, scale: scale, orientation: imageOrientation)
     }
+}
+
+enum ImageFiler: CaseIterable {
+    case raw, bloom, sharpen, gray, black, sketch
 }
