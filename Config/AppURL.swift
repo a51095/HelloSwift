@@ -10,8 +10,10 @@ struct AppURL {
     static let adLinkUrl: String  = "https://cn.bing.com"
     /// 聚和免费api
     private static let juheUrl: String  = "http://v.juhe.cn/"
-    /// 聚合头条
+    /// 聚合新闻列表
     static let toutiaoUrl: String  = juheUrl + "toutiao/index"
+    /// 聚合新闻详情
+    static let toutiaoContentUrl: String  = juheUrl + "toutiao/content"
     /// unsplash免费api
     private static let unsplashUrl: String  = "https://api.unsplash.com/"
     /// 图片数组

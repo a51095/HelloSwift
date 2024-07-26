@@ -116,4 +116,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.reloadCell(item: item)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = listSource[indexPath.row]
+        let vc = ListDetailViewController(uniquekey: item.uniquekey)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

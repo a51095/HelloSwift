@@ -29,7 +29,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 引导视图配置参数
     private var guideConfig: GuideConfig
     /// 资源图片的个数
-    private var displayCount: Int
+    private var pageCount: Int
     /// 引导圆点pageControl
     private var pageControl = UIPageControl()
     
@@ -68,7 +68,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 数据初始化
     init(config: GuideConfig) {
         guideConfig = config
-        displayCount = config.resources.count
+        pageCount = config.resources.count
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -101,7 +101,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.contentSize = CGSize(width: kScreenWidth * displayCount, height: 0)
+        scrollView.contentSize = CGSize(width: kScreenWidth * pageCount, height: 0)
         scrollView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -118,7 +118,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         stackView.alignment = .fill
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * displayCount, height: kScreenHeight)
+        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * pageCount, height: kScreenHeight)
         
         addPageControl()
         addStartButton()
@@ -144,7 +144,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     private func addPageControl() {
         view.addSubview(pageControl)
         pageControl.hidesForSinglePage = true
-        pageControl.numberOfPages = displayCount
+        pageControl.numberOfPages = pageCount
         pageControl.currentPageIndicatorTintColor = .orange
         pageControl.frame = CGRect(x: 0, y: kScreenHeight - kScaleHeight(100), width: kScreenWidth, height: 30)
     }
@@ -174,7 +174,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         let currentIndex = scrollView.contentOffset.x.i / kScreenWidth
         guard currentIndex != pageControl.currentPage else { return }
         pageControl.currentPage = currentIndex
-        (pageControl.currentPage == displayCount - 1) ? displayAnimation() : hideAnimation()
+        (pageControl.currentPage == pageCount - 1) ? displayAnimation() : hideAnimation()
     }
     
     @objc func skipButtonDidSelect() {
