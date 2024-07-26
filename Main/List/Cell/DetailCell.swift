@@ -1,10 +1,11 @@
 import UIKit
+import WebKit
 import Foundation
 import Kingfisher
 
 class DetailCell: UITableViewCell {
     /// 新闻详情
-    private var contentLabel = UILabel()
+    private var webView = WKWebView()
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -18,10 +19,8 @@ class DetailCell: UITableViewCell {
     /// 子视图初始化
     private func initSubview() {
         selectionStyle = .none
-        contentLabel.numberOfLines = 0
-        contentLabel.textColor = .black
-        contentView.addSubview(contentLabel)
-        contentLabel.snp.makeConstraints { make in
+        contentView.addSubview(webView)
+        webView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.left.equalToSuperview().offset(20)
             make.bottom.equalToSuperview().offset(-20)
@@ -30,7 +29,8 @@ class DetailCell: UITableViewCell {
     }
 
     func reloadCell(item: DetailModel) {
-        contentLabel.text = item.content
+        guard let content = item.content else { return }
+        webView.loadHTMLString(content, baseURL: nil)
     }
 }
 
