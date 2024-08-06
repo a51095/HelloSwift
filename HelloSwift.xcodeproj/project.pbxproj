@@ -37,7 +37,6 @@
 		82E065DC29AB6A7100B8F94C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E065DB29AB6A7100B8F94C /* RootViewController.swift */; };
 		888AAA612C533A46009AD9C7 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AAA602C533A46009AD9C7 /* ListDetailViewController.swift */; };
 		888AAA632C5343D1009AD9C7 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AAA622C5343D1009AD9C7 /* DetailModel.swift */; };
-		888AAA652C5346FC009AD9C7 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888AAA642C5346FC009AD9C7 /* DetailCell.swift */; };
 		888E69602C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E695F2C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift */; };
 		888E696D2C48BB1500A80A40 /* ExResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E696C2C48BB1500A80A40 /* ExResponder.swift */; };
 		888E69712C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888E69702C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift */; };
@@ -130,7 +129,6 @@
 		82E065DB29AB6A7100B8F94C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		888AAA602C533A46009AD9C7 /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		888AAA622C5343D1009AD9C7 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
-		888AAA642C5346FC009AD9C7 /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		888E695F2C3E2D7B00A80A40 /* ExampleWaterfallLayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleWaterfallLayoutViewController.swift; sourceTree = "<group>"; };
 		888E696C2C48BB1500A80A40 /* ExResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExResponder.swift; sourceTree = "<group>"; };
 		888E69702C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUnsplashDetailViewController.swift; sourceTree = "<group>"; };
@@ -312,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				A66E2EB426FDAA6500453EB9 /* Model */,
-				A66E2EB326FDAA5F00453EB9 /* Cell */,
+				A66E2EB326FDAA5F00453EB9 /* View */,
 				A66E2EB226FDAA5500453EB9 /* ViewController */,
 			);
 			path = List;
@@ -327,13 +325,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		A66E2EB326FDAA5F00453EB9 /* Cell */ = {
+		A66E2EB326FDAA5F00453EB9 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				8230109B29BDB8310051F731 /* ListCell.swift */,
-				888AAA642C5346FC009AD9C7 /* DetailCell.swift */,
 			);
-			path = Cell;
+			path = View;
 			sourceTree = "<group>";
 		};
 		A66E2EB426FDAA6500453EB9 /* Model */ = {
@@ -672,7 +669,6 @@
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
 				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
-				888AAA652C5346FC009AD9C7 /* DetailCell.swift in Sources */,
 				3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
 				888E69712C50CF3100A80A40 /* ExampleUnsplashDetailViewController.swift in Sources */,
