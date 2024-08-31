@@ -47,8 +47,8 @@ class ListViewController: BaseViewController {
         view.addSubview(topView)
         topView.snp.makeConstraints { make in
             make.height.equalTo(60)
-            make.top.equalTo(kSafeMarginTop())
             make.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(kStatusBarHeight)
         }
         
         view.addSubview(listTableView)

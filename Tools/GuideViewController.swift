@@ -130,7 +130,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 添加跳过按钮skipButton
     private func addSkipButton() {
         view.addSubview(skipButton)
-        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kSafeMarginTop(), width: 70, height: 30)
+        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kStatusBarHeight.i + 10, width: 70, height: 30)
     }
     
     /// 添加开始按钮startButton

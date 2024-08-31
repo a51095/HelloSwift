@@ -17,9 +17,9 @@ class ExampleDragViewController: BaseViewController, ExampleProtocol {
     override func initSubview() {
         super.initSubview()
 
-        let dragWidth = 80
+        let dragSize = 80
         let drag = DragView()
         view.addSubview(drag)
-        drag.frame = CGRect(x: view.frame.width.i - (4 + dragWidth), y: view.frame.height.i - (4 + dragWidth), width: dragWidth, height: dragWidth)
+        drag.frame = CGRect(x: view.frame.width.i - (4 + dragSize), y: view.frame.height.i - kSafeMarginBottom.i - dragSize, width: dragSize, height: dragSize)
     }
 }

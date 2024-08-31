@@ -158,8 +158,8 @@ class AdViewController: BaseViewController, CountDownProtocol {
         if adConfig.isMute {
             view.addSubview(muteButton)
             muteButton.snp.makeConstraints { make in
+                make.top.equalTo(view.snp.topMargin)
                 make.left.equalTo(kScaleWidth(36))
-                make.top.equalTo(kSafeMarginTop())
             }
         }
     }
@@ -168,8 +168,8 @@ class AdViewController: BaseViewController, CountDownProtocol {
     func addSkipButton() {
         view.addSubview(skipButton)
         skipButton.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.topMargin)
             make.right.equalTo(kScaleWidth(-10))
-            make.top.equalTo(kSafeMarginTop(10))
             make.size.equalTo(CGSize(width: 80, height: 36))
         }
 

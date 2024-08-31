@@ -60,10 +60,36 @@ var kTopNavigationController: UINavigationController {
     }
 }
 
+/// 状态高度
+var kStatusBarHeight: CGFloat {
+    if #available(iOS 13.0, *) {
+        let windowScene =  UIApplication.shared.connectedScenes.first as? UIWindowScene
+        if let statusBarManager = windowScene?.statusBarManager {
+            return statusBarManager.statusBarFrame.height
+        }
+    } else {
+        return UIApplication.shared.statusBarFrame.height
+    }
+    return 20.0
+}
+
 /// 顶部安全间距
-func kSafeMarginTop(_ top: Int = 0) -> Int { top + (UIApplication.shared.delegate?.window??.safeAreaInsets.top.i)! }
+var kSafeMarginTop: CGFloat {
+    kStatusBarHeight + 44.0
+}
+
 /// 底部安全间距
-func kSafeMarginBottom(_ bottom: Int = 0) -> Int { bottom + (UIApplication.shared.delegate?.window??.safeAreaInsets.bottom.i)! }
+var kSafeMarginBottom: CGFloat {
+    if #available(iOS 13.0, *) {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return 0 }
+        guard let window = windowScene.windows.first else { return 0 }
+        return window.safeAreaInsets.bottom
+    } else {
+        guard let window = UIApplication.shared.windows.first else { return 0 }
+        return window.safeAreaInsets.bottom
+    }
+}
+
 /// 等比例设计尺寸宽(以375为基准)
 func kScaleWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
 /// 等比例设计尺寸高(以667为基准)

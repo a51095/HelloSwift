@@ -73,7 +73,7 @@ extension BaseViewController {
         topView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         topView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: kSafeMarginTop).isActive = true
     }
 
     /// 自定义返回按钮
