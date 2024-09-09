@@ -29,9 +29,9 @@ var isDarkTheme: Bool {
 }
 
 /// 屏幕宽
-let kScreenWidth = UIScreen.main.bounds.size.width.i
+let kScreenWidth = UIScreen.main.bounds.size.width
 /// 屏幕高
-let kScreenHeight = UIScreen.main.bounds.size.height.i
+let kScreenHeight = UIScreen.main.bounds.size.height
 
 var kLocalization: LocalizationProtocol = Localization()
 
@@ -91,9 +91,9 @@ var kSafeMarginBottom: CGFloat {
 }
 
 /// 等比例设计尺寸宽(以375为基准)
-func kScaleWidth(_ width: Int) -> Int { (width * UIScreen.main.bounds.size.width.i / 375) }
+func kScaleWidth(_ width: Double) -> Double { (width * UIScreen.main.bounds.size.width / 375.0) }
 /// 等比例设计尺寸高(以667为基准)
-func kScaleHeight(_ height: Int) -> Int { (height * UIScreen.main.bounds.size.height.i / 667) }
+func kScaleHeight(_ height: Double) -> Double { (height * UIScreen.main.bounds.size.height / 667.0) }
 /// 等比例设计尺寸Size(以375，667为基准)
 func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
     let sizeWidth = (width * UIScreen.main.bounds.size.width.i / 375)

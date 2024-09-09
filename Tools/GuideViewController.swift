@@ -101,7 +101,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.contentInsetAdjustmentBehavior = .never
-        scrollView.contentSize = CGSize(width: kScreenWidth * pageCount, height: 0)
+        scrollView.contentSize = CGSize(width: kScreenWidth * pageCount.cgf, height: 0)
         scrollView.frame = CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -118,7 +118,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
         stackView.alignment = .fill
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
-        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * pageCount, height: kScreenHeight)
+        stackView.frame = CGRect(x: 0, y: 0, width: kScreenWidth * pageCount.cgf, height: kScreenHeight)
         
         addPageControl()
         addStartButton()
@@ -130,13 +130,13 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     /// 添加跳过按钮skipButton
     private func addSkipButton() {
         view.addSubview(skipButton)
-        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kStatusBarHeight.i + 10, width: 70, height: 30)
+        skipButton.frame = CGRect(x: kScreenWidth - 100, y: kStatusBarHeight + 10, width: 70, height: 30)
     }
     
     /// 添加开始按钮startButton
     private func addStartButton() {
         view.addSubview(startButton)
-        startButton.frame = CGRect(x: kScreenWidth / 2 - 50, y: kScreenHeight - kScaleHeight(100), width: 100, height: 36)
+        startButton.frame = CGRect(x: kScreenWidth / 2 - 50, y: kScreenHeight - kScaleHeight(100.0), width: 100, height: 36)
         hideAnimation()
     }
     
@@ -171,7 +171,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     
     /// scrollView代理方法
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentIndex = scrollView.contentOffset.x.i / kScreenWidth
+        let currentIndex = (scrollView.contentOffset.x / kScreenWidth).i
         guard currentIndex != pageControl.currentPage else { return }
         pageControl.currentPage = currentIndex
         (pageControl.currentPage == pageCount - 1) ? displayAnimation() : hideAnimation()

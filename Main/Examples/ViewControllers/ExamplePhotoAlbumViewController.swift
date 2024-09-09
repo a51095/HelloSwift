@@ -20,7 +20,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         return button
     }()
     /// item限定间距
-    private lazy var limitMargin: Int = { 4 }()
+    private var limitMargin: CGFloat = 4.0
     /// 懒加载item尺寸大小
     private lazy var targetSize: CGSize = {
         let autoWidth = (kScreenWidth - 5 * limitMargin) / 4
@@ -46,7 +46,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.itemSize = targetSize
-        flowLayout.sectionInset = UIEdgeInsets(top: limitMargin.cgf, left: limitMargin.cgf, bottom: limitMargin.cgf, right: limitMargin.cgf)
+        flowLayout.sectionInset = UIEdgeInsets(top: limitMargin, left: limitMargin, bottom: limitMargin, right: limitMargin)
         
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressTouchDown))
         
@@ -142,7 +142,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         }
         
         guideTableView.alpha = 0
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight)
     }
     
     /// 结果分类,添加数据源
@@ -204,7 +204,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     private func showAnimation() {
         titleButton.isSelected = false
         guideTableView.selectRow(at: selectIndex, animated: true, scrollPosition: .none)
-        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
+        guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight)
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 1
             self.guideTableView.transform = .identity
@@ -216,7 +216,7 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
         titleButton.isSelected = true
         UIView.animate(withDuration: 0.25) {
             self.guideTableView.alpha = 0
-            self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight.cgf)
+            self.guideTableView.transform = CGAffineTransform(translationX: 0, y: -kScreenHeight)
         }
     }
     
