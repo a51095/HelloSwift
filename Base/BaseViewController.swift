@@ -28,7 +28,10 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
     }
 
     /// Initialize data
-    func initData() { }
+    func initData() {
+        // 网络校验,有网则执行后续操作,网络不可用,则直接返回
+        guard isReachable else { return }
+    }
     
     func showTopViewAnimation() {
         UIView.animate(withDuration: 0.25, animations: {

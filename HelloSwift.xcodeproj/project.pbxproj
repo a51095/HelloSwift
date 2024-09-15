@@ -24,6 +24,7 @@
 		3FD9EB0F2AEBBE4F0089F722 /* ExDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */; };
 		3FDB464B2AE60BE900C45E9C /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */; };
 		3FDB464D2AE6165300C45E9C /* ExampleBluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */; };
+		3FF20C0E2C9668E1008DFB33 /* ListBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF20C0D2C9668E1008DFB33 /* ListBaseViewController.swift */; };
 		3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */; };
 		3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */; };
 		3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */; };
@@ -114,6 +115,7 @@
 		3FD9EB0E2AEBBE4F0089F722 /* ExDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExDate.swift; sourceTree = "<group>"; };
 		3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleBluetoothViewController.swift; sourceTree = "<group>"; };
+		3FF20C0D2C9668E1008DFB33 /* ListBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBaseViewController.swift; sourceTree = "<group>"; };
 		3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDragViewController.swift; sourceTree = "<group>"; };
 		3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleScaleAspectViewController.swift; sourceTree = "<group>"; };
 		3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleRandomCodeViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				A66E2EB526FDAAD700453EB9 /* ListViewController.swift */,
+				3FF20C0D2C9668E1008DFB33 /* ListBaseViewController.swift */,
 				888AAA602C533A46009AD9C7 /* ListDetailViewController.swift */,
 			);
 			path = ViewController;
@@ -668,6 +671,7 @@
 				A607554C26F5BFF6008103DA /* PhotoGuideCell.swift in Sources */,
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
 				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
+				3FF20C0E2C9668E1008DFB33 /* ListBaseViewController.swift in Sources */,
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
 				3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,

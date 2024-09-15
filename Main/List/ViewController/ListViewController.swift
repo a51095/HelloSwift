@@ -8,10 +8,17 @@
 import UIKit
 import SwiftyJSON
 import Foundation
+import JXPagingView
 
 class ListViewController: BaseViewController {
     /// 当前显示新闻类型
-    private var currentNewsType = "guonei"
+    var currentNewsType = "guonei" {
+        willSet {
+            guard currentNewsType != newValue else { return }
+            getNewsData(type: newValue)
+        }
+    }
+    
     /// 新闻数据源
     private var listSource = [ListModel]()
     /// 懒加载,新闻列表控件
@@ -32,29 +39,15 @@ class ListViewController: BaseViewController {
         self.initData()
     }
     
-    override func initData() { self.getNewsData(type: self.currentNewsType) }
+    override func initData() {
+        getNewsData(type: currentNewsType)
+    }
     
     override func initSubview() {
-        // 网络校验,有网则执行后续操作,网络不可用,则直接返回
-        guard isReachable else { return }
-        
-        let topView = ItemView()
-        topView.didSelectBlock = { type in
-            self.currentNewsType = type
-            self.getNewsData(type: type)
-        }
-        
-        view.addSubview(topView)
-        topView.snp.makeConstraints { make in
-            make.height.equalTo(60)
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(kStatusBarHeight)
-        }
         
         view.addSubview(listTableView)
         listTableView.snp.makeConstraints { make in
-            make.top.equalTo(topView.snp.bottom)
-            make.left.right.bottom.equalToSuperview()
+            make.top.left.right.bottom.equalToSuperview()
         }
         
         // 添加头部刷新
@@ -122,5 +115,19 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = ListDetailViewController(uniquekey: item.uniquekey)
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension ListViewController: JXPagerViewListViewDelegate {
+    func listView() -> UIView! {
+        self.view
+    }
+    
+    func listScrollView() -> UIScrollView! {
+        listTableView
+    }
+    
+    func listViewDidScrollCallback(_ callback: ((UIScrollView?) -> Void)!) {
+        
     }
 }

@@ -12,6 +12,8 @@ end
 # Objective-C
 def ocPods
   pod 'MJRefresh', '3.7.9'
+  pod 'JXCategoryView', '1.6.8'
+  pod 'JXPagingView/Pager', '2.1.3'
 end
 
 # Swift
