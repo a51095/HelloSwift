@@ -25,6 +25,7 @@
 		3FDB464B2AE60BE900C45E9C /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */; };
 		3FDB464D2AE6165300C45E9C /* ExampleBluetoothViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */; };
 		3FF20C0E2C9668E1008DFB33 /* ListBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF20C0D2C9668E1008DFB33 /* ListBaseViewController.swift */; };
+		3FF20C102C9699B7008DFB33 /* ExampleSystemFontViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF20C0F2C9699B7008DFB33 /* ExampleSystemFontViewController.swift */; };
 		3FFC5B6D2A04A9990002191F /* ExampleDragViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */; };
 		3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */; };
 		3FFC5B712A04DC060002191F /* ExampleRandomCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */; };
@@ -116,6 +117,7 @@
 		3FDB464A2AE60BE900C45E9C /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleBluetoothViewController.swift; sourceTree = "<group>"; };
 		3FF20C0D2C9668E1008DFB33 /* ListBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBaseViewController.swift; sourceTree = "<group>"; };
+		3FF20C0F2C9699B7008DFB33 /* ExampleSystemFontViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleSystemFontViewController.swift; sourceTree = "<group>"; };
 		3FFC5B6C2A04A9990002191F /* ExampleDragViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleDragViewController.swift; sourceTree = "<group>"; };
 		3FFC5B6E2A04DACD0002191F /* ExampleScaleAspectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleScaleAspectViewController.swift; sourceTree = "<group>"; };
 		3FFC5B702A04DC060002191F /* ExampleRandomCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleRandomCodeViewController.swift; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				3FD522F12B8727EE006D2FD3 /* ExamplePropertyViewController.swift */,
 				3FB5814D29F64E9F00BF6902 /* ExampleLocationViewController.swift */,
 				3FDB464C2AE6165300C45E9C /* ExampleBluetoothViewController.swift */,
+				3FF20C0F2C9699B7008DFB33 /* ExampleSystemFontViewController.swift */,
 				3FB8BB3829F67CE200A61E7E /* ExampleCountDownViewController.swift */,
 				A6F36C5B26F6483B008999AE /* ExamplePhotoDetailViewController.swift */,
 				FA9FFB512BB1654A0079EB52 /* ExampleLocalizationViewController.swift */,
@@ -687,6 +690,7 @@
 				F704A077269E7B540044729E /* BaseNavigationController.swift in Sources */,
 				F704A082269E832B0044729E /* AlertController.swift in Sources */,
 				3F20EA0F29E9486F0025FC44 /* ExampleAlertViewController.swift in Sources */,
+				3FF20C102C9699B7008DFB33 /* ExampleSystemFontViewController.swift in Sources */,
 				A607554E26F5C144008103DA /* PhotoModel.swift in Sources */,
 				F7B4FD9926A6C6850051FC5B /* ItemView.swift in Sources */,
 				888AAA632C5343D1009AD9C7 /* DetailModel.swift in Sources */,

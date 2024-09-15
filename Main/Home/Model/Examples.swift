@@ -21,7 +21,8 @@ struct Examples {
     static let funcExamples = [
         Example(title: "Async", description: "An async presentation", aClass: ExampleAsyncViewController.self),
         Example(title: "Symbol", description: "An symbol presentation", aClass: ExampleSymbolViewController.self),
-        Example(title: "Property", description: "An property wrapper", aClass: ExamplePropertyViewController.self)
+        Example(title: "Property", description: "An property wrapper", aClass: ExamplePropertyViewController.self),
+        Example(title: "System Font", description: "An system font presentation", aClass: ExampleSystemFontViewController.self)
     ]
 
     static let toolExamples = [
