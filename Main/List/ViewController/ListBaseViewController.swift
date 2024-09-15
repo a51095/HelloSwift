@@ -111,9 +111,9 @@ extension ListBaseViewController: JXPagerViewDelegate, JXCategoryViewDelegate, J
         let tableHeaderView = UILabel()
         tableHeaderView.text = "敬请期待"
         tableHeaderView.textColor = .white
+        tableHeaderView.font = kSemiblodFont(28)
         tableHeaderView.textAlignment = .center
-        tableHeaderView.font = kSemiblodFont(36)
-        tableHeaderView.backgroundColor = .orange
+        tableHeaderView.backgroundColor = .main
         return tableHeaderView
     }
     

@@ -11,11 +11,10 @@ class ExampleSystemFontViewController: BaseViewController, ExampleProtocol {
     
     private lazy var fontTableView: UITableView = {
         let v = UITableView(frame: .zero, style: .grouped)
+        v.rowHeight = 60
         v.delegate = self
         v.dataSource = self
-        v.estimatedRowHeight = 60
         v.alwaysBounceVertical = false
-        v.rowHeight = UITableView.automaticDimension
         v.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.classString)
         return v
     }()
@@ -60,7 +59,9 @@ extension ExampleSystemFontViewController: UITableViewDelegate, UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.classString, for: indexPath)
         let fontFamilie = UIFont.familyNames[indexPath.section]
         let fontNames = UIFont.fontNames(forFamilyName: fontFamilie)
+        let fontName = fontNames[indexPath.row]
         cell.textLabel?.text = fontNames[indexPath.row]
+        cell.textLabel?.font = UIFont(name: fontName, size: 16)
         return cell
     }
     

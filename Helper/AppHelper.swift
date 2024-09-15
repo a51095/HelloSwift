@@ -102,11 +102,11 @@ func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
 }
 
 /// 平方字体-常规体
-func kRegularFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Regular", size: size)! }
+func kRegularFont(_ size: CGFloat) -> UIFont? { UIFont(name: "PingFangSC-Regular", size: size) }
 /// 平方字体-中等体
-func kMediumFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Medium", size: size)! }
+func kMediumFont(_ size: CGFloat) -> UIFont? { UIFont(name: "PingFangSC-Medium", size: size) }
 /// 平方字体-半粗体
-func kSemiblodFont(_ size: CGFloat) -> UIFont { UIFont(name: "PingFangSC-Semibold", size: size)! }
+func kSemiblodFont(_ size: CGFloat) -> UIFont? { UIFont(name: "PingFangSC-Semibold", size: size) }
 
 /// 用户相机授权状态
 func requestAccess(handler: @escaping (Bool) -> Void) {
