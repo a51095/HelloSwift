@@ -12,7 +12,7 @@ import JXPagingView
 
 class ListViewController: BaseViewController {
     /// 当前显示新闻类型
-    var currentNewsType = "guonei" {
+    var currentNewsType = "top" {
         willSet {
             guard currentNewsType != newValue else { return }
             getNewsData(type: newValue)
@@ -118,16 +118,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ListViewController: JXPagerViewListViewDelegate {
-    func listView() -> UIView! {
+extension ListViewController: JXPagingViewListViewDelegate {
+    func listView() -> UIView {
         self.view
     }
     
-    func listScrollView() -> UIScrollView! {
+    func listScrollView() -> UIScrollView {
         listTableView
     }
     
-    func listViewDidScrollCallback(_ callback: ((UIScrollView?) -> Void)!) {
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> Void) {
         
     }
 }

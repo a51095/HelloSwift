@@ -40,18 +40,16 @@ enum Categories: String, CaseIterable {
 }
 
 class ListBaseViewController: BaseViewController {
-    
     /// 子控制器
     private var controllers = [ListViewController]()
     
     /// 懒加载 JXPagerView
-    private lazy var pagerView: JXPagerView = {
-        let pagerView = JXPagerView(delegate: self)
-        pagerView!.mainTableView.gestureDelegate = self
-        pagerView!.pinSectionHeaderVerticalOffset = 0
-        pagerView!.isListHorizontalScrollEnabled = false
-        pagerView!.automaticallyDisplayListVerticalScrollIndicator = false
-        return pagerView!
+    private lazy var pagerView: JXPagingView = {
+        let pagerView = JXPagingView(delegate: self)
+        pagerView.mainTableView.gestureDelegate = self
+        pagerView.pinSectionHeaderVerticalOffset = 0
+        pagerView.automaticallyDisplayListVerticalScrollIndicator = false
+        return pagerView
     }()
     
     /// 懒加载 JXCategoryTitleView
@@ -65,7 +63,6 @@ class ListBaseViewController: BaseViewController {
         categoryView.titleFont = kRegularFont(16)
         categoryView.titleSelectedFont = kMediumFont(16)
         categoryView.isTitleColorGradientEnabled = true
-        categoryView.isContentScrollViewClickTransitionAnimationEnabled = false
         return categoryView
     }()
     
@@ -94,20 +91,21 @@ class ListBaseViewController: BaseViewController {
     }
     
     override func initData() {
-        for _ in Categories.allCases {
+        for (idx, ele) in Categories.allCases.enumerated() {
             let vc = ListViewController()
+            vc.currentNewsType = Categories.allCases[idx].rawValue
             controllers .append(vc)
         }
     }
 }
 
-extension ListBaseViewController: JXPagerViewDelegate, JXCategoryViewDelegate, JXPagerMainTableViewGestureDelegate {
+extension ListBaseViewController: JXPagingViewDelegate, JXCategoryViewDelegate, JXPagingMainTableViewGestureDelegate {
     
-    func tableHeaderViewHeight(in pagerView: JXPagerView!) -> UInt {
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
         200
     }
     
-    func tableHeaderView(in pagerView: JXPagerView!) -> UIView! {
+    func tableHeaderView(in pagingView: JXPagingView) -> UIView {
         let tableHeaderView = UILabel()
         tableHeaderView.text = "敬请期待"
         tableHeaderView.textColor = .white
@@ -117,27 +115,28 @@ extension ListBaseViewController: JXPagerViewDelegate, JXCategoryViewDelegate, J
         return tableHeaderView
     }
     
-    func viewForPinSectionHeader(in pagerView: JXPagerView!) -> UIView! {
-        categoryView
-    }
-    
-    func heightForPinSectionHeader(in pagerView: JXPagerView!) -> UInt {
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
         60
     }
     
-    func numberOfLists(in pagerView: JXPagerView!) -> Int {
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
+        categoryView
+    }
+    
+    func numberOfLists(in pagingView: JXPagingView) -> Int {
         categoryView.titles.count
     }
     
-    func pagerView(_ pagerView: JXPagerView!, initListAt index: Int) -> (any JXPagerViewListViewDelegate)! {
+    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
         controllers[index]
     }
     
     func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
         controllers[index].currentNewsType = Categories.allCases[index].rawValue
+        pagerView.mainTableView.reloadData()
     }
     
-    func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer!) -> Bool {
+    func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         false
     }
 }
