@@ -17,6 +17,8 @@ class ListViewController: BaseViewController {
     var isNeedHeader = true
     /// 是否上拉加载更多
     var isNeedFooter = true
+    /// 默认加载20条新闻数据
+    private var pageSize = 20
     
     /// 新闻数据源
     private var listSource = [ListModel]()
@@ -73,13 +75,9 @@ class ListViewController: BaseViewController {
     }
     
     // 获取新闻数据
-    func getNewData(type: String, isMore: Bool = false, isFilter: Int = 1, pageSize: Int = 20) {
+    func getNewData(type: String, isMore: Bool = false, isFilter: Int = 1) {
         
-        var pageSize = pageSize
-        
-        if isMore {
-            pageSize += 20
-        }
+        if isMore { pageSize += 20 }
         
         let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": AppKey.newsKey]
         
