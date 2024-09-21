@@ -75,8 +75,6 @@ class ListViewController: BaseViewController {
     // 获取新闻数据
     func getNewData(type: String, isMore: Bool = false, isFilter: Int = 1, pageSize: Int = 20) {
         
-        kPrint(newType)
-        
         var pageSize = pageSize
         
         if isMore {
