@@ -12,7 +12,7 @@ import JXPagingView
 
 class ListViewController: BaseViewController {
     /// 当前显示新闻类型
-    var newType = "top"
+    var newType = String()
     /// 是否下拉刷新
     var isNeedHeader = true
     /// 是否上拉加载更多
