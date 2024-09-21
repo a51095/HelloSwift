@@ -8,11 +8,15 @@
 import UIKit
 import SwiftyJSON
 import Foundation
-import JXSegmentedView
+import JXPagingView
 
 class ListViewController: BaseViewController {
     /// 当前显示新闻类型
     var newType = "top"
+    /// 是否下拉刷新
+    var isNeedHeader = false
+    /// 是否上拉加载更多
+    var isNeedFooter = false
     
     /// 新闻数据源
     private var listSource = [ListModel]()
@@ -36,6 +40,14 @@ class ListViewController: BaseViewController {
     
     override func initData() {
         getNewData(type: newType)
+        
+        if isNeedHeader {
+            listTableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
+        }
+        
+        if isNeedFooter {
+            listTableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        }
     }
     
     override func initSubview() {
@@ -44,18 +56,16 @@ class ListViewController: BaseViewController {
         listTableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
-        
-        // 添加头部刷新
-        let header = MJRefreshNormalHeader { self.downRefreshing() }
-        header.setTitle("下拉刷新", for: .idle)
-        header.setTitle("松开刷新", for: .pulling)
-        header.setTitle("正在刷新", for: .refreshing)
-        listTableView.mj_header = header
     }
     
-    // 下拉刷新数据
-    func downRefreshing() {
+    // 下拉刷新
+    @objc func headerRefresh() {
         getNewData(type: newType)
+    }
+    
+    // 上拉加载更多
+    @objc func loadMore() {
+        getNewData(type: newType, isMore: true)
     }
     
     private func reloadDataIfNeed() {
@@ -63,13 +73,23 @@ class ListViewController: BaseViewController {
         self.listTableView.reloadData()
     }
     
-    /// 获取新闻数据
-    func getNewData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
+    // 获取新闻数据
+    func getNewData(type: String, isMore: Bool = false, isFilter: Int = 1, pageSize: Int = 20) {
+        
+        kPrint(newType)
+        
+        var pageSize = pageSize
+        
+        if isMore {
+            pageSize += 20
+        }
         
         let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": AppKey.newsKey]
         
         NetworkRequest(url: AppURL.toutiaoUrl, parameters: parameters) { res in
             self.listTableView.mj_header?.endRefreshing()
+            self.listTableView.mj_footer?.endRefreshing()
+            
             // 容错处理
             guard res != nil else { return }
             
@@ -77,7 +97,7 @@ class ListViewController: BaseViewController {
                 let errorCode = dictionary["error_code"] as! Int
                 guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
                 
-                // 先移除上一个数据源，再添加新的数据源
+                // 先移除数据源，再添加新的数据源
                 self.listSource.removeAll()
                 
                 let json = JSON(dictionary)
@@ -113,8 +133,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ListViewController: JXSegmentedListContainerViewListDelegate {
+extension ListViewController: JXPagingViewListViewDelegate {
     func listView() -> UIView {
         self.view
+    }
+    
+    func listScrollView() -> UIScrollView {
+        listTableView
+    }
+    
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> Void) {
+        
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JXPagingView
 import JXSegmentedView
 
 enum Categories: String, CaseIterable {
@@ -41,10 +42,38 @@ enum Categories: String, CaseIterable {
 class ListBaseViewController: BaseViewController {
     /// 子控制器
     private var controllers = [ListViewController]()
-    var segmentedDataSource: JXSegmentedTitleDataSource!
-    var segmentedView: JXSegmentedView!
-    var listContainerView: JXSegmentedListContainerView!
+    /// 整体滚动视图
+    private lazy var pagingView: JXPagingView = {
+        let pagingView = JXPagingView(delegate: self)
+        pagingView.defaultSelectedIndex = 1
+        return pagingView
+    }()
+    /// 自定义headView
+    private lazy var headerView = ListTableHeaderView()
+    /// JXSegmentedView悬浮视图
+    private lazy var segmentedView: JXSegmentedView = {
+        let segmentedView = JXSegmentedView()
+        segmentedView.indicators = [lineView]
+        segmentedView.defaultSelectedIndex = 1
+        segmentedView.dataSource = segmentedViewDataSource
+        segmentedView.listContainer = pagingView.listContainerView
+        return segmentedView
+    }()
+    /// 悬浮视图滚动条
+    private lazy var lineView: JXSegmentedIndicatorLineView = {
+        let lineView = JXSegmentedIndicatorLineView()
+        return lineView
+    }()
+    /// 悬浮视图类型
+    private lazy var segmentedViewDataSource: JXSegmentedTitleDataSource = {
+        let segmentedViewDataSource = JXSegmentedTitleDataSource()
+        segmentedViewDataSource.titles = Categories.allCases.map({ $0.title })
+        return segmentedViewDataSource
+    }()
     
+    private var headerViewHeight: Int = 200
+    private var heightForHeaderInSection: Int = 60
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSubview()
@@ -52,38 +81,11 @@ class ListBaseViewController: BaseViewController {
     }
     
     override func initSubview() {
-        
-        // 初始化JXSegmentedView
-        segmentedView = JXSegmentedView()
-        view.addSubview(segmentedView)
-        segmentedView.snp.makeConstraints { make in
-            make.height.equalTo(50)
-            make.left.right.equalToSuperview()
+        view.addSubview(pagingView)
+        pagingView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
             make.top.equalToSuperview().offset(kStatusBarHeight)
         }
-        
-        // 配置数据源
-        segmentedDataSource = JXSegmentedTitleDataSource()
-        segmentedDataSource.titles = Categories.allCases.map({ $0.title })
-        segmentedDataSource.isTitleColorGradientEnabled = true
-        segmentedView.dataSource = segmentedDataSource
-        
-        // 配置指示器
-        let indicator = JXSegmentedIndicatorLineView()
-        indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
-        indicator.lineStyle = .lengthen
-        segmentedView.indicators = [indicator]
-        
-        // 初始化JXSegmentedListContainerView
-        listContainerView = JXSegmentedListContainerView(dataSource: self)
-        view.addSubview(listContainerView)
-        listContainerView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(segmentedView.snp.bottom)
-        }
-        
-        // 将listContainerView.scrollView和segmentedView.contentScrollView进行关联
-        segmentedView.listContainer = listContainerView
     }
     
     override func initData() {
@@ -92,18 +94,46 @@ class ListBaseViewController: BaseViewController {
             vc.newType = Categories.allCases[idx].rawValue
             controllers.append(vc)
         }
-        
-        segmentedView.defaultSelectedIndex = 1
-        segmentedView.reloadData()
     }
 }
 
-extension ListBaseViewController: JXSegmentedListContainerViewDataSource {
-    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
-        segmentedDataSource.dataSource.count
+extension JXPagingListContainerView: @retroactive JXSegmentedViewListContainer {}
+
+extension ListBaseViewController: JXPagingViewDelegate {
+    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
+        return headerViewHeight
+    }
+
+    func tableHeaderView(in pagingView: JXPagingView) -> UIView {
+        return headerView
+    }
+
+    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
+        return heightForHeaderInSection
+    }
+
+    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
+        return segmentedView
+    }
+
+    func numberOfLists(in pagingView: JXPagingView) -> Int {
+        return segmentedViewDataSource.titles.count
     }
     
-    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
-        controllers[index]
+    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
+        return controllers[index]
+    }
+
+    func mainTableViewDidScroll(_ scrollView: UIScrollView) {
+        headerView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
+    }
+}
+
+extension ListBaseViewController: JXPagingMainTableViewGestureDelegate {
+    func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if otherGestureRecognizer == segmentedView.collectionView.panGestureRecognizer {
+            return false
+        }
+        return gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.self)
     }
 }

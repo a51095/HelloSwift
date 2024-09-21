@@ -12,6 +12,7 @@
 		3F20EA1129E949E80025FC44 /* ExampleToastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */; };
 		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
 		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
+		3F2D68DB2C9ED700009EB4CE /* ListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */; };
 		3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */; };
 		3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6CB27A2B87307E006ADBA9 /* Preferences.swift */; };
 		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
@@ -104,6 +105,7 @@
 		3F20EA1029E949E80025FC44 /* ExampleToastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleToastViewController.swift; sourceTree = "<group>"; };
 		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
 		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
+		3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableHeaderView.swift; sourceTree = "<group>"; };
 		3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAsyncViewController.swift; sourceTree = "<group>"; };
 		3F6CB27A2B87307E006ADBA9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				8230109B29BDB8310051F731 /* ListCell.swift */,
+				3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,7 +539,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					F704A048269E73830044729E = {
 						CreatedOnToolsVersion = 12.4;
@@ -675,6 +678,7 @@
 				A650EE4F26E5FACE00E437AA /* AdViewController.swift in Sources */,
 				3FA6F6C429E3AACD00A3C533 /* Example.swift in Sources */,
 				3FF20C0E2C9668E1008DFB33 /* ListBaseViewController.swift in Sources */,
+				3F2D68DB2C9ED700009EB4CE /* ListTableHeaderView.swift in Sources */,
 				A69B068826F09292007C3FE6 /* GuideViewController.swift in Sources */,
 				3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */,
 				A607555226F5F33F008103DA /* PhotoShowCell.swift in Sources */,
