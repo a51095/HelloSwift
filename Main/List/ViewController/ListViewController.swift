@@ -8,16 +8,11 @@
 import UIKit
 import SwiftyJSON
 import Foundation
-import JXPagingView
+import JXSegmentedView
 
 class ListViewController: BaseViewController {
     /// 当前显示新闻类型
-    var currentNewsType = "top" {
-        willSet {
-            guard currentNewsType != newValue else { return }
-            getNewsData(type: newValue)
-        }
-    }
+    var newType = "top"
     
     /// 新闻数据源
     private var listSource = [ListModel]()
@@ -40,7 +35,7 @@ class ListViewController: BaseViewController {
     }
     
     override func initData() {
-        getNewsData(type: currentNewsType)
+        getNewData(type: newType)
     }
     
     override func initSubview() {
@@ -60,7 +55,7 @@ class ListViewController: BaseViewController {
     
     // 下拉刷新数据
     func downRefreshing() {
-        self.getNewsData(type: self.currentNewsType)
+        getNewData(type: newType)
     }
     
     private func reloadDataIfNeed() {
@@ -69,7 +64,7 @@ class ListViewController: BaseViewController {
     }
     
     /// 获取新闻数据
-    func getNewsData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
+    func getNewData(type: String, isFilter: Int = 1, pageSize: Int = 20) {
         
         let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": AppKey.newsKey]
         
@@ -118,16 +113,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ListViewController: JXPagingViewListViewDelegate {
+extension ListViewController: JXSegmentedListContainerViewListDelegate {
     func listView() -> UIView {
         self.view
-    }
-    
-    func listScrollView() -> UIScrollView {
-        listTableView
-    }
-    
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> Void) {
-        
     }
 }

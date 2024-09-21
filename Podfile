@@ -12,7 +12,7 @@ end
 # Objective-C
 def ocPods
   pod 'MJRefresh', '3.7.9'
-  pod 'JXCategoryView', '1.6.8'
+  pod 'JXSegmentedView', '1.4.1'
   pod 'JXPagingView/Paging','2.1.3'
 end
 

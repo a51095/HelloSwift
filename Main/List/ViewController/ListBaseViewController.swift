@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import JXPagingView
-import JXCategoryView
+import JXSegmentedView
 
 enum Categories: String, CaseIterable {
     case top
@@ -24,17 +23,17 @@ enum Categories: String, CaseIterable {
     
     var title: String {
         switch self {
-        case .top: "推荐"
-        case .guonei: "国内"
-        case .guoji: "国际"
-        case .yule: "娱乐"
-        case .tiyu: "体育"
-        case .junshi: "军事"
-        case .keji: "科技"
-        case .caijing: "财经"
-        case .youxi: "游戏"
-        case .qiche: "汽车"
-        case .jiankang: "健康"
+            case .top: "推荐"
+            case .guonei: "国内"
+            case .guoji: "国际"
+            case .yule: "娱乐"
+            case .tiyu: "体育"
+            case .junshi: "军事"
+            case .keji: "科技"
+            case .caijing: "财经"
+            case .youxi: "游戏"
+            case .qiche: "汽车"
+            case .jiankang: "健康"
         }
     }
 }
@@ -42,29 +41,9 @@ enum Categories: String, CaseIterable {
 class ListBaseViewController: BaseViewController {
     /// 子控制器
     private var controllers = [ListViewController]()
-    
-    /// 懒加载 JXPagerView
-    private lazy var pagerView: JXPagingView = {
-        let pagerView = JXPagingView(delegate: self)
-        pagerView.mainTableView.gestureDelegate = self
-        pagerView.pinSectionHeaderVerticalOffset = 0
-        pagerView.automaticallyDisplayListVerticalScrollIndicator = false
-        return pagerView
-    }()
-    
-    /// 懒加载 JXCategoryTitleView
-    private lazy var categoryView: JXCategoryTitleView = {
-        let categoryView = JXCategoryTitleView()
-        categoryView.titles = Categories.allCases.map { $0.title }
-        categoryView.delegate = self
-        categoryView.titleColor = .gray
-        categoryView.titleSelectedColor = .main
-        categoryView.titleLabelVerticalOffset = -3
-        categoryView.titleFont = kRegularFont(16)
-        categoryView.titleSelectedFont = kMediumFont(16)
-        categoryView.isTitleColorGradientEnabled = true
-        return categoryView
-    }()
+    var segmentedDataSource: JXSegmentedTitleDataSource!
+    var segmentedView: JXSegmentedView!
+    var listContainerView: JXSegmentedListContainerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,69 +53,57 @@ class ListBaseViewController: BaseViewController {
     
     override func initSubview() {
         
-        view.addSubview(pagerView)
-        pagerView.snp.makeConstraints { make in
-            make.edges.equalTo(UIEdgeInsets(top: kStatusBarHeight, left: 0, bottom: 0, right: 0))
+        // 初始化JXSegmentedView
+        segmentedView = JXSegmentedView()
+        view.addSubview(segmentedView)
+        segmentedView.snp.makeConstraints { make in
+            make.height.equalTo(50)
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(kStatusBarHeight)
         }
         
-        let lineView = JXCategoryIndicatorLineView()
-        lineView.verticalMargin = 14
-        lineView.indicatorWidth = 20
-        lineView.indicatorHeight = 2
-        lineView.indicatorColor = .main
-        lineView.indicatorCornerRadius = 1
+        // 配置数据源
+        segmentedDataSource = JXSegmentedTitleDataSource()
+        segmentedDataSource.titles = Categories.allCases.map({ $0.title })
+        segmentedDataSource.isTitleColorGradientEnabled = true
+        segmentedView.dataSource = segmentedDataSource
         
-        categoryView.indicators = [lineView]
-        categoryView.listContainer = pagerView.listContainerView as? JXCategoryViewListContainer
+        // 配置指示器
+        let indicator = JXSegmentedIndicatorLineView()
+        indicator.indicatorWidth = JXSegmentedViewAutomaticDimension
+        indicator.lineStyle = .lengthen
+        segmentedView.indicators = [indicator]
+        
+        // 初始化JXSegmentedListContainerView
+        listContainerView = JXSegmentedListContainerView(dataSource: self)
+        view.addSubview(listContainerView)
+        listContainerView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(segmentedView.snp.bottom)
+        }
+        
+        // 将listContainerView.scrollView和segmentedView.contentScrollView进行关联
+        segmentedView.listContainer = listContainerView
     }
     
     override func initData() {
-        for (idx, ele) in Categories.allCases.enumerated() {
+        for idx in Categories.allCases.indices {
             let vc = ListViewController()
-            vc.currentNewsType = Categories.allCases[idx].rawValue
-            controllers .append(vc)
+            vc.newType = Categories.allCases[idx].rawValue
+            controllers.append(vc)
         }
+        
+        segmentedView.defaultSelectedIndex = 1
+        segmentedView.reloadData()
     }
 }
 
-extension ListBaseViewController: JXPagingViewDelegate, JXCategoryViewDelegate, JXPagingMainTableViewGestureDelegate {
-    
-    func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
-        200
+extension ListBaseViewController: JXSegmentedListContainerViewDataSource {
+    func numberOfLists(in listContainerView: JXSegmentedListContainerView) -> Int {
+        segmentedDataSource.dataSource.count
     }
     
-    func tableHeaderView(in pagingView: JXPagingView) -> UIView {
-        let tableHeaderView = UILabel()
-        tableHeaderView.text = "敬请期待"
-        tableHeaderView.textColor = .white
-        tableHeaderView.font = kSemiblodFont(28)
-        tableHeaderView.textAlignment = .center
-        tableHeaderView.backgroundColor = .main
-        return tableHeaderView
-    }
-    
-    func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
-        60
-    }
-    
-    func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
-        categoryView
-    }
-    
-    func numberOfLists(in pagingView: JXPagingView) -> Int {
-        categoryView.titles.count
-    }
-    
-    func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
+    func listContainerView(_ listContainerView: JXSegmentedListContainerView, initListAt index: Int) -> JXSegmentedListContainerViewListDelegate {
         controllers[index]
-    }
-    
-    func categoryView(_ categoryView: JXCategoryBaseView!, didSelectedItemAt index: Int) {
-        controllers[index].currentNewsType = Categories.allCases[index].rawValue
-        pagerView.mainTableView.reloadData()
-    }
-    
-    func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        false
     }
 }
