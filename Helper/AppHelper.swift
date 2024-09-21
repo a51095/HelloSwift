@@ -90,6 +90,11 @@ var kSafeMarginBottom: CGFloat {
     }
 }
 
+/// 底部tabBar高度
+var kTabBarHeight: CGFloat {
+    kTopViewController.tabBarController?.tabBar.frame.height ?? 0.0
+}
+
 /// 等比例设计尺寸宽(以375为基准)
 func kScaleWidth(_ width: Double) -> Double { (width * UIScreen.main.bounds.size.width / 375.0) }
 /// 等比例设计尺寸高(以667为基准)

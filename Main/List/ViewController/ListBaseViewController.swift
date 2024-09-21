@@ -46,6 +46,7 @@ class ListBaseViewController: BaseViewController {
     private lazy var pagingView: JXPagingView = {
         let pagingView = JXPagingView(delegate: self)
         pagingView.defaultSelectedIndex = 1
+        pagingView.mainTableView.gestureDelegate = self
         return pagingView
     }()
     /// 自定义headView
@@ -53,9 +54,11 @@ class ListBaseViewController: BaseViewController {
     /// JXSegmentedView悬浮视图
     private lazy var segmentedView: JXSegmentedView = {
         let segmentedView = JXSegmentedView()
+        segmentedView.delegate = self
         segmentedView.indicators = [lineView]
         segmentedView.defaultSelectedIndex = 1
         segmentedView.dataSource = segmentedViewDataSource
+        segmentedView.isContentScrollViewClickTransitionAnimationEnabled = false
         segmentedView.listContainer = pagingView.listContainerView
         return segmentedView
     }()
@@ -67,6 +70,7 @@ class ListBaseViewController: BaseViewController {
     /// 悬浮视图类型
     private lazy var segmentedViewDataSource: JXSegmentedTitleDataSource = {
         let segmentedViewDataSource = JXSegmentedTitleDataSource()
+        segmentedViewDataSource.isTitleColorGradientEnabled = true
         segmentedViewDataSource.titles = Categories.allCases.map({ $0.title })
         return segmentedViewDataSource
     }()
@@ -129,11 +133,18 @@ extension ListBaseViewController: JXPagingViewDelegate {
     }
 }
 
+extension ListBaseViewController: JXSegmentedViewDelegate {
+    func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) { }
+
+    func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) { }
+
+    func segmentedView(_ segmentedView: JXSegmentedView, didScrollSelectedItemAt index: Int) { }
+
+    func segmentedView(_ segmentedView: JXSegmentedView, scrollingFrom leftIndex: Int, to rightIndex: Int, percent: CGFloat) { }
+}
+
 extension ListBaseViewController: JXPagingMainTableViewGestureDelegate {
     func mainTableViewGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if otherGestureRecognizer == segmentedView.collectionView.panGestureRecognizer {
-            return false
-        }
-        return gestureRecognizer.isKind(of: UIPanGestureRecognizer.self) && otherGestureRecognizer.isKind(of: UIPanGestureRecognizer.self)
+        return false
     }
 }

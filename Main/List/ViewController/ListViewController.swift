@@ -14,9 +14,9 @@ class ListViewController: BaseViewController {
     /// 当前显示新闻类型
     var newType = "top"
     /// 是否下拉刷新
-    var isNeedHeader = false
+    var isNeedHeader = true
     /// 是否上拉加载更多
-    var isNeedFooter = false
+    var isNeedFooter = true
     
     /// 新闻数据源
     private var listSource = [ListModel]()
@@ -51,7 +51,6 @@ class ListViewController: BaseViewController {
     }
     
     override func initSubview() {
-        
         view.addSubview(listTableView)
         listTableView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
