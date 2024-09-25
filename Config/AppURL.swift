@@ -18,4 +18,12 @@ struct AppURL {
     private static let unsplashUrl: String  = "https://api.unsplash.com/"
     /// 图片数组
     static let photosUrl: String  = unsplashUrl + "photos"
+    /// roll 新闻 api
+    private static let rollUrl: String  = "https://www.mxnzp.com/"
+    /// roll 新闻类型
+    static let rollTypesUrl: String  = rollUrl + "api/news/types/v2?"
+    /// roll 新闻列表
+    static let rollListUrl: String  = rollUrl + "api/news/list/v2?"
+    /// roll 新闻详情
+    static let rollDetailUrl: String  = rollUrl + "api/news/details/v2?"
 }

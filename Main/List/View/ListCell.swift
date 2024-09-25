@@ -70,8 +70,10 @@ class ListCell: UITableViewCell {
 
     func reloadCell(item: ListModel) {
         preImageView.kf.indicatorType = .activity
-        preImageView.kf.setImage(with: URL(string: item.thumbnail_pic_s), placeholder: UIImage(named: "placeholder"))
+        if let url = item.imgList.first {
+            preImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: "placeholder"))
+        }
         titleLabel.text = item.title
-        dateLabel.text = item.date
+        dateLabel.text = item.postTime
     }
 }

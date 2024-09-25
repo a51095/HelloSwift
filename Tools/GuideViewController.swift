@@ -151,7 +151,7 @@ class GuideViewController: BaseViewController, UIScrollViewDelegate {
     
     func setRootViewController() {
         kAppDelegate.window!!.rootViewController = RootViewController()
-        Cache.setBoolValue(true, forKey: AppKey.hasInstallKey)
+        Cache.setBoolValue(true, forKey: AppKey.isFirstKey)
     }
     
     private func displayAnimation() {

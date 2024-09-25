@@ -13,6 +13,7 @@
 		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
 		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
 		3F2D68DB2C9ED700009EB4CE /* ListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */; };
+		3F35873D2CA1322800560A06 /* NewsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35873C2CA1322800560A06 /* NewsTypeModel.swift */; };
 		3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */; };
 		3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6CB27A2B87307E006ADBA9 /* Preferences.swift */; };
 		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
@@ -106,6 +107,7 @@
 		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
 		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
 		3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableHeaderView.swift; sourceTree = "<group>"; };
+		3F35873C2CA1322800560A06 /* NewsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeModel.swift; sourceTree = "<group>"; };
 		3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAsyncViewController.swift; sourceTree = "<group>"; };
 		3F6CB27A2B87307E006ADBA9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				8230109929BDB80B0051F731 /* ListModel.swift */,
 				888AAA622C5343D1009AD9C7 /* DetailModel.swift */,
+				3F35873C2CA1322800560A06 /* NewsTypeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 				FA9FFB522BB1654A0079EB52 /* ExampleLocalizationViewController.swift in Sources */,
 				FA9FFB452BB154820079EB52 /* LanguageCode.swift in Sources */,
 				A620058A2720212300DB8073 /* Timer.swift in Sources */,
+				3F35873D2CA1322800560A06 /* NewsTypeModel.swift in Sources */,
 				A62CF26B273E7DBC00670C13 /* ExBinaryFloatingPoint.swift in Sources */,
 				3FFF135629C825CC0084DE6A /* ExBundle.swift in Sources */,
 				F704A07C269E7C700044729E /* HomeViewController.swift in Sources */,

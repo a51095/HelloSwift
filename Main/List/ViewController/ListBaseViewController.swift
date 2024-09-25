@@ -6,40 +6,13 @@
 //
 
 import Foundation
+import SwiftyJSON
 import JXPagingView
 import JXSegmentedView
 
-enum Categories: String, CaseIterable {
-    case top
-    case guonei
-    case guoji
-    case yule
-    case tiyu
-    case junshi
-    case keji
-    case caijing
-    case youxi
-    case qiche
-    case jiankang
-    
-    var title: String {
-        switch self {
-            case .top: "推荐"
-            case .guonei: "国内"
-            case .guoji: "国际"
-            case .yule: "娱乐"
-            case .tiyu: "体育"
-            case .junshi: "军事"
-            case .keji: "科技"
-            case .caijing: "财经"
-            case .youxi: "游戏"
-            case .qiche: "汽车"
-            case .jiankang: "健康"
-        }
-    }
-}
-
 class ListBaseViewController: BaseViewController {
+    /// 子控制器
+    private var newsTypeArray = [NewsTypeModel]()
     /// 子控制器
     private var controllers = [ListViewController]()
     /// 整体滚动视图
@@ -71,13 +44,12 @@ class ListBaseViewController: BaseViewController {
     private lazy var segmentedViewDataSource: JXSegmentedTitleDataSource = {
         let segmentedViewDataSource = JXSegmentedTitleDataSource()
         segmentedViewDataSource.isTitleColorGradientEnabled = true
-        segmentedViewDataSource.titles = Categories.allCases.map({ $0.title })
         return segmentedViewDataSource
     }()
     
     private var headerViewHeight: Int = 200
     private var heightForHeaderInSection: Int = 60
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initSubview()
@@ -93,10 +65,26 @@ class ListBaseViewController: BaseViewController {
     }
     
     override func initData() {
-        for idx in Categories.allCases.indices {
-            let vc = ListViewController()
-            vc.newType = Categories.allCases[idx].rawValue
-            controllers.append(vc)
+        fetchRollNewsType()
+    }
+    
+    private func fetchRollNewsType() {
+        let url = AppURL.rollTypesUrl + "app_id=\(AppKey.rollAppKey)" + "&" + "app_secret=\(AppKey.rollSecretKey)"
+        NetworkRequest(url: url, method: .get, responseType: .dictionary) {  res in
+            // 容错处理
+            guard res != nil else { return }
+            
+            if let dictionary = res as? [String: Any] {
+                let json = JSON(dictionary)
+                json["data"].arrayValue.forEach { item in
+                    self.newsTypeArray.append(NewsTypeModel(typeId: item["typeId"].stringValue, typeName: item["typeName"].stringValue))
+                    let vc = ListViewController()
+                    vc.newTypeId = item["typeId"].stringValue
+                    self.controllers.append(vc)
+                }
+                self.segmentedViewDataSource.titles = self.newsTypeArray.map({ $0.typeName })
+                self.segmentedView.reloadData()
+            }
         }
     }
 }
@@ -107,19 +95,19 @@ extension ListBaseViewController: JXPagingViewDelegate {
     func tableHeaderViewHeight(in pagingView: JXPagingView) -> Int {
         return headerViewHeight
     }
-
+    
     func tableHeaderView(in pagingView: JXPagingView) -> UIView {
         return headerView
     }
-
+    
     func heightForPinSectionHeader(in pagingView: JXPagingView) -> Int {
         return heightForHeaderInSection
     }
-
+    
     func viewForPinSectionHeader(in pagingView: JXPagingView) -> UIView {
         return segmentedView
     }
-
+    
     func numberOfLists(in pagingView: JXPagingView) -> Int {
         return segmentedViewDataSource.titles.count
     }
@@ -127,7 +115,7 @@ extension ListBaseViewController: JXPagingViewDelegate {
     func pagingView(_ pagingView: JXPagingView, initListAtIndex index: Int) -> JXPagingViewListViewDelegate {
         return controllers[index]
     }
-
+    
     func mainTableViewDidScroll(_ scrollView: UIScrollView) {
         headerView.scrollViewDidScroll(contentOffsetY: scrollView.contentOffset.y)
     }
@@ -135,11 +123,11 @@ extension ListBaseViewController: JXPagingViewDelegate {
 
 extension ListBaseViewController: JXSegmentedViewDelegate {
     func segmentedView(_ segmentedView: JXSegmentedView, didSelectedItemAt index: Int) { }
-
+    
     func segmentedView(_ segmentedView: JXSegmentedView, didClickSelectedItemAt index: Int) { }
-
+    
     func segmentedView(_ segmentedView: JXSegmentedView, didScrollSelectedItemAt index: Int) { }
-
+    
     func segmentedView(_ segmentedView: JXSegmentedView, scrollingFrom leftIndex: Int, to rightIndex: Int, percent: CGFloat) { }
 }
 

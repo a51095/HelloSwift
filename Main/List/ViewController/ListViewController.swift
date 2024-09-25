@@ -11,15 +11,14 @@ import Foundation
 import JXPagingView
 
 class ListViewController: BaseViewController {
+    /// 请求页数
+    private var page = 1
     /// 当前显示新闻类型
-    var newType = String()
+    var newTypeId = String()
     /// 是否下拉刷新
     var isNeedHeader = true
     /// 是否上拉加载更多
     var isNeedFooter = true
-    /// 默认加载20条新闻数据
-    private var pageSize = 20
-    
     /// 新闻数据源
     private var listSource = [ListModel]()
     /// 懒加载,新闻列表控件
@@ -41,7 +40,11 @@ class ListViewController: BaseViewController {
     }
     
     override func initData() {
-        getNewData(type: newType)
+        super.initData()
+        
+        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now() + 1) {
+            self.fetchRollNewsList()
+        }
         
         if isNeedHeader {
             listTableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(headerRefresh))
@@ -61,12 +64,13 @@ class ListViewController: BaseViewController {
     
     // 下拉刷新
     @objc func headerRefresh() {
-        getNewData(type: newType)
+        fetchRollNewsList()
     }
     
     // 上拉加载更多
     @objc func loadMore() {
-        getNewData(type: newType, isMore: true)
+        page += 1
+        fetchRollNewsList()
     }
     
     private func reloadDataIfNeed() {
@@ -75,13 +79,9 @@ class ListViewController: BaseViewController {
     }
     
     // 获取新闻数据
-    func getNewData(type: String, isMore: Bool = false, isFilter: Int = 1) {
-        
-        if isMore { pageSize += 20 }
-        
-        let parameters: [String: Any] = ["is_filter": isFilter, "page_size": pageSize, "type": type, "key": AppKey.newsKey]
-        
-        NetworkRequest(url: AppURL.toutiaoUrl, parameters: parameters) { res in
+    private func fetchRollNewsList() {
+        let url = AppURL.rollListUrl + "page=\(page)" + "&" + "typeId=\(newTypeId)" + "&" + "app_id=\(AppKey.rollAppKey)" + "&" + "app_secret=\(AppKey.rollSecretKey)"
+        NetworkRequest(url: url, method: .get, responseType: .dictionary) { res in
             self.listTableView.mj_header?.endRefreshing()
             self.listTableView.mj_footer?.endRefreshing()
             
@@ -89,19 +89,22 @@ class ListViewController: BaseViewController {
             guard res != nil else { return }
             
             if let dictionary = res as? [String: Any] {
-                let errorCode = dictionary["error_code"] as! Int
-                guard errorCode == 0 else { self.listTableView.toast("暂无数据", type: .failure); return }
-                
-                // 先移除数据源，再添加新的数据源
-                self.listSource.removeAll()
-                
                 let json = JSON(dictionary)
-                let models = DataModel(jsonData: json).data.map {
-                    ListModel(jsonData: $0)
-                }.filter {
-                    $0.thumbnail_pic_s.count > 0
+                
+                guard json["code"].intValue == 1 else {
+                    return kTopViewController.view.toast("暂无数据", type: .failure)
                 }
-                self.listSource.append(contentsOf: models)
+                
+                // 若下拉刷新,则先移除数据源，再添加新的数据源
+                if self.isNeedHeader {
+                    self.listSource.removeAll()
+                }
+                
+                json["data"].arrayValue.forEach { item in
+                    if let images = item["imgList"].arrayObject as? [String] {
+                        self.listSource.append(ListModel(title: item["title"].stringValue, postTime: item["postTime"].stringValue, newsId: item["newsId"].stringValue, imgList: images))
+                    }
+                }
                 self.reloadDataIfNeed()
             }
         }
@@ -110,7 +113,7 @@ class ListViewController: BaseViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        listSource.count
+        return listSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -121,23 +124,21 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let item = listSource[indexPath.row]
-        let vc = ListDetailViewController(uniquekey: item.uniquekey)
-        vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        //        let item = listSource[indexPath.row]
+        //        let vc = ListDetailViewController(uniquekey: item.uniquekey)
+        //        vc.hidesBottomBarWhenPushed = true
+        //        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension ListViewController: JXPagingViewListViewDelegate {
     func listView() -> UIView {
-        self.view
+        return view
     }
     
     func listScrollView() -> UIScrollView {
-        listTableView
+        return listTableView
     }
     
-    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> Void) {
-        
-    }
+    func listViewDidScrollCallback(callback: @escaping (UIScrollView) -> Void) { }
 }
