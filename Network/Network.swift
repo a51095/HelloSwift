@@ -21,7 +21,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .get, showErrorMsg: Bool =
             case .success(let data):
                 switch responseType {
                     case .array:
-                        let object = try? JSONSerialization.jsonObject(with: data!, options: [])
+                        let object = try? JSONSerialization.jsonObject(with: data!)
                         if let array = object as? [[String: Any]] {
                             response(array)
                         } else {
@@ -32,7 +32,7 @@ func NetworkRequest(url: String, method: HTTPMethod = .get, showErrorMsg: Bool =
                             response(nil)
                         }
                     case .dictionary:
-                        let object = try? JSONSerialization.jsonObject(with: data!, options: [])
+                        let object = try? JSONSerialization.jsonObject(with: data!)
                         if let dictionary = object as? [String: Any] {
                             response(dictionary)
                         } else {

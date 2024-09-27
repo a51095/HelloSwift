@@ -4,15 +4,24 @@ import SwiftyJSON
 import Foundation
 
 class ListDetailViewController: BaseViewController {
-    /// 新闻ID
-    private var uniquekey: String
+    private var newsId: String
     /// 新闻数据源
-    var detailModel: DetailModel?
-
-    private var webView = WKWebView()
+    private var dataSource = [DetailModel]()
+    /// 懒加载,新闻详情控件
+    private lazy var tableView: UITableView = {
+        let v = UITableView()
+        v.delegate = self
+        v.dataSource = self
+        v.separatorStyle = .none
+        v.estimatedRowHeight = 100
+        v.alwaysBounceVertical = false
+        v.rowHeight = UITableView.automaticDimension
+        v.register(DetailCell.self, forCellReuseIdentifier: DetailCell.classString)
+        return v
+    }()
     
-    init(uniquekey: String) {
-        self.uniquekey = uniquekey
+    init(newsId: String) {
+        self.newsId = newsId
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -26,38 +35,60 @@ class ListDetailViewController: BaseViewController {
         self.initData()
     }
     
-    override func initData() { fetchNewsData() }
+    override func initData() {
+        super.initData()
+        fetchRollNewsDetail()
+    }
     
     override func initSubview() {
-        // 网络校验,有网则执行后续操作,网络不可用,则直接返回
-        guard isReachable else { return }
         super.initSubview()
-        view.addSubview(webView)
-        webView.snp.makeConstraints { make in
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
     }
-
+    
     private func reloadDataIfNeed() {
-        guard let content = detailModel?.content else { return }
-        webView.loadHTMLString(content, baseURL: nil)
+        guard !dataSource.isEmpty else { return }
+        self.tableView.reloadData()
     }
     
     /// 获取新闻数据
-    func fetchNewsData() {
-        let parameters: [String: Any] = ["uniquekey": uniquekey, "key": AppKey.newsKey]
-        NetworkRequest(url: AppURL.toutiaoContentUrl, parameters: parameters) { res in
+    private func fetchRollNewsDetail() {
+        let url = AppURL.rollDetailUrl + "newsId=\(newsId)" + "&" + "app_id=\(AppKey.rollAppKey)" + "&" + "app_secret=\(AppKey.rollSecretKey)"
+        NetworkRequest(url: url, method: .get, responseType: .dictionary) { res in
+            
             // 容错处理
             guard res != nil else { return }
             
             if let dictionary = res as? [String: Any] {
-                let errorCode = dictionary["error_code"] as! Int
-                guard errorCode == 0 else { self.webView.toast("暂无数据", type: .failure); return }
                 let json = JSON(dictionary)
-                self.detailModel = DetailModel(jsonData: json)
+                
+                guard json["code"].intValue == 1 else {
+                    return kTopViewController.view.toast("暂无数据", type: .failure)
+                }
+                
+                json["data"]["items"].arrayValue.forEach { item in
+                    let model = DetailModel(type: ContentType(rawValue: item["type"].stringValue), content: item["content"].stringValue, imageUrl: item["imageUrl"].stringValue)
+                    self.dataSource.append(model)
+                }
                 self.reloadDataIfNeed()
             }
         }
+    }
+}
+
+extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(cellType: DetailCell.self, for: indexPath)
+        let item = dataSource[indexPath.row]
+        cell.reloadCell(item: item)
+        return cell
     }
 }

@@ -13,6 +13,7 @@
 		3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */; };
 		3F20EA1629ED0D060025FC44 /* ExampleTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */; };
 		3F2D68DB2C9ED700009EB4CE /* ListTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */; };
+		3F2EBA3C2CA6E2D2008E1C2E /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2EBA3B2CA6E2D2008E1C2E /* DetailCell.swift */; };
 		3F35873D2CA1322800560A06 /* NewsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35873C2CA1322800560A06 /* NewsTypeModel.swift */; };
 		3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */; };
 		3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6CB27A2B87307E006ADBA9 /* Preferences.swift */; };
@@ -107,6 +108,7 @@
 		3F20EA1229E94A120025FC44 /* ExampleLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleLoadingViewController.swift; sourceTree = "<group>"; };
 		3F20EA1529ED0D060025FC44 /* ExampleTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTimeViewController.swift; sourceTree = "<group>"; };
 		3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableHeaderView.swift; sourceTree = "<group>"; };
+		3F2EBA3B2CA6E2D2008E1C2E /* DetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		3F35873C2CA1322800560A06 /* NewsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeModel.swift; sourceTree = "<group>"; };
 		3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAsyncViewController.swift; sourceTree = "<group>"; };
 		3F6CB27A2B87307E006ADBA9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				8230109B29BDB8310051F731 /* ListCell.swift */,
+				3F2EBA3B2CA6E2D2008E1C2E /* DetailCell.swift */,
 				3F2D68DA2C9ED700009EB4CE /* ListTableHeaderView.swift */,
 			);
 			path = View;
@@ -725,6 +728,7 @@
 				3FB5814C29F64B1900BF6902 /* LocationManager.swift in Sources */,
 				A6F36C5C26F6483B008999AE /* ExamplePhotoDetailViewController.swift in Sources */,
 				F704A072269E7B2B0044729E /* BaseViewController.swift in Sources */,
+				3F2EBA3C2CA6E2D2008E1C2E /* DetailCell.swift in Sources */,
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,

@@ -91,8 +91,12 @@ class ListViewController: BaseViewController {
             if let dictionary = res as? [String: Any] {
                 let json = JSON(dictionary)
                 
+                if json["code"].intValue == 101 {
+                    return kTopViewController.view.toast("过于频繁,请稍后再试!", type: .failure)
+                }
+                
                 guard json["code"].intValue == 1 else {
-                    return kTopViewController.view.toast("暂无数据", type: .failure)
+                    return kTopViewController.view.toast("暂无数据~", type: .failure)
                 }
                 
                 // 若下拉刷新,则先移除数据源，再添加新的数据源
@@ -124,10 +128,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let item = listSource[indexPath.row]
-        //        let vc = ListDetailViewController(uniquekey: item.uniquekey)
-        //        vc.hidesBottomBarWhenPushed = true
-        //        navigationController?.pushViewController(vc, animated: true)
+        let item = listSource[indexPath.row]
+        let vc = ListDetailViewController(newsId: item.newsId)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
