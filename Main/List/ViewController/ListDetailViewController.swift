@@ -1,6 +1,4 @@
 import UIKit
-import WebKit
-import SwiftyJSON
 import Foundation
 
 class ListDetailViewController: BaseViewController {
@@ -64,16 +62,20 @@ class ListDetailViewController: BaseViewController {
             guard res != nil else { return }
             
             if let dictionary = res as? [String: Any] {
-                let json = JSON(dictionary)
                 
-                guard json["code"].intValue == 1 else {
-                    return kTopViewController.view.toast("暂无数据", type: .failure)
+                guard let code = dictionary["code"] as? Int, code == 1 else {
+                    return kTopViewController.view.toast("暂无数据~", type: .failure)
                 }
                 
-                json["data"]["items"].arrayValue.forEach { item in
-                    let model = DetailModel(type: ContentType(rawValue: item["type"].stringValue), content: item["content"].stringValue, imageUrl: item["imageUrl"].stringValue)
-                    self.dataSource.append(model)
+                if let data = dictionary["data"] as? [String: Any] {
+                    if let array = data["items"] as? [[String: Any]] {
+                        array.forEach { dict in
+                            guard let model = DetailModel.deserialize(from: dict) else { return }
+                            self.dataSource.append(model)
+                        }
+                    }
                 }
+                
                 self.reloadDataIfNeed()
             }
         }

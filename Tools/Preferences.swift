@@ -48,7 +48,7 @@ struct Preferences {
 			let data = try JSONEncoder().encode(value)
 			UserDefaults.standard.set(data, forKey: key)
 		} catch {
-			print("Error encoding value for key \(key): \(error)")
+            kPrint("Error encoding value for key \(key): \(error)")
 		}
 	}
 
@@ -58,7 +58,7 @@ struct Preferences {
 				let value = try JSONDecoder().decode(T.self, from: data)
 				return value
 			} catch {
-				print("Error decoding value for key \(key): \(error)")
+                kPrint("Error decoding value for key \(key): \(error)")
 			}
 		}
 		return nil

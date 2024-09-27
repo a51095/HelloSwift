@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import SwiftyJSON
+import SmartCodable
 import JXPagingView
 import JXSegmentedView
 
@@ -75,12 +75,14 @@ class ListBaseViewController: BaseViewController {
             guard res != nil else { return }
             
             if let dictionary = res as? [String: Any] {
-                let json = JSON(dictionary)
-                json["data"].arrayValue.forEach { item in
-                    self.newsTypeArray.append(NewsTypeModel(typeId: item["typeId"].stringValue, typeName: item["typeName"].stringValue))
-                    let vc = ListViewController()
-                    vc.newTypeId = item["typeId"].stringValue
-                    self.controllers.append(vc)
+                if let array = dictionary["data"] as? [[String: Any]] {
+                    array.forEach { dict in
+                        guard let model = NewsTypeModel.deserialize(from: dict) else { return }
+                        self.newsTypeArray.append(model)
+                        let vc = ListViewController()
+                        vc.newTypeId = model.typeId
+                        self.controllers.append(vc)
+                    }
                 }
                 self.segmentedViewDataSource.titles = self.newsTypeArray.map({ $0.typeName })
                 self.segmentedView.reloadData()

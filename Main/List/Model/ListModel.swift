@@ -1,12 +1,12 @@
-import SwiftyJSON
+import SmartCodable
 
-struct ListModel {
+struct ListModel: SmartCodable {
     /// 标题
-    var title: String
+    var title = String()
     /// 发布日期
-    var postTime: String
+    var postTime = String()
     /// 新闻ID
-    var newsId: String
+    var newsId = String()
     /// 新闻图片
-    var imgList: [String]
+    var imgList = [String]()
 }

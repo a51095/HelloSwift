@@ -12,8 +12,6 @@ end
 # Objective-C
 def ocPods
   pod 'MJRefresh', '3.7.9'
-  pod 'JXSegmentedView', '1.4.1'
-  pod 'JXPagingView/Paging','2.1.3'
 end
 
 # Swift
@@ -21,8 +19,10 @@ def swiftPods
   pod 'Cache', '6.0.0'
   pod 'SnapKit', '5.7.1'
   pod 'Alamofire', '5.9.1'
-  pod 'SwiftyJSON', '5.0.2'
   pod 'Kingfisher', '7.12.0'
+  pod 'SmartCodable', '4.2.0'
+  pod 'JXSegmentedView', '1.4.1'
+  pod 'JXPagingView/Paging','2.1.3'
 end
 
 target 'HelloSwift' do

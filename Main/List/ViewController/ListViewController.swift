@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftyJSON
 import Foundation
 import JXPagingView
 
@@ -89,26 +88,27 @@ class ListViewController: BaseViewController {
             guard res != nil else { return }
             
             if let dictionary = res as? [String: Any] {
-                let json = JSON(dictionary)
                 
-                if json["code"].intValue == 101 {
+                if let code = dictionary["code"] as? Int, code == 101 {
                     return kTopViewController.view.toast("过于频繁,请稍后再试!", type: .failure)
                 }
                 
-                guard json["code"].intValue == 1 else {
+                guard let code = dictionary["code"] as? Int, code == 1 else {
                     return kTopViewController.view.toast("暂无数据~", type: .failure)
                 }
                 
                 // 若下拉刷新,则先移除数据源，再添加新的数据源
-                if self.isNeedHeader {
+                if self.page == 1 {
                     self.listSource.removeAll()
                 }
                 
-                json["data"].arrayValue.forEach { item in
-                    if let images = item["imgList"].arrayObject as? [String] {
-                        self.listSource.append(ListModel(title: item["title"].stringValue, postTime: item["postTime"].stringValue, newsId: item["newsId"].stringValue, imgList: images))
+                if let array = dictionary["data"] as? [[String: Any]] {
+                    array.forEach { dict in
+                        guard let model = ListModel.deserialize(from: dict) else { return }
+                        self.listSource.append(model)
                     }
                 }
+                
                 self.reloadDataIfNeed()
             }
         }

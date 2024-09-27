@@ -1,11 +1,19 @@
 import UIKit
+import SmartCodable
 import Foundation
-import SwiftyJSON
 
-struct UnsplashModel {
-    var full: String
-    var thumb: String
-    var regular: String
+struct UnsplashModel: SmartCodable {
+    var full = String()
+    var thumb = String()
+    var regular = String()
+    
+    static func mappingForKey() -> [SmartKeyTransformer]? {
+        [
+            CodingKeys.full <--- "urls.full",
+            CodingKeys.thumb <--- "urls.thumb",
+            CodingKeys.regular <--- "urls.regular"
+        ]
+    }
 }
 
 class WaterfallLayoutCell: UICollectionViewCell {
@@ -120,11 +128,10 @@ class ExampleWaterfallLayoutViewController: BaseViewController, ExampleProtocol 
         let parameters: [String: Any] = ["client_id": AppKey.unsplashKey, "page": currentPage, "per_page": 20]
         NetworkRequest(url: AppURL.photosUrl, method: .get, parameters: parameters, showErrorMsg: true, encoding: URLEncoding.default, responseType: .array) { res in
             if let array = res as? [[String: Any]] {
-                let json = JSON(array)
-                let arrayUrls = json.arrayValue.map {
-                    UnsplashModel(full: $0["urls"]["full"].stringValue, thumb: $0["urls"]["thumb"].stringValue, regular: $0["urls"]["regular"].stringValue)
+                array.forEach { dict in
+                    guard let model = UnsplashModel.deserialize(from: dict) else { return }
+                    self.dataSource.append(model)
                 }
-                self.dataSource.append(contentsOf: arrayUrls)
                 self.reloadDataIfNeed()
             }
         }

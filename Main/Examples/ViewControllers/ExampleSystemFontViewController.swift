@@ -36,10 +36,10 @@ class ExampleSystemFontViewController: BaseViewController, ExampleProtocol {
     private func loadFontFamilies() {
         let fontFamilies = UIFont.familyNames
         for familyName in fontFamilies {
-            print("Font Family: \(familyName)")
+            kPrint("Font Family: \(familyName)")
             let fontNames = UIFont.fontNames(forFamilyName: familyName)
             for name in fontNames {
-                print("fontName: \(name)")
+                kPrint("fontName: \(name)")
             }
         }
     }

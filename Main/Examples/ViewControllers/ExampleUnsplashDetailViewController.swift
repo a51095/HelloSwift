@@ -119,7 +119,7 @@ class ExampleUnsplashDetailViewController: BaseViewController, ExampleProtocol {
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error = error {
-                print("Error loading image: \(error)")
+                kPrint("Error loading image: \(error)")
                 completion(nil)
                 return
             }

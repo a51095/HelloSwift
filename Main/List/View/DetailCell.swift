@@ -51,9 +51,7 @@ class DetailCell: UITableViewCell {
             case .img:
                 contentLabel.isHidden = true
                 pictureImageView.isHidden = false
-                if let url = item.imageUrl {
-                    pictureImageView.kf.setImage(with: URL(string: url), placeholder: UIImage(named: "placeholder"))
-                }
+                pictureImageView.kf.setImage(with: URL(string: item.imageUrl), placeholder: UIImage(named: "placeholder"))
                 // 移除contentLabel约束
                 contentLabel.snp.removeConstraints()
                 // 重新计算pictureImageView高度
@@ -70,7 +68,6 @@ class DetailCell: UITableViewCell {
                 contentLabel.snp.remakeConstraints { (make) in
                     make.edges.equalTo(UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
                 }
-            case .none: break
         }
     }
 }

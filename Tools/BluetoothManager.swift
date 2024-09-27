@@ -59,17 +59,17 @@ extension BluetoothManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
 
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("处理成功连接外设")
+        kPrint("处理成功连接外设")
         peripheral.discoverServices(nil)
     }
 
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
-        print("处理外设断开连接")
+        kPrint("处理外设断开连接")
         central.cancelPeripheralConnection(peripheral)
     }
 
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
-        print("出错了,\(String(describing: error?.localizedDescription))")
+        kPrint("出错了,\(String(describing: error?.localizedDescription))")
     }
 }
 
@@ -98,7 +98,7 @@ extension BluetoothManager {
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let data = characteristic.value {
             let stringValue = String(decoding: data, as: UTF8.self)
-            print("Received data: \(stringValue)")
+            kPrint("Received data: \(stringValue)")
         }
     }
 }
