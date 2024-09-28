@@ -34,24 +34,22 @@ class BaseViewController: UIViewController, NetworkStatus, BaseProtocol {
     }
     
     func showTopViewAnimation() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut], animations: {
             self.topView.alpha = 0.5
         }, completion: { _ in
             UIView.animate(withDuration: 0.25) {
                 self.topView.alpha = 1
-                self.backButton.isHidden = false
                 self.topView.transform = .identity
             }
         })
     }
     
     func hideTopViewAnimation() {
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0, options: [.curveEaseInOut], animations: {
             self.topView.alpha = 0.5
         }, completion: { _ in
             UIView.animate(withDuration: 0.25) {
                 self.topView.alpha = 0
-                self.backButton.isHidden = true
                 self.topView.transform = CGAffineTransform(translationX: 0, y: -80)
             }
         })
@@ -81,7 +79,7 @@ extension BaseViewController {
 
     /// 自定义返回按钮
     func addBackButton() {
-        view.addSubview(backButton)
+        topView.addSubview(backButton)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.leftAnchor.constraint(equalTo: topView.leftAnchor).isActive = true
         backButton.bottomAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true

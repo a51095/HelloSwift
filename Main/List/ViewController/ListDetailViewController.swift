@@ -18,6 +18,20 @@ class ListDetailViewController: BaseViewController {
         return v
     }()
     
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hiddenPhoto))
+        imageView.addGestureRecognizer(tapGesture)
+        return imageView
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+    
     init(newsId: String) {
         self.newsId = newsId
         super.init(nibName: nil, bundle: nil)
@@ -45,6 +59,18 @@ class ListDetailViewController: BaseViewController {
         tableView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
+        }
+        
+        view.addSubview(scrollView)
+        scrollView.isHidden = true
+        scrollView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        
+        scrollView.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.left.equalToSuperview()
+            make.centerY.equalToSuperview()
         }
     }
     
@@ -80,6 +106,38 @@ class ListDetailViewController: BaseViewController {
             }
         }
     }
+    
+    func showPhoto(imageUrl: String) {
+        hideTopViewAnimation()
+        UIView.animate(withDuration: 0.25) {
+            self.tableView.isHidden = true
+            self.scrollView.isHidden = false
+            self.scrollView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        } completion: { _ in
+            self.scrollView.transform = .identity
+            self.imageView.kf.setImage(with: URL(string: imageUrl), placeholder: UIImage(named: "placeholder"))
+            
+            if let imageSize = self.imageView.image?.size {
+                self.scrollView.contentSize = imageSize
+                let targetOffset = CGPoint(
+                    x: max(0, (imageSize.width - kScreenWidth) / 2),
+                    y: 0
+                )
+                self.scrollView.setContentOffset(targetOffset, animated: true)
+            }
+        }
+    }
+    
+    @objc func hiddenPhoto() {
+        showTopViewAnimation()
+        UIView.animate(withDuration: 0.25) {
+            self.scrollView.transform = .identity
+        } completion: { _ in
+            self.scrollView.transform = CGAffineTransform(scaleX: 0, y: 0)
+            self.scrollView.isHidden = true
+            self.tableView.isHidden = false
+        }
+    }
 }
 
 extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -92,5 +150,11 @@ extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
         let item = dataSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = dataSource[indexPath.row]
+        guard item.type == .img else { return }
+        showPhoto(imageUrl: item.imageUrl)
     }
 }
