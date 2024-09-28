@@ -18,7 +18,7 @@ class ListDetailViewController: BaseViewController {
         return v
     }()
     
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
@@ -27,7 +27,7 @@ class ListDetailViewController: BaseViewController {
         return imageView
     }()
     
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         return scrollView
     }()
