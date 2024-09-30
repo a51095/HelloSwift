@@ -58,17 +58,26 @@ class TextField: UITextField {
 extension TextField {
     /// 占位符偏移量
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRectOffset(bounds, offset.x, offset.y)
+        if let leftView {
+            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
+        }
+        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
     }
     
     /// 文本最终显示偏移量
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRectOffset(bounds, offset.x, offset.y)
+        if let leftView {
+            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
+        }
+        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
     }
     
     /// 文本编辑时偏移量
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRectOffset(bounds, offset.x, offset.y)
+        if let leftView {
+            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
+        }
+        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
     }
 }
 
