@@ -12,11 +12,11 @@ import UIKit
 //textField.frame = CGRect(x: 0, y: 0, width: 400, height: 60)
 //textField.center = view.center
 //textField.placeholder = "请输入内容..."
-//textField.placeholderFont = .systemFont(ofSize: 17)
+//textField.placeholderFont = .systemFont(ofSize: 20)
 //textField.placeholderColor = .red
 //textField.isEnableDecimalLimit = true
 //textField.offset = CGPoint(x: 10, y: 10)
-//textField.font = .systemFont(ofSize: 17)
+//textField.font = .systemFont(ofSize: 30)
 //textField.backgroundColor = .lightGray
 //textField.keyboardType = .decimalPad
 
@@ -56,28 +56,28 @@ class TextField: UITextField {
 }
 
 extension TextField {
+    private func rect(forBounds bounds: CGRect) -> CGRect {
+        let leftViewWidth = leftView?.bounds.width ?? 0.0
+        let xAdjustment = leftViewWidth + offset.x
+        let width = bounds.width - leftViewWidth - abs(offset.x)
+        return CGRect(x: bounds.origin.x + xAdjustment,
+                      y: bounds.origin.y + offset.y,
+                      width: width,
+                      height: bounds.height)
+    }
     /// 占位符偏移量
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
-        if let leftView {
-            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
-        }
-        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
+        return rect(forBounds: bounds)
     }
     
     /// 文本最终显示偏移量
     override func textRect(forBounds bounds: CGRect) -> CGRect {
-        if let leftView {
-            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
-        }
-        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
+        return rect(forBounds: bounds)
     }
     
     /// 文本编辑时偏移量
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
-        if let leftView {
-            return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - leftView.bounds.width - offset.x, height: bounds.height)), leftView.bounds.width + offset.x, offset.y)
-        }
-        return CGRectOffset(CGRect(origin: bounds.origin, size: CGSize(width: bounds.width - offset.x, height: bounds.height)), offset.x, offset.y)
+        return rect(forBounds: bounds)
     }
 }
 
