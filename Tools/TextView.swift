@@ -39,10 +39,7 @@ class TextView: UITextView {
             placeholderLabel.textColor = newValue
         }
     }
-    
-    /// 是否启用小数点后仅允许两位的输入限制
-    var isEnableDecimalLimit: Bool = false
-    
+        
     /// override text
     override var text: String! {
         didSet {
@@ -87,7 +84,6 @@ class TextView: UITextView {
     }
     
     private func defaultConfig() {
-        delegate = self
         textContainerInset = .zero
         font = .systemFont(ofSize: 17.0)
         textContainer.lineFragmentPadding = 0
@@ -158,28 +154,5 @@ extension TextView {
     /// 监听文本内容更改
     @objc private func textDidChange(notification: Notification) {
         updatePlaceholderVisibility()
-    }
-}
-
-extension TextView: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        guard isEnableDecimalLimit else { return true }
-        
-        // 获取当前文本
-        let currentText = (textView.text as NSString?)?.replacingCharacters(in: range, with: text) ?? ""
-        
-        // 正则表达式
-        let regex = "^$|^0$|^0\\.[0-9]{0,2}$|^[1-9][0-9]*\\.?[0-9]{0,2}$"
-        
-        // 创建正则表达式对象
-        let expression = try? NSRegularExpression(pattern: regex, options: [])
-        
-        // 校验当前文本是否符合正则表达式
-        if let _ = expression?.firstMatch(in: currentText, options: [], range: NSRange(location: 0, length: currentText.utf16.count)) {
-            return true
-        }
-        
-        // 若不符合正则表达式，则不允许更改
-        return false
     }
 }
