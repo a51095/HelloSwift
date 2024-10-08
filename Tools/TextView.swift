@@ -63,8 +63,9 @@ class TextView: UITextView {
         label.numberOfLines = 0
         label.text = placeholder
         label.textColor = textColor
+        label.textAlignment = .natural
+        label.lineBreakMode = .byCharWrapping
         label.font = .systemFont(ofSize: 17.0)
-        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
