@@ -43,7 +43,13 @@ class TextField: UITextField {
     var offset: CGPoint = .zero
     
     /// 是否启用小数点后仅允许两位的输入限制
-    var isEnableDecimalLimit: Bool = false
+    var isEnableDecimalLimit: Bool = false {
+        willSet {
+            if newValue && delegate == nil {
+                delegate = self
+            }
+        }
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -51,7 +57,6 @@ class TextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        delegate = self
     }
 }
 
