@@ -7,18 +7,18 @@
 
 import UIKit
 
-//lazy var textField = TextField()
-//view.addSubview(textField)
-//textField.frame = CGRect(x: 0, y: 0, width: 400, height: 60)
-//textField.center = view.center
-//textField.placeholder = "请输入内容..."
-//textField.placeholderFont = .systemFont(ofSize: 20)
-//textField.placeholderColor = .red
-//textField.isEnableDecimalLimit = true
-//textField.offset = CGPoint(x: 10, y: 10)
-//textField.font = .systemFont(ofSize: 30)
-//textField.backgroundColor = .lightGray
-//textField.keyboardType = .decimalPad
+// lazy var textField = TextField()
+// view.addSubview(textField)
+// textField.frame = CGRect(x: 0, y: 0, width: 400, height: 60)
+// textField.center = view.center
+// textField.placeholder = "请输入内容..."
+// textField.placeholderFont = .systemFont(ofSize: 20)
+// textField.placeholderColor = .red
+// textField.isEnableDecimalLimit = true
+// textField.offset = CGPoint(x: 10, y: 10)
+// textField.font = .systemFont(ofSize: 30)
+// textField.backgroundColor = .lightGray
+// textField.keyboardType = .decimalPad
 
 class TextField: UITextField {
     /// 占位字体
@@ -100,7 +100,7 @@ extension TextField: UITextFieldDelegate {
         let expression = try? NSRegularExpression(pattern: regex, options: [])
         
         // 校验当前文本是否符合正则表达式
-        if let _ = expression?.firstMatch(in: currentText, options: [], range: NSRange(location: 0, length: currentText.utf16.count)) {
+        if ((expression?.firstMatch(in: currentText, options: [], range: NSRange(location: 0, length: currentText.utf16.count))) != nil) {
             return true
         }
         

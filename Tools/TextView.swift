@@ -7,16 +7,16 @@
 
 import UIKit
 
-//lazy var textView = TextView()
-//view.addSubview(textView)
-//textView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
-//textView.center = view.center
-//textView.placeholder = "请输入内容..."
-//textView.placeholderFont = .systemFont(ofSize: 20.0)
-//textView.placeholderColor = .orange
-//textView.backgroundColor = .lightGray
-//textView.font = .systemFont(ofSize: 30.0)
-//textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+// lazy var textView = TextView()
+// view.addSubview(textView)
+// textView.frame = CGRect(x: 0, y: 0, width: 400, height: 400)
+// textView.center = view.center
+// textView.placeholder = "请输入内容..."
+// textView.placeholderFont = .systemFont(ofSize: 20.0)
+// textView.placeholderColor = .orange
+// textView.backgroundColor = .lightGray
+// textView.font = .systemFont(ofSize: 30.0)
+// textView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
 class TextView: UITextView {
     
