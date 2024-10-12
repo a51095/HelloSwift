@@ -3,6 +3,7 @@ import SmartCodable
 enum ContentType: String, SmartCaseDefaultable {
     case img
     case text
+    case video
 }
 
 struct DetailModel: SmartCodable {
@@ -12,4 +13,6 @@ struct DetailModel: SmartCodable {
     var content = String()
     /// 新闻图片
     var imageUrl = String()
+    /// 新闻视频
+    var videoUrl = [String]()
 }

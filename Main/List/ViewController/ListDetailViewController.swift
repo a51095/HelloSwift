@@ -147,6 +147,7 @@ extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(cellType: DetailCell.self, for: indexPath)
+        cell.delegate = self
         let item = dataSource[indexPath.row]
         cell.reloadCell(item: item)
         return cell
@@ -156,5 +157,15 @@ extension ListDetailViewController: UITableViewDelegate, UITableViewDataSource {
         let item = dataSource[indexPath.row]
         guard item.type == .img else { return }
         showPhoto(imageUrl: item.imageUrl)
+    }
+}
+
+extension ListDetailViewController: VideoDelegate {
+    func didStartPlaying(in cell: DetailCell) {
+        tableView.isScrollEnabled = false
+    }
+    
+    func didPausePlaying(in cell: DetailCell) {
+        tableView.isScrollEnabled = true
     }
 }
