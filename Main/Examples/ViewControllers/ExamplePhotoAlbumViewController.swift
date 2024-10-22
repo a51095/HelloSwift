@@ -75,8 +75,8 @@ class ExamplePhotoAlbumViewController: BaseViewController, ExampleProtocol {
     
     override func initData() {
         // 获取系统相册
-        let fetchOptions =  PHFetchOptions()
-        let assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .albumRegular, options: fetchOptions)
+        let fetchOptions = PHFetchOptions()
+        let assetCollections =  PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .any, options: fetchOptions)
         filterAssetCollections(collection: assetCollections)
         
 #if !targetEnvironment(simulator)
