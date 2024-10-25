@@ -41,6 +41,12 @@ class DetailCell: UITableViewCell {
         imageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(palyVideo))
         imageView.addGestureRecognizer(tapGesture)
+        let icon = UIImageView()
+        icon.image = UIImage(named: "play_circle")
+        imageView.addSubview(icon)
+        icon.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
         return imageView
     }()
     
