@@ -42,6 +42,9 @@ class TextField: UITextField {
     /// 内边距偏移量
     var offset: CGPoint = .zero
     
+    /// 可输入最大位数
+    var maxLength: UInt64 = 0
+    
     /// 是否启用小数点后仅允许两位的输入限制
     var isEnableDecimalLimit: Bool = false {
         willSet {
@@ -92,6 +95,11 @@ extension TextField: UITextFieldDelegate {
         
         // 获取当前文本
         let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        
+        // 是否超限
+        if maxLength > 0 && currentText.length > maxLength {
+            return false
+        }
         
         // 正则表达式
         let regex = "^$|^0$|^0\\.[0-9]{0,2}$|^[1-9][0-9]*\\.?[0-9]{0,2}$"
