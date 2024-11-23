@@ -95,16 +95,12 @@ var kTabBarHeight: CGFloat {
     kTopViewController.tabBarController?.tabBar.frame.height ?? 0.0
 }
 
+/// 等比例设计尺寸(以375为基准)
+func kScale(_ scale: Double) -> Double { scale * (kScreenWidth / 375.0) }
 /// 等比例设计尺寸宽(以375为基准)
-func kScaleWidth(_ width: Double) -> Double { (width * UIScreen.main.bounds.size.width / 375.0) }
+func kScaleWidth(_ width: Double) -> Double { width * (kScreenWidth / 375.0) }
 /// 等比例设计尺寸高(以667为基准)
-func kScaleHeight(_ height: Double) -> Double { (height * UIScreen.main.bounds.size.height / 667.0) }
-/// 等比例设计尺寸Size(以375，667为基准)
-func kScaleSize(_ width: Int, _ height: Int) -> CGSize {
-    let sizeWidth = (width * UIScreen.main.bounds.size.width.i / 375)
-    let sizeHeight = (height * UIScreen.main.bounds.size.height.i / 667)
-    return CGSize(width: sizeWidth, height: sizeHeight)
-}
+func kScaleHeight(_ height: Double) -> Double { height * (kScreenHeight / 667.0) }
 
 /// 平方字体-常规体
 func kRegularFont(_ size: CGFloat) -> UIFont? { UIFont(name: "PingFangSC-Regular", size: size) }
