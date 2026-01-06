@@ -9,8 +9,8 @@ import Foundation
 
 class ExamplePropertyViewController: BaseViewController, ExampleProtocol {
 
-	@StringPreference(key: "exampleName")
-	var exampleName: String
+    @UserDefault("exampleName",defaultValue: "")
+    var exampleName: String
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

@@ -17,7 +17,7 @@
 		3F35873D2CA1322800560A06 /* NewsTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F35873C2CA1322800560A06 /* NewsTypeModel.swift */; };
 		3F4D76E32B045E6A000604A2 /* ExampleAsyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */; };
 		3F58F45D2CA97BD500A609FF /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F58F45C2CA97BD500A609FF /* TextView.swift */; };
-		3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6CB27A2B87307E006ADBA9 /* Preferences.swift */; };
+		3F6CB27B2B87307E006ADBA9 /* AppPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6CB27A2B87307E006ADBA9 /* AppPreferences.swift */; };
 		3F95F5E02CF2281300B29D6C /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F95F5DF2CF2281300B29D6C /* ImageCacheManager.swift */; };
 		3F9CBB0329F1413800D2FD68 /* AppEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9CBB0229F1413700D2FD68 /* AppEnum.swift */; };
 		3FA0E4392CAA9F9C00803A1F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA0E4382CAA9F9C00803A1F /* TextField.swift */; };
@@ -115,7 +115,7 @@
 		3F35873C2CA1322800560A06 /* NewsTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTypeModel.swift; sourceTree = "<group>"; };
 		3F4D76E22B045E6A000604A2 /* ExampleAsyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleAsyncViewController.swift; sourceTree = "<group>"; };
 		3F58F45C2CA97BD500A609FF /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		3F6CB27A2B87307E006ADBA9 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		3F6CB27A2B87307E006ADBA9 /* AppPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPreferences.swift; sourceTree = "<group>"; };
 		3F95F5DF2CF2281300B29D6C /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		3F9CBB0229F1413700D2FD68 /* AppEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnum.swift; sourceTree = "<group>"; };
 		3FA0E4382CAA9F9C00803A1F /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 				F7B4FD9826A6C6850051FC5B /* ItemView.swift */,
 				F7B44823269EDE490098D2AF /* DragView.swift */,
 				F7B4481F269ED3840098D2AF /* ToastView.swift */,
-				3F6CB27A2B87307E006ADBA9 /* Preferences.swift */,
+				3F6CB27A2B87307E006ADBA9 /* AppPreferences.swift */,
 				FA9ADE782B91E17300DF3BDF /* TaskManager.swift */,
 				F7B4485126A1168E0098D2AF /* LoadingView.swift */,
 				F704A081269E832B0044729E /* AlertController.swift */,
@@ -744,7 +744,7 @@
 				A62CF272273E7DBC00670C13 /* ExButton.swift in Sources */,
 				3F20EA1329E94A120025FC44 /* ExampleLoadingViewController.swift in Sources */,
 				F704A04D269E73830044729E /* AppDelegate.swift in Sources */,
-				3F6CB27B2B87307E006ADBA9 /* Preferences.swift in Sources */,
+				3F6CB27B2B87307E006ADBA9 /* AppPreferences.swift in Sources */,
 				FA9ADE792B91E17300DF3BDF /* TaskManager.swift in Sources */,
 				3FFC5B6F2A04DACD0002191F /* ExampleScaleAspectViewController.swift in Sources */,
 				A66E2EB626FDAAD700453EB9 /* ListViewController.swift in Sources */,
